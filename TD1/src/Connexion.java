@@ -4,9 +4,9 @@ import java.sql.SQLException;
 
 public class Connexion {
 	public Connection creeConnexion() {
-		String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/etud1u_base";
-		String login = "etud1u_appli";
-		String pwd = "pass_etud1u";
+		String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/collign97u_CPPOA";
+		String login = "collign97u_appli";
+		String pwd = "Nico2410";
 
 		Connection maConnexion = null;
 
