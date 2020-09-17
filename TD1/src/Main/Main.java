@@ -6,11 +6,11 @@
 /* Date : 17/09/2020              |                  */
 /* *******************************|***************** */
 
-package P_Main;
+package Main;
 
 import java.util.Scanner;
 
-import P_ClasseSQL.Connexion;
+import ClasseSQL.Connexion;
 
 public class Main {
     public static void main(final String[] args) {

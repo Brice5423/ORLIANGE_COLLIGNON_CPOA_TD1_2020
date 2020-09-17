@@ -6,7 +6,7 @@
 /* Date : 17/09/2020              |                  */
 /* *******************************|***************** */
 
-package P_ClasseSQL;
+package ClasseSQL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
