@@ -31,7 +31,7 @@ public class Main {
         } while((choix < 1) || (choix > 4));
         sc.close();
 
-        System.out.println("");
+        System.out.println();
 
         switch(choix) {
             case 1:
