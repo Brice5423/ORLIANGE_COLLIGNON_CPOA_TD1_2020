@@ -8,8 +8,6 @@
 
 package ClasseSQL;
 
-public class ModifCat {
-    public static int ModifCat() {
-        return 2;
-    }
+public class Categorie {
+
 }

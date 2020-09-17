@@ -8,8 +8,6 @@
 
 package ClasseSQL;
 
-public class AjoutCat {
-    public static int AjoutCat() {
-        return 2;
-    }
+public class Produit {
+
 }

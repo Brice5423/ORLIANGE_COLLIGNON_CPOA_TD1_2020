@@ -8,8 +8,6 @@
 
 package ClasseSQL;
 
-public class SupCat {
-    public static int SupCat() {
-        return 2;
-    }
+public class Clients {
+
 }
