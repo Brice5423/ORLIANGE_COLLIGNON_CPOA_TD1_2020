@@ -35,11 +35,11 @@ public class ChoixType {
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une catégorie.");
-                //cat.SupCategorie();
+                cat.SupCategorie();
                 break;
             case 4:
                 System.out.println("Choix 4 : renvoier toutes les catégories de la base.");
-                //cat.ArrayList();
+                cat.ArrayList();
                 break;
         }
     }
@@ -74,11 +74,11 @@ public class ChoixType {
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une Produit.");
-
+                Prod.SupProduit();
                 break;
             case 4:
                 System.out.println("Choix 4 : renvoier toutes les Produit de la base.");
-
+                Prod.ArrayList();
                 break;
         }
     }
@@ -113,11 +113,11 @@ public class ChoixType {
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une Client.");
-
+                Cli.SupClients();
                 break;
             case 4:
                 System.out.println("Choix 4 : renvoier toutes les Client de la base.");
-
+                Cli.ArrayList();
                 break;
         }
     }

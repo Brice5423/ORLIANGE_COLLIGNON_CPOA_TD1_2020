@@ -6,7 +6,6 @@
 /* Date : 17/09/2020              |                  */
 /* *******************************|***************** */
 
-import ClasseSQL.Connexion;
 import Fact.*;
 import java.util.Scanner;
 

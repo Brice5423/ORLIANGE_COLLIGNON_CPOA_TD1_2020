@@ -83,4 +83,51 @@ public class Produit {
             System.out.println("Pb select " + sqle.getMessage());
         }
     }
+
+
+    public void SupProduit() {
+        Connection laConnexion = Connexion.creeConnexion();
+
+        String id_prod = null;
+
+        System.out.println("Donner l'id du produit a sup : ");
+        id_prod = sc.next();
+
+        try {
+            String request = "DELETE FROM Produit WHERE id_produit = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setString(1, id_prod);
+            ps.executeUpdate();
+
+            laConnexion.close();
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+    }
+
+
+    public void ArrayList() {
+        System.out.println("La fonction ArrayList ne fonctionne pas pour le momment ^^");
+        /*try {
+            Connection laConnexion = Connexion.creeConnexion();
+            Statement requete = laConnexion.createStatement();
+            ResultSet res = requete.executeQuery("select no_etudiant, nom_etudiant from etudiant");
+
+            while (res.next()) {
+                int no = res.getInt(1);
+                String nom = res.getString("nom_etudiant");
+            }
+
+            if (res != null)
+                res.close();
+            if (requete != null)
+                requete.close();
+            if (laConnexion != null)
+                laConnexion.close();
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }*/
+    }
 }
