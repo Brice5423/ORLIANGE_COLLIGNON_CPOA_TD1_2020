@@ -21,7 +21,7 @@ public class Categorie {
 
         System.out.println("Donner un titre à ta nouvelle Categorie : ");
         titre_cat = sc.next();
-        System.out.println("Donner un visuel de votre Categorie : ");
+        System.out.println("Donner un visuel de ta nouvelle Categorie : ");
         visuel_cat = sc.next();
 
         try {
@@ -39,28 +39,32 @@ public class Categorie {
     }
 
 
-    /*public static void ModifCategorie() {
+    public void ModifCategorie() {
+        Connection laConnexion = Connexion.creeConnexion();
+
+        String id_cat = null, titre_cat = null, visuel_cat = null;
+
+        System.out.println("Donner l'id pour le changement : ");
+        id_cat = sc.next();
+        System.out.println("Donner un nouveau titre à ta Categorie : ");
+        titre_cat = sc.next();
+        System.out.println("Donner un nouveau visuel de ta Categorie : ");
+        visuel_cat = sc.next();
+
         try {
-            Connection laConnexion = Connexion.creeConnexion();
-            Statement requete = laConnexion.createStatement();
-            ResultSet res = requete.executeQuery("select no_etudiant, nom_etudiant from etudiant");
+            String request = "UPDATE Categorie SET titre = ?, visuel = ? WHERE id_categorie = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setString(1, titre_cat);
+            ps.setString(2, visuel_cat);
+            ps.setString(3, id_cat);
+            ps.executeUpdate();
 
-            while (res.next()) {
-                int no = res.getInt(1);
-                String nom = res.getString("nom_etudiant");
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
+            laConnexion.close();
 
         } catch (SQLException sqle) {
-            System.out.println("Pb select" + sqle.getMessage());
+            System.out.println("Pb select " + sqle.getMessage());
         }
-    }*/
+    }
 
 
     /*public static void SupCategorie() {

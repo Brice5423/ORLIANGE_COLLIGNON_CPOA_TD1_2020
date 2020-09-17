@@ -31,7 +31,7 @@ public class ChoixType {
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une catégorie.");
-                //cat.ModifCategorie();
+                cat.ModifCategorie();
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une catégorie.");
@@ -70,7 +70,7 @@ public class ChoixType {
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une Produit.");
-
+                Prod.ModifProduit();
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une Produit.");
@@ -109,7 +109,7 @@ public class ChoixType {
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une Client.");
-
+                Cli.ModifClients();
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une Client.");
