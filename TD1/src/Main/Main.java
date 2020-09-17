@@ -10,42 +10,52 @@ package Main;
 
 import java.util.Scanner;
 
-import ClasseSQL.*;
-
 public class Main {
     public static void main(final String[] args) {
-        Connexion.creeConnexion();
-
-        // Text explicative des choix possibles //
-        System.out.println("Faite un choix :");
-        System.out.println("1: ajouter une catégorie.");
-        System.out.println("2: modifier une catégorie.");
-        System.out.println("3: supprimer une catégorie.");
-        System.out.println("4: renvoier toutes les catégories de la base.");
-
-        // Oblige de donner un des 4 choix //
-        final Scanner sc = new Scanner(System.in);
-        int choix;
+        boolean continu;
         do {
-            choix = sc.nextInt();
-        } while((choix < 1) || (choix > 4));
-        sc.close();
+            // Text explicative des choix possibles //
+            System.out.println("Faite un choix entre les 3 zones :");
+            System.out.println("1: Categorie.");
+            System.out.println("2: Produit.");
+            System.out.println("3: Client.");
 
-        System.out.println();
+            // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
+            final Scanner sc = new Scanner(System.in);
+            int choix;
+            do {
+                choix = sc.nextInt();
+            } while ((choix < 1) || (choix > 4));
+            sc.close();
 
-        switch(choix) {
-            case 1:
-                System.out.println("Choix 1 : ajouter une catégorie.");
-                break;
-            case 2:
-                System.out.println("Choix 2 : modifier une catégorie.");
-                break;
-            case 3:
-                System.out.println("Choix 3 : supprimer une catégorie.");
-                break;
-            case 4:
-                System.out.println("Choix 4 : renvoier toutes les catégories de la base.");
-                break;
-        }
+            System.out.println();
+
+            switch (choix) {
+                case 1:
+                    System.out.println("Choix 1 : Categorie.");
+                    ChoixType.ChoixCategorie();
+                    break;
+                case 2:
+                    System.out.println("Choix 2 : Produit.");
+                    ChoixType.ChoixProduit();
+                    break;
+                case 3:
+                    System.out.println("Choix 3 : Client.");
+                    ChoixType.ChoixClient();
+                    break;
+            }
+
+            System.out.println("Voulez-vous continue (yes/no) :");
+            String rep;
+            do {
+                rep = sc.next();
+            } while ((rep!="yes")||(rep!="no"));
+
+            if (rep=="yes")
+                continu=true;
+            else
+                continu=false;
+            sc.close();
+        } while (continu);
     }
 }
