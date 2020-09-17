@@ -10,7 +10,7 @@ package Main;
 
 import java.util.Scanner;
 
-import ClasseSQL.Connexion;
+import ClasseSQL.*;
 
 public class Main {
     public static void main(final String[] args) {
