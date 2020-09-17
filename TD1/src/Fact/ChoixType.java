@@ -1,4 +1,4 @@
-package Main;
+package Fact;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import ClasseSQL.*;
 
 public class ChoixType {
 
-    public static void ChoixCategorie() {
+    public void ChoixCategorie() {
         // Text explicative des choix possibles //
         System.out.println("Faite un choix entre les actions possibles pour la Categorie :");
         System.out.println("1: ajouter une Catégorie.");
@@ -15,31 +15,31 @@ public class ChoixType {
         System.out.println("4: renvoier toutes les Catégorie de la base.");
 
         // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
-        final Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int choix;
         do {
             choix = sc.nextInt();
         } while((choix < 1) || (choix > 4));
-        sc.close();
 
         System.out.println();
 
+        Categorie cat = new Categorie();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une catégorie.");
-                Categorie.AjoutCategorie();
+                cat.AjoutCategorie();
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une catégorie.");
-                //Categorie.ModifCategorie();
+                //cat.ModifCategorie();
                 break;
             case 3:
                 System.out.println("Choix 3 : supprimer une catégorie.");
-                //Categorie.SupCategorie();
+                //cat.SupCategorie();
                 break;
             case 4:
                 System.out.println("Choix 4 : renvoier toutes les catégories de la base.");
-                //Categorie.ArrayList();
+                //cat.ArrayList();
                 break;
         }
     }
@@ -54,19 +54,19 @@ public class ChoixType {
         System.out.println("4: renvoier toutes les Produit de la base.");
 
         // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
-        final Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int choix;
         do {
             choix = sc.nextInt();
         } while((choix < 1) || (choix > 4));
-        sc.close();
 
         System.out.println();
 
+        Produit Prod = new Produit();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une Produit.");
-
+                Prod.AjoutProduit();
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une Produit.");
@@ -93,19 +93,19 @@ public class ChoixType {
         System.out.println("4: renvoier toutes les Client de la base.");
 
         // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
-        final Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int choix;
         do {
             choix = sc.nextInt();
         } while((choix < 1) || (choix > 4));
-        sc.close();
 
         System.out.println();
 
+        Clients Cli = new Clients();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une Client.");
-
+                Cli.AjoutClients();
                 break;
             case 2:
                 System.out.println("Choix 2 : modifier une Client.");

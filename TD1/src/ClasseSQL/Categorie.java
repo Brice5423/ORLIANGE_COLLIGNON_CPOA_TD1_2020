@@ -12,19 +12,19 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class Categorie {
-    public static void AjoutCategorie() {
+    Scanner sc = new Scanner(System.in);
+
+    public void AjoutCategorie() {
+        Connection laConnexion = Connexion.creeConnexion();
+
+        String titre_cat = null, visuel_cat = null;
+
+        System.out.println("Donner un titre à ta nouvelle Categorie : ");
+        titre_cat = sc.next();
+        System.out.println("Donner un visuel de votre Categorie : ");
+        visuel_cat = sc.next();
+
         try {
-            Connection laConnexion = Connexion.creeConnexion();
-
-            String titre_cat, visuel_cat;
-
-            final Scanner sc = new Scanner(System.in);
-            System.out.println("Donner un titre à ta nouvelle Categorie : ");
-            titre_cat = sc.next();
-            System.out.println("Donner un visuel de votre Categorie : ");
-            visuel_cat = sc.next();
-            sc.close();
-
             String request = "INSERT INTO Categorie(titre, visuel) VALUES(?, ?)";
             PreparedStatement ps = laConnexion.prepareStatement(request);
             ps.setString(1, titre_cat);
@@ -34,7 +34,7 @@ public class Categorie {
             laConnexion.close();
 
         } catch (SQLException sqle) {
-            System.out.println("Pb select" + sqle.getMessage());
+            System.out.println("Pb select " + sqle.getMessage());
         }
     }
 

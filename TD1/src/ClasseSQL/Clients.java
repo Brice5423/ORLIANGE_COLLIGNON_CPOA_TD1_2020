@@ -12,33 +12,34 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class Clients {
-    public static void AjoutClients() {
+    Scanner sc = new Scanner(System.in);
+
+    public void AjoutClients() {
+        Connection laConnexion = Connexion.creeConnexion();
+
+        String nom_client = null, prenom_client = null, identifiant_client = null, mdp_client = null;
+        String adr_num_client = null, adr_voie_client = null, adr_code_client = null, adr_ville_client = null, adr_pays_client = null;
+
+        System.out.println("Donner le nom du client :");
+        nom_client = sc.next();
+        System.out.println("Donner le prenom du client :");
+        prenom_client = sc.next();
+        System.out.println("Donner l'identifant du client :");
+        identifiant_client = sc.next();
+        System.out.println("Donner le mdp du client svp :");
+        mdp_client = sc.next();
+        System.out.println("Donner le numero de l'adresse du client :");
+        adr_num_client = sc.next();
+        System.out.println("Donner la voie de l'adresse du client :");
+        adr_voie_client = sc.next();
+        System.out.println("Donner le code porstal du client :");
+        adr_code_client = sc.next();
+        System.out.println("Donner le ville du client :");
+        adr_ville_client = sc.next();
+        System.out.println("Donner le pays du client :");
+        adr_pays_client = sc.next();
+
         try {
-            Connection laConnexion = Connexion.creeConnexion();
-
-            String nom_client, prenom_client, identifiant_client, mdp_client, adr_num_client, adr_voie_client, adr_code_client, adr_ville_client, adr_pays_client;
-
-            final Scanner sc = new Scanner(System.in);
-            System.out.println("Donner le nom du client :");
-            nom_client = sc.next();
-            System.out.println("Donner le prenom du client :");
-            prenom_client = sc.next();
-            System.out.println("Donner l'identifant du client :");
-            identifiant_client = sc.next();
-            System.out.println("Donner le mdp du client svp :");
-            mdp_client = sc.next();
-            System.out.println("Donner le numero de l'adresse du client :");
-            adr_num_client = sc.next();
-            System.out.println("Donner la voie de l'adresse du client :");
-            adr_voie_client = sc.next();
-            System.out.println("Donner le code porstal du client :");
-            adr_code_client = sc.next();
-            System.out.println("Donner le ville du client :");
-            adr_ville_client = sc.next();
-            System.out.println("Donner le pays du client :");
-            adr_pays_client = sc.next();
-            sc.close();
-
             String request = "INSERT INTO Produit(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = laConnexion.prepareStatement(request);
             ps.setString(1, nom_client);
@@ -55,7 +56,7 @@ public class Clients {
             laConnexion.close();
 
         } catch (SQLException sqle) {
-            System.out.println("Pb select" + sqle.getMessage());
+            System.out.println("Pb select " + sqle.getMessage());
         }
     }
 }
