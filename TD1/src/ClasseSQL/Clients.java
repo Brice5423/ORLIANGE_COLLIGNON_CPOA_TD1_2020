@@ -40,7 +40,7 @@ public class Clients {
         adr_pays_client = sc.next();
 
         try {
-            String request = "INSERT INTO Produit(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String request = "INSERT INTO Client(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = laConnexion.prepareStatement(request);
             ps.setString(1, nom_client);
             ps.setString(2, prenom_client);
