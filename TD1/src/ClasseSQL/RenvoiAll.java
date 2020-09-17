@@ -8,8 +8,8 @@
 
 package ClasseSQL;
 
-public class AjoutCat {
-    public static int AjoutCat() {
+public class RenvoiAll {
+    public static int ArrayList() {
         return 2;
     }
 }
