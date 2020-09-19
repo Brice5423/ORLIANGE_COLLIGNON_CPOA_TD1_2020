@@ -22,7 +22,7 @@ public class Main {
         int choix = 1;
         do {
             choix = sc.nextInt();
-        } while ((choix < 1) || (choix > 4));
+        } while ((choix < 1) || (choix > 3));
 
         System.out.println();
 
