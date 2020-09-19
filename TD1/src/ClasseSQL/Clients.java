@@ -1,8 +1,8 @@
 /* *******************************|***************** */
 /* Auteur : Brice Bricou & Nico.C | CPOA TD1         */
 /* OS : Windows 10 64bits         | Bute du projet : */
-/* Logiciel : VSC & Eclipse       |   ...            */
-/* Langage : Java                 |                  */
+/* Logiciel : IntelliJ & Eclipse  |   ...            */
+/* Langage : Java & SQL           |                  */
 /* Date : 17/09/2020              |                  */
 /* *******************************|***************** */
 
