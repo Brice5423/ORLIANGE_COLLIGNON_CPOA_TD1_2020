@@ -8,7 +8,7 @@
 
 import Fact.ChoixType;
 import java.util.Scanner;
-// test ennvoie Niconii et recup bricou 145654
+// test ennvoie Niconii et recup bricou 14565
 public class Main {
     public static void main(String[] args) {
         // Text explicative des choix possibles //
