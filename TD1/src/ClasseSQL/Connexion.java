@@ -17,7 +17,7 @@ public class Connexion { // Etape 1: connexion //
         String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/collign97u_CPOA";
         url += "?serverTimezone=Europe/Paris";
         String login = "collign97u_appli";
-        String pwd = "Nico2410";
+        String pwd = "Jfido47992";
 
         Connection maConnexion = null;
 

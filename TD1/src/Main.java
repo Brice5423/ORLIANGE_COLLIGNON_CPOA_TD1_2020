@@ -6,7 +6,7 @@
 /* Date : 17/09/2020              |                  */
 /* *******************************|***************** */
 
-import Fact.*;
+import Fact.ChoixType;
 import java.util.Scanner;
 
 public class Main {

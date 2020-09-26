@@ -10,7 +10,9 @@ package Fact;
 
 import java.util.Scanner;
 
-import ClasseSQL.*;
+import ClasseSQL.Categorie;
+import ClasseSQL.Produit;
+import ClasseSQL.Clients;
 
 public class ChoixType {
 

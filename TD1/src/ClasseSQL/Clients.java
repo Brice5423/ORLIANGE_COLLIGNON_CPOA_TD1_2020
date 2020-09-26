@@ -135,26 +135,31 @@ public class Clients {
 
 
     public void ArrayList() {
-        System.out.println("La fonction ArrayList ne fonctionne pas pour le momment ^^");
-        /*try {
-            Connection laConnexion = Connexion.creeConnexion();
-            Statement requete = laConnexion.createStatement();
-            ResultSet res = requete.executeQuery("select no_etudiant, nom_etudiant from etudiant");
+        Connection laConnexion = Connexion.creeConnexion();
+        try {
+            String request = "SELECT * FROM Client";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
 
-            while (res.next()) {
-                int no = res.getInt(1);
-                String nom = res.getString("nom_etudiant");
+            while (resultSet.next()) {
+                int id_client = resultSet.getInt("id_client");
+                String nom = resultSet.getString("nom");
+                String prenom = resultSet.getString("prenom");
+                String identifiant = resultSet.getString("identifiant");
+                String mdp = resultSet.getString("mot_de_passe");
+                String adr_num = resultSet.getString("adr_numero");
+                String adr_voie = resultSet.getString("adr_voie");
+                String adr_code = resultSet.getString("adr_code_postal");
+                String adr_ville = resultSet.getString("adr_ville");
+                String adr_pays = resultSet.getString("adr_pays");
+
+                System.out.format("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n",
+                        id_client, nom, prenom, identifiant, mdp, adr_num, adr_voie, adr_code, adr_ville, adr_pays);
             }
 
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-
+            statement.close();
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
+        }
     }
 }

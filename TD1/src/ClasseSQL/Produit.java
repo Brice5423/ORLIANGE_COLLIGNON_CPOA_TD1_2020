@@ -108,26 +108,26 @@ public class Produit {
 
 
     public void ArrayList() {
-        System.out.println("La fonction ArrayList ne fonctionne pas pour le momment ^^");
-        /*try {
-            Connection laConnexion = Connexion.creeConnexion();
-            Statement requete = laConnexion.createStatement();
-            ResultSet res = requete.executeQuery("select no_etudiant, nom_etudiant from etudiant");
+        Connection laConnexion = Connexion.creeConnexion();
+        try {
+            String request = "SELECT * FROM Produit";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
 
-            while (res.next()) {
-                int no = res.getInt(1);
-                String nom = res.getString("nom_etudiant");
+            while (resultSet.next()) {
+                int id_prod = resultSet.getInt("id_produit");
+                String nom = resultSet.getString("nom");
+                String description = resultSet.getString("description");
+                String tarif = resultSet.getString("tarif");
+                String visuel = resultSet.getString("visuel");
+                String id_categ = resultSet.getString("id_categorie");
+
+                System.out.format("%s, %s, %s, %s, %s, %s\n", id_prod, nom, description, tarif, visuel, id_categ);
             }
 
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-
+            statement.close();
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
+        }
     }
 }
