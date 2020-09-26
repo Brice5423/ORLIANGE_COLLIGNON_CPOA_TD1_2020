@@ -16,7 +16,7 @@ public class Main {
         System.out.println("1: Categorie.");
         System.out.println("2: Produit.");
         System.out.println("3: Client.");
-
+        
         // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
         Scanner sc = new Scanner(System.in);
         int choix = 1;
