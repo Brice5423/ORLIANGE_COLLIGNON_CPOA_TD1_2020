@@ -11,11 +11,11 @@ package ClasseSQL;
 import java.util.Scanner;
 import java.sql.*;
 
-public class Clients {
+public class ClientsSQL {
     Scanner sc = new Scanner(System.in);
 
     public void AjoutClients() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String nom_client = null, prenom_client = null, identifiant_client = null, mdp_client = null;
         String adr_num_client = null, adr_voie_client = null, adr_code_client = null, adr_ville_client = null, adr_pays_client = null;
@@ -62,7 +62,7 @@ public class Clients {
 
 
     public void ModifClients() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String id_client = null, nom_client = null, prenom_client = null, identifiant_client = null, mdp_client = null;
         String adr_num_client = null, adr_voie_client = null, adr_code_client = null, adr_ville_client = null, adr_pays_client = null;
@@ -113,7 +113,7 @@ public class Clients {
 
 
     public void SupClients() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String id_client = null;
 
@@ -135,7 +135,7 @@ public class Clients {
 
 
     public void ArrayList() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
         try {
             String request = "SELECT * FROM Client";
             Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter

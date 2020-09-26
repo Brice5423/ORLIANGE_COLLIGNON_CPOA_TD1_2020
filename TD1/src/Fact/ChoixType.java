@@ -10,9 +10,9 @@ package Fact;
 
 import java.util.Scanner;
 
-import ClasseSQL.Categorie;
-import ClasseSQL.Produit;
-import ClasseSQL.Clients;
+import ClasseSQL.CategorieSQL;
+import ClasseSQL.ProduitSQL;
+import ClasseSQL.ClientsSQL;
 
 public class ChoixType {
 
@@ -33,7 +33,7 @@ public class ChoixType {
 
         System.out.println();
 
-        Categorie cat = new Categorie();
+        CategorieSQL cat = new CategorieSQL();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une catégorie.");
@@ -72,7 +72,7 @@ public class ChoixType {
 
         System.out.println();
 
-        Produit Prod = new Produit();
+        ProduitSQL Prod = new ProduitSQL();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une Produit.");
@@ -111,7 +111,7 @@ public class ChoixType {
 
         System.out.println();
 
-        Clients Cli = new Clients();
+        ClientsSQL Cli = new ClientsSQL();
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : ajouter une Client.");

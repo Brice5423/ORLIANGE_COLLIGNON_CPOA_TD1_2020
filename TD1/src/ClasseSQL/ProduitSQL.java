@@ -11,11 +11,11 @@ package ClasseSQL;
 import java.util.Scanner;
 import java.sql.*;
 
-public class Produit {
+public class ProduitSQL {
     Scanner sc = new Scanner(System.in);
 
     public void AjoutProduit() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String nom_prod = null, description_prod = null, tarif_prod = null, visuel_prod = null, id_categorie = null;
 
@@ -49,7 +49,7 @@ public class Produit {
 
 
     public void ModifProduit() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String id_prod = null, nom_prod = null, description_prod = null, tarif_prod = null, visuel_prod = null, id_categorie = null;
 
@@ -86,7 +86,7 @@ public class Produit {
 
 
     public void SupProduit() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
 
         String id_prod = null;
 
@@ -108,7 +108,7 @@ public class Produit {
 
 
     public void ArrayList() {
-        Connection laConnexion = Connexion.creeConnexion();
+        Connection laConnexion = ConnexionSQL.creeConnexion();
         try {
             String request = "SELECT * FROM Produit";
             Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
