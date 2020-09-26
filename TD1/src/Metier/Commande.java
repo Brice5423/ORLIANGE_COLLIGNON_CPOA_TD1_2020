@@ -1,3 +1,11 @@
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA TD1         */
+/* OS : Windows 10 64bits         | Bute du projet : */
+/* Logiciel : IntelliJ & Eclipse  |   POJO           */
+/* Langage : Java & SQL           |                  */
+/* Date : 26/09/2020              |                  */
+/*****************************************************/
+
 package Metier;
 
 import java.util.Date;
@@ -10,13 +18,9 @@ import java.util.Map;
  * Et contient plusieurs produits.
  */
 public class Commande {
-
 	private int num;
-
 	private Date date;
-
-	// Une commande est réalisée par un client :
-	private Client client;
+	private Client client; // Une commande est réalisée par un client
 
 	// Ligne de commande : liste des produits.
 	// Une Commande contient '1 ou n' produits.
@@ -47,7 +51,6 @@ public class Commande {
 	public int getNum() {
 		return num;
 	}
-
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -55,7 +58,6 @@ public class Commande {
 	public Date getDate() {
 		return date;
 	}
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -63,7 +65,6 @@ public class Commande {
 	public Client getClient() {
 		return client;
 	}
-
 	public void setClient(Client client) {
 		this.client = client;
 	}

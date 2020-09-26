@@ -1,14 +1,14 @@
-/* *******************************|***************** */
-/* Auteur : Brice Bricou & Nico.C | CPOA TD1         */
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA TD1         */
 /* OS : Windows 10 64bits         | Bute du projet : */
 /* Logiciel : IntelliJ & Eclipse  |   ...            */
 /* Langage : Java & SQL           |                  */
 /* Date : 17/09/2020              |                  */
-/* *******************************|***************** */
+/*****************************************************/
 
 import Fact.ChoixType;
 import java.util.Scanner;
-// test ennvoie Niconii et recup bricou 14565
+
 public class Main {
     public static void main(String[] args) {
         // Text explicative des choix possibles //
