@@ -7,7 +7,7 @@ import FactMenu2.ListeMemo.Categorie.Sup.SupCateg;
 
 import java.util.Scanner;
 
-public class ChoixCateg {
+public class ChoixCategLM {
     public static void choixCateg() {
         System.out.println("Faite un choix entre les actions possibles pour la categorie :");
         System.out.println("1: affiche toutes les categorie de la base.");
