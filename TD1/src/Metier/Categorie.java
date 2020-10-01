@@ -21,11 +21,15 @@ public class Categorie {
 	// Une catégorie appartient à 0 ou plusieurs produits.
 	private List<Produit> produits;
 
+
 	public Categorie(int id, String titre, String visuel) {
 		this.id = id;
 		this.titre = titre;
 		this.visuel = visuel;
 	}
+
+	public Categorie() { }
+
 
 	public Integer getId() {
 		return id;

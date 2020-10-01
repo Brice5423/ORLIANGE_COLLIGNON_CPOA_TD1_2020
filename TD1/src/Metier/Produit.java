@@ -19,6 +19,19 @@ public class Produit {
 	private String visuel; // Lien vers le fichier image ...
 	private Categorie categorie; // Un produit est lié à une catégorie et une seule ..
 
+
+	public Produit(Integer id, String nom, String description, Double tarif, String visuel, Categorie categorie) {
+		this.id = id;
+		this.nom = nom;
+		this.description = description;
+		this.tarif = tarif;
+		this.visuel = visuel;
+		this.categorie = categorie;
+	}
+
+	public Produit() { }
+
+
 	public Integer getId() {
 		return id;
 	}

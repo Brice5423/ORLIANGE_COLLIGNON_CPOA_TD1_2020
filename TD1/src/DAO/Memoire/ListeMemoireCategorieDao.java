@@ -18,12 +18,6 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     private static IDaoCategorie instance;
     private List<Categorie> donnees;
 
-    private ListeMemoireCategorieDao() {
-        this.donnees = new ArrayList<Categorie>();
-        this.donnees.add(new Categorie(1, "Pulls", "pulls.png"));
-        this.donnees.add(new Categorie(2, "Bonnets", "bonnets.png"));
-    }
-
     public static IDaoCategorie getInstance() {
         if (instance == null) {
             instance = new ListeMemoireCategorieDao();
@@ -31,17 +25,12 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         return instance;
     }
 
-
-    @Override
-    public Categorie getById(int id) {
-        // Ne fonctionne que si l'objet métier est bien fait...
-        int idx = this.donnees.indexOf(new Categorie(id, "test", "test.png"));
-        if (idx == -1) {
-            throw new IllegalArgumentException("Aucune categorie ne possède cet identifiant");
-        } else {
-            return this.donnees.get(idx);
-        }
+    private ListeMemoireCategorieDao() {
+        this.donnees = new ArrayList<Categorie>();
+        this.donnees.add(new Categorie(1, "Pulls", "pulls.png"));
+        this.donnees.add(new Categorie(2, "Bonnets", "bonnets.png"));
     }
+
 
     @Override
     public ArrayList<Categorie> getAllCategories() {
@@ -49,7 +38,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     }
 
 
-    @Override
+    @Override // Create :
     public boolean create(Categorie objet) {
         objet.setId(3);
         // Ne fonctionne que si l'objet métier est bien fait...
@@ -60,7 +49,18 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         return ok;
     }
 
-    @Override
+    @Override // Read :
+    public Categorie getById(int id) {
+        // Ne fonctionne que si l'objet métier est bien fait...
+        int idx = this.donnees.indexOf(new Categorie(id, "test", "test.png"));
+        if (idx == -1) {
+            throw new IllegalArgumentException("Aucune categorie ne possède cet identifiant");
+        } else {
+            return this.donnees.get(idx);
+        }
+    }
+
+    @Override // Update :
     public boolean update(Categorie objet) {
         // Ne fonctionne que si l'objet métier est bien fait...
         int idx = this.donnees.indexOf(objet);
