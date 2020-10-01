@@ -10,7 +10,7 @@ package FactMenu2.MySQL.Produit;
 
 import java.util.Scanner;
 
-import FactMenu2.MySQL.Produit.Affiche.AfficheProd;
+import FactMenu2.MySQL.Produit.Affiche.AfficheProdSQL;
 import FactMenu2.MySQL.Produit.Ajout.AjoutProd;
 import FactMenu2.MySQL.Produit.Modif.ModifProd;
 import FactMenu2.MySQL.Produit.Sup.SupProd;
@@ -34,7 +34,7 @@ public class ChoixProdSQL {
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : affiche toutes les produit de la base.");
-                AfficheProd.afficheProd();
+                AfficheProdSQL.afficheProdSQL();
                 break;
             case 2:
                 System.out.println("Choix 2 : ajouter un produit.");

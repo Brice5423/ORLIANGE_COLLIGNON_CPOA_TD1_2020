@@ -8,5 +8,26 @@
 
 package FactMenu2.MySQL.Produit.Sup;
 
+import Connexion.ConnexionSQL;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class SupProdSQL {
+    public static void supProdSQL(String id_prod) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "DELETE FROM Produit WHERE id_produit = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setString(1, id_prod);
+            ps.executeUpdate();
+
+            laConnexion.close();
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+    }
 }

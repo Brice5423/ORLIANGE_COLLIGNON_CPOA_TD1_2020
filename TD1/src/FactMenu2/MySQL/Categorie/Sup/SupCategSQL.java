@@ -8,5 +8,26 @@
 
 package FactMenu2.MySQL.Categorie.Sup;
 
+import Connexion.ConnexionSQL;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class SupCategSQL {
+    public static void supCategSQL(String id_cat) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "DELETE FROM Categorie WHERE id_categorie = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setString(1, id_cat);
+            ps.executeUpdate();
+
+            laConnexion.close();
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+    }
 }

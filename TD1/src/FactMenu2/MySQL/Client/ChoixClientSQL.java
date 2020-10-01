@@ -10,7 +10,7 @@ package FactMenu2.MySQL.Client;
 
 import java.util.Scanner;
 
-import FactMenu2.MySQL.Client.Affiche.AfficheClient;
+import FactMenu2.MySQL.Client.Affiche.AfficheClientSQL;
 import FactMenu2.MySQL.Client.Ajout.AjoutClient;
 import FactMenu2.MySQL.Client.Modif.ModifClient;
 import FactMenu2.MySQL.Client.Sup.SupClient;
@@ -34,7 +34,7 @@ public class ChoixClientSQL {
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : affiche toutes les client de la base.");
-                AfficheClient.afficheClient();
+                AfficheClientSQL.afficheClientSQL();
                 break;
             case 2:
                 System.out.println("Choix 2 : ajouter un client.");

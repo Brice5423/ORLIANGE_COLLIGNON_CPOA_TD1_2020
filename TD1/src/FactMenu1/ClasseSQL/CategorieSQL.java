@@ -70,24 +70,7 @@ public class CategorieSQL {
 
 
     public void SupCategorie() {
-        Connection laConnexion = ConnexionSQL.creeConnexion();
 
-        String id_cat = null;
-
-        System.out.println("Donner l'id de la categorie a sup : ");
-        id_cat = sc.next();
-
-        try {
-            String request = "DELETE FROM Categorie WHERE id_categorie = ?";
-            PreparedStatement ps = laConnexion.prepareStatement(request);
-            ps.setString(1, id_cat);
-            ps.executeUpdate();
-
-            laConnexion.close();
-
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-        }
     }
 
 

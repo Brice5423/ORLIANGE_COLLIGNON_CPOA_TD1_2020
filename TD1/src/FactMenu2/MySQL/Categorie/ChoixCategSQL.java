@@ -10,7 +10,7 @@ package FactMenu2.MySQL.Categorie;
 
 import java.util.Scanner;
 
-import FactMenu2.MySQL.Categorie.Affiche.AfficheCateg;
+import FactMenu2.MySQL.Categorie.Affiche.AfficheCategSQL;
 import FactMenu2.MySQL.Categorie.Ajout.AjoutCateg;
 import FactMenu2.MySQL.Categorie.Modif.ModifCateg;
 import FactMenu2.MySQL.Categorie.Sup.SupCateg;
@@ -34,7 +34,7 @@ public class ChoixCategSQL {
         switch(choix) {
             case 1:
                 System.out.println("Choix 1 : affiche toutes les categorie de la base.");
-                AfficheCateg.afficheCateg();
+                AfficheCategSQL.afficheCategSQL();
                 break;
             case 2:
                 System.out.println("Choix 2 : ajouter un categorie.");
