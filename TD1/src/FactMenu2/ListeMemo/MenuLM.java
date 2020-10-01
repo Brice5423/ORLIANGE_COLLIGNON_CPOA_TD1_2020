@@ -8,9 +8,9 @@
 
 package FactMenu2.ListeMemo;
 
-import FactMenu2.MySQL.Categorie.ChoixCategSQL;
-import FactMenu2.MySQL.Client.ChoixClientSQL;
-import FactMenu2.MySQL.Produit.ChoixProdSQL;
+import FactMenu2.ListeMemo.Categorie.ChoixCategLM;
+import FactMenu2.ListeMemo.Client.ChoixClientLM;
+import FactMenu2.ListeMemo.Produit.ChoixProdLM;
 
 import java.util.Scanner;
 
@@ -34,15 +34,15 @@ public class MenuLM {
         switch (choix) {
             case 1:
                 System.out.println("Choix 1 : Categorie.");
-                ChoixCateg.choixCateg();
+                ChoixCategLM.choixCateg();
                 break;
             case 2:
                 System.out.println("Choix 2 : Client.");
-                ChoixClient.choixClient();
+                ChoixClientLM.choixClient();
                 break;
             case 3:
                 System.out.println("Choix 3 : Produit.");
-                ChoixProd.choixProd();
+                ChoixProdLM.choixProd();
                 break;
         }
 

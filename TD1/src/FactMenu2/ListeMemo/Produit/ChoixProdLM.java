@@ -1,13 +1,21 @@
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA TD1         */
+/* OS : Windows 10 64bits         | Bute du projet : */
+/* Logiciel : IntelliJ & Eclipse  |   ...            */
+/* Langage : Java & SQL           |                  */
+/* Date : 01/10/2020              |                  */
+/*****************************************************/
+
 package FactMenu2.ListeMemo.Produit;
 
-import FactMenu2.MySQL.Produit.Affiche.AfficheProd;
-import FactMenu2.MySQL.Produit.Ajout.AjoutProd;
-import FactMenu2.MySQL.Produit.Modif.ModifProd;
-import FactMenu2.MySQL.Produit.Sup.SupProd;
+import FactMenu2.ListeMemo.Produit.Affiche.AfficheProd;
+import FactMenu2.ListeMemo.Produit.Ajout.AjoutProd;
+import FactMenu2.ListeMemo.Produit.Modif.ModifProd;
+import FactMenu2.ListeMemo.Produit.Sup.SupProd;
 
 import java.util.Scanner;
 
-public class ChoixProd {
+public class ChoixProdLM {
     public static void choixProd() {
         System.out.println("Faite un choix entre les actions possibles pour la produit :");
         System.out.println("1: affiche toutes les produit de la base.");

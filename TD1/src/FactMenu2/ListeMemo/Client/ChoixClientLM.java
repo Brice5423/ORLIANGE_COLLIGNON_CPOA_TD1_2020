@@ -1,3 +1,11 @@
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA TD1         */
+/* OS : Windows 10 64bits         | Bute du projet : */
+/* Logiciel : IntelliJ & Eclipse  |   ...            */
+/* Langage : Java & SQL           |                  */
+/* Date : 01/10/2020              |                  */
+/*****************************************************/
+
 package FactMenu2.ListeMemo.Client;
 
 import FactMenu2.ListeMemo.Client.Affiche.AfficheClient;
@@ -7,7 +15,7 @@ import FactMenu2.ListeMemo.Client.Sup.SupClient;
 
 import java.util.Scanner;
 
-public class ChoixClient {
+public class ChoixClientLM {
     public static void choixClient() {
         System.out.println("Faite un choix entre les actions possibles pour la client :");
         System.out.println("1: affiche toutes les client de la base.");
