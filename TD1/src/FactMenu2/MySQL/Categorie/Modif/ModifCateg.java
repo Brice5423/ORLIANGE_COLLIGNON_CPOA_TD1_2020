@@ -6,10 +6,10 @@
 /* Date : 01/10/2020              |                  */
 /*****************************************************/
 
-package FactMenu2.MySQL.Produit.Affiche;
+package FactMenu2.MySQL.Categorie.Modif;
 
-public class AfficheProd {
-    public static void afficheProd() {
+public class ModifCateg {
+    public static void modifCateg() {
 
     }
 }
