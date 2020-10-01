@@ -6,13 +6,13 @@
 /* Date : 17/09/2020              |                  */
 /*****************************************************/
 
-package Fact;
+package FactMenu1.Choix;
 
 import java.util.Scanner;
 
-import ClasseSQL.CategorieSQL;
-import ClasseSQL.ProduitSQL;
-import ClasseSQL.ClientsSQL;
+import FactMenu1.ClasseSQL.CategorieSQL;
+import FactMenu1.ClasseSQL.ProduitSQL;
+import FactMenu1.ClasseSQL.ClientsSQL;
 
 public class ChoixType {
 

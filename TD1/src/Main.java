@@ -6,41 +6,36 @@
 /* Date : 17/09/2020              |                  */
 /*****************************************************/
 
-import Fact.ChoixType;
+import FactMenu1.Menu1;
+import FactMenu2.Menu2;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Text explicative des choix possibles //
-        System.out.println("Faite un choix entre les 3 zones :");
-        System.out.println("1: Categorie.");
-        System.out.println("2: Produit.");
-        System.out.println("3: Client.");
-        
+        // Text de choix entre les 2 types de menus //
+        System.out.println("Faite un choix entre les 2 menus :");
+        System.out.println("1: Menu1 (TD1)");
+        System.out.println("2: Menu2 (TD2)");
+
         // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
         Scanner sc = new Scanner(System.in);
         int choix = 1;
         do {
             choix = sc.nextInt();
-        } while ((choix < 1) || (choix > 3));
+        } while ((choix < 1) || (choix > 2));
 
         System.out.println();
 
-        ChoixType Type = new ChoixType();
         switch (choix) {
             case 1:
                 System.out.println("Choix 1 : Categorie.");
-                Type.ChoixCategorie();
+                Menu1.menu1();
                 break;
             case 2:
                 System.out.println("Choix 2 : Produit.");
-                Type.ChoixProduit();
+                Menu2.menu2();
                 break;
-            case 3:
-                System.out.println("Choix 3 : Client.");
-                Type.ChoixClient();
-                break;
-            }
+        }
     }
 }

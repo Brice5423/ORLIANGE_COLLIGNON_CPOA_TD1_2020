@@ -6,7 +6,9 @@
 /* Date : 17/09/2020              |                  */
 /*****************************************************/
 
-package ClasseSQL;
+package FactMenu1.ClasseSQL;
+
+import Connexion.ConnexionSQL;
 
 import java.util.Scanner;
 import java.sql.*;
