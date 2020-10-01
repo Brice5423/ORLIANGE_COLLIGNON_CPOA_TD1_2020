@@ -57,7 +57,60 @@ public class Produit {
 	public Categorie getCategorie() {
 		return categorie;
 	}
+	/**
+	 * Ajouter une catégorie.
+	 * @param categorie : un objet de type Categorie.
+	 */
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+
+	@Override
+	public int hashCode() {
+		int res = 17 * id;
+		if (nom != null) {
+			res += 17 * nom.hashCode();
+		}
+		if (description != null) {
+			res += 17 * description.hashCode();
+		}
+		if (tarif != null) {
+			res += 17 * tarif.hashCode();
+		}
+		if (visuel != null) {
+			res += 17 * visuel.hashCode();
+		}
+		if (categorie != null) {
+			res += 17 * categorie.hashCode();
+		}
+		return res;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null) {
+			return false;
+		}
+		if (this.getClass() != o.getClass()) {
+			return false;
+		}
+		Produit produit = (Produit) o;
+		boolean ret = (id == produit.id);
+		if (nom != null) {
+			ret = ret && nom.equals(produit.nom);
+		}
+		if (description != null) {
+			ret = ret && description.equals(produit.description);
+		}
+		return ret;
+	}
+
+	@Override
+	public String toString() {
+		return "id = " + id + " nom = " + nom + "description =" + description;
 	}
 }
