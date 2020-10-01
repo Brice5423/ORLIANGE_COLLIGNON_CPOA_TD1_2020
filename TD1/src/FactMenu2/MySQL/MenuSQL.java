@@ -8,11 +8,11 @@
 
 package FactMenu2.MySQL;
 
+import java.util.Scanner;
+
 import FactMenu2.MySQL.Categorie.ChoixCategSQL;
 import FactMenu2.MySQL.Client.ChoixClientSQL;
 import FactMenu2.MySQL.Produit.ChoixProdSQL;
-
-import java.util.Scanner;
 
 public class MenuSQL {
     public static void menuSQL() {

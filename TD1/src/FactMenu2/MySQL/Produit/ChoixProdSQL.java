@@ -6,7 +6,6 @@ import FactMenu2.MySQL.Produit.Affiche.AfficheProd;
 import FactMenu2.MySQL.Produit.Ajout.AjoutProd;
 import FactMenu2.MySQL.Produit.Modif.ModifProd;
 import FactMenu2.MySQL.Produit.Sup.SupProd;
-import Metier.Produit;
 
 public class ChoixProdSQL {
     public static void choixProdSQL() {
