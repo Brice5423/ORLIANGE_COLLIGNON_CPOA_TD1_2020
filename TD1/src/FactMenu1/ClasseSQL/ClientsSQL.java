@@ -119,7 +119,7 @@ public class ClientsSQL {
 
         String id_client = null;
 
-        System.out.println("Donner l'id de la categorie a sup : ");
+        System.out.println("Donner l'id du client a sup : ");
         id_client = sc.next();
 
         try {

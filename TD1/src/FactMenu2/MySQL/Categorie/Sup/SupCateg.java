@@ -8,8 +8,17 @@
 
 package FactMenu2.MySQL.Categorie.Sup;
 
+import java.util.Scanner;
+
 public class SupCateg {
     public static void supCateg() {
+        String id_categ = null;
 
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Donner l'id de la categorie a sup : ");
+        id_categ = sc.next();
+
+        SupCategSQL.supCategSQL(id_categ);
     }
 }
