@@ -6,6 +6,7 @@ import FactMenu2.MySQL.Produit.Affiche.AfficheProd;
 import FactMenu2.MySQL.Produit.Ajout.AjoutProd;
 import FactMenu2.MySQL.Produit.Modif.ModifProd;
 import FactMenu2.MySQL.Produit.Sup.SupProd;
+import Metier.Produit;
 
 public class ChoixProdSQL {
     public static void choixProdSQL() {
@@ -37,8 +38,8 @@ public class ChoixProdSQL {
                 ModifProd.modifProd();
                 break;
             case 4:
-                System.out.println("Choix 4 : suprime un produit");
-                SupProd.ArrayList();
+                System.out.println("Choix 4 : supprime un produit");
+                SupProd.supProd();
                 break;
         }
     }
