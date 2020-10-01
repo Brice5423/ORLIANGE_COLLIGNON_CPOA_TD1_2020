@@ -38,7 +38,7 @@ public class ChoixClientSQL {
                 break;
             case 4:
                 System.out.println("Choix 4 : supprime un client");
-                SupClient.ArrayList();
+                SupClient.supClient();
                 break;
         }
     }

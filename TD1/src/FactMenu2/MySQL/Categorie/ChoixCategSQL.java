@@ -37,8 +37,8 @@ public class ChoixCategSQL {
                 ModifCateg.modifCateg();
                 break;
             case 4:
-                System.out.println("Choix 4 : suprime un categorie");
-                SupCateg.ArrayList();
+                System.out.println("Choix 4 : supprime un categorie");
+                SupCateg.supCateg();
                 break;
         }
     }
