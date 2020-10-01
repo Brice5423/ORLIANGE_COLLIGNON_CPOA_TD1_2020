@@ -6,7 +6,7 @@
 /* Date : 01/10/2020              |                  */
 /*****************************************************/
 
-package FactMenu2.Choix;
+package FactMenu2.MySQL;
 
 public class MenuSQL {
     public static void menuSQL() {

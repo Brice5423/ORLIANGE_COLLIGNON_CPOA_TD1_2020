@@ -6,7 +6,7 @@
 /* Date : 01/10/2020              |                  */
 /*****************************************************/
 
-package FactMenu2.Choix;
+package FactMenu2.ListeMemo;
 
 public class MenuLM {
     public static void menuLM() {

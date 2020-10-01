@@ -10,11 +10,10 @@ package FactMenu2;
 
 import java.util.Scanner;
 
-import FactMenu2.Choix.*;
 import DAO.Enum.EPersistance;
-
-// Pour savoir si il y a une classe dans à DAO à implementé. Pour l'opti //
-import DAO.*;
+import DAO.Factory.DaoFactory;
+import FactMenu2.ListeMemo.MenuLM;
+import FactMenu2.MySQL.MenuSQL;
 
 public class Menu2 {
     public static void menu2() {
@@ -31,18 +30,23 @@ public class Menu2 {
 
         System.out.println();
 
-        EPersistance Type;
+        EPersistance type;
+
         switch (choix) {
             case 1:
                 System.out.println("Choix 1 : Menu MySQL.");
-                Type = EPersistance.MYSQL;
+                type = EPersistance.MYSQL;
                 MenuSQL.menuSQL();
                 break;
             case 2:
                 System.out.println("Choix 2 : Menu Liste Memoire.");
-                Type = EPersistance.LISTE_MEMOIRE;
+                type = EPersistance.LISTE_MEMOIRE;
                 MenuLM.menuLM();
                 break;
+            default:
+                throw new IllegalStateException("Valeur inadaptée : " + choix);
         }
+
+        DaoFactory daoFactory = DaoFactory.getDAOFactory(type);
     }
 }
