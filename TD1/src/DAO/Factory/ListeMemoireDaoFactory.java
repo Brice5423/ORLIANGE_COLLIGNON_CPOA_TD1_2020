@@ -9,8 +9,10 @@
 package DAO.Factory;
 
 import DAO.Interfaces.IDaoCategorie;
+import DAO.Interfaces.IDaoClient;
 import DAO.Interfaces.IDaoProduit;
 import DAO.Memoire.ListeMemoireCategorieDao;
+import DAO.Memoire.ListeMemoireClientDao;
 import DAO.Memoire.ListeMemoireProduitDao;
 
 public class ListeMemoireDaoFactory extends DaoFactory {
@@ -23,4 +25,10 @@ public class ListeMemoireDaoFactory extends DaoFactory {
     public IDaoProduit getDaoProduit() {
         return ListeMemoireProduitDao.getInstance();
     }
+
+    @Override
+    public IDaoClient getDaoClient() {
+        return ListeMemoireClientDao.getInstance();
+    }
+
 }

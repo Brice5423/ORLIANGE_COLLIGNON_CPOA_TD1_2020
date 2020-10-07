@@ -12,8 +12,13 @@ import java.util.Scanner;
 
 import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
-import FactMenu2.ListeMemo.MenuLM;
-import FactMenu2.MySQL.MenuSQL;
+import DAO.Interfaces.IDaoCategorie;
+import DAO.Interfaces.IDaoClient;
+import DAO.Interfaces.IDaoProduit;
+import DAO.Interfaces.IDaoClient;
+
+//import FactMenu2.ListeMemo.MenuLM;
+//import FactMenu2.MySQL.MenuSQL;
 
 public class Menu2 {
     public static void menu2() {
@@ -36,17 +41,22 @@ public class Menu2 {
             case 1:
                 System.out.println("Choix 1 : Menu MySQL.");
                 type = EPersistance.MYSQL;
-                MenuSQL.menuSQL();
+                //MenuSQL.menuSQL();
                 break;
             case 2:
                 System.out.println("Choix 2 : Menu Liste Memoire.");
                 type = EPersistance.LISTE_MEMOIRE;
-                MenuLM.menuLM();
+                //MenuLM.menuLM();
                 break;
             default:
                 throw new IllegalStateException("Valeur inadaptée : " + choix);
         }
 
-        DaoFactory daoFactory = DaoFactory.getDAOFactory(type);
+        DaoFactory DaoF = DaoFactory.getDAOFactory(type);
+        IDaoProduit DaoProd = DaoF.getDaoProduit();
+        IDaoCategorie DapCat = DaoF.getDaoCategorie();
+        //IDaoClient DaoCli = DaoF.getDaoClient();
+
+
     }
 }
