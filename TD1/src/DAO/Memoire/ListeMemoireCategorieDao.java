@@ -67,7 +67,6 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         if (idx == -1) {
             throw new IllegalArgumentException("Tentative de modification d'une categorie inexistante");
         } else {
-
             this.donnees.set(idx, objet);
         }
         return true;

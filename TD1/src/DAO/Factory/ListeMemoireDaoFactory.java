@@ -22,13 +22,12 @@ public class ListeMemoireDaoFactory extends DaoFactory {
     }
 
     @Override
-    public IDaoProduit getDaoProduit() {
-        return ListeMemoireProduitDao.getInstance();
-    }
-
-    @Override
     public IDaoClient getDaoClient() {
         return ListeMemoireClientDao.getInstance();
     }
 
+    @Override
+    public IDaoProduit getDaoProduit() {
+        return ListeMemoireProduitDao.getInstance();
+    }
 }
