@@ -137,7 +137,7 @@ public class MySqlClientDao implements IDaoClient {
 
             String request = "DELETE FROM Client WHERE id_client = ?";
             PreparedStatement ps = laConnexion.prepareStatement(request);
-            ps.setInt(1, objet.getNum());
+            ps.setInt(1, objet.getId());
             ps.executeUpdate();
 
             laConnexion.close();

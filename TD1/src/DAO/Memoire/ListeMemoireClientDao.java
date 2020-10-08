@@ -42,9 +42,9 @@ public class ListeMemoireClientDao implements IDaoClient {
 
     @Override
     public boolean create(Client objet) {
-        objet.setNum(3);
+        objet.setId(3);
         while (this.donnees.contains(objet)) {
-            objet.setNum(objet.getNum() + 1);
+            objet.setId(objet.getId() + 1);
         }
         return this.donnees.add(objet);
     }
@@ -54,7 +54,7 @@ public class ListeMemoireClientDao implements IDaoClient {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
             for (Client produit : donnees) {
-                if (produit.getNum() == id) {
+                if (produit.getId() == id) {
                     return produit;
                 }
             }

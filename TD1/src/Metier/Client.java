@@ -11,7 +11,7 @@ package Metier;
 import java.util.List;
 
 public class Client {
-	private int num;
+	private int id;
 	private String nom;
 	private String prenom;
 
@@ -19,8 +19,8 @@ public class Client {
 	private List<Commande> commandes;
 
 
-	public Client(int num, String nom, String prenom) {
-		this.num = num;
+	public Client(int id, String nom, String prenom) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
@@ -28,11 +28,11 @@ public class Client {
 	public Client() { }
 
 
-	public int getNum() {
-		return num;
+	public int getId() {
+		return id;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setId(int num) {
+		this.id = num;
 	}
 
 	public String getNom() {
