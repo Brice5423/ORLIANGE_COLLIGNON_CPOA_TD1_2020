@@ -36,6 +36,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         this.donnees.add(new Produit(12, "Dall", "Joyeux Noël avec nos petits lutins dansants !", 35.0, "bonnet1.png.png", new Categorie()));
     }
 
+
     private static List<Produit> createProduits() {
         if (donnees == null) {
             donnees = new ArrayList<>();
@@ -57,13 +58,14 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         produit2.setCategorie(categorie);
         produit2.setTarif(20.0d);
         donnees.add(produit2);
+
         return donnees;
     }
 
 
     @Override
     public List<Produit> getAllProduits() {
-        return donnees;
+        return (ArrayList<Produit>) this.donnees;
     }
 
 
@@ -72,7 +74,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        return donnees.add(produit);
+        return this.donnees.add(produit);
     }
 
     @Override // Read :
@@ -90,11 +92,25 @@ public class ListeMemoireProduitDao implements IDaoProduit {
 
     @Override // Update :
     public boolean update(Produit objet) {
-        return false;
+        int idx = this.donnees.indexOf(objet);
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de modification d'une categorie inexistante");
+        } else {
+            this.donnees.set(idx, objet);
+        }
+        return true;
     }
 
     @Override // Delete :
     public boolean delete(Produit objet) {
-        return false;
+        Produit supprime;
+
+        int idx = this.donnees.indexOf(objet);
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de suppression d'une categorie inexistante");
+        } else {
+            supprime = this.donnees.remove(idx);
+        }
+        return objet.equals(supprime);
     }
 }

@@ -45,8 +45,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         while (this.donnees.contains(objet)) {
             objet.setId(objet.getId() + 1);
         }
-        boolean ok = this.donnees.add(objet);
-        return ok;
+        return this.donnees.add(objet);
     }
 
     @Override // Read :
@@ -75,6 +74,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     @Override
     public boolean delete(Categorie objet) {
         Categorie supprime;
+
         // Ne fonctionne que si l'objet métier est bien fait...
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {

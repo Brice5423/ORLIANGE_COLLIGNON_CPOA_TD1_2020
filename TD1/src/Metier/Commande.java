@@ -26,6 +26,17 @@ public class Commande {
 	// Une Commande contient '1 ou n' produits.
 	private Map<Produit, Integer> produits;
 
+
+	public Commande(int num, Date date, Client client, Map<Produit, Integer> produits) {
+		this.num = num;
+		this.date = date;
+		this.client = client;
+		this.produits = produits;
+	}
+
+	public Commande() { }
+
+
 	public int getNum() {
 		return num;
 	}

@@ -18,6 +18,16 @@ public class Client {
 	// Un client 'réalise' 0 ou plusieurs commandes ..
 	private List<Commande> commandes;
 
+
+	public Client(int num, String nom, String prenom) {
+		this.num = num;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+	public Client() { }
+
+
 	public int getNum() {
 		return num;
 	}
