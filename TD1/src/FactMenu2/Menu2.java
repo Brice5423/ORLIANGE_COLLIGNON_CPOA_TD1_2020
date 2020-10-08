@@ -50,16 +50,16 @@ public class Menu2 {
                 throw new IllegalStateException("Valeur inadaptée : " + choix);
         }
 
-
-        DaoFactory DaoF = DaoFactory.getDAOFactory(type);
+        /*DaoFactory DaoF = DaoFactory.getDAOFactory(type);
         IDaoCategorie DaoCat = DaoF.getDaoCategorie();
         IDaoClient DaoCli = DaoF.getDaoClient();
         IDaoProduit DaoProd = DaoF.getDaoProduit();
 
         List<Categorie> categories = DaoCat.getAllCategories();
         List<Client> clients = DaoCli.getAllClients();
-        List<Produit> produits = DaoProd.getAllProduits();
+        List<Produit> produits = DaoProd.getAllProduits();*/
 
 
+        System.out.println("Le programe ne va pas plus loin. On as eu des problèmes et on sait consentrer sur les tests.");
     }
 }
