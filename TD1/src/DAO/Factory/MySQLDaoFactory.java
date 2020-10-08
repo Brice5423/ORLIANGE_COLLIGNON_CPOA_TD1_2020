@@ -18,16 +18,16 @@ import DAO.Memoire.MySqlProduitDao;
 public class MySQLDaoFactory extends DaoFactory {
     @Override
     public IDaoCategorie getDaoCategorie() {
-        return null;
+        return MySqlCategorieDao.getInstance();
     }
 
     @Override
     public IDaoClient getDaoClient() {
-        return null;
+        return MySqlClientDao.getInstance();
     }
 
     @Override
     public IDaoProduit getDaoProduit() {
-        return null;
+        return MySqlProduitDao.getInstance();
     }
 }

@@ -13,11 +13,24 @@ import DAO.Interfaces.IDaoProduit;
 import Metier.Produit;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlProduitDao implements IDaoProduit  {
     private static IDaoProduit instance;
-    private List<Produit> produits;
+    private List<Produit> donnees;
+
+    public static IDaoProduit getInstance() {
+        if (instance == null) {
+            instance = new MySqlProduitDao();
+        }
+        return instance;
+    }
+
+    private MySqlProduitDao() {
+        // Pour éviter instanciation directe :
+        this.donnees = new ArrayList<Produit>();
+    }
 
     @Override
     public List<Produit> getAllProduits() {
@@ -32,18 +45,20 @@ public class MySqlProduitDao implements IDaoProduit  {
                 int id_prod = resultSet.getInt("id_produit");
                 String nom = resultSet.getString("nom");
                 String description = resultSet.getString("description");
-                String tarif = resultSet.getString("tarif");
+                double tarif = resultSet.getFloat("tarif");
                 String visuel = resultSet.getString("visuel");
-                String id_categ = resultSet.getString("id_categorie");
+                int id_categ = resultSet.getInt("id_categorie");
 
-                System.out.format("%s, %s, %s, %s, %s, %s\n", id_prod, nom, description, tarif, visuel, id_categ);
+                Produit produit = new Produit(id_prod, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(id_categ));
+                donnees.add(produit);
             }
 
             statement.close();
+            return donnees;
+
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
         }
-
         return null;
     }
 
@@ -58,7 +73,7 @@ public class MySqlProduitDao implements IDaoProduit  {
             ps.setString(2, objet.getDescription());
             ps.setDouble(3, objet.getTarif());
             ps.setString(4, objet.getVisuel());
-            ps.setString(5, "objet.getCategorie()"); // problème de type Produit
+            ps.setInt(5, objet.getCategorie().getId());
             ps.executeUpdate();
 
             laConnexion.close();
@@ -66,15 +81,14 @@ public class MySqlProduitDao implements IDaoProduit  {
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return false;
         }
+        return false;
     }
 
     /* ************************************************************************************************************** */
     @Override
     public Produit getById(int id) {
-        /*try {
+        try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
             String request = "SELECT * FROM Produit";
@@ -83,20 +97,23 @@ public class MySqlProduitDao implements IDaoProduit  {
 
             while (resultSet.next()) {
                 int id_prod = resultSet.getInt("id_produit");
-                String nom = resultSet.getString("nom");
-                String description = resultSet.getString("description");
-                String tarif = resultSet.getString("tarif");
-                String visuel = resultSet.getString("visuel");
-                String id_categ = resultSet.getString("id_categorie");
+                if(id_prod == id) {
+                    String nom = resultSet.getString("nom");
+                    String description = resultSet.getString("description");
+                    double tarif = resultSet.getDouble("tarif");
+                    String visuel = resultSet.getString("visuel");
+                    int id_categ = resultSet.getInt("id_categorie");
 
-                System.out.format("%s, %s, %s, %s, %s, %s\n", id_prod, nom, description, tarif, visuel, id_categ);
+                    System.out.format("%s, %s, %s, %s, %s, %s\n", id_prod, nom, description, tarif, visuel, id_categ);
+
+                    Produit produit = new Produit(id_prod, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(id_categ));
+                    statement.close();
+                    return produit;
+                }
             }
-
-            statement.close();
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
-
+        }
         return null;
     }
     /* ************************************************************************************************************** */
@@ -112,7 +129,7 @@ public class MySqlProduitDao implements IDaoProduit  {
             ps.setString(2, objet.getDescription());
             ps.setDouble(3, objet.getTarif());
             ps.setString(4, objet.getVisuel());
-            ps.setString(5, "objet.getCategorie()"); // problème de type Produit
+            ps.setInt(5, objet.getCategorie().getId());
             ps.setInt(6, objet.getId());
             ps.executeUpdate();
 
@@ -121,9 +138,8 @@ public class MySqlProduitDao implements IDaoProduit  {
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -141,8 +157,7 @@ public class MySqlProduitDao implements IDaoProduit  {
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return false;
         }
+        return false;
     }
 }

@@ -1,3 +1,11 @@
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA             */
+/* OS : Windows 10 64bits         | Bute du projet : */
+/* Logiciel : IntelliJ & Eclipse  |   Test           */
+/* Langage : Java & SQL           |                  */
+/* Date : 09/10/2020              |                  */
+/*****************************************************/
+
 package Test.ListeMemoire;
 
 import DAO.Enum.EPersistance;
@@ -33,11 +41,11 @@ public class TestListeMemoireProduit {
     public void testCreate() {
         int size = Dao.getAllProduits().size();
 
-        Produit client = new Produit();
-        client.setId(1);
-        client.setNom("PC");
-        client.setDescription("C'est cool ma poule");
-        Assert.assertTrue(Dao.create(client));
+        Produit produit = new Produit();
+        produit.setId(1);
+        produit.setNom("PC");
+        produit.setDescription("C'est cool ma poule");
+        Assert.assertTrue(Dao.create(produit));
 
         assertEquals(size+1, Dao.getAllProduits().size());
     }

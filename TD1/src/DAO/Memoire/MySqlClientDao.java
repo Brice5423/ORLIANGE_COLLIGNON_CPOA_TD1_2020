@@ -13,11 +13,24 @@ import DAO.Interfaces.IDaoClient;
 import Metier.Client;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlClientDao implements IDaoClient {
     private static IDaoClient instance;
     private List<Client> donnees;
+
+    public static IDaoClient getInstance() {
+        if (instance == null) {
+            instance = new MySqlClientDao();
+        }
+        return instance;
+    }
+
+    private MySqlClientDao() {
+        // Pour éviter instanciation directe :
+        this.donnees = new ArrayList<Client>();
+    }
 
     @Override
     public List<Client> getAllClients() {
@@ -32,24 +45,19 @@ public class MySqlClientDao implements IDaoClient {
                 int id_client = resultSet.getInt("id_client");
                 String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
-                String identifiant = resultSet.getString("identifiant");
-                String mdp = resultSet.getString("mot_de_passe");
-                String adr_num = resultSet.getString("adr_numero");
-                String adr_voie = resultSet.getString("adr_voie");
-                String adr_code = resultSet.getString("adr_code_postal");
-                String adr_ville = resultSet.getString("adr_ville");
-                String adr_pays = resultSet.getString("adr_pays");
 
-                System.out.format("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n",
-                        id_client, nom, prenom, identifiant, mdp, adr_num, adr_voie, adr_code, adr_ville, adr_pays);
+                System.out.format("%s, %s, %s\n", id_client, nom, prenom);
+
+                Client client = new Client(id_client, nom, prenom);
+                donnees.add(client);
             }
 
             statement.close();
+            return donnees;
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
         }
-
         return null;
     }
 
@@ -65,19 +73,18 @@ public class MySqlClientDao implements IDaoClient {
             ps.executeUpdate();
 
             laConnexion.close();
-            return false;
+            return true;
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return true;
         }
+        return false;
     }
 
     /* ************************************************************************************************************** */
     @Override
     public Client getById(int id) {
-        /*try {
+        try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
             String request = "SELECT * FROM Client";
@@ -86,25 +93,20 @@ public class MySqlClientDao implements IDaoClient {
 
             while (resultSet.next()) {
                 int id_client = resultSet.getInt("id_client");
-                String nom = resultSet.getString("nom");
-                String prenom = resultSet.getString("prenom");
-                String identifiant = resultSet.getString("identifiant");
-                String mdp = resultSet.getString("mot_de_passe");
-                String adr_num = resultSet.getString("adr_numero");
-                String adr_voie = resultSet.getString("adr_voie");
-                String adr_code = resultSet.getString("adr_code_postal");
-                String adr_ville = resultSet.getString("adr_ville");
-                String adr_pays = resultSet.getString("adr_pays");
+                if(id_client == id) {
+                    String nom = resultSet.getString("nom");
+                    String prenom = resultSet.getString("prenom");
 
-                System.out.format("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n",
-                        id_client, nom, prenom, identifiant, mdp, adr_num, adr_voie, adr_code, adr_ville, adr_pays);
+                    System.out.format("%s, %s, %s\n", id_client, nom, prenom);
+
+                    Client client = new Client(id_client, nom, prenom);
+                    statement.close();
+                    return client;
+                }
             }
-
-            statement.close();
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
-
+        }
         return null;
     }
     /* ************************************************************************************************************** */
@@ -125,9 +127,8 @@ public class MySqlClientDao implements IDaoClient {
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -145,8 +146,7 @@ public class MySqlClientDao implements IDaoClient {
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-
-            return false;
         }
+        return false;
     }
 }
