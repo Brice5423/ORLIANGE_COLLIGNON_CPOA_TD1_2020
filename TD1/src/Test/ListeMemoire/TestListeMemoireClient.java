@@ -4,9 +4,9 @@ import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
 import DAO.Interfaces.IDaoClient;
 import Metier.Client;
-import org.junit.Assert;
 
 import static org.junit.Assert.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
@@ -25,7 +25,7 @@ public class TestListeMemoireClient {
 
 
     @Test
-    public void testArrayList() {
+    public void testAllClients() {
         assertNotNull(Liste);
     }
 
