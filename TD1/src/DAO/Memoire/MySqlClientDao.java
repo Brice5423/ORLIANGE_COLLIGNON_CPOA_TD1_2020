@@ -20,7 +20,7 @@ public class MySqlClientDao implements IDaoClient {
     private List<Client> donnees;
 
     @Override
-    public List<Client> getAllClient() {
+    public List<Client> getAllClients() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 

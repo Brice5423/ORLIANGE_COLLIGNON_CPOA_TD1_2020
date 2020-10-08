@@ -8,6 +8,7 @@
 
 package FactMenu2;
 
+import java.util.List;
 import java.util.Scanner;
 
 import DAO.Enum.EPersistance;
@@ -15,6 +16,9 @@ import DAO.Factory.DaoFactory;
 import DAO.Interfaces.IDaoCategorie;
 import DAO.Interfaces.IDaoClient;
 import DAO.Interfaces.IDaoProduit;
+import Metier.Categorie;
+import Metier.Client;
+import Metier.Produit;
 
 public class Menu2 {
     public static void menu2() {
@@ -27,7 +31,7 @@ public class Menu2 {
         int choix = 1;
         do {
             choix = sc.nextInt();
-        } while ((choix < 1) || (choix > 3));
+        } while ((choix < 1) || (choix > 2));
 
         System.out.println();
 
@@ -46,10 +50,15 @@ public class Menu2 {
                 throw new IllegalStateException("Valeur inadaptée : " + choix);
         }
 
+
         DaoFactory DaoF = DaoFactory.getDAOFactory(type);
-        IDaoCategorie DapCat = DaoF.getDaoCategorie();
+        IDaoCategorie DaoCat = DaoF.getDaoCategorie();
         IDaoClient DaoCli = DaoF.getDaoClient();
         IDaoProduit DaoProd = DaoF.getDaoProduit();
+
+        List<Categorie> categories = DaoCat.getAllCategories();
+        List<Client> clients = DaoCli.getAllClients();
+        List<Produit> produits = DaoProd.getAllProduits();
 
 
     }

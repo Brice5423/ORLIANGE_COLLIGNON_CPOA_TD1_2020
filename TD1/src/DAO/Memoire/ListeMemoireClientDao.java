@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ListeMemoireClientDao implements IDaoClient {
     private static IDaoClient instance;
-    private List<Client> donnees;
+    private static List<Client> donnees;
 
     public static IDaoClient getInstance() {
         if (instance == null) {
@@ -28,24 +28,26 @@ public class ListeMemoireClientDao implements IDaoClient {
     private ListeMemoireClientDao() {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Client>();
-        this.donnees.add(new Client(2, "Niconii", "Nico"));
-        this.donnees.add(new Client(6, "Gogo", "Gauthier"));
-        this.donnees.add(new Client(12, "Yuyu", "Irma"));
+        this.donnees.add(new Client(1, "Niconii", "Nico"));
+        this.donnees.add(new Client(2, "Gogo", "Gauthier"));
+        this.donnees.add(new Client(3, "Yuyu", "Irma"));
     }
 
 
     @Override
-    public List<Client> getAllClient() {
+    public List<Client> getAllClients() {
         return (ArrayList<Client>) this.donnees;
     }
 
 
     @Override
     public boolean create(Client objet) {
-        objet.setId(3);
-        while (this.donnees.contains(objet)) {
-            objet.setId(objet.getId() + 1);
+        if (donnees == null) {
+            donnees = new ArrayList<>();
         }
+        /*while (this.donnees.contains(objet)) {
+            objet.setId(objet.getId() + 1);
+        }*/
         return this.donnees.add(objet);
     }
 
@@ -53,13 +55,12 @@ public class ListeMemoireClientDao implements IDaoClient {
     public Client getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
-            for (Client produit : donnees) {
-                if (produit.getId() == id) {
-                    return produit;
+            for (Client client : donnees) {
+                if (client.getId() == id) {
+                    return client;
                 }
             }
         }
-
         return null;
     }
 
@@ -67,11 +68,10 @@ public class ListeMemoireClientDao implements IDaoClient {
     public boolean update(Client objet) {
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de modification d'une categorie inexistante");
+            throw new IllegalArgumentException("Tentative de modification d'un client inexistante");
         } else {
             this.donnees.set(idx, objet);
         }
-
         return true;
     }
 
@@ -81,7 +81,7 @@ public class ListeMemoireClientDao implements IDaoClient {
 
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de suppression d'une categorie inexistante");
+            throw new IllegalArgumentException("Tentative de suppression d'un client inexistante");
         } else {
             supprime = this.donnees.remove(idx);
         }

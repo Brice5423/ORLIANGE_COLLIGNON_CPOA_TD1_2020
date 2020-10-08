@@ -31,9 +31,6 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     private ListeMemoireProduitDao() {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Produit>();
-        this.donnees.add(new Produit(2, "Sonic te kiffe", "Inspiré par la saga Séga", 41.5, "pull.png", new Categorie()));
-        this.donnees.add(new Produit(6, "La chaleur des rennes", "Classique mais efficace", 15.0, "bonnet0.png", new Categorie()));
-        this.donnees.add(new Produit(12, "Dall", "Joyeux Noël avec nos petits lutins dansants !", 35.0, "bonnet1.png.png", new Categorie()));
     }
 
 
@@ -41,7 +38,9 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
+
         Categorie categorie = new Categorie(1, "Matériel de PC", "");
+
         // Création de deux produits :
         Produit produit1 = new Produit();
         produit1.setId(1);
@@ -52,7 +51,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         donnees.add(produit1);
 
         Produit produit2 = new Produit();
-        produit2.setId(3);
+        produit2.setId(2);
         produit2.setNom("Clavier");
         produit2.setDescription("C'est un clavier de PC");
         produit2.setCategorie(categorie);
@@ -91,10 +90,10 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     }
 
     @Override // Update :
-    public boolean update(Produit objet) {
+    public boolean update(Produit objet) { // marche juste avec une id
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de modification d'une categorie inexistante");
+            throw new IllegalArgumentException("Tentative de modification d'un produit inexistante");
         } else {
             this.donnees.set(idx, objet);
         }
@@ -102,12 +101,12 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     }
 
     @Override // Delete :
-    public boolean delete(Produit objet) {
+    public boolean delete(Produit objet) { // marche bien avec id et entiere
         Produit supprime;
 
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de suppression d'une categorie inexistante");
+            throw new IllegalArgumentException("Tentative de suppression d'un produit inexistante");
         } else {
             supprime = this.donnees.remove(idx);
         }

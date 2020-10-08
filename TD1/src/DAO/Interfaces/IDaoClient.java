@@ -13,5 +13,5 @@ import java.util.List;
 import Metier.Client;
 
 public interface IDaoClient extends IDao<Client>  {
-    List<Client> getAllClient();
+    List<Client> getAllClients();
 }

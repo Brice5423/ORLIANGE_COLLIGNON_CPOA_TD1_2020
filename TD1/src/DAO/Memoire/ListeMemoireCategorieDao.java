@@ -16,7 +16,7 @@ import Metier.Categorie;
 
 public class ListeMemoireCategorieDao implements IDaoCategorie {
     private static IDaoCategorie instance;
-    private List<Categorie> donnees;
+    private static List<Categorie> donnees;
 
     public static IDaoCategorie getInstance() {
         if (instance == null) {
@@ -40,28 +40,30 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
 
     @Override // Create :
     public boolean create(Categorie objet) {
-        objet.setId(3);
-        // Ne fonctionne que si l'objet métier est bien fait...
-        while (this.donnees.contains(objet)) {
-            objet.setId(objet.getId() + 1);
+        if (donnees == null) {
+            donnees = new ArrayList<>();
         }
+        /*while (this.donnees.contains(objet)) {
+            objet.setId(objet.getId() + 1);
+        }*/
         return this.donnees.add(objet);
     }
 
     @Override // Read :
     public Categorie getById(int id) {
-        // Ne fonctionne que si l'objet métier est bien fait...
-        int idx = this.donnees.indexOf(new Categorie(id, "test", "test.png"));
-        if (idx == -1) {
-            throw new IllegalArgumentException("Aucune categorie ne possède cet identifiant");
-        } else {
-            return this.donnees.get(idx);
+        if (donnees != null && !donnees.isEmpty()) {
+            // Itérator sur la liste des produits :
+            for (Categorie client : donnees) {
+                if (client.getId() == id) {
+                    return client;
+                }
+            }
         }
+        return null;
     }
 
     @Override // Update :
     public boolean update(Categorie objet) {
-        // Ne fonctionne que si l'objet métier est bien fait...
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
             throw new IllegalArgumentException("Tentative de modification d'une categorie inexistante");
@@ -75,7 +77,6 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     public boolean delete(Categorie objet) {
         Categorie supprime;
 
-        // Ne fonctionne que si l'objet métier est bien fait...
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
             throw new IllegalArgumentException("Tentative de suppression d'une categorie inexistante");

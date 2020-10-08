@@ -124,6 +124,6 @@ public class Produit {
 
 	@Override
 	public String toString() {
-		return "id = " + id + " nom = " + nom + "description =" + description;
+		return "id = " + id + ", nom = " + nom + ", description = " + description;
 	}
 }
