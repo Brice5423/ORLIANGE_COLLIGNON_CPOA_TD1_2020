@@ -11,7 +11,7 @@ package Test.ListeMemoire;
 import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
 import DAO.Interfaces.IDaoProduit;
-import Metier.Produit;
+import Main.Metier.Produit;
 
 import static org.junit.Assert.*;
 import org.junit.Assert;

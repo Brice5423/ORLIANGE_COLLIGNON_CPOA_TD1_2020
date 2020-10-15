@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DAO.Interfaces.IDaoProduit;
-import Metier.Categorie;
-import Metier.Produit;
+import Main.Metier.Categorie;
+import Main.Metier.Produit;
 
 public class ListeMemoireProduitDao implements IDaoProduit {
     private static IDaoProduit instance;

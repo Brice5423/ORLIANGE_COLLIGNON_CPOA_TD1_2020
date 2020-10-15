@@ -9,7 +9,7 @@
 package DAO.Memoire;
 
 import DAO.Interfaces.IDaoClient;
-import Metier.Client;
+import Main.Metier.Client;
 
 import java.util.ArrayList;
 import java.util.List;

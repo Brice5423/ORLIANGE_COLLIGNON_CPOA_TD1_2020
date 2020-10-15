@@ -10,7 +10,7 @@ package DAO.Interfaces;
 
 import java.util.List;
 
-import Metier.Produit;
+import Main.Metier.Produit;
 
 // Interface DAO produit qui étend l'interface principale CRUD //
 public interface IDaoProduit extends IDao<Produit> {

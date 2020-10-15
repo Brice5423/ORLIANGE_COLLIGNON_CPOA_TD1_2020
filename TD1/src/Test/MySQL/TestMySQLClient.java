@@ -11,7 +11,7 @@ package Test.MySQL;
 import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
 import DAO.Interfaces.IDaoClient;
-import Metier.Client;
+import Main.Metier.Client;
 
 import static org.junit.Assert.*;
 import org.junit.Assert;

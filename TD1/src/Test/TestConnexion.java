@@ -12,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import java.sql.Connection;
 
-import Connexion.ConnexionSQL;
+import Main.Connexion.ConnexionSQL;
 
 public class TestConnexion {
     @Test // aime que Niconii et BriceBricou à la poubelle

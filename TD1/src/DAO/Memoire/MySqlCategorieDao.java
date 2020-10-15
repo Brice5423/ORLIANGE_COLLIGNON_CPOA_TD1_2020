@@ -8,9 +8,9 @@
 
 package DAO.Memoire;
 
-import Connexion.ConnexionSQL;
+import Main.Connexion.ConnexionSQL;
 import DAO.Interfaces.IDaoCategorie;
-import Metier.Categorie;
+import Main.Metier.Categorie;
 
 import java.sql.*;
 import java.util.ArrayList;

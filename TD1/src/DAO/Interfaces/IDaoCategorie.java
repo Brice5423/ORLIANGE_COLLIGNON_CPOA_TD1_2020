@@ -10,7 +10,7 @@ package DAO.Interfaces;
 
 import java.util.List;
 
-import Metier.Categorie;
+import Main.Metier.Categorie;
 
 public interface IDaoCategorie extends IDao<Categorie> {
     List<Categorie> getAllCategories();

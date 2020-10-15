@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DAO.Interfaces.IDaoCategorie;
-import Metier.Categorie;
+import Main.Metier.Categorie;
 
 public class ListeMemoireCategorieDao implements IDaoCategorie {
     private static IDaoCategorie instance;
