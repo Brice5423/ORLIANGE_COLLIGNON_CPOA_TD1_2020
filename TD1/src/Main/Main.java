@@ -1,10 +1,12 @@
-package Main; /*****************************************************/
+/*****************************************************/
 /** @Auteur Brice Bricou & Nico.C | CPOA             */
 /* OS : Windows 10 64bits         | Bute du projet : */
 /* Logiciel : IntelliJ & Eclipse  |   main           */
 /* Langage : Java & SQL           |                  */
 /* Date : 17/09/2020              |                  */
 /*****************************************************/
+
+package Main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
