@@ -1,17 +1,17 @@
 package Main.IU.Controller;
 
+import DAO.Enum.EPersistance;
+import DAO.Factory.DaoFactory;
+import DAO.Interfaces.IDaoProduit;
 import Main.Metier.Categorie;
 import Main.Metier.Produit;
-import javafx.collections.FXCollections;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.print.DocFlavor;
 
 public class Controller_CreerProduit {
     @FXML
@@ -62,7 +62,6 @@ public class Controller_CreerProduit {
         if ((input_Tarif.getText()=="")||(!isDouble(input_Tarif.getText()))) {
             lbl_ErreurTarif.setVisible(true);
             complet = false;
-
         }
 
         //Quand on appuie sur le boutton Créer
@@ -75,21 +74,22 @@ public class Controller_CreerProduit {
             produit.setVisuel("visuel.png");
             produit.setCategorie(new Categorie());
             lbl_Creerproduit.setText(produit.toString());
+
+            /*DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
+            IDaoProduit DaoProd = DaoF.getDaoProduit();
+
+            DaoProd.create(produit);*/
         }
     }
 
     public boolean isDouble(String string) {
-        try
-        {
+        try {
             Double.parseDouble(string);
             return true;
         }
-        catch (NumberFormatException e)
-        {
+        catch (NumberFormatException e) {
             return false;
         }
     }
-
-
 }
 

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="CPOA">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../../CLE USB IUT/CPOA/Niconii/CPOA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Extention/CPOA.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

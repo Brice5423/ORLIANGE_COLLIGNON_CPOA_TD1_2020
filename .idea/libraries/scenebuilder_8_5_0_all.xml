@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="scenebuilder-8.5.0-all">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../../CLE USB IUT/CPOA/Niconii/scenebuilder-8.5.0-all.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Extention/scenebuilder-8.5.0-all.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
