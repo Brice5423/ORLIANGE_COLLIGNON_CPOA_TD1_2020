@@ -39,8 +39,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
-
         // launch application project
         Application.launch(args);
     }

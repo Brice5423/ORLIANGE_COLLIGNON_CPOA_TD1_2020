@@ -2,18 +2,27 @@ package Main.IU.Controller;
 
 import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
+import DAO.Interfaces.IDao;
+import DAO.Interfaces.IDaoCategorie;
 import DAO.Interfaces.IDaoProduit;
+import DAO.Memoire.MySqlCategorieDao;
 import Main.Metier.Categorie;
 import Main.Metier.Produit;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.apache.commons.lang3.ClassUtils;
 
-public class Controller_CreerProduit {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller_CreerProduit implements Initializable {
     @FXML
     private TextField input_nom;
 
@@ -66,19 +75,20 @@ public class Controller_CreerProduit {
 
         //Quand on appuie sur le boutton Créer
         if (complet) {
+            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
+            IDaoProduit DaoProd = DaoF.getDaoProduit();
+
             Produit produit = new Produit();
             produit.setId(25);
             produit.setNom(input_nom.getText());
             produit.setDescription(input_Description.getText());
             produit.setTarif(Double.valueOf(input_Tarif.getText()));
             produit.setVisuel("visuel.png");
-            produit.setCategorie(new Categorie());
+            produit.setCategorie(Choice_Categ.getValue());
+
             lbl_Creerproduit.setText(produit.toString());
 
-            /*DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
-            IDaoProduit DaoProd = DaoF.getDaoProduit();
-
-            DaoProd.create(produit);*/
+            DaoProd.create(produit);
         }
     }
 
@@ -90,6 +100,12 @@ public class Controller_CreerProduit {
         catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
+        this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
     }
 }
 

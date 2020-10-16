@@ -124,6 +124,6 @@ public class Produit {
 
 	@Override
 	public String toString() {
-		return nom + " (" +categorie+"), "+ tarif +"euros\n"+ description;
+		return nom + " (" +categorie.getTitre()+"), "+ tarif +"euros\n"+ description;
 	}
 }
