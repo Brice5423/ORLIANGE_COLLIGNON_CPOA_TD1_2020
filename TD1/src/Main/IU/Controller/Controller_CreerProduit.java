@@ -66,16 +66,20 @@ public class Controller_CreerProduit implements Initializable {
         lbl_ErreurCateg.setVisible(false);
 
         //Liste de verification des Erreurs
-        if (input_nom.getText()=="") {
+        if (input_nom.getText() == "") {
             lbl_ErreurNom.setVisible(true);
             complet = false;
         }
-        if (input_Description.getText()=="") {
+        if (input_Description.getText() == "") {
             lbl_ErreurDescription.setVisible(true);
             complet = false;
         }
-        if ((input_Tarif.getText()=="")||(!isDouble(input_Tarif.getText()))) {
+        if ((input_Tarif.getText() == "")||(!isDouble(input_Tarif.getText()))) {
             lbl_ErreurTarif.setVisible(true);
+            complet = false;
+        }
+        if (Choice_Categ.getValue() == null) {
+            lbl_ErreurCateg.setVisible(true);
             complet = false;
         }
 
