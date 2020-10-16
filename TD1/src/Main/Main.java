@@ -11,20 +11,19 @@ package Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Scanner;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            URL fxmlURL=getClass().getResource("IU/Sample/CreerProduit.fxml");
+            URL fxmlURL = getClass().getResource("IU/Sample/CreerProduit.fxml");
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(fxmlURL);
             Node root = fxmlLoader.load();
@@ -39,36 +38,32 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        /*// Text de choix entre les 2 types de menus //
+        System.out.println("Faite un choix entre les 2 menus :");
+        System.out.println("1: Menu1 (TD1)");
+        System.out.println("2: Menu2 (TD2)");
+
+        // Oblige de donner un des 2 choix (1 ou 2) //
+        Scanner sc = new Scanner(System.in);
+        int choix = 1;
+        do {
+            choix = sc.nextInt();
+        } while ((choix < 1) || (choix > 2));
+
+        System.out.println();
+
+        switch (choix) {
+            case 1:
+                System.out.println("Choix 1 : TD1.");
+                Menu1.menu1();
+                break;
+            case 2:
+                System.out.println("Choix 2 : TD2.");
+                Menu2.menu2();
+                break;
+        }*/
+
         // launch application project
         Application.launch(args);
     }
 }
-
-//public class Main {
-//    public static void main(String[] args) {
-//        // Text de choix entre les 2 types de menus //
-//        System.out.println("Faite un choix entre les 2 menus :");
-//        System.out.println("1: Menu1 (TD1)");
-//        System.out.println("2: Menu2 (TD2)");
-//
-//        // Oblige de donner un des 4 choix (1, 2, 3 ou 4) //
-//        Scanner sc = new Scanner(System.in);
-//        int choix = 1;
-//        do {
-//            choix = sc.nextInt();
-//        } while ((choix < 1) || (choix > 2));
-//
-//        System.out.println();
-//
-//        switch (choix) {
-//            case 1:
-//                System.out.println("Choix 1 : Categorie.");
-//                Menu1.menu1();
-//                break;
-//            case 2:
-//                System.out.println("Choix 2 : Produit.");
-//                Menu2.menu2();
-//                break;
-//        }
-//    }
-//}

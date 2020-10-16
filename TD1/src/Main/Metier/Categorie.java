@@ -61,6 +61,6 @@ public class Categorie {
 
 	@Override
 	public String toString() {
-		return "id = " + id + ", titre = " + titre + ", visuel = " + visuel;
+		return /*"id = " + id + ", titre = " +*/ titre /*+ ", visuel = " + visuel*/;
 	}
 }

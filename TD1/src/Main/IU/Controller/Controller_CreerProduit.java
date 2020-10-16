@@ -1,11 +1,17 @@
+/*****************************************************/
+/** @Auteur Brice Bricou & Nico.C | CPOA             */
+/* OS : Windows 10 64bits         | Bute du projet : */
+/* Logiciel : IntelliJ & Eclipse  |   IU             */
+/* Langage : Java & SQL           |                  */
+/* Date : 17/09/2020              |                  */
+/*****************************************************/
+
 package Main.IU.Controller;
 
 import DAO.Enum.EPersistance;
 import DAO.Factory.DaoFactory;
-import DAO.Interfaces.IDao;
-import DAO.Interfaces.IDaoCategorie;
 import DAO.Interfaces.IDaoProduit;
-import DAO.Memoire.MySqlCategorieDao;
+
 import Main.Metier.Categorie;
 import Main.Metier.Produit;
 
@@ -17,10 +23,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.apache.commons.lang3.ClassUtils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class Controller_CreerProduit implements Initializable {
     @FXML
