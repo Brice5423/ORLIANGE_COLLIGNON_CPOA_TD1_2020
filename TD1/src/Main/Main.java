@@ -16,7 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.Scanner;
 
 public class Main extends Application {
 
@@ -38,32 +37,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        /*// Text de choix entre les 2 types de menus //
-        System.out.println("Faite un choix entre les 2 menus :");
-        System.out.println("1: Menu1 (TD1)");
-        System.out.println("2: Menu2 (TD2)");
-
-        // Oblige de donner un des 2 choix (1 ou 2) //
-        Scanner sc = new Scanner(System.in);
-        int choix = 1;
-        do {
-            choix = sc.nextInt();
-        } while ((choix < 1) || (choix > 2));
-
-        System.out.println();
-
-        switch (choix) {
-            case 1:
-                System.out.println("Choix 1 : TD1.");
-                Menu1.menu1();
-                break;
-            case 2:
-                System.out.println("Choix 2 : TD2.");
-                Menu2.menu2();
-                break;
-        }*/
-
-        // launch application project
+        // launch application project //
         Application.launch(args);
     }
 }
