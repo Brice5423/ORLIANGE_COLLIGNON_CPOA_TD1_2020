@@ -1,8 +1,8 @@
 /*****************************************************/
 /** @Auteur Brice Bricou & Nico.C | CPOA             */
 /* OS : Windows 10 64bits         | Bute du projet : */
-/* Logiciel : IntelliJ & Eclipse  |   main           */
-/* Langage : Java & SQL           |                  */
+/* Logiciel : IntelliJ & Eclipse  |                  */
+/* Langage : Java JDK15 & MySQL   |                  */
 /* Date : 17/09/2020              |                  */
 /*****************************************************/
 

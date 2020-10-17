@@ -1,11 +1,3 @@
-/*****************************************************/
-/** @Auteur Brice Bricou & Nico.C | CPOA             */
-/* OS : Windows 10 64bits         | Bute du projet : */
-/* Logiciel : IntelliJ & Eclipse  |   TD2 : DAO      */
-/* Langage : Java & SQL           |                  */
-/* Date : 01/10/2020              |                  */
-/*****************************************************/
-
 package DAO.Enum;
 
 public enum EPersistance {

@@ -1,11 +1,3 @@
-/*****************************************************/
-/** @Auteur Brice Bricou & Nico.C | CPOA             */
-/* OS : Windows 10 64bits         | Bute du projet : */
-/* Logiciel : IntelliJ & Eclipse  |   DAO            */
-/* Langage : Java & SQL           |                  */
-/* Date : 07/10/2020              |                  */
-/*****************************************************/
-
 package DAO.Memoire;
 
 import Main.Connexion.ConnexionSQL;

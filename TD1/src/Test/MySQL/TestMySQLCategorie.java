@@ -1,11 +1,3 @@
-/*****************************************************/
-/** @Auteur Brice Bricou & Nico.C | CPOA             */
-/* OS : Windows 10 64bits         | Bute du projet : */
-/* Logiciel : IntelliJ & Eclipse  |   Test           */
-/* Langage : Java & SQL           |                  */
-/* Date : 09/10/2020              |                  */
-/*****************************************************/
-
 package Test.MySQL;
 
 import DAO.Enum.EPersistance;
