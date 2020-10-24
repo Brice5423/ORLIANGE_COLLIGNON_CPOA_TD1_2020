@@ -10,7 +10,7 @@ import java.util.Map;
  * Et contient plusieurs produits.
  */
 public class Commande {
-	private int num;
+	private int id;
 	private Date date;
 	private Client client; // Une commande est réalisée par un client
 
@@ -19,8 +19,8 @@ public class Commande {
 	private Map<Produit, Integer> produits;
 
 
-	public Commande(int num, Date date, Client client, Map<Produit, Integer> produits) {
-		this.num = num;
+	public Commande(int id, Date date, Client client, Map<Produit, Integer> produits) {
+		this.id = id;
 		this.date = date;
 		this.client = client;
 		this.produits = produits;
@@ -29,11 +29,11 @@ public class Commande {
 	public Commande() { }
 
 
-	public int getNum() {
-		return num;
+	public int getId() {
+		return id;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setId(int num) {
+		this.id = num;
 	}
 
 	public Date getDate() {
@@ -75,5 +75,10 @@ public class Commande {
 			produits = new HashMap<>();
 		}
 		produits.put(produit, quantite);
+	}
+
+	@Override
+	public String toString() {
+		return "id " + this.id + ", date : " + this.date + ", Client : " + client.getNom() + ", produit : " + this.produits;
 	}
 }

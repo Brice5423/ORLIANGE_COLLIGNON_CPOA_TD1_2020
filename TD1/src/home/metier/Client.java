@@ -46,5 +46,9 @@ public class Client {
 	public String toString() {
 		return "id = " + id + ", nom = " + nom + ", prenom = " + prenom;
 	}
+
+	public String toStringController() {
+		return this.nom + " " + this.prenom;
+	}
 }
 

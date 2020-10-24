@@ -74,7 +74,6 @@ public class MySqlCategorieDao implements IDaoCategorie {
         }
     }
 
-    /* ************************************************************************************************************** */
     @Override
     public Categorie getById(int id) {
         try {
@@ -102,7 +101,6 @@ public class MySqlCategorieDao implements IDaoCategorie {
         }
         return null;
     }
-    /* ************************************************************************************************************** */
 
     @Override
     public boolean update(Categorie objet) {

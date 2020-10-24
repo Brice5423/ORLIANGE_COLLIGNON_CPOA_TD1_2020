@@ -116,6 +116,10 @@ public class Produit {
 
 	@Override
 	public String toString() {
-		return nom + " (" +categorie.getTitre()+"), "+ tarif +"euros\n"+ description;
+		return "id = " + this.id + ", nom = " + this.nom + ", description = " + this.description;
+	}
+
+	public String toStringController() {
+		return this.nom + " ("+ this.categorie.getTitre() +"), " + this.tarif + "euros\n" + this.description;
 	}
 }

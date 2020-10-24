@@ -88,7 +88,7 @@ public class Controller_CreerProduit implements Initializable {
             produit.setVisuel("visuel.png");
             produit.setCategorie(Choice_Categ.getValue());
 
-            lbl_Creerproduit.setText(produit.toString());
+            lbl_Creerproduit.setText(produit.toStringController());
 
             DaoProd.create(produit);
         }
@@ -110,4 +110,3 @@ public class Controller_CreerProduit implements Initializable {
         this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
     }
 }
-
