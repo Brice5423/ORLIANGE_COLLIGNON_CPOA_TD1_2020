@@ -57,11 +57,10 @@ public class Commande {
 
 	/* @return le montant total du panier (ligne de commande). */
 	public Double getMontantTotal() {
-		// Parcours de la table des produits ...ligne de commande.
+		// Parcours de la table des produits ...ligne de commande. //
 		Double resultat = 0d;
 		for (Map.Entry<Produit, Integer> entry : produits.entrySet()) {
-			// Pour chaque ligne de commande je récupère la clé (produit) et la valeur
-			// (quantité).
+			// Pour chaque ligne de commande je récupère la clé (produit) et la valeur (quantité). //
 			Produit produit = entry.getKey();
 			Integer quantite = entry.getValue();
 			resultat += (produit.getTarif() * quantite);

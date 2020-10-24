@@ -73,7 +73,6 @@ public class MySqlClientDao implements IDaoClient {
         return false;
     }
 
-    /* ************************************************************************************************************** */
     @Override
     public Client getById(int id) {
         try {
@@ -101,7 +100,6 @@ public class MySqlClientDao implements IDaoClient {
         }
         return null;
     }
-    /* ************************************************************************************************************** */
 
     @Override
     public boolean update(Client objet) {

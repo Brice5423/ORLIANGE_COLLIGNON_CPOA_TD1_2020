@@ -77,7 +77,6 @@ public class MySqlProduitDao implements IDaoProduit  {
         return false;
     }
 
-    /* ************************************************************************************************************** */
     @Override
     public Produit getById(int id) {
         try {
@@ -108,7 +107,6 @@ public class MySqlProduitDao implements IDaoProduit  {
         }
         return null;
     }
-    /* ************************************************************************************************************** */
 
     @Override
     public boolean update(Produit objet) {

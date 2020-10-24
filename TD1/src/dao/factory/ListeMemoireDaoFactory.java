@@ -2,6 +2,7 @@ package dao.factory;
 
 import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoClient;
+import dao.interfaces.IDaoCommande;
 import dao.interfaces.IDaoProduit;
 import dao.memoire.ListeMemoireCategorieDao;
 import dao.memoire.ListeMemoireClientDao;
@@ -16,6 +17,11 @@ public class ListeMemoireDaoFactory extends DaoFactory {
     @Override
     public IDaoClient getDaoClient() {
         return ListeMemoireClientDao.getInstance();
+    }
+
+    @Override
+    public IDaoCommande getDaoCommande() {
+        return null;
     }
 
     @Override
