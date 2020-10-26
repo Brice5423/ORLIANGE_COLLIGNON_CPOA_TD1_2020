@@ -20,10 +20,10 @@ public class Commande {
 
 
 	public Commande(int id, Date date, Client client, Map<Produit, Integer> produits) {
-		this.id = id;
-		this.date = date;
-		this.client = client;
-		this.produits = produits;
+		this.id = id;  // Ligne_commande / Commande
+		this.date = date; // Commande
+		this.client = client; // Commande => Client
+		this.produits = produits; // Ligne_commande => Produit / Commande
 	}
 
 	public Commande() { }

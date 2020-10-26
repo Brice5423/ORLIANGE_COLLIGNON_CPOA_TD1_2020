@@ -2,19 +2,19 @@ package dao.mysql;
 
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
+import dao.interfaces.IDaoClient;
 import dao.interfaces.IDaoCommande;
 import dao.interfaces.IDaoProduit;
 
 import home.connexion.ConnexionSQL;
+import home.metier.Client;
 import home.metier.Commande;
 import home.metier.Produit;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import java.util.*;
+import java.util.Date;
 
 public class MySqlCommandeDao implements IDaoCommande {
     private static IDaoCommande instance;
@@ -47,27 +47,44 @@ public class MySqlCommandeDao implements IDaoCommande {
                 Date date = resultSet.getDate("date_commande");
                 int id_client = resultSet.getInt("id_client");
 
-                // Gestion du la map produit dans la ligne commande //
+                // Gestion du la map produit dans la ligne commande / Recupe tous les produits commandes en fonction du client //
                 String request_LC = "SELECT * FROM Ligne_commande";
                 Statement statement_LC = laConnexion.createStatement(); // quand on doir faire des appels reppéter
                 ResultSet resultSet_LC = statement_LC.executeQuery(request_LC);
 
                 Map<Produit, Integer> produits = new HashMap<>();
 
-                while (resultSet_LC.next()) {
-                    if (resultSet_LC.getInt(id_commande) == id_commande) {
-                        int id_produit_LC = resultSet_LC.getInt("id_produit");
-                        int quantite_LC = resultSet_LC.getInt("quantite");
+                while (resultSet_LC.next()) { // fait derouler tout le tableau ligne_commande
+                    if (resultSet_LC.getInt(id_commande) == id_commande) { // regarde si id_commande du tableau commande est egal à id_commande du tableau Commande
+                        if (produits.isEmpty()) { // mes le 1er produit dans la liste sans verif
+                            int id_produit_LC = resultSet_LC.getInt("id_produit");
+                            int quantite_LC = resultSet_LC.getInt("quantite");
 
-                        IDaoProduit daoproduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
-                        Produit produit = daoproduit.getById(id_produit_LC);
-                        produits.put(produit, quantite_LC);
+                            IDaoProduit daoProduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
+                            Produit produit_LC = daoProduit.getById(id_produit_LC);
+
+                            produits.put(produit_LC, quantite_LC);
+                        } else {
+                            for (Map.Entry<Produit, Integer> produit : produits.entrySet()) { // fait dérouler la hashMap
+                                if (produit.getKey().getId() == resultSet_LC.getInt("id_produit")) { // verifi si le produit est dans la hashMap
+                                    continue; // ne fait rien
+                                } else {
+                                    int id_produit_LC = resultSet_LC.getInt("id_produit");
+                                    int quantite_LC = resultSet_LC.getInt("quantite");
+
+                                    IDaoProduit daoProduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
+                                    Produit produit_LC = daoProduit.getById(id_produit_LC);
+
+                                    produits.put(produit_LC, quantite_LC);
+                                }
+                            }
+                        }
                     }
                 }
 
                 Commande commande = new Commande(id_commande, date, MySqlClientDao.getInstance().getById(id_client), produits);
-                statement_LC.close();
                 donnees.add(commande);
+                statement_LC.close();
             }
 
             statement.close();
@@ -81,21 +98,144 @@ public class MySqlCommandeDao implements IDaoCommande {
 
     @Override
     public boolean create(Commande objet) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String requestCommande = "INSERT INTO Commande(date_commande, id_client) VALUES(?, ?)";
+            PreparedStatement ajoutCommande = laConnexion.prepareStatement(requestCommande);
+            ajoutCommande.setDate(1, (java.sql.Date) objet.getDate());
+            ajoutCommande.setInt(2, objet.getClient().getId());
+            ajoutCommande.executeUpdate();
+
+            Map<Produit, Integer> produits = objet.getProduits();
+
+            // Création de tout les ligne de commande dans la table Ligne_commande //
+            for (Map.Entry<Produit, Integer> produit : produits.entrySet()) {
+                String requestLigneCommande = "INSERT INTRO Ligne_commande(id_commande, id_produit, quantite, tarif_unitaire) VALUES(?, ?, ?, ?)";
+                PreparedStatement ajoutLigneCommande = laConnexion.prepareStatement(requestLigneCommande);
+                ajoutLigneCommande.setInt(1, 1); // a voir comment faire
+                ajoutLigneCommande.setInt(2, produit.getKey().getId());
+                ajoutLigneCommande.setInt(3, produit.getValue());
+                ajoutLigneCommande.setDouble(4, produit.getKey().getTarif());
+                ajoutLigneCommande.executeUpdate();
+            }
+
+            laConnexion.close();
+            return true;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
         return false;
     }
 
     @Override
     public Commande getById(int id) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Commande";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                int id_commande = resultSet.getInt("id_produit");
+
+                if(id_commande == id) {
+                    Date date = resultSet.getDate("date_commande");
+                    int id_client = resultSet.getInt("id_client");
+
+                    // Recup tout les infos du client de la commande //
+                    IDaoClient daoClient = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoClient();
+                    Client client = daoClient.getById(id_client);
+
+                    // Recuper tout les produits commander avec la quantité //
+                    String request_LC = "SELECT * FROM Commande";
+                    Statement statement_LC = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+                    ResultSet resultSet_LC = statement_LC.executeQuery(request_LC);
+
+                    Map<Produit, Integer> produits = new HashMap<>();
+
+                    while (resultSet_LC.next()) { // fait derouler tout le tableau ligne_commande
+                        if (resultSet_LC.getInt(id_commande) == id_commande) { // regarde si id_commande du tableau commande est egal à id_commande du tableau Commande
+                            if (produits.isEmpty()) { // mes le 1er produit dans la liste sans verif
+                                int id_produit_LC = resultSet_LC.getInt("id_produit");
+                                int quantite_LC = resultSet_LC.getInt("quantite");
+
+                                IDaoProduit daoProduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
+                                Produit produit_LC = daoProduit.getById(id_produit_LC);
+
+                                produits.put(produit_LC, quantite_LC);
+                            } else {
+                                for (Map.Entry<Produit, Integer> produit : produits.entrySet()) { // fait dérouler la hashMap
+                                    if (produit.getKey().getId() == resultSet_LC.getInt("id_produit")) { // verifi si le produit est dans la hashMap
+                                        continue; // ne fait rien
+                                    } else {
+                                        int id_produit_LC = resultSet_LC.getInt("id_produit");
+                                        int quantite_LC = resultSet_LC.getInt("quantite");
+
+                                        IDaoProduit daoProduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
+                                        Produit produit_LC = daoProduit.getById(id_produit_LC);
+
+                                        produits.put(produit_LC, quantite_LC);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Commande commande = new Commande(id_commande, date, client, produits);
+                    statement_LC.close();
+                    statement.close();
+                    return commande;
+                }
+            }
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
         return null;
     }
 
     @Override
     public boolean update(Commande objet) {
+        /*try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "UPDATE Produit SET nom = ?, description = ?, tarif = ?, visuel = ?, id_categorie = ? WHERE id_produit = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setString(1, objet.getNom());
+            ps.setString(2, objet.getDescription());
+            ps.setDouble(3, objet.getTarif());
+            ps.setString(4, objet.getVisuel());
+            ps.setInt(5, objet.getCategorie().getId());
+            ps.setInt(6, objet.getId());
+            ps.executeUpdate();
+
+            laConnexion.close();
+            return true;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }*/
         return false;
     }
 
     @Override
     public boolean delete(Commande objet) {
+        /*try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "DELETE FROM Produit WHERE id_produit = ?";
+            PreparedStatement ps = laConnexion.prepareStatement(request);
+            ps.setInt(1, objet.getId());
+            ps.executeUpdate();
+
+            laConnexion.close();
+            return true;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }*/
         return false;
     }
 }
