@@ -2,11 +2,10 @@ package dao.mysql;
 
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
-import dao.interfaces.IDaoClient;
 import dao.interfaces.IDaoCommande;
 import dao.interfaces.IDaoProduit;
+
 import home.connexion.ConnexionSQL;
-import home.metier.Client;
 import home.metier.Commande;
 import home.metier.Produit;
 
@@ -14,10 +13,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 public class MySqlCommandeDao implements IDaoCommande {
     private static IDaoCommande instance;
@@ -47,31 +44,29 @@ public class MySqlCommandeDao implements IDaoCommande {
 
             while (resultSet.next()) {
                 int id_commande = resultSet.getInt("id_commande");
-                String date = resultSet.getString("date_commande");
+                Date date = resultSet.getDate("date_commande");
                 int id_client = resultSet.getInt("id_client");
 
-                System.out.format("%s, %s, %s\n", id_commande, date, id_client);
-
-
                 // Gestion du la map produit dans la ligne commande //
-                String request_ligneCom = "SELECT * FROM Ligne_commande";
-                Statement statement_ligneCom = laConnexion.createStatement(); // quand on doir faire des appels reppéter
-                ResultSet resultSet_ligneCom = statement_ligneCom.executeQuery(request_ligneCom);
+                String request_LC = "SELECT * FROM Ligne_commande";
+                Statement statement_LC = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+                ResultSet resultSet_LC = statement_LC.executeQuery(request_LC);
 
                 Map<Produit, Integer> produits = new HashMap<>();
-                while (resultSet_ligneCom.next()) {
-                    if (resultSet_ligneCom.getInt(id_commande) == id_commande) {
-                        int id_produit_ligneCom = resultSet_ligneCom.getInt("id_produit");
-                        int quantite_ligneCom = resultSet_ligneCom.getInt("quantite");
-                        // appel dao produit
+
+                while (resultSet_LC.next()) {
+                    if (resultSet_LC.getInt(id_commande) == id_commande) {
+                        int id_produit_LC = resultSet_LC.getInt("id_produit");
+                        int quantite_LC = resultSet_LC.getInt("quantite");
+
                         IDaoProduit daoproduit = DaoFactory.getDAOFactory(EPersistance.MYSQL).getDaoProduit();
-                        Produit produit = daoproduit.getById(id_produit_ligneCom);
-                        produits.put(produit, quantite_ligneCom);
+                        Produit produit = daoproduit.getById(id_produit_LC);
+                        produits.put(produit, quantite_LC);
                     }
                 }
 
-
                 Commande commande = new Commande(id_commande, date, MySqlClientDao.getInstance().getById(id_client), produits);
+                statement_LC.close();
                 donnees.add(commande);
             }
 

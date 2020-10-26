@@ -53,6 +53,9 @@ public class Commande {
 	public Map<Produit, Integer> getProduits() {
 		return produits;
 	}
+	public void setProduits(Map<Produit, Integer> produits) {
+		this.produits = produits;
+	}
 
 
 	/* @return le montant total du panier (ligne de commande). */
@@ -75,6 +78,7 @@ public class Commande {
 		}
 		produits.put(produit, quantite);
 	}
+
 
 	@Override
 	public String toString() {

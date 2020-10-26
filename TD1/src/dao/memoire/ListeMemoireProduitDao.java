@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.interfaces.IDaoProduit;
+
 import home.metier.Categorie;
 import home.metier.Produit;
 

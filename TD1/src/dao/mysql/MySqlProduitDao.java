@@ -1,8 +1,9 @@
 package dao.mysql;
 
 import home.connexion.ConnexionSQL;
-import dao.interfaces.IDaoProduit;
 import home.metier.Produit;
+
+import dao.interfaces.IDaoProduit;
 
 import java.sql.*;
 import java.util.ArrayList;
