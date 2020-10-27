@@ -61,11 +61,11 @@ public class ListeMemoireProduitDao implements IDaoProduit {
 
 
     @Override // Create :
-    public boolean create(Produit produit) {
+    public boolean create(Produit objet) {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        return this.donnees.add(produit);
+        return this.donnees.add(objet);
     }
 
     @Override // Read :

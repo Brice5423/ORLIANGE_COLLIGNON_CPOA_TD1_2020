@@ -50,7 +50,7 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         produits2.put(prodiot2, 5);
         produits2.put(prodiot3, 3);
 
-        // Création de deux produits :
+        // Création de deux commandes :
         Commande commande1 = new Commande();
         commande1.setId(1);
         commande1.setDate(date);
@@ -76,49 +76,45 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
 
     @Override
     public boolean create(Commande objet) {
-        /*if (donnees == null) {
+        if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        return this.donnees.add(produit);*/
-        return false;
+        return this.donnees.add(objet);
     }
 
     @Override
     public Commande getById(int id) {
-        /*if (donnees != null && !donnees.isEmpty()) {
-            // Itérator sur la liste des produits :
-            for (Produit produit : donnees) {
-                if (produit.getId() == id) {
-                    return produit;
+        if (donnees != null && !donnees.isEmpty()) {
+            // Itérator sur la liste des commandes :
+            for (Commande commande : donnees) {
+                if (commande.getId() == id) {
+                    return commande;
                 }
             }
-        }*/
+        }
         return null;
     }
 
     @Override
     public boolean update(Commande objet) {
-        /*int idx = this.donnees.indexOf(objet);
+        int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de modification d'un produit inexistante");
+            throw new IllegalArgumentException("Tentative de modification d'une commande inexistante");
         } else {
             this.donnees.set(idx, objet);
         }
-        return true;*/
-        return false;
+        return true;
     }
 
     @Override
     public boolean delete(Commande objet) {
-        /*Produit supprime;
-
         int idx = this.donnees.indexOf(objet);
+        Commande supprime;
         if (idx == -1) {
-            throw new IllegalArgumentException("Tentative de suppression d'un produit inexistante");
+            throw new IllegalArgumentException("Tentative de suppression d'une commande inexistante");
         } else {
             supprime = this.donnees.remove(idx);
         }
-        return objet.equals(supprime);*/
-        return false;
+        return objet.equals(supprime);
     }
 }
