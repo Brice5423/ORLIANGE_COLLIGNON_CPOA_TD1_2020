@@ -26,7 +26,6 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         this.donnees = new ArrayList<Produit>();
     }
 
-
     private static List<Produit> createProduits() {
         if (donnees == null) {
             donnees = new ArrayList<>();

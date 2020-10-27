@@ -33,7 +33,7 @@ public class MySqlCommandeDao implements IDaoCommande {
     }
 
 
-    @Override
+    @Override // Code beaucou trop  gros
     public List<Commande> getAllCommande() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -96,15 +96,15 @@ public class MySqlCommandeDao implements IDaoCommande {
         return null;
     }
 
-    @Override
+    @Override // Problème avec
     public boolean create(Commande objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
             String requestCommande = "INSERT INTO Commande(date_commande, id_client) VALUES(?, ?)";
             PreparedStatement ajoutCommande = laConnexion.prepareStatement(requestCommande);
-            ajoutCommande.setDate(1, (java.sql.Date) objet.getDate());
-            ajoutCommande.setInt(2, objet.getClient().getId());
+            ajoutCommande.setDate(1, (java.sql.Date) objet.getDate()); // date_commande
+            ajoutCommande.setInt(2, objet.getClient().getId()); // id_client
             ajoutCommande.executeUpdate();
 
             Map<Produit, Integer> produits = objet.getProduits();
@@ -113,10 +113,10 @@ public class MySqlCommandeDao implements IDaoCommande {
             for (Map.Entry<Produit, Integer> produit : produits.entrySet()) {
                 String requestLigneCommande = "INSERT INTRO Ligne_commande(id_commande, id_produit, quantite, tarif_unitaire) VALUES(?, ?, ?, ?)";
                 PreparedStatement ajoutLigneCommande = laConnexion.prepareStatement(requestLigneCommande);
-                ajoutLigneCommande.setInt(1, 1); // a voir comment faire
-                ajoutLigneCommande.setInt(2, produit.getKey().getId());
-                ajoutLigneCommande.setInt(3, produit.getValue());
-                ajoutLigneCommande.setDouble(4, produit.getKey().getTarif());
+                ajoutLigneCommande.setInt(1, 1); // id_commande // a voir comment faire -----------------------------------------------------------------------------------
+                ajoutLigneCommande.setInt(2, produit.getKey().getId()); // id_produit
+                ajoutLigneCommande.setInt(3, produit.getValue()); // quantite
+                ajoutLigneCommande.setDouble(4, produit.getKey().getTarif()); // tarif_unitaire
                 ajoutLigneCommande.executeUpdate();
             }
 
@@ -129,7 +129,7 @@ public class MySqlCommandeDao implements IDaoCommande {
         return false;
     }
 
-    @Override
+    @Override // Code beaucoup trop gros
     public Commande getById(int id) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
