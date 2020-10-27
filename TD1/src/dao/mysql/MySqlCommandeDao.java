@@ -198,25 +198,35 @@ public class MySqlCommandeDao implements IDaoCommande {
 
     @Override
     public boolean update(Commande objet) {
-        /*try {
+        try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
-            String request = "UPDATE Produit SET nom = ?, description = ?, tarif = ?, visuel = ?, id_categorie = ? WHERE id_produit = ?";
-            PreparedStatement ps = laConnexion.prepareStatement(request);
-            ps.setString(1, objet.getNom());
-            ps.setString(2, objet.getDescription());
-            ps.setDouble(3, objet.getTarif());
-            ps.setString(4, objet.getVisuel());
-            ps.setInt(5, objet.getCategorie().getId());
-            ps.setInt(6, objet.getId());
-            ps.executeUpdate();
+            String requestCommande = "UPDATE Commande SET date_commande = ?, id_client = ? WHERE id_commande = ?";
+            PreparedStatement modifCommande = laConnexion.prepareStatement(requestCommande);
+            modifCommande.setDate(1, (java.sql.Date) objet.getDate());
+            modifCommande.setInt(2, objet.getClient().getId());
+            modifCommande.setInt(3, objet.getId());
+            modifCommande.executeUpdate();
+
+            Map<Produit, Integer> produits = objet.getProduits();
+
+            // Création de tout les ligne de commande dans la table Ligne_commande //
+            for (Map.Entry<Produit, Integer> produit : produits.entrySet()) {
+                String requestLigneCommande = "UPDATE Ligne_commande SET quantite = ?, tarif_unitaire = ? WHERE id_commande = ? AND id_produit = ?";
+                PreparedStatement modifLigneCommande = laConnexion.prepareStatement(requestLigneCommande);
+                modifLigneCommande.setInt(1, produit.getValue()); // quantite
+                modifLigneCommande.setDouble(2, produit.getKey().getTarif()); // tarif_unitaire
+                modifLigneCommande.setInt(3, objet.getId()); // id_commande
+                modifLigneCommande.setInt(4, produit.getKey().getId()); // id_produit
+                modifLigneCommande.executeUpdate();
+            }
 
             laConnexion.close();
             return true;
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
+        }
         return false;
     }
 
