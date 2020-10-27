@@ -199,13 +199,15 @@ public class MySqlCommandeDao implements IDaoCommande {
     @Override
     public boolean update(Commande objet) {
         try {
+            int id_commande = objet.getId();
+
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
             String requestCommande = "UPDATE Commande SET date_commande = ?, id_client = ? WHERE id_commande = ?";
             PreparedStatement modifCommande = laConnexion.prepareStatement(requestCommande);
             modifCommande.setDate(1, (java.sql.Date) objet.getDate());
             modifCommande.setInt(2, objet.getClient().getId());
-            modifCommande.setInt(3, objet.getId());
+            modifCommande.setInt(3, id_commande);
             modifCommande.executeUpdate();
 
             Map<Produit, Integer> produits = objet.getProduits();
@@ -216,7 +218,7 @@ public class MySqlCommandeDao implements IDaoCommande {
                 PreparedStatement modifLigneCommande = laConnexion.prepareStatement(requestLigneCommande);
                 modifLigneCommande.setInt(1, produit.getValue()); // quantite
                 modifLigneCommande.setDouble(2, produit.getKey().getTarif()); // tarif_unitaire
-                modifLigneCommande.setInt(3, objet.getId()); // id_commande
+                modifLigneCommande.setInt(3, id_commande); // id_commande
                 modifLigneCommande.setInt(4, produit.getKey().getId()); // id_produit
                 modifLigneCommande.executeUpdate();
             }
@@ -232,20 +234,35 @@ public class MySqlCommandeDao implements IDaoCommande {
 
     @Override
     public boolean delete(Commande objet) {
-        /*try {
+        try {
+            int id_commande = objet.getId();
+
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
-            String request = "DELETE FROM Produit WHERE id_produit = ?";
-            PreparedStatement ps = laConnexion.prepareStatement(request);
-            ps.setInt(1, objet.getId());
-            ps.executeUpdate();
+            // Supprime la commande //
+            String requestCommande = "DELETE FROM Commande WHERE id_commande = ?";
+            PreparedStatement supCommande = laConnexion.prepareStatement(requestCommande);
+            supCommande.setInt(1, id_commande);
+            supCommande.executeUpdate();
+
+            Map<Produit, Integer> produits = objet.getProduits();
+
+            // Création de tout les ligne de commande dans la table Ligne_commande //
+            for (Map.Entry<Produit, Integer> produit : produits.entrySet()) {
+                // Supprime le produits de la commande //
+                String requestLigneCommande = "DELETE FROM Ligne_commande WHERE id_commande = ? AND id_produit = ?";
+                PreparedStatement supLigneCommande = laConnexion.prepareStatement(requestLigneCommande);
+                supLigneCommande.setInt(1, id_commande); // id_commande
+                supLigneCommande.setInt(2, produit.getKey().getId()); // id_produit
+                supLigneCommande.executeUpdate();
+            }
 
             laConnexion.close();
             return true;
 
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
-        }*/
+        }
         return false;
     }
 }
