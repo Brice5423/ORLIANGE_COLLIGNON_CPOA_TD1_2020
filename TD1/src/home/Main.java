@@ -22,14 +22,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            URL fxmlURL = getClass().getResource("IU/Sample/CreerProduit.fxml");
+            URL fxmlURL = getClass().getResource("IU/Sample/Accueil.fxml");
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(fxmlURL);
             Node root = fxmlLoader.load();
             Scene scene = new Scene((VBox) root, 600, 500);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Ajouter un Produit");
+            primaryStage.setTitle("Boutique de vêtements moches");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

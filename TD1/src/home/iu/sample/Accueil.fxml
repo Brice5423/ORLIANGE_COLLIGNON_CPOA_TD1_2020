@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Exit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="Menu_Catégories" mnemonicParsing="false" text="Catégories" />
+              <MenuItem fx:id="Menu_Commande" mnemonicParsing="false" text="Commande" />
+                  <MenuItem fx:id="Menu_Produit" mnemonicParsing="false" text="Produit" />
+                  <MenuItem fx:id="Menu_Client" mnemonicParsing="false" text="Client" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label alignment="CENTER" prefHeight="480.0" prefWidth="600.0" text="BIENVENUE SUR LA BOUTIQUE DE PULLS MOCHES">
+         <font>
+            <Font name="Agency FB Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="26.0" prefWidth="602.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, all rights reserved." />
+   </children>
+</VBox>
