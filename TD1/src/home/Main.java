@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            URL fxmlURL = getClass().getResource("IU/Sample/Accueil.fxml");
+            URL fxmlURL = getClass().getResource("iu/sample/Accueil.fxml");
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(fxmlURL);
             Node root = fxmlLoader.load();

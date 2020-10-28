@@ -20,7 +20,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class Controller_CreerProduit implements Initializable {
+public class Controller_Produit implements Initializable {
+
+    @FXML
+    private ChoiceBox<Categorie> Choice_Categ;
+
     @FXML
     private TextField input_nom;
 
@@ -28,13 +32,7 @@ public class Controller_CreerProduit implements Initializable {
     private TextArea input_Description;
 
     @FXML
-    private ChoiceBox<Categorie> Choice_Categ;
-
-    @FXML
     private TextField input_Tarif;
-
-    @FXML
-    private Label lbl_Creerproduit;
 
     @FXML
     private Label lbl_ErreurNom;
@@ -47,6 +45,58 @@ public class Controller_CreerProduit implements Initializable {
 
     @FXML
     private Label lbl_ErreurCateg;
+
+
+    @FXML
+    private TextField input_ModifNom;
+
+    @FXML
+    private TextArea input_ModifDescription;
+
+    @FXML
+    private TextField input_ModifTarif;
+
+    @FXML
+    private Label lbl_ErreurModifNom;
+
+    @FXML
+    private Label lbl_ErreurModifDescription;
+
+    @FXML
+    private Label lbl_ErreurModifTarif;
+
+    @FXML
+    private Label lbl_ErreurModifCateg;
+
+    @FXML
+    private Label lbl_CreerProduit;
+
+    @FXML
+    private Label lbl_ModifProduit;
+
+    @FXML
+    private TextField imput_VisuNom;
+
+    @FXML
+    private Label lbl_VisuProduit;
+
+    @FXML
+    private TextField imput_SuppNom;
+
+    @FXML
+    void OnClick_ModifProduit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClick_SuppProduit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClick_VisuProduit(ActionEvent event) {
+
+    }
 
     @FXML
     void OnClick_CreerProduit(ActionEvent event) {
@@ -88,7 +138,7 @@ public class Controller_CreerProduit implements Initializable {
             produit.setVisuel("visuel.png");
             produit.setCategorie(Choice_Categ.getValue());
 
-            lbl_Creerproduit.setText(produit.toStringController());
+            lbl_CreerProduit.setText(produit.toStringController());
 
             DaoProd.create(produit);
         }

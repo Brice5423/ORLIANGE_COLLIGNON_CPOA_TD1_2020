@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Produit">
+   <children>
+      <Pane prefHeight="360.0" prefWidth="1200.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="33.0" layoutY="40.0" stroke="BLACK" strokeType="OUTSIDE" width="535.0" />
+            <GridPane alignment="CENTER" layoutY="40.0" prefHeight="293.0" prefWidth="600.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="134.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="353.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Nom :" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="141.0" text="                   Description :" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="2" />
+                  <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="Choice_Categ" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="input_nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" />
+                  <TextArea fx:id="input_Description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="input_Tarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_ErreurNom" alignment="CENTER" prefHeight="17.0" prefWidth="137.0" text="Le nom n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets top="41.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_ErreurDescription" alignment="CENTER" prefHeight="17.0" prefWidth="177.0" text="La description n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="83.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_ErreurTarif" prefHeight="17.0" prefWidth="326.0" text="Le tarif n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="40.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_ErreurCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="161.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </GridPane>
+            <Pane layoutX="600.0" prefHeight="347.0" prefWidth="600.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="33.0" layoutY="40.0" stroke="BLACK" strokeType="OUTSIDE" width="535.0" />
+                  <GridPane alignment="CENTER" layoutY="40.0" prefHeight="293.0" prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="134.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="353.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Nom :" textAlignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="141.0" text="                   Description :" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="2" />
+                        <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="Choice_ModifCateg" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="input_ModifNom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" />
+                        <TextArea fx:id="input_ModifDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="input_ModifTarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="80.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifNom" alignment="CENTER" prefHeight="17.0" prefWidth="137.0" text="Le nom n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets top="41.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifDescription" alignment="CENTER" prefHeight="17.0" prefWidth="177.0" text="La description n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="83.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifTarif" prefHeight="17.0" prefWidth="326.0" text="Le tarif n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="161.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <Label layoutX="233.0" layoutY="14.0" text="Modification d'un produit" />
+               </children>
+            </Pane>
+            <Label layoutX="244.0" layoutY="14.0" text="Création d'un produit" />
+         </children>
+      </Pane>
+      <HBox prefHeight="38.0" prefWidth="1200.0">
+         <children>
+            <FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_CreerProduit" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_ModifProduit" prefHeight="25.0" prefWidth="69.0" text="Modifier" />
+               </children>
+            </FlowPane>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_CreerProduit" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_ModifProduit" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
+         </children>
+      </HBox>
+      <Pane prefHeight="190.0" prefWidth="1200.0">
+         <children>
+            <TextField fx:id="imput_VisuNom" layoutX="120.0" layoutY="49.0" />
+            <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
+            <Label layoutX="41.0" layoutY="53.0" text="Nom Produit" />
+            <Button layoutX="161.0" layoutY="114.0" mnemonicParsing="false" onAction="#OnClick_VisuProduit" text="Visualiser" />
+            <FlowPane alignment="CENTER" layoutX="293.0" layoutY="25.0" prefHeight="140.0" prefWidth="893.0">
+               <children>
+                  <Label fx:id="lbl_VisuProduit" alignment="CENTER" prefHeight="108.0" prefWidth="761.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
+         </children>
+      </Pane>
+      <Pane prefHeight="180.0" prefWidth="1200.0">
+         <children>
+            <Line endX="781.0" layoutX="390.0" startX="-361.0" strokeType="OUTSIDE" />
+            <TextField fx:id="imput_SuppNom" layoutX="526.0" layoutY="41.0" />
+            <Label layoutX="438.0" layoutY="45.0" text="Nom Produit" />
+            <Button layoutX="564.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
+            <Label layoutX="420.0" layoutY="145.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
+         </children>
+      </Pane>
+   </children>
+</VBox>
