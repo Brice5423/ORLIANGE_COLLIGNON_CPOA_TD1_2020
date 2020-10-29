@@ -27,8 +27,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="scenebuilder-8.5.0-all" level="project" />
     <orderEntry type="library" name="CPOA" level="project" />
+    <orderEntry type="library" name="scenebuilder-8.5.0-all" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.21" level="project" />
   </component>

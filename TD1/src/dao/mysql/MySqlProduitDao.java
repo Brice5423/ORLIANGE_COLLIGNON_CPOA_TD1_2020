@@ -35,14 +35,14 @@ public class MySqlProduitDao implements IDaoProduit  {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                int id_prod = resultSet.getInt("id_produit");
+                int idProd = resultSet.getInt("id_produit");
                 String nom = resultSet.getString("nom");
                 String description = resultSet.getString("description");
                 double tarif = resultSet.getFloat("tarif");
                 String visuel = resultSet.getString("visuel");
-                int id_categ = resultSet.getInt("id_categorie");
+                int idCateg = resultSet.getInt("id_categorie");
 
-                Produit produit = new Produit(id_prod, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(id_categ));
+                Produit produit = new Produit(idProd, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(idCateg));
                 donnees.add(produit);
             }
 
@@ -88,17 +88,17 @@ public class MySqlProduitDao implements IDaoProduit  {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                int id_prod = resultSet.getInt("id_produit");
-                if(id_prod == id) {
+                int idProd = resultSet.getInt("id_produit");
+                if(idProd == id) {
                     String nom = resultSet.getString("nom");
                     String description = resultSet.getString("description");
                     double tarif = resultSet.getDouble("tarif");
                     String visuel = resultSet.getString("visuel");
-                    int id_categ = resultSet.getInt("id_categorie");
+                    int idCateg = resultSet.getInt("id_categorie");
 
-                    System.out.format("%s, %s, %s, %s, %s, %s\n", id_prod, nom, description, tarif, visuel, id_categ);
+                    System.out.format("%s, %s, %s, %s, %s, %s\n", idProd, nom, description, tarif, visuel, idCateg);
 
-                    Produit produit = new Produit(id_prod, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(id_categ));
+                    Produit produit = new Produit(idProd, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(idCateg));
                     statement.close();
                     return produit;
                 }

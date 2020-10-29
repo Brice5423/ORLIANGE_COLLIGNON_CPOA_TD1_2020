@@ -12,39 +12,39 @@ import org.junit.Test;
 import java.util.List;
 
 public class TestListeMemoireProduit {
-    private DaoFactory DaoF;
-    private IDaoProduit Dao;
-    private List<Produit> Liste;
+    private DaoFactory daoF;
+    private IDaoProduit dao;
+    private List<Produit> liste;
 
     @Before
     public void setUp() {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
-        Dao = DaoF.getDaoProduit();
-        Liste = Dao.getAllProduits();
+        daoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        dao = daoF.getDaoProduit();
+        liste = dao.getAllProduits();
     }
 
 
     @Test
     public void testAllProduits() {
-        assertNotNull(Liste);
+        assertNotNull(liste);
     }
 
     @Test
     public void testCreate() {
-        int size = Dao.getAllProduits().size();
+        int size = dao.getAllProduits().size();
 
         Produit produit = new Produit();
         produit.setId(1);
         produit.setNom("PC");
         produit.setDescription("C'est cool ma poule");
-        Assert.assertTrue(Dao.create(produit));
+        Assert.assertTrue(dao.create(produit));
 
-        assertEquals(size+1, Dao.getAllProduits().size());
+        assertEquals(size+1, dao.getAllProduits().size());
     }
 
     @Test
     public void testGetById() {
-        assertNotNull(Dao.getById(1));
+        assertNotNull(dao.getById(1));
     }
 
     @Test
@@ -54,21 +54,21 @@ public class TestListeMemoireProduit {
         produit.setNom("PC");
         produit.setDescription("C'est cool ma poule");
 
-        assertTrue(Dao.create(produit));
+        assertTrue(dao.create(produit));
 
-        Produit produitRead = Dao.getById(4);
+        Produit produitRead = dao.getById(4);
         assertEquals(produit, produitRead);
 
         produitRead.setNom("PC Gamer");
-        assertTrue(Dao.update(produitRead));
+        assertTrue(dao.update(produitRead));
 
-        assertEquals(produitRead, Dao.getById(4));
+        assertEquals(produitRead, dao.getById(4));
     }
 
     @Test
     public void testDelete() {
-        Produit produit = Dao.getById(2);
-        Dao.delete(produit);
-        assertNull(Dao.getById(2));
+        Produit produit = dao.getById(2);
+        dao.delete(produit);
+        assertNull(dao.getById(2));
     }
 }
