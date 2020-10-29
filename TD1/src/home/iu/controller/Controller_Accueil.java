@@ -1,18 +1,21 @@
 package home.iu.controller;
 
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class Controller_Accueil {
+public class Controller_Accueil implements Initializable {
 
     @FXML
     private RadioButton radio_MYSQL;
@@ -20,9 +23,40 @@ public class Controller_Accueil {
     @FXML
     private RadioButton radio_LM;
 
+    private ToggleGroup Button;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Button = new ToggleGroup();
+        this.radio_MYSQL.setToggleGroup(Button);
+        this.radio_LM.setToggleGroup(Button);
+    }
+
+    @FXML
+    void OnClick_ConfirmationRD(ActionEvent event) {
+        if (Button.getSelectedToggle().equals(radio_MYSQL)) {
+            
+        }
+        else {
+
+        }
+    }
+
     @FXML
     void OnCick_Quitter(ActionEvent event) {
+        boolean click = true;
 
+        if (click) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Quitter la fenêtre");
+            alert.setHeaderText("Êtes-vous sûr de vouloir quitter l'application ?");
+            alert.setContentText("Toute progression non sauvegardée sera perdue");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                Platform.exit();
+            }
+        }
     }
 
     @FXML

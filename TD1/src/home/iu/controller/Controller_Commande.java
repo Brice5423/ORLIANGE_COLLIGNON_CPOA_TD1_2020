@@ -44,15 +44,6 @@ public class Controller_Commande {
     private Label lbl_ModifCommande;
 
     @FXML
-    private Label lbl_VisuCommande;
-
-    @FXML
-    private ChoiceBox<?> Choice_VisuCom;
-
-    @FXML
-    private ChoiceBox<?> Choice_SuppCom;
-
-    @FXML
     void OnClick_CreerCommande(ActionEvent event) {
 
     }

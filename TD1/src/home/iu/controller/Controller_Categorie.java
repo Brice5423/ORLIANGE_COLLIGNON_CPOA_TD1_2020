@@ -1,10 +1,10 @@
 package home.iu.controller;
 
+import home.metier.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 public class Controller_Categorie {
@@ -46,13 +46,26 @@ public class Controller_Categorie {
     private Label lbl_ModifCateg;
 
     @FXML
-    private ChoiceBox<?> choice_VisuCateg;
+    private TableView<Produit> tblProduits;
 
-    @FXML
-    private Label lbl_VisuCateg;
+    public void Table() {
+        TableColumn<Produit, Double> colID =
+                new TableColumn<>("ID");
+        TableColumn<Produit, Double> colNom =
+                new TableColumn<>("ID");
+        TableColumn<Produit, Double> colDescription =
+                new TableColumn<>("ID");
+        TableColumn<Produit, Double> colTarif =
+                new TableColumn<>("ID");
+        TableColumn<Produit, Double> colID_Categ =
+                new TableColumn<>("ID");
+        colID.setCellValueFactory(
+                new PropertyValueFactory<Produit, Double>("ID"));
+        this.tblProduits.getColumns().setAll(colID, colNom, colDescription, colTarif, colID_Categ);
+        //this.tblProduits.getItems().addAll(
+               // DAOFactory.getDAOFactory().getProduitDAO().findAll());
+    }
 
-    @FXML
-    private ChoiceBox<?> choice_SuppCateg;
 
     @FXML
     void OnClick_CreerCategorie(ActionEvent event) {

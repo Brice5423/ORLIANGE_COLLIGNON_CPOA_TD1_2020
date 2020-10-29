@@ -3,100 +3,109 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox fx:id="Vbox_Client" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Client">
+<VBox fx:id="Vbox_Client" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="920.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Client">
    <children>
-      <Pane prefHeight="640.0" prefWidth="600.0">
+      <Pane prefHeight="530.0" prefWidth="1200.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="592.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
-            <GridPane alignment="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="592.0" prefWidth="600.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="480.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
+            <GridPane alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="467.0" prefWidth="545.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="153.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="12.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="335.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="103.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="191.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="59.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="186.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="162.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="162.0" minHeight="3.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Nom : " textAlignment="CENTER" />
-                  <TextField fx:id="input_nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="2" />
-                  <Label fx:id="lbl_ErreurNom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="332.0" text="Le nom n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="123.0" text="Nom : " textAlignment="CENTER" />
+                  <TextField fx:id="input_Nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" />
+                  <Label fx:id="lbl_ErreurNom" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="174.0" text="Le nom n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Prénom : " textAlignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField fx:id="input_prenom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="190.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label prefHeight="17.0" prefWidth="336.0" text="Le prénom n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="84.0" text="Prénom : " textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <TextField fx:id="input_Prenom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="173.0" GridPane.columnIndex="3" />
+                  <Label fx:id="lbl_ErreurPrenom" prefHeight="41.0" prefWidth="198.0" text="Le prénom n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-12.0" />
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Identifiant : " textAlignment="CENTER" GridPane.rowIndex="2" />
-                  <TextField fx:id="input_id" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl_ErreurPrenom" prefHeight="17.0" prefWidth="331.0" text="L'identifiant n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="input_Id" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_ErreurMail" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="true" prefHeight="34.0" prefWidth="174.0" text="L'identifiant n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="Mot de passe : " GridPane.rowIndex="3" />
-                  <TextField fx:id="input_mdp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="289.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl_ErreurMdp" prefHeight="17.0" prefWidth="331.0" text="Le mot de passe n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="Mot de passe : " GridPane.rowIndex="4" />
+                  <TextField fx:id="input_Mdp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lbl_ErreurMdp" prefHeight="35.0" prefWidth="185.0" text="Le mot de passe n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="Numéro de maison : " GridPane.rowIndex="4" />
-                  <TextField fx:id="input_no" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Label fx:id="lbl_ErreurNo" prefHeight="17.0" prefWidth="333.0" text="Le numéro n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="No de maison : " GridPane.rowIndex="6" />
+                  <TextField fx:id="input_No" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl_ErreurNo" prefHeight="37.0" prefWidth="185.0" text="Le numéro n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Rue : " textAlignment="CENTER" GridPane.rowIndex="5" />
-                  <TextField fx:id="input_rue" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="335.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl_ErreurRue" prefHeight="17.0" prefWidth="338.0" text="La rue n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Rue : " textAlignment="CENTER" GridPane.rowIndex="8" />
+                  <TextField fx:id="input_Rue" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="335.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="lbl_ErreurRue" prefHeight="34.0" prefWidth="185.0" text="La rue n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Code postal : " textAlignment="CENTER" GridPane.rowIndex="6" />
-                  <TextField fx:id="input_cp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="74.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl_ErreurCP" prefHeight="17.0" prefWidth="335.0" text="Le code pastal n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Code postal : " textAlignment="CENTER" GridPane.rowIndex="10" />
+                  <TextField fx:id="input_Cp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="74.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Label fx:id="lbl_ErreurCP" prefHeight="35.0" prefWidth="185.0" text="Le code pastal n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Ville : " textAlignment="CENTER" GridPane.rowIndex="7" />
-                  <TextField fx:id="input_ville" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl_ErreurVille" prefHeight="17.0" prefWidth="334.0" text="La ville n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Ville : " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <TextField fx:id="input_Ville" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                  <Label fx:id="lbl_ErreurVille" prefHeight="36.0" prefWidth="180.0" text="La ville n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="11">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="155.0" text="Pays : " GridPane.rowIndex="8" />
-                  <TextField fx:id="input_pays" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                  <Label fx:id="lbl_ErreurPays" prefHeight="17.0" prefWidth="331.0" text="Le pays n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="155.0" text="Pays : " GridPane.rowIndex="12" />
+                  <TextField fx:id="input_Pays" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Label fx:id="lbl_ErreurPays" prefHeight="35.0" prefWidth="185.0" text="Le pays n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
                      <GridPane.margin>
-                        <Insets left="5.0" top="43.0" />
+                        <Insets left="5.0" top="-5.0" />
                      </GridPane.margin>
                   </Label>
                </children>
@@ -104,17 +113,153 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
+            <Pane layoutX="586.0" prefHeight="529.0" prefWidth="614.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="480.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
+                  <GridPane alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="467.0" prefWidth="545.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="103.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="191.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="59.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="186.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="162.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="162.0" minHeight="3.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="123.0" text="Nom : " textAlignment="CENTER" />
+                        <TextField fx:id="input_ModifNom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" />
+                        <Label fx:id="lbl_ErreurModifNom" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="174.0" text="Le nom n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="84.0" text="Prénom : " textAlignment="CENTER" GridPane.columnIndex="2" />
+                        <TextField fx:id="input_ModifPrenom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="165.0" GridPane.columnIndex="3" />
+                        <Label fx:id="lbl_ErreurModifPrenom" prefHeight="41.0" prefWidth="168.0" text="Le prénom n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-12.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Identifiant : " textAlignment="CENTER" GridPane.rowIndex="2" />
+                        <TextField fx:id="input_ModifId" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lbl_ErreurModifMail" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="true" prefHeight="34.0" prefWidth="174.0" text="L'identifiant n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="Mot de passe : " GridPane.rowIndex="4" />
+                        <TextField fx:id="input_ModifMdp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="lbl_ErreurModifMdp" prefHeight="35.0" prefWidth="185.0" text="Le mot de passe n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="No de maison : " GridPane.rowIndex="6" />
+                        <TextField fx:id="input_ModifNo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="lbl_ErreurModifNo" prefHeight="37.0" prefWidth="185.0" text="Le numéro n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Rue : " textAlignment="CENTER" GridPane.rowIndex="8" />
+                        <TextField fx:id="input_ModifRue" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="335.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label fx:id="lbl_ErreurModifRue" prefHeight="34.0" prefWidth="185.0" text="La rue n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Code postal : " textAlignment="CENTER" GridPane.rowIndex="10" />
+                        <TextField fx:id="input_ModifCp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="74.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label fx:id="lbl_ErreurModifCP" prefHeight="35.0" prefWidth="185.0" text="Le code pastal n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0" text="Ville : " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                        <TextField fx:id="input_ModifVille" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                        <Label fx:id="lbl_ErreurModifVille" prefHeight="36.0" prefWidth="169.0" text="La ville n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="155.0" text="Pays : " GridPane.rowIndex="12" />
+                        <TextField fx:id="input_ModifPays" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <Label fx:id="lbl_ErreurModifPays" prefHeight="35.0" prefWidth="185.0" text="Le pays n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="-5.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+               </children>
+            </Pane>
          </children>
       </Pane>
-      <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+      <HBox prefHeight="30.0" prefWidth="1200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_CreerClient" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_CreerClient" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_CreerClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" />
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="lbl_Creerclient" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_Creerclient" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_ModifClient" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
+      </HBox>
+      <Pane prefHeight="260.0" prefWidth="1200.0">
+         <children>
+            <Button layoutX="43.0" layoutY="70.0" mnemonicParsing="false" text="Visualiser" />
+            <Button layoutX="40.0" layoutY="155.0" mnemonicParsing="false" text="Supprimer" />
+            <TableView layoutX="138.0" layoutY="30.0" prefHeight="196.0" prefWidth="1038.0" visible="false">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID Client" />
+                <TableColumn prefWidth="75.0" text="Nom" />
+                  <TableColumn prefWidth="75.0" text="Prenom" />
+                  <TableColumn prefWidth="90.0" text="Identifiant" />
+                  <TableColumn prefWidth="110.0" text="Mot_De_Pase" />
+                  <TableColumn prefWidth="94.0" text="Numéro" />
+                  <TableColumn prefWidth="214.0" text="Voie" />
+                  <TableColumn prefWidth="99.0" text="Code Postal" />
+                  <TableColumn prefWidth="107.0" text="Ville" />
+                  <TableColumn prefWidth="98.0" text="Pays" />
+              </columns>
+            </TableView>
+            <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
+         </children>
+      </Pane>
    </children>
 </VBox>
