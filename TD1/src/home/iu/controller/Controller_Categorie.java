@@ -49,33 +49,42 @@ public class Controller_Categorie {
     private TableView<Produit> tblProduits;
 
     public void Table() {
-        TableColumn<Produit, Double> colID =
-                new TableColumn<>("ID");
-        TableColumn<Produit, Double> colNom =
-                new TableColumn<>("ID");
-        TableColumn<Produit, Double> colDescription =
-                new TableColumn<>("ID");
-        TableColumn<Produit, Double> colTarif =
-                new TableColumn<>("ID");
-        TableColumn<Produit, Double> colID_Categ =
-                new TableColumn<>("ID");
+        TableColumn<Produit, Double> colID = new TableColumn<>("ID");
+        TableColumn<Produit, Double> colNom = new TableColumn<>("ID");
+        TableColumn<Produit, Double> colDescription = new TableColumn<>("ID");
+        TableColumn<Produit, Double> colTarif = new TableColumn<>("ID");
+        TableColumn<Produit, Double> colID_Categ = new TableColumn<>("ID");
         colID.setCellValueFactory(
                 new PropertyValueFactory<Produit, Double>("ID"));
         this.tblProduits.getColumns().setAll(colID, colNom, colDescription, colTarif, colID_Categ);
-        //this.tblProduits.getItems().addAll(
-               // DAOFactory.getDAOFactory().getProduitDAO().findAll());
+        //this.tblProduits.getItems().addAll(DAOFactory.getDAOFactory().getProduitDAO().findAll());
     }
 
 
     @FXML
     void OnClick_CreerCategorie(ActionEvent event) {
+        boolean complet = true;
+        lbl_ErreurTitre.setVisible(false);
+        lbl_ErreurVisuel.setVisible(false);
 
+        //Liste de verification des Erreurs
+        if (imput_titre.getText() == "") {
+            lbl_ErreurTitre.setVisible(true);
+            complet = false;
+        }
+        if (imput_visuel.getText() == "") {
+            lbl_ErreurVisuel.setVisible(true);
+            complet = false;
+
+
+        }
     }
 
     @FXML
-    void OnClick_ModifCategorie(ActionEvent event) {
+    void OnClick_ModifCategorie (ActionEvent event){
 
     }
+
 
     @FXML
     void OnClick_SuppCategorie(ActionEvent event) {
