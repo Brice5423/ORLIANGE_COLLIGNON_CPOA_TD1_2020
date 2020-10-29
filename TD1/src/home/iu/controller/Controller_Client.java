@@ -127,6 +127,69 @@ public class Controller_Client {
 
     @FXML
     void OnClick_CreerClient(ActionEvent event) {
+        boolean complet = true;
+
+        lbl_ErreurNom.setVisible(false);
+        lbl_ErreurPrenom.setVisible(false);
+        lbl_ErreurMail.setVisible(false);
+        lbl_ErreurMdp.setVisible(false);
+        lbl_ErreurNo.setVisible(false);
+        lbl_ErreurRue.setVisible(false);
+        lbl_ErreurCP.setVisible(false);
+        lbl_ErreurVille.setVisible(false);
+        lbl_ErreurPays.setVisible(false);
+
+        //Liste de verification des Erreurs
+        if (input_Nom.getText() == "") {
+            lbl_ErreurNom.setVisible(true);
+            complet = false;
+        }
+        if (input_Prenom.getText() == "") {
+            lbl_ErreurPrenom.setVisible(true);
+            complet = false;
+        }
+        if (input_Id.getText() == "") {
+            lbl_ErreurMail.setVisible(true);
+            complet = false;
+        }
+        if (input_Mdp.getText() == "") {
+            lbl_ErreurMdp.setVisible(true);
+            complet = false;
+        }
+        if (input_No.getText() == "") {
+            lbl_ErreurNo.setVisible(true);
+            complet = false;
+        }
+        if (input_Rue.getText() == "") {
+            lbl_ErreurRue.setVisible(true);
+            complet = false;
+        }
+        if (input_Cp.getText() == "") {
+            lbl_ErreurCP.setVisible(true);
+            complet = false;
+        }
+        if (input_Ville.getText() == "") {
+            lbl_ErreurVille.setVisible(true);
+            complet = false;
+        }
+        if (input_Pays.getText() == "") {
+            lbl_ErreurPays.setVisible(true);
+            complet = false;
+        }
+    }
+
+    @FXML
+    void OnClick_ModifClient(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClick_SuppClient(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClick_VisuClient(ActionEvent event) {
 
     }
 }
