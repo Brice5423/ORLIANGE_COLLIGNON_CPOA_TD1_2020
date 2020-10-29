@@ -2,19 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox fx:id="Vbox_Categ" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Commande">
+<VBox fx:id="Vbox_Categ" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Categorie">
    <children>
-      <Pane prefHeight="234.0" prefWidth="600.0">
+      <Pane prefHeight="240.0" prefWidth="600.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="183.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
             <GridPane layoutY="35.0" prefHeight="183.0" prefWidth="600.0">
@@ -48,21 +51,110 @@
                   </Label>
                </children>
             </GridPane>
+            <Pane layoutX="600.0" prefHeight="234.0" prefWidth="600.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="183.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
+                  <GridPane layoutY="35.0" prefHeight="183.0" prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="131.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="0.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="313.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Titre : " GridPane.rowIndex="1" />
+                        <TextField fx:id="imput_ModifTitre" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="lbl_ErreurModifTitre" prefHeight="17.0" prefWidth="338.0" text="La date n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" top="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Visuel : " textAlignment="CENTER" GridPane.rowIndex="2" />
+                        <TextField fx:id="imput_ModifVisuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="lbl_ErreurModifVisuel" prefHeight="17.0" prefWidth="338.0" text="Le visuel n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id : " />
+                        <ChoiceBox fx:id="choice_ModifCateg" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="224.0" layoutY="14.0" text="Modification d'une categorie" />
+               </children>
+            </Pane>
+            <Label layoutX="230.0" layoutY="14.0" text="Création d'une categorie" />
          </children>
       </Pane>
-      <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+      <HBox prefHeight="30.0" prefWidth="1200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_CreerCategorie" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_CreerCategorie" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_ModifCategorie" prefHeight="25.0" prefWidth="65.0" text="Modifier" />
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="lbl_Creercateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_Creercateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_ModifCateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
+      </HBox>
+      <Pane prefHeight="160.0" prefWidth="1200.0">
+         <children>
+            <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
+            <Label layoutX="51.0" layoutY="53.0" text="Id Categorie :" />
+            <ChoiceBox fx:id="choice_VisuCateg" layoutX="136.0" layoutY="49.0" prefHeight="25.0" prefWidth="120.0" />
+            <Button layoutX="163.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_VisuCategorie" text="Visualiser" />
+            <FlowPane alignment="CENTER" layoutX="307.0" layoutY="32.0" prefHeight="110.0" prefWidth="860.0">
+               <children>
+                  <Label fx:id="lbl_VisuCateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </FlowPane>
+            <Line endX="781.0" layoutX="390.0" layoutY="160.0" startX="-361.0" strokeType="OUTSIDE" />
+         </children>
+      </Pane>
+      <Pane prefHeight="150.0" prefWidth="1200.0">
+         <children>
+            <ChoiceBox fx:id="choice_SuppCateg" layoutX="540.0" layoutY="32.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="456.0" layoutY="36.0" text="Id Categorie :" />
+            <Button layoutX="564.0" layoutY="75.0" mnemonicParsing="false" onAction="#OnClick_SuppCategorie" text="Supprimer" />
+            <Label layoutX="420.0" layoutY="127.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
+         </children>
+      </Pane>
    </children>
 </VBox>

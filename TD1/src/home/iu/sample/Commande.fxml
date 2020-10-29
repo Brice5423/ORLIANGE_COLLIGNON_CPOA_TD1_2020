@@ -2,20 +2,23 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox fx:id="Vbox_Commande" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Commande">
+<VBox fx:id="Vbox_Commande" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Commande">
    <children>
-      <Pane prefHeight="234.0" prefWidth="600.0">
+      <Pane prefHeight="240.0" prefWidth="600.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="183.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
             <GridPane layoutY="35.0" prefHeight="183.0" prefWidth="600.0">
@@ -49,21 +52,103 @@
                   </Label>
                </children>
             </GridPane>
+            <Pane layoutX="600.0" maxWidth="-Infinity" prefHeight="234.0" prefWidth="600.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="183.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
+                  <GridPane layoutY="35.0" prefHeight="183.0" prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="131.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="0.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="313.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Date Commande : " />
+                        <DatePicker fx:id="date_ModifCom" GridPane.columnIndex="2" />
+                        <Label fx:id="lbl_ErreurModifDate" prefHeight="17.0" prefWidth="338.0" text="La date n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" top="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id Client : " textAlignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="lbl_ErreurModifID" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" top="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <ChoiceBox fx:id="Choice_ModifCom" prefHeight="25.0" prefWidth="86.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="237.0" layoutY="14.0" text="Modification d'une commande" />
+               </children>
+            </Pane>
+            <Label layoutX="248.0" layoutY="14.0" text="Création d'une commande" />
          </children>
       </Pane>
-      <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+      <HBox prefHeight="30.0" prefWidth="1200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_CreerCommande" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_CreerCommande" prefHeight="25.0" prefWidth="56.0" text="Créer" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnClick_ModifCommande" prefHeight="25.0" prefWidth="63.0" text="Modifier" />
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="lbl_Creercommande" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_Creercommande" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="lbl_ModifCommande" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </FlowPane>
          </children>
-      </FlowPane>
+      </HBox>
+      <Pane prefHeight="170.0" prefWidth="1200.0">
+         <children>
+            <Line endX="781.0" layoutX="390.0" layoutY="13.0" startX="-361.0" strokeType="OUTSIDE" />
+            <Line endX="781.0" layoutX="390.0" layoutY="163.0" startX="-361.0" strokeType="OUTSIDE" />
+            <TextField fx:id="imput_VisuCom" layoutX="123.0" layoutY="56.0" />
+            <Label layoutX="33.0" layoutY="60.0" text="Id Commande :" />
+            <Button layoutX="164.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_VisuCommande" text="Visualiser" />
+            <FlowPane alignment="CENTER" layoutX="293.0" layoutY="30.0" prefHeight="116.0" prefWidth="893.0">
+               <children>
+                  <Label fx:id="lbl_VisuCommande" alignment="CENTER" prefHeight="108.0" prefWidth="761.0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
+         </children>
+      </Pane>
+      <Pane prefHeight="160.0" prefWidth="1200.0">
+         <children>
+            <Label layoutX="456.0" layoutY="37.0" text="Id Commande :" />
+            <Button layoutX="564.0" layoutY="82.0" mnemonicParsing="false" onAction="#OnClick_SuppCommande" text="Supprimer" />
+            <Label layoutX="420.0" layoutY="138.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
+            <ChoiceBox fx:id="Choice_SuppCom" layoutX="550.0" layoutY="33.0" prefHeight="25.0" prefWidth="100.0" />
+         </children>
+      </Pane>
    </children>
 </VBox>

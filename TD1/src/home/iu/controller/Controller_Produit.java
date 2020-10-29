@@ -84,6 +84,15 @@ public class Controller_Produit implements Initializable {
     private TextField imput_SuppNom;
 
     @FXML
+    private ChoiceBox<?> Choice_ModifId;
+
+    @FXML
+    private ChoiceBox<?> Choice_VisuCateg;
+
+    @FXML
+    private ChoiceBox<?> Choice_SuppCateg;
+
+    @FXML
     void OnClick_ModifProduit(ActionEvent event) {
 
     }

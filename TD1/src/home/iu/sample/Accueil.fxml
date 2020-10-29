@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.iu.controller.Controller_Accueil">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Quitter">
             <items>
-              <MenuItem mnemonicParsing="false" text="Fermer" />
+              <MenuItem mnemonicParsing="false" onAction="#OnCick_Quitter" text="Fermer" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aide">
             <items>
-              <MenuItem mnemonicParsing="false" text="A propos" />
+              <MenuItem mnemonicParsing="false" onAction="#OnClick_Aide" text="A propos" />
             </items>
           </Menu>
         </menus>
@@ -40,10 +40,10 @@
                   <Insets />
                </opaqueInsets>
             </RadioButton>
-            <Button fx:id="imput_Categ" layoutX="215.0" layoutY="124.0" mnemonicParsing="false" text="Catégorie" />
-            <Button fx:id="imput_Client" layoutX="339.0" layoutY="124.0" mnemonicParsing="false" text="Client" />
-            <Button fx:id="imput_Commande" layoutX="84.0" layoutY="124.0" mnemonicParsing="false" text="Commande" />
-            <Button fx:id="imput_Produit" layoutX="455.0" layoutY="124.0" mnemonicParsing="false" text="Produit" />
+            <Button layoutX="215.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Categorie" text="Catégorie" />
+            <Button layoutX="339.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Client" text="Client" />
+            <Button layoutX="84.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Commande" text="Commande" />
+            <Button layoutX="455.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Produit" text="Produit" />
          </children>
       </Pane>
       <Label alignment="CENTER" prefHeight="26.0" prefWidth="602.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
