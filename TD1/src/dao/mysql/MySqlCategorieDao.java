@@ -84,14 +84,14 @@ public class MySqlCategorieDao implements IDaoCategorie {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                int id_categorie = resultSet.getInt("id_categorie");
-                if(id_categorie == id) {
+                int idCategorie = resultSet.getInt("id_categorie");
+                if(idCategorie == id) {
                     String titre = resultSet.getString("titre");
                     String visuel = resultSet.getString("visuel");
 
-                    System.out.format("%s, %s, %s\n", id_categorie, titre, visuel);
+                    System.out.format("%s, %s, %s\n", idCategorie, titre, visuel);
 
-                    Categorie categorie = new Categorie(id_categorie, titre, visuel);
+                    Categorie categorie = new Categorie(idCategorie, titre, visuel);
                     statement.close();
                     return categorie;
                 }

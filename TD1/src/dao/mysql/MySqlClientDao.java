@@ -34,13 +34,13 @@ public class MySqlClientDao implements IDaoClient {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                int id_client = resultSet.getInt("id_client");
+                int idClient = resultSet.getInt("id_client");
                 String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
 
-                System.out.format("%s, %s, %s\n", id_client, nom, prenom);
+                System.out.format("%s, %s, %s\n", idClient, nom, prenom);
 
-                Client client = new Client(id_client, nom, prenom);
+                Client client = new Client(idClient, nom, prenom);
                 donnees.add(client);
             }
 
@@ -83,14 +83,14 @@ public class MySqlClientDao implements IDaoClient {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                int id_client = resultSet.getInt("id_client");
-                if(id_client == id) {
+                int idClient = resultSet.getInt("id_client");
+                if(idClient == id) {
                     String nom = resultSet.getString("nom");
                     String prenom = resultSet.getString("prenom");
 
-                    System.out.format("%s, %s, %s\n", id_client, nom, prenom);
+                    System.out.format("%s, %s, %s\n", idClient, nom, prenom);
 
-                    Client client = new Client(id_client, nom, prenom);
+                    Client client = new Client(idClient, nom, prenom);
                     statement.close();
                     return client;
                 }
