@@ -12,39 +12,39 @@ import org.junit.Test;
 import java.util.List;
 
 public class TestListeMemoireCategorie {
-    private DaoFactory DaoF;
-    private IDaoCategorie Dao;
-    private List<Categorie> Liste;
+    private DaoFactory daoF;
+    private IDaoCategorie dao;
+    private List<Categorie> liste;
 
     @Before
     public void setUp() {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
-        Dao = DaoF.getDaoCategorie();
-        Liste = Dao.getAllCategories();
+        daoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        dao = daoF.getDaoCategorie();
+        liste = dao.getAllCategories();
     }
 
 
     @Test
     public void testAllCategories() {
-        assertNotNull(Liste);
+        assertNotNull(liste);
     }
 
     @Test
     public void testCreate() {
-        int size = Dao.getAllCategories().size();
+        int size = dao.getAllCategories().size();
 
         Categorie categorie = new Categorie();
         categorie.setId(1);
         categorie.setTitre("banana !");
         categorie.setVisuel("banana.png");
-        Assert.assertTrue(Dao.create(categorie));
+        Assert.assertTrue(dao.create(categorie));
 
-        assertEquals(size+1, Dao.getAllCategories().size());
+        assertEquals(size+1, dao.getAllCategories().size());
     }
 
     @Test
     public void testGetById() {
-        assertNotNull(Dao.getById(1));
+        assertNotNull(dao.getById(1));
     }
 
     @Test
@@ -54,21 +54,21 @@ public class TestListeMemoireCategorie {
         categorie.setTitre("banana !");
         categorie.setVisuel("banana.png");
 
-        assertTrue(Dao.create(categorie));
+        assertTrue(dao.create(categorie));
 
-        Categorie categorieRead = Dao.getById(4);
+        Categorie categorieRead = dao.getById(4);
         assertEquals(categorie, categorieRead);
 
         categorieRead.setTitre("banane au chocolat");
-        assertTrue(Dao.update(categorieRead));
+        assertTrue(dao.update(categorieRead));
 
-        assertEquals(categorieRead, Dao.getById(4));
+        assertEquals(categorieRead, dao.getById(4));
     }
 
     @Test
     public void testDelete() {
-        Categorie categorie = Dao.getById(2);
-        Dao.delete(categorie);
-        assertNull(Dao.getById(2));
+        Categorie categorie = dao.getById(2);
+        dao.delete(categorie);
+        assertNull(dao.getById(2));
     }
 }

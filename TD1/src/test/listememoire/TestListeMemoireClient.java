@@ -12,39 +12,39 @@ import org.junit.Test;
 import java.util.List;
 
 public class TestListeMemoireClient {
-    private DaoFactory DaoF;
-    private IDaoClient Dao;
-    private List<Client> Liste;
+    private DaoFactory daoF;
+    private IDaoClient dao;
+    private List<Client> liste;
 
     @Before
     public void setUp() {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
-        Dao = DaoF.getDaoClient();
-        Liste = Dao.getAllClients();
+        daoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        dao = daoF.getDaoClient();
+        liste = dao.getAllClients();
     }
 
 
     @Test
     public void testAllClients() {
-        assertNotNull(Liste);
+        assertNotNull(liste);
     }
 
     @Test
     public void testCreate() {
-        int size = Dao.getAllClients().size();
+        int size = dao.getAllClients().size();
 
         Client client = new Client();
         client.setId(1);
         client.setNom("Bricou");
         client.setPrenom("Brice");
-        Assert.assertTrue(Dao.create(client));
+        Assert.assertTrue(dao.create(client));
 
-        assertEquals(size+1, Dao.getAllClients().size());
+        assertEquals(size+1, dao.getAllClients().size());
     }
 
     @Test
     public void testGetById() {
-        assertNotNull(Dao.getById(1));
+        assertNotNull(dao.getById(1));
     }
 
     @Test
@@ -54,21 +54,21 @@ public class TestListeMemoireClient {
         client.setNom("Bricou");
         client.setPrenom("Brice");
 
-        assertTrue(Dao.create(client));
+        assertTrue(dao.create(client));
 
-        Client clientRead = Dao.getById(4);
+        Client clientRead = dao.getById(4);
         assertEquals(client, clientRead);
 
         clientRead.setNom("BriceBricou");
-        assertTrue(Dao.update(clientRead));
+        assertTrue(dao.update(clientRead));
 
-        assertEquals(clientRead, Dao.getById(4));
+        assertEquals(clientRead, dao.getById(4));
     }
 
     @Test
     public void testDelete() {
-        Client client = Dao.getById(2);
-        Dao.delete(client);
-        assertNull(Dao.getById(2));
+        Client client = dao.getById(2);
+        dao.delete(client);
+        assertNull(dao.getById(2));
     }
 }
