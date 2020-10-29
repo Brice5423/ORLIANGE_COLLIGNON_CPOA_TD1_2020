@@ -81,6 +81,7 @@ public class TestListeMemoireCommande {
 
         Client clientRead = new Client();
         clientRead.setId(666);
+
         commandeRead.setClient(clientRead);
         assertTrue(daoCommande.update(commandeRead));
 
