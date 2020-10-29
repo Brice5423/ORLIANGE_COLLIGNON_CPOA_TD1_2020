@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -128,26 +130,23 @@
             </FlowPane>
          </children>
       </HBox>
-      <Pane prefHeight="170.0" prefWidth="1200.0">
+      <Pane prefHeight="315.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="13.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Line endX="781.0" layoutX="390.0" layoutY="163.0" startX="-361.0" strokeType="OUTSIDE" />
-            <TextField fx:id="imput_VisuCom" layoutX="123.0" layoutY="56.0" />
-            <Label layoutX="33.0" layoutY="60.0" text="Id Commande :" />
-            <Button layoutX="164.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_VisuCommande" text="Visualiser" />
-            <FlowPane alignment="CENTER" layoutX="293.0" layoutY="30.0" prefHeight="116.0" prefWidth="893.0">
-               <children>
-                  <Label fx:id="lbl_VisuCommande" alignment="CENTER" prefHeight="108.0" prefWidth="761.0" textAlignment="CENTER" />
-               </children>
-            </FlowPane>
+            <Button layoutX="286.0" layoutY="92.0" mnemonicParsing="false" onAction="#OnClick_VisuCommande" text="Visualiser" />
+            <Button layoutX="283.0" layoutY="181.0" mnemonicParsing="false" onAction="#OnClick_SuppCommande" text="Supprimer" />
+            <TableView layoutX="442.0" layoutY="34.0" prefHeight="262.0" prefWidth="317.0" visible="false">
+              <columns>
+                <TableColumn prefWidth="97.0" text="ID_Commande" />
+                <TableColumn prefWidth="161.0" text="Date_Commande" />
+                  <TableColumn prefWidth="58.0" text="ID_Client" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
-      <Pane prefHeight="160.0" prefWidth="1200.0">
+      <Pane prefHeight="25.0" prefWidth="1200.0">
          <children>
-            <Label layoutX="456.0" layoutY="37.0" text="Id Commande :" />
-            <Button layoutX="564.0" layoutY="82.0" mnemonicParsing="false" onAction="#OnClick_SuppCommande" text="Supprimer" />
-            <Label layoutX="420.0" layoutY="138.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
-            <ChoiceBox fx:id="Choice_SuppCom" layoutX="550.0" layoutY="33.0" prefHeight="25.0" prefWidth="100.0" />
+            <Label layoutX="420.0" layoutY="4.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />
          </children>
       </Pane>
    </children>

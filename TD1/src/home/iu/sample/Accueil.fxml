@@ -34,16 +34,17 @@
       </Label>
       <Pane prefHeight="350.0" prefWidth="600.0">
          <children>
-            <RadioButton fx:id="radio_MYSQL" layoutX="135.0" layoutY="53.0" mnemonicParsing="false" text="MySql" />
-            <RadioButton fx:id="radio_LM" layoutX="362.0" layoutY="53.0" mnemonicParsing="false" text="ListeMémoire">
+            <RadioButton fx:id="radio_MYSQL" layoutX="123.0" layoutY="53.0" mnemonicParsing="false" text="MySql" />
+            <RadioButton fx:id="radio_LM" layoutX="385.0" layoutY="53.0" mnemonicParsing="false" text="ListeMémoire">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </RadioButton>
-            <Button layoutX="215.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Categorie" text="Catégorie" />
-            <Button layoutX="339.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Client" text="Client" />
-            <Button layoutX="84.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Commande" text="Commande" />
-            <Button layoutX="455.0" layoutY="124.0" mnemonicParsing="false" onAction="#OnClick_Produit" text="Produit" />
+            <Button layoutX="210.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_Categorie" text="Catégorie" />
+            <Button layoutX="339.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_Client" text="Client" />
+            <Button layoutX="84.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_Commande" text="Commande" />
+            <Button layoutX="455.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_Produit" text="Produit" />
+            <Button layoutX="252.0" layoutY="112.0" mnemonicParsing="false" onAction="#OnClick_ConfirmationRD" text="Confirmation" />
          </children>
       </Pane>
       <Label alignment="CENTER" prefHeight="26.0" prefWidth="602.0" text="© 2020 COLLIGNON Nicolas / ORLIANGE Brice, tous droits réservés." />

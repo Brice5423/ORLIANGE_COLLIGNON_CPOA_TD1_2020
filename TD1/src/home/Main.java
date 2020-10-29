@@ -26,7 +26,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(fxmlURL);
             Node root = fxmlLoader.load();
-            Scene scene = new Scene((VBox) root, 600, 500);
+            Scene scene = new Scene((VBox) root);
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("Boutique de vêtements moches");
