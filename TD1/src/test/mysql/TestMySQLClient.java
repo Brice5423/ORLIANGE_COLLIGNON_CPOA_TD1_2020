@@ -18,7 +18,7 @@ public class TestMySQLClient {
 
     @Before
     public void setUp() {
-        daoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoClient();
         liste = dao.getAllClients();
     }
@@ -34,9 +34,9 @@ public class TestMySQLClient {
         int size = dao.getAllClients().size();
 
         Client client = new Client();
-        client.setId(100);
-        client.setNom("Bricou");
-        client.setPrenom("Brice");
+        client.setId(2);
+        client.setNom("Brais");
+        client.setPrenom("Burisuu");
         Assert.assertTrue(dao.create(client));
 
         assertEquals(size+1, dao.getAllClients().size());

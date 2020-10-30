@@ -18,7 +18,7 @@ public class TestMySQLCategorie {
 
     @Before
     public void setUp() {
-        daoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoCategorie();
         liste = dao.getAllCategories();
     }
