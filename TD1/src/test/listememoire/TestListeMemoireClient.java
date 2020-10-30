@@ -34,11 +34,14 @@ public class TestListeMemoireClient {
         int size = dao.getAllClients().size();
 
         Client client = new Client();
-        client.setId(1);
-        client.setNom("Bricou");
-        client.setPrenom("Brice");
-        Assert.assertTrue(dao.create(client));
+        client.setId(1000);
+        client.setNom("Test");
+        client.setPrenom("test");
+        client.setMail("test@test.com");
+        client.setMdp("test");
+        client.setAdresse("02", "rue test", "99666", "test", "test");
 
+        Assert.assertTrue(dao.create(client));
         assertEquals(size+1, dao.getAllClients().size());
     }
 
@@ -50,19 +53,22 @@ public class TestListeMemoireClient {
     @Test
     public void testUpdate() {
         Client client = new Client();
-        client.setId(4);
-        client.setNom("Bricou");
-        client.setPrenom("Brice");
+        client.setId(1500);
+        client.setNom("Test");
+        client.setPrenom("test");
+        client.setMail("test@test.com");
+        client.setMdp("test");
+        client.setAdresse("02", "rue test", "99666", "test", "test");
 
         assertTrue(dao.create(client));
 
-        Client clientRead = dao.getById(4);
+        Client clientRead = dao.getById(1500);
         assertEquals(client, clientRead);
 
-        clientRead.setNom("BriceBricou");
+        clientRead.setNom("testUp");
         assertTrue(dao.update(clientRead));
 
-        assertEquals(clientRead, dao.getById(4));
+        assertEquals(clientRead, dao.getById(1500));
     }
 
     @Test

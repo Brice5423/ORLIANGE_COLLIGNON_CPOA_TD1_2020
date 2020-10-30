@@ -34,8 +34,8 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
 
         Date date = new Date();
 
-        Client client1 = new Client(1, "ORLIANGE", "Brice");
-        Client client2 = new Client(2, "COLLIGNON", "Nico");
+        Client client1 = new Client(1, "ORLIANGE", "Brice", "orl.bri@liste.com", "jetaime", "45", "rue", "54789", "cool", "happy");
+        Client client2 = new Client(2, "COLLIGNON", "Nicolas", "col.nic@liste.com", "bisous", "36", "avenu", "57852", "nop", "hihi");
 
         Categorie categorie1 = new Categorie(1, "Pull", "");
         Categorie categorie2 = new Categorie(2, "vest", "");

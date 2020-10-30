@@ -20,9 +20,8 @@ public class ListeMemoireClientDao implements IDaoClient {
     private ListeMemoireClientDao() {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Client>();
-        this.donnees.add(new Client(1, "Niconii", "Nico"));
-        this.donnees.add(new Client(2, "Gogo", "Gauthier"));
-        this.donnees.add(new Client(3, "Yuyu", "Irma"));
+        this.donnees.add(new Client(1, "ORLIANGE", "Brice", "orl.bri@liste.com", "jetaime", "45", "rue", "54789", "cool", "happy"));
+        this.donnees.add(new Client(2, "COLLIGNON", "Nicolas", "col.nic@liste.com", "bisous", "36", "avenu", "57852", "nop", "hihi"));
     }
 
 

@@ -34,11 +34,13 @@ public class TestMySQLClient {
         int size = dao.getAllClients().size();
 
         Client client = new Client();
-        client.setId(2);
-        client.setNom("Brais");
-        client.setPrenom("Burisuu");
-        Assert.assertTrue(dao.create(client));
+        client.setNom("Test");
+        client.setPrenom("test");
+        client.setMail("test@test.com");
+        client.setMdp("test");
+        client.setAdresse("02", "rue test", "99666", "test", "test");
 
+        Assert.assertTrue(dao.create(client));
         assertEquals(size+1, dao.getAllClients().size());
 
         dao.delete(client);
@@ -52,9 +54,11 @@ public class TestMySQLClient {
     @Test
     public void testUpdate() {
         Client client = new Client();
-        client.setId(150);
-        client.setNom("Bricou");
-        client.setPrenom("Brice");
+        client.setNom("Test");
+        client.setPrenom("test");
+        client.setMail("test@test.com");
+        client.setMdp("test");
+        client.setAdresse("02", "rue test", "99666", "test", "test");
 
         assertTrue(dao.create(client));
 

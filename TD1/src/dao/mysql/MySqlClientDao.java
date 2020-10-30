@@ -37,10 +37,18 @@ public class MySqlClientDao implements IDaoClient {
                 int idClient = resultSet.getInt("id_client");
                 String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
+                String mail = resultSet.getString("identifiant");
+                String mdp = resultSet.getString("mot_de_passe");
+
+                String adrNum = resultSet.getString("adr_numero");
+                String adrVoie = resultSet.getString("adr_voie");
+                String adrCodePostal = resultSet.getString("adr_code_postal");
+                String adrVille = resultSet.getString("adr_ville");
+                String adrPays = resultSet.getString("adr_pays");
 
                 System.out.format("%s, %s, %s\n", idClient, nom, prenom);
 
-                Client client = new Client(idClient, nom, prenom);
+                Client client = new Client(idClient, nom, prenom, mail, mdp, adrNum, adrVoie, adrCodePostal, adrVille, adrPays);
                 donnees.add(client);
             }
 
@@ -58,10 +66,20 @@ public class MySqlClientDao implements IDaoClient {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
-            String request = "INSERT INTO Client(nom, prenom) VALUES(?, ?)";
+            String request = "INSERT INTO Client(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = laConnexion.prepareStatement(request);
+
             ps.setString(1, objet.getNom());
             ps.setString(2, objet.getPrenom());
+            ps.setString(3, objet.getMail());
+            ps.setString(4, objet.getMdp());
+
+            ps.setString(5, objet.getAdrNum());
+            ps.setString(6, objet.getAdrVoie());
+            ps.setString(7, objet.getAdrCodePostal());
+            ps.setString(8, objet.getAdrVille());
+            ps.setString(9, objet.getAdrPays());
+
             ps.executeUpdate();
 
             laConnexion.close();
@@ -87,10 +105,18 @@ public class MySqlClientDao implements IDaoClient {
                 if(idClient == id) {
                     String nom = resultSet.getString("nom");
                     String prenom = resultSet.getString("prenom");
+                    String mail = resultSet.getString("identifiant");
+                    String mdp = resultSet.getString("mot_de_passe");
+
+                    String adrNum = resultSet.getString("adr_numero");
+                    String adrVoie = resultSet.getString("adr_voie");
+                    String adrCodePostal = resultSet.getString("adr_code_postal");
+                    String adrVille = resultSet.getString("adr_ville");
+                    String adrPays = resultSet.getString("adr_pays");
 
                     System.out.format("%s, %s, %s\n", idClient, nom, prenom);
 
-                    Client client = new Client(idClient, nom, prenom);
+                    Client client = new Client(idClient, nom, prenom, mail, mdp, adrNum, adrVoie, adrCodePostal, adrVille, adrPays);
                     statement.close();
                     return client;
                 }
@@ -106,10 +132,21 @@ public class MySqlClientDao implements IDaoClient {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
-            String request = "UPDATE Client SET nom = ? WHERE id_client = ?";
+            String request = "UPDATE Client SET nom = ? AND prenom = ? AND identifiant = ? AND mot_de_passe = ? AND adr_numero = ? AND adr_voie = ? AND adr_code_postal = ? AND adr_ville = ? AND adr_pays = ? WHERE id_client = ?";
             PreparedStatement ps = laConnexion.prepareStatement(request);
+
             ps.setString(1, objet.getNom());
             ps.setString(2, objet.getPrenom());
+            ps.setString(3, objet.getMail());
+            ps.setString(4, objet.getMdp());
+
+            ps.setString(5, objet.getAdrNum());
+            ps.setString(6, objet.getAdrVoie());
+            ps.setString(7, objet.getAdrCodePostal());
+            ps.setString(8, objet.getAdrVille());
+            ps.setString(9, objet.getAdrPays());
+
+            ps.setInt(10, objet.getId());
             ps.executeUpdate();
 
             laConnexion.close();
