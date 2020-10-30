@@ -120,7 +120,7 @@ public class Controller_Produit implements Initializable {
 
         //Quand on appuie sur le boutton Créer
         if (complet) {
-            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
+            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
             IDaoProduit DaoProd = DaoF.getDaoProduit();
 
             Produit produit = new Produit();
