@@ -76,18 +76,23 @@
                               <Insets />
                            </opaqueInsets>
                            <GridPane.margin>
-                              <Insets left="5.0" top="50.0" />
+                              <Insets left="5.0" top="40.0" />
                            </GridPane.margin>
                         </Label>
                         <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Visuel : " textAlignment="CENTER" GridPane.rowIndex="2" />
                         <TextField fx:id="imput_ModifVisuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Label fx:id="lbl_ErreurModifVisuel" prefHeight="17.0" prefWidth="338.0" text="Le visuel n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <GridPane.margin>
-                              <Insets left="5.0" top="50.0" />
+                              <Insets left="5.0" top="40.0" />
                            </GridPane.margin>
                         </Label>
                         <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id : " />
-                        <ChoiceBox fx:id="choice_ModifCateg" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" />
+                        <ChoiceBox fx:id="choice_ModifID" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" />
+                        <Label fx:id="lbl_ErreurModifID" alignment="CENTER" prefHeight="17.0" prefWidth="113.0" text="L'Id n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                   <Label layoutX="224.0" layoutY="14.0" text="Modification d'une categorie" />

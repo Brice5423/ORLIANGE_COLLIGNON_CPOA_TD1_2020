@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -59,8 +60,8 @@
                         <Insets left="5.0" top="-12.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Identifiant : " textAlignment="CENTER" GridPane.rowIndex="2" />
-                  <TextField fx:id="input_Id" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Mail : " textAlignment="CENTER" GridPane.rowIndex="2" />
+                  <TextField fx:id="input_Mail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label fx:id="lbl_ErreurMail" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="true" prefHeight="34.0" prefWidth="174.0" text="L'identifiant n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" top="-5.0" />
@@ -154,8 +155,8 @@
                               <Insets left="5.0" top="-12.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Identifiant : " textAlignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField fx:id="input_ModifId" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="153.0" text="Mail : " textAlignment="CENTER" GridPane.rowIndex="2" />
+                        <TextField fx:id="input_ModifMail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lbl_ErreurModifMail" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="true" prefHeight="34.0" prefWidth="174.0" text="L'identifiant n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="5.0" top="-5.0" />
@@ -203,6 +204,9 @@
                               <Insets left="5.0" top="-5.0" />
                            </GridPane.margin>
                         </Label>
+                        <ChoiceBox fx:id="choice_ModifID" prefHeight="25.0" prefWidth="71.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="59.0" text="Id : " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="lbl_ErreurModifID" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="120.0" text="L'Id n'est pas rempli " textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -221,7 +225,7 @@
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnClick_CreerClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" />
+                  <Button mnemonicParsing="false" onAction="#OnClick_ModifClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" />
                </children>
             </FlowPane>
          </children>
@@ -242,16 +246,16 @@
       </HBox>
       <Pane prefHeight="260.0" prefWidth="1200.0">
          <children>
-            <Button layoutX="43.0" layoutY="70.0" mnemonicParsing="false" text="Visualiser" />
-            <Button layoutX="40.0" layoutY="155.0" mnemonicParsing="false" text="Supprimer" />
+            <Button layoutX="43.0" layoutY="70.0" mnemonicParsing="false" onAction="#OnClick_VisuClient" text="Visualiser" />
+            <Button layoutX="40.0" layoutY="155.0" mnemonicParsing="false" onAction="#OnClick_SuppClient" text="Supprimer" />
             <TableView layoutX="138.0" layoutY="30.0" prefHeight="196.0" prefWidth="1038.0" visible="false">
               <columns>
                 <TableColumn prefWidth="75.0" text="ID Client" />
                 <TableColumn prefWidth="75.0" text="Nom" />
                   <TableColumn prefWidth="75.0" text="Prenom" />
-                  <TableColumn prefWidth="90.0" text="Identifiant" />
-                  <TableColumn prefWidth="110.0" text="Mot_De_Pase" />
-                  <TableColumn prefWidth="94.0" text="Numéro" />
+                  <TableColumn prefWidth="105.0" text="Mail" />
+                  <TableColumn prefWidth="133.0" text="Mot_De_Pase" />
+                  <TableColumn prefWidth="56.0" text="Numéro" />
                   <TableColumn prefWidth="214.0" text="Voie" />
                   <TableColumn prefWidth="99.0" text="Code Postal" />
                   <TableColumn prefWidth="107.0" text="Ville" />

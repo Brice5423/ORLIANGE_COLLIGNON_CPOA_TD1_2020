@@ -128,7 +128,7 @@
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Id :" textAlignment="CENTER" />
                         <ChoiceBox fx:id="Choice_ModifId" prefHeight="25.0" prefWidth="110.0" GridPane.columnIndex="2" />
-                        <Label fx:id="lbl_ErreurModiId" alignment="CENTER" prefHeight="17.0" prefWidth="120.0" text="L'Id n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
+                        <Label fx:id="lbl_ErreurModifId" alignment="CENTER" prefHeight="17.0" prefWidth="120.0" text="L'Id n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
                            <GridPane.margin>
                               <Insets top="43.0" />
                            </GridPane.margin>

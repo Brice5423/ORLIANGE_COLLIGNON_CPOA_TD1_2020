@@ -37,7 +37,10 @@ public class Controller_Categorie {
     private Label lbl_ErreurModifVisuel;
 
     @FXML
-    private ChoiceBox<?> choice_ModifCateg;
+    private ChoiceBox<?> choice_ModifID;
+
+    @FXML
+    private Label lbl_ErreurModifID;
 
     @FXML
     private Label lbl_Creercateg;
@@ -64,6 +67,7 @@ public class Controller_Categorie {
     @FXML
     void OnClick_CreerCategorie(ActionEvent event) {
         boolean complet = true;
+
         lbl_ErreurTitre.setVisible(false);
         lbl_ErreurVisuel.setVisible(false);
 
@@ -75,13 +79,30 @@ public class Controller_Categorie {
         if (imput_visuel.getText() == "") {
             lbl_ErreurVisuel.setVisible(true);
             complet = false;
-
-
         }
     }
 
     @FXML
     void OnClick_ModifCategorie (ActionEvent event){
+        boolean complet = true;
+
+        lbl_ErreurModifID.setVisible(false);
+        lbl_ErreurModifTitre.setVisible(false);
+        lbl_ErreurModifVisuel.setVisible(false);
+
+        //Liste de verification des Erreurs
+        if (choice_ModifID.getValue() == null) {
+            lbl_ErreurModifID.setVisible(true);
+            complet = false;
+        }
+        if (imput_ModifTitre.getText() == "") {
+            lbl_ErreurModifTitre.setVisible(true);
+            complet = false;
+        }
+        if (imput_ModifVisuel.getText() == "") {
+            lbl_ErreurModifVisuel.setVisible(true);
+            complet = false;
+        }
 
     }
 

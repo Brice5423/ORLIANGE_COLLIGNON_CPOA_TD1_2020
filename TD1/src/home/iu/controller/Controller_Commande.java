@@ -50,18 +50,26 @@ public class Controller_Commande {
         lbl_ErreurDate.setVisible(false);
         lbl_ErreurID.setVisible(false);
 
+        //Liste de verification des Erreurs
         if (imput_idCl.getText() == "") {
             lbl_ErreurID.setVisible(true);
             complet = false;
         }
-        //if (date_com.() == "") {
-            //lbl_ErreurDate.setVisible(true);
-            //complet = false;
-        //}
+        if (date_com.getValue() == null) {
+            lbl_ErreurDate.setVisible(true);
+            complet = false;
+        }
     }
 
     @FXML
     void OnClick_ModifCommande(ActionEvent event) {
+        boolean complet = true;
+
+        lbl_ErreurDate.setVisible(false);
+        lbl_ErreurID.setVisible(false);
+
+        //Liste de verification des Erreurs
+
 
     }
 

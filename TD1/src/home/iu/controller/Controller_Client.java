@@ -2,6 +2,7 @@ package home.iu.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -24,7 +25,7 @@ public class Controller_Client {
     private Label lbl_ErreurPrenom;
 
     @FXML
-    private TextField input_Id;
+    private TextField input_Mail;
 
     @FXML
     private Label lbl_ErreurMail;
@@ -78,7 +79,7 @@ public class Controller_Client {
     private Label lbl_ErreurModifPrenom;
 
     @FXML
-    private TextField input_ModifId;
+    private TextField input_ModifMail;
 
     @FXML
     private Label lbl_ErreurModifMail;
@@ -126,6 +127,12 @@ public class Controller_Client {
     private Label lbl_ModifClient;
 
     @FXML
+    private ChoiceBox<?> choice_ModifID;
+
+    @FXML
+    private Label lbl_ErreurModifID;
+
+    @FXML
     void OnClick_CreerClient(ActionEvent event) {
         boolean complet = true;
 
@@ -148,7 +155,7 @@ public class Controller_Client {
             lbl_ErreurPrenom.setVisible(true);
             complet = false;
         }
-        if (input_Id.getText() == "") {
+        if (input_Mail.getText() == "") {
             lbl_ErreurMail.setVisible(true);
             complet = false;
         }
@@ -180,6 +187,60 @@ public class Controller_Client {
 
     @FXML
     void OnClick_ModifClient(ActionEvent event) {
+        boolean complet = true;
+
+        lbl_ErreurModifNom.setVisible(false);
+        lbl_ErreurModifPrenom.setVisible(false);
+        lbl_ErreurModifMail.setVisible(false);
+        lbl_ErreurModifMdp.setVisible(false);
+        lbl_ErreurModifNo.setVisible(false);
+        lbl_ErreurModifRue.setVisible(false);
+        lbl_ErreurModifCP.setVisible(false);
+        lbl_ErreurModifVille.setVisible(false);
+        lbl_ErreurModifPays.setVisible(false);
+        lbl_ErreurModifID.setVisible(false);
+
+        //Liste de verification des Erreurs
+        if (input_ModifNom.getText() == "") {
+            lbl_ErreurModifNom.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifPrenom.getText() == "") {
+            lbl_ErreurModifPrenom.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifMail.getText() == "") {
+            lbl_ErreurModifMail.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifMdp.getText() == "") {
+            lbl_ErreurModifMdp.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifNo.getText() == "") {
+            lbl_ErreurModifNo.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifRue.getText() == "") {
+            lbl_ErreurModifRue.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifCp.getText() == "") {
+            lbl_ErreurModifCP.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifVille.getText() == "") {
+            lbl_ErreurModifVille.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifPays.getText() == "") {
+            lbl_ErreurModifPays.setVisible(true);
+            complet = false;
+        }
+        if (choice_ModifID.getValue() == null) {
+            lbl_ErreurModifID.setVisible(true);
+            complet = false;
+        }
 
     }
 

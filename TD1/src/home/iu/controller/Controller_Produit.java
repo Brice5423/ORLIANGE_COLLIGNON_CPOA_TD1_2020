@@ -46,7 +46,6 @@ public class Controller_Produit implements Initializable {
     @FXML
     private Label lbl_ErreurCateg;
 
-
     @FXML
     private TextField input_ModifNom;
 
@@ -69,22 +68,19 @@ public class Controller_Produit implements Initializable {
     private Label lbl_ErreurModifCateg;
 
     @FXML
+    private Label lbl_ErreurModifId;
+
+    @FXML
     private Label lbl_CreerProduit;
 
     @FXML
     private Label lbl_ModifProduit;
 
     @FXML
-    private TextField imput_VisuNom;
-
-    @FXML
-    private Label lbl_VisuProduit;
-
-    @FXML
-    private TextField imput_SuppNom;
-
-    @FXML
     private ChoiceBox<?> Choice_ModifId;
+
+    @FXML
+    private ChoiceBox<?> Choice_ModifCateg;
 
     @FXML
     private ChoiceBox<?> Choice_VisuCateg;
@@ -92,19 +88,10 @@ public class Controller_Produit implements Initializable {
     @FXML
     private ChoiceBox<?> Choice_SuppCateg;
 
-    @FXML
-    void OnClick_ModifProduit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void OnClick_SuppProduit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void OnClick_VisuProduit(ActionEvent event) {
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
+        this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
     }
 
     @FXML
@@ -125,7 +112,7 @@ public class Controller_Produit implements Initializable {
             lbl_ErreurDescription.setVisible(true);
             complet = false;
         }
-        if ((input_Tarif.getText() == "")||(!isDouble(input_Tarif.getText()))) {
+        if ((input_Tarif.getText() == "") || (!isDouble(input_Tarif.getText()))) {
             lbl_ErreurTarif.setVisible(true);
             complet = false;
         }
@@ -153,19 +140,57 @@ public class Controller_Produit implements Initializable {
         }
     }
 
+
+    @FXML
+    void OnClick_ModifProduit(ActionEvent event) {
+        boolean complet = true;
+
+        lbl_ErreurModifId.setVisible(false);
+        lbl_ErreurModifNom.setVisible(false);
+        lbl_ErreurModifDescription.setVisible(false);
+        lbl_ErreurModifTarif.setVisible(false);
+        lbl_ErreurModifCateg.setVisible(false);
+
+        //Liste de verification des Erreurs
+        if (Choice_ModifId.getValue() == null) {
+            lbl_ErreurModifId.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifNom.getText() == "") {
+            lbl_ErreurModifNom.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifDescription.getText() == "") {
+            lbl_ErreurModifDescription.setVisible(true);
+            complet = false;
+        }
+        if ((input_ModifTarif.getText() == "") || (!isDouble(input_Tarif.getText()))) {
+            lbl_ErreurModifTarif.setVisible(true);
+            complet = false;
+        }
+        if (Choice_ModifCateg.getValue() == null) {
+            lbl_ErreurModifCateg.setVisible(true);
+            complet = false;
+        }
+
+    }
+
+    @FXML
+    void OnClick_SuppProduit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnClick_VisuProduit(ActionEvent event) {
+
+    }
+
     public boolean isDouble(String string) {
         try {
             Double.parseDouble(string);
             return true;
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
-        this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
     }
 }
