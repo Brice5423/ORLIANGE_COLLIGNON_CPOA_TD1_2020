@@ -46,7 +46,7 @@ public class TestMySQLProduit {
 
     @Test
     public void testGetById() {
-        assertNotNull(dao.getById(1));
+        assertNotNull(dao.getById(6));
     }
 
     @Test
@@ -71,11 +71,11 @@ public class TestMySQLProduit {
 
     @Test
     public void testDelete() {
-        Produit copie = dao.getById(2);
+        Produit copie = dao.getById(19);
 
-        Produit produit = dao.getById(2);
+        Produit produit = dao.getById(19);
         dao.delete(produit);
-        assertNull(dao.getById(2));
+        assertNull(dao.getById(19));
 
         dao.create(copie);
     }

@@ -48,7 +48,7 @@ public class TestMySQLClient {
 
     @Test
     public void testGetById() {
-        assertNotNull(dao.getById(1));
+        assertNotNull(dao.getById(2));
     }
 
     @Test
@@ -75,11 +75,11 @@ public class TestMySQLClient {
 
     @Test
     public void testDelete() {
-        Client copie = dao.getById(1);
+        Client copie = dao.getById(4);
 
-        Client client = dao.getById(1);
+        Client client = dao.getById(4);
         dao.delete(client);
-        assertNull(dao.getById(1));
+        assertNull(dao.getById(4));
 
         dao.create(copie);
     }
