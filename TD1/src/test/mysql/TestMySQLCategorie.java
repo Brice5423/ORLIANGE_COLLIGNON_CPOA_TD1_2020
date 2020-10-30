@@ -71,11 +71,11 @@ public class TestMySQLCategorie {
 
     @Test
     public void testDelete() {
-        Categorie copie = dao.getById(5);
+        Categorie copie = dao.getById(20);
 
-        Categorie categorie = dao.getById(5);
+        Categorie categorie = dao.getById(20);
         dao.delete(categorie);
-        assertNull(dao.getById(5));
+        assertNull(dao.getById(20));
 
         dao.create(copie);
     }
