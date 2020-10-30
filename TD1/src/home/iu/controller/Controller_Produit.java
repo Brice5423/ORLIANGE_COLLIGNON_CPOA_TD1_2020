@@ -11,10 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -92,6 +89,7 @@ public class Controller_Produit implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
+
     }
 
     @FXML
@@ -179,6 +177,7 @@ public class Controller_Produit implements Initializable {
     void OnClick_SuppProduit(ActionEvent event) {
 
     }
+
 
     @FXML
     void OnClick_VisuProduit(ActionEvent event) {
