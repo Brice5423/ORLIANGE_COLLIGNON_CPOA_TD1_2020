@@ -4,11 +4,16 @@ import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCommande;
 
+import home.connexion.ConnexionSQL;
 import home.metier.Commande;
 import home.metier.Client;
 import home.metier.Produit;
 import home.metier.Categorie;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,13 +28,17 @@ public class TestMySQLCommande {
     private DaoFactory daoF;
     private IDaoCommande dao;
     private List<Commande> liste;
+    private Connection laConnexion;
 
     @Before
     public void setUp() {
         daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoCommande();
         liste = dao.getAllCommande();
+
+        laConnexion = ConnexionSQL.creeConnexion();
     }
+
 
     @Test
     public void testAllCommandes() {
@@ -37,24 +46,33 @@ public class TestMySQLCommande {
     }
 
     @Test // Marche pas. La date fait de la merde ^^
-    public void testCreate() {
+    public void testCreate() throws SQLException {
         int size = dao.getAllCommande().size();
+        int id;
 
-        Client client = new Client();
-        client.setId(1);
-        Categorie categorie1 = new Categorie(1, "Pull", "");
+        Client client = new Client(4, "ORLIANGE", "Brice", "orl.brice@sql.com", "jetaime", "45", "rue", "54789", "cool", "happy");
+        Categorie categorie1 = new Categorie(1, "Pull", "pull.png");
         Produit prodiot1 = new Produit(1, "Qiqi", "I love Qiqi", 9999.99, "", categorie1);
         Produit prodiot2 = new Produit(2, "DBZ", "Cool", 100., "", categorie1);
         Map<Produit, Integer> produits = new HashMap<>();
         produits.put(prodiot1, 1);
         produits.put(prodiot2, 5);
 
-        Commande commande = new Commande(1000, new Date(), client, produits);
+        Commande commande = new Commande();
+        commande.setDate(new Date());
+        commande.setClient(client);
+        commande.setProduits(produits);
 
         Assert.assertTrue(dao.create(commande));
         assertEquals(size+1, dao.getAllCommande().size());
 
-        dao.delete(commande);
+        String request = "SELECT * FROM Commande";
+        Statement statement = laConnexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = statement.executeQuery(request);
+        resultSet.last();
+        id = resultSet.getInt("id_client");
+
+        dao.delete(dao.getById(id));
     }
 
     @Test // Porblème inconu
@@ -63,9 +81,10 @@ public class TestMySQLCommande {
     }
 
     @Test // Problème du à cree et modif commande
-    public void testUpdate() {
-        Client client = new Client(4, "ORLIANGE", "Brice", "orl.brice@sql.com", "jetaime", "45", "rue", "54789", "cool", "happy");
+    public void testUpdate() throws SQLException {
+        int id;
 
+        Client client = new Client(4, "ORLIANGE", "Brice", "orl.brice@sql.com", "jetaime", "45", "rue", "54789", "cool", "happy");
         Categorie categorie = new Categorie(1, "Pulls", "lespulls.png");
         Produit prodiot1 = new Produit(19, "Qiqi", "Qiqi de genshin impact", 100000., "visuel.png", categorie);
         Produit prodiot2 = new Produit(16, "nomlol", "moche", 65., "pigon", categorie);
@@ -73,10 +92,20 @@ public class TestMySQLCommande {
         produits.put(prodiot1, 1);
         produits.put(prodiot2, 5);
 
-        Commande commande = new Commande(1500, new Date(), client, produits);
-        assertTrue(dao.create(commande));
+        Commande commande = new Commande();
+        commande.setDate(new Date());
+        commande.setClient(client);
+        commande.setProduits(produits);
 
-        Commande commandeRead = dao.getById(1500);
+        dao.create(commande);
+
+        String request = "SELECT * FROM Commande";
+        Statement statement = laConnexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = statement.executeQuery(request);
+        resultSet.last();
+        id = resultSet.getInt("id_client");
+
+        Commande commandeRead = dao.getById(id);
         assertEquals(commande, commandeRead);
 
         Client clientRead = client;
@@ -85,19 +114,37 @@ public class TestMySQLCommande {
         commandeRead.setClient(clientRead);
         assertTrue(dao.update(commandeRead));
 
-        assertEquals(commandeRead, dao.getById(1500));
+        assertEquals(commandeRead, dao.getById(id));
 
-        dao.delete(dao.getById(1500));
+        dao.delete(dao.getById(id));
     }
 
     @Test // Problème du à getById, problème incinu
-    public void testDelete() {
-        Commande copie = dao.getById(1);
+    public void testDelete() throws SQLException {
+        int id;
 
-        Commande commande = dao.getById(1);
+        Client client = new Client(4, "ORLIANGE", "Brice", "orl.brice@sql.com", "jetaime", "45", "rue", "54789", "cool", "happy");
+        Categorie categorie = new Categorie(1, "Pulls", "lespulls.png");
+        Produit prodiot1 = new Produit(19, "Qiqi", "Qiqi de genshin impact", 100000., "visuel.png", categorie);
+        Produit prodiot2 = new Produit(16, "nomlol", "moche", 65., "pigon", categorie);
+        Map<Produit, Integer> produits = new HashMap<>();
+        produits.put(prodiot1, 1);
+        produits.put(prodiot2, 5);
+
+        Commande commande = new Commande();
+        commande.setDate(new Date());
+        commande.setClient(client);
+        commande.setProduits(produits);
+
+        dao.create(commande);
+
+        String request = "SELECT * FROM Commande";
+        Statement statement = laConnexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = statement.executeQuery(request);
+        resultSet.last();
+        id = resultSet.getInt("id_client");
+
         dao.delete(commande);
-        assertNull(dao.getById(1));
-
-        dao.create(copie);
+        assertNull(dao.getById(id));
     }
 }

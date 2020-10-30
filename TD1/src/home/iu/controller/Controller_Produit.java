@@ -89,7 +89,6 @@ public class Controller_Produit implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
-
     }
 
     @FXML
