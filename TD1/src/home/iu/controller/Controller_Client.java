@@ -161,15 +161,15 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     private Label lbl_ModifClient;
 
     @FXML
-    private ChoiceBox<?> choice_ModifID;
-
-    @FXML
-    private Label lbl_ErreurModifID;
+    private TextField input_ModifId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        daoClient = DaoF.getDaoClient();
 
+        TableColumn<Client, Integer> colId = new TableColumn<>("Id");
+        colId.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id"));
         TableColumn<Client, String> colNom = new TableColumn<>("Nom");
         colNom.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));
         TableColumn<Client, String> colPrenom = new TableColumn<>("Prénom");
@@ -189,7 +189,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         TableColumn<Client, String> colPays = new TableColumn<>("Pays");
         colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
 
-        this.tbl_Clients.getColumns().setAll(colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
+        this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
@@ -197,6 +197,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
         this.btn_SuppClient.setDisable(newValue == null);
         this.btn_AffichModifClient.setDisable(newValue == null);
+
+        clientTab = observable.getValue();
     }
 
     @FXML
@@ -335,6 +337,36 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             lbl_ErreurModifPays.setVisible(true);
             complet = false;
         }
+        if (complet) {
+            Client client = new Client();
+
+            client.setId(Integer.valueOf(input_ModifId.getText()));
+            client.setNom(input_ModifNom.getText());
+            client.setPrenom(input_ModifPrenom.getText());
+            client.setMail(input_ModifMail.getText());
+            client.setMdp(input_ModifMdp.getText());
+            client.setAdrNum(input_ModifNo.getText());
+            client.setAdrVoie(input_ModifRue.getText());
+            client.setAdrCodePostal(input_ModifCp.getText());
+            client.setAdrVille(input_ModifVille.getText());
+            client.setAdrPays(input_ModifPays.getText());
+
+            lbl_Creerclient.setText(client.toStringController());
+
+            daoClient.update(client);
+
+            input_Nom.clear();
+            input_Prenom.clear();
+            input_Mail.clear();
+            input_Mdp.clear();
+            input_No.clear();
+            input_Rue.clear();
+            input_Cp.clear();
+            input_Ville.clear();
+            input_Pays.clear();
+
+            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+        }
 
     }
 
@@ -356,5 +388,17 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     void OnClick_AffichModifClient(ActionEvent event) {
         pane_Modif.setVisible(true);
         btn_ModifClient.setVisible(true);
+
+        input_ModifId.setText(String.valueOf(clientTab.getId()));
+        input_ModifNom.setText(clientTab.getNom());
+        input_ModifPrenom.setText(clientTab.getPrenom());
+        input_ModifMail.setText(String.valueOf(clientTab.getMail()));
+        input_ModifMdp.setText(clientTab.getMdp());
+        input_ModifNo.setText(clientTab.getAdrNum());
+        input_ModifRue.setText(String.valueOf(clientTab.getAdrVoie()));
+        input_ModifCp.setText(clientTab.getAdrCodePostal());
+        input_ModifVille.setText(clientTab.getAdrVille());
+        input_ModifPays.setText(clientTab.getAdrPays());
+
     }
 }

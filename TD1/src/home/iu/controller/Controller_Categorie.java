@@ -77,11 +77,15 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
     private Button btn_SuppCategorie;
 
     @FXML
+    private TextField imput_ModifId;
+
+    @FXML
     private TableView<Categorie> tbl_Categories;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        daoCateg = DaoF.getDaoCategorie();
 
         TableColumn<Categorie, Integer> colID = new TableColumn<>("ID");
         colID.setCellValueFactory(new PropertyValueFactory<Categorie, Integer>("id"));
@@ -97,6 +101,8 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
     public void changed(ObservableValue<? extends Categorie> observable, Categorie oldValue, Categorie newValue) {
         this.btn_SuppCategorie.setDisable(newValue == null);
         this.btn_AffichModifCategorie.setDisable(newValue == null);
+
+        categorieTab = observable.getValue();
     }
 
     @FXML
@@ -152,6 +158,20 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             lbl_ErreurModifVisuel.setVisible(true);
             complet = false;
         }
+        if (complet) {
+            Categorie categorie = new Categorie();
+            categorie.setTitre(imput_titre.getText());
+            categorie.setVisuel(imput_visuel.getText());
+
+            lbl_Creercateg.setText(categorie.toStringController());
+
+            daoCateg.update(categorie);
+
+            imput_titre.clear();
+            imput_visuel.clear();
+
+            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
+        }
 
     }
 
@@ -168,11 +188,16 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             daoCateg.delete(categorieTab);
             this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
+
     }
 
     @FXML
     void OnClick_AffichModifCategorie(ActionEvent event) {
         pane_ModifCategorie.setVisible(true);
         btn_ModifCategorie.setVisible(true);
+
+        imput_ModifId.setText(String.valueOf(categorieTab.getId()));
+        imput_ModifTitre.setText(categorieTab.getTitre());
+        imput_ModifVisuel.setText(categorieTab.getVisuel());
     }
 }

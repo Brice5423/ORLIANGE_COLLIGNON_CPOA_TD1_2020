@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 
 public class Controller_Produit implements Initializable, ChangeListener<Produit> {
+
     private DaoFactory DaoF;
     private IDaoProduit daoProd;
     private Produit produitTab;
@@ -107,15 +108,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     private Label lbl_ModifProduit;
 
-
     @FXML
     private ChoiceBox<Categorie> Choice_ModifCateg;
-
-    @FXML
-    private ChoiceBox<?> Choice_VisuCateg;
-
-    @FXML
-    private ChoiceBox<?> Choice_SuppCateg;
 
     @FXML
     private TableView<Produit> tbl_Produits;
@@ -255,6 +249,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         if (complet) {
             Produit produit = new Produit();
+            produit.setId(Integer.valueOf(input_ModifId.getText()));
             produit.setNom(input_nom.getText());
             produit.setDescription(input_Description.getText());
             produit.setTarif(Double.valueOf(input_Tarif.getText()));
