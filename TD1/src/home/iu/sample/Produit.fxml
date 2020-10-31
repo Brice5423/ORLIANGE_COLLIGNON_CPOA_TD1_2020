@@ -31,21 +31,22 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Nom :" textAlignment="CENTER" />
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="141.0" text="                   Description :" GridPane.rowIndex="1" />
-                  <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="2" />
-                  <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="3" />
-                  <ChoiceBox fx:id="Choice_Categ" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="4" />
+                  <ChoiceBox fx:id="Choice_Categ" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                   <TextField fx:id="input_nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" />
                   <TextArea fx:id="input_Description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="input_Tarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="input_Tarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="80.0" />
                      </GridPane.margin>
@@ -60,12 +61,19 @@
                         <Insets top="83.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="lbl_ErreurTarif" prefHeight="17.0" prefWidth="326.0" text="Le tarif n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label fx:id="lbl_ErreurTarif" alignment="CENTER" prefHeight="17.0" prefWidth="221.0" text="Le tarif n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets top="40.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="lbl_ErreurCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="161.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Label fx:id="lbl_ErreurCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="161.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets top="40.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="input_Visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="319.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                         Visuel :" textAlignment="CENTER" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_ErreurVisuel" alignment="CENTER" prefHeight="17.0" prefWidth="144.0" text="Le visuel n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets top="40.0" />
                      </GridPane.margin>
@@ -86,22 +94,23 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Nom :" textAlignment="CENTER" GridPane.rowIndex="1" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="141.0" text="                   Description :" GridPane.rowIndex="2" />
-                        <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="3" />
-                        <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="4" />
-                        <ChoiceBox fx:id="Choice_ModifCateg" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="4" />
+                        <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="5" />
+                        <ChoiceBox fx:id="Choice_ModifCateg" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                         <TextField fx:id="input_ModifNom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <TextArea fx:id="input_ModifDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="input_ModifTarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <TextField fx:id="input_ModifTarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="80.0" />
                            </GridPane.margin>
@@ -116,18 +125,25 @@
                               <Insets top="83.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lbl_ErreurModifTarif" alignment="CENTER" prefHeight="17.0" prefWidth="218.0" text="Le tarif n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Label fx:id="lbl_ErreurModifTarif" alignment="CENTER" prefHeight="17.0" prefWidth="218.0" text="Le tarif n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets top="40.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="lbl_ErreurModifCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="167.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <Label fx:id="lbl_ErreurModifCateg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="17.0" prefWidth="167.0" text="La catégorie n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets top="40.0" />
                            </GridPane.margin>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Id :" textAlignment="CENTER" />
                         <TextField fx:id="imput_ModifId" disable="true" maxWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="2" />
+                        <TextField fx:id="input_ModifVisuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="319.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label fx:id="lbl_ErreurModifVisuel" alignment="CENTER" prefHeight="17.0" prefWidth="144.0" text="Le visuel n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                         Visuel :" textAlignment="CENTER" GridPane.rowIndex="3" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -170,8 +186,7 @@
       <Pane prefHeight="287.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Button layoutX="50.0" layoutY="60.0" mnemonicParsing="false" onAction="#OnClick_RefreshProduit" text="Refresh" />
-            <Button fx:id="btn_SuppProduit" disable="true" layoutX="42.0" layoutY="220.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
+            <Button fx:id="btn_SuppProduit" disable="true" layoutX="42.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
             <TableView fx:id="tbl_Produits" layoutX="154.0" layoutY="27.0" prefHeight="246.0" prefWidth="1000.0">
                <columns>
                   <TableColumn maxWidth="75.0" minWidth="-Infinity" prefWidth="75.0" resizable="false" text="ID" />
@@ -182,7 +197,7 @@
                   <TableColumn maxWidth="80.0" minWidth="-Infinity" resizable="false" text="Id_Categorie" />
                </columns>
             </TableView>
-            <Button fx:id="btnAffichModif" disable="true" layoutX="47.0" layoutY="138.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
+            <Button fx:id="btnAffichModif" disable="true" layoutX="47.0" layoutY="85.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
          </children>
       </Pane>
       <Pane prefHeight="25.0" prefWidth="1200.0">

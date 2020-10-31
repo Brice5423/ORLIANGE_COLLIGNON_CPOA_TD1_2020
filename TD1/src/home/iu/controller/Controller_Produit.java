@@ -51,6 +51,12 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private TextField input_Tarif;
 
     @FXML
+    private TextField input_Visuel;
+
+    @FXML
+    private Label lbl_ErreurVisuel;
+
+    @FXML
     private Label lbl_ErreurNom;
 
     @FXML
@@ -70,6 +76,12 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     private TextField input_ModifTarif;
+
+    @FXML
+    private TextField input_ModifVisuel;
+
+    @FXML
+    private Label lbl_ErreurModifVisuel;
 
     @FXML
     private Label lbl_ErreurModifNom;
@@ -138,6 +150,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         lbl_ErreurNom.setVisible(false);
         lbl_ErreurDescription.setVisible(false);
+        lbl_ErreurVisuel.setVisible(false);
         lbl_ErreurTarif.setVisible(false);
         lbl_ErreurCateg.setVisible(false);
 
@@ -148,6 +161,10 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
         if (input_Description.getText() == "") {
             lbl_ErreurDescription.setVisible(true);
+            complet = false;
+        }
+        if (input_Visuel.getText() == "") {
+            lbl_ErreurVisuel.setVisible(true);
             complet = false;
         }
         if ((input_Tarif.getText() == "") || (!isDouble(input_Tarif.getText()))) {
@@ -198,6 +215,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         lbl_ErreurModifNom.setVisible(false);
         lbl_ErreurModifDescription.setVisible(false);
+        lbl_ErreurModifVisuel.setVisible(false);
         lbl_ErreurModifTarif.setVisible(false);
         lbl_ErreurModifCateg.setVisible(false);
 
@@ -208,6 +226,10 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
         if (input_ModifDescription.getText() == "") {
             lbl_ErreurModifDescription.setVisible(true);
+            complet = false;
+        }
+        if (input_ModifVisuel.getText() == "") {
+            lbl_ErreurModifVisuel.setVisible(true);
             complet = false;
         }
         if ((input_ModifTarif.getText() == "") || (!isDouble(input_Tarif.getText()))) {
@@ -224,12 +246,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     void OnClick_SuppProduit(ActionEvent event) {
 
-    }
-
-
-    @FXML
-    void OnClick_RefreshProduit(ActionEvent event) {
-        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
     }
 
     public boolean isDouble(String string) {
