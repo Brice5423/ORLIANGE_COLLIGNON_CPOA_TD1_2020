@@ -113,7 +113,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Pane fx:id="pane_Modif" layoutX="586.0" prefHeight="529.0" prefWidth="614.0">
+            <Pane fx:id="pane_Modif" layoutX="586.0" prefHeight="529.0" prefWidth="614.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="480.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
                   <GridPane alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="467.0" prefWidth="545.0">
@@ -223,7 +223,7 @@
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btn_ModifClient" mnemonicParsing="false" onAction="#OnClick_ModifClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" />
+                  <Button fx:id="btn_ModifClient" mnemonicParsing="false" onAction="#OnClick_ModifClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>
@@ -244,8 +244,8 @@
       </HBox>
       <Pane prefHeight="260.0" prefWidth="1200.0">
          <children>
-            <Button fx:id="btn_AffichModifClient" layoutX="45.0" layoutY="69.0" mnemonicParsing="false" onAction="#OnClick_AffichModifClient" text="Modifier" />
-            <Button fx:id="btn_SuppClient" layoutX="40.0" layoutY="155.0" mnemonicParsing="false" onAction="#OnClick_SuppClient" text="Supprimer" />
+            <Button fx:id="btn_AffichModifClient" disable="true" layoutX="45.0" layoutY="69.0" mnemonicParsing="false" onAction="#OnClick_AffichModifClient" text="Modifier" />
+            <Button fx:id="btn_SuppClient" disable="true" layoutX="40.0" layoutY="155.0" mnemonicParsing="false" onAction="#OnClick_SuppClient" text="Supprimer" />
             <TableView fx:id="tbl_Clients" layoutX="138.0" layoutY="30.0" prefHeight="196.0" prefWidth="1038.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="ID Client" />

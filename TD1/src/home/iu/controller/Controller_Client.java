@@ -2,10 +2,13 @@ package home.iu.controller;
 
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
+import dao.interfaces.IDaoClient;
+import dao.interfaces.IDaoProduit;
 import home.metier.Client;
 import home.metier.Produit;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +21,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller_Client implements Initializable {
+public class Controller_Client implements Initializable, ChangeListener<Client> {
 
     DaoFactory DaoF;
 
@@ -164,29 +167,33 @@ public class Controller_Client implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
 
-        TableColumn<Produit, Integer> colNom = new TableColumn<>("Nom");
-        colNom.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("nom"));
-        TableColumn<Produit, String> colPrenom = new TableColumn<>("Prénom");
-        colPrenom.setCellValueFactory(new PropertyValueFactory<Produit, String>("prenom"));
-        TableColumn<Produit, String> colMail = new TableColumn<>("Mail");
-        colMail.setCellValueFactory(new PropertyValueFactory<Produit, String>("mail"));
-        TableColumn<Produit, Double> colMdp = new TableColumn<>("Mot de passe");
-        colMdp.setCellValueFactory(new PropertyValueFactory<Produit, Double>("mdp"));
-        TableColumn<Produit, String> colNumero = new TableColumn<>("Numéro");
-        colNumero.setCellValueFactory(new PropertyValueFactory<Produit, String>("numero"));
-        TableColumn<Produit, Integer> colVoie = new TableColumn<>("Voie");
-        colVoie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("voie"));
-        TableColumn<Produit, Integer> colCP = new TableColumn<>("Code postal");
-        colCP.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("cp"));
-        TableColumn<Produit, Integer> colVille = new TableColumn<>("Ville");
-        colVille.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("ville"));
-        TableColumn<Produit, Integer> colPays = new TableColumn<>("Pays");
-        colPays.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("pays"));
+        TableColumn<Client, String> colNom = new TableColumn<>("Nom");
+        colNom.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));
+        TableColumn<Client, String> colPrenom = new TableColumn<>("Prénom");
+        colPrenom.setCellValueFactory(new PropertyValueFactory<Client, String>("prenom"));
+        TableColumn<Client, String> colMail = new TableColumn<>("Mail");
+        colMail.setCellValueFactory(new PropertyValueFactory<Client, String>("mail"));
+        TableColumn<Client, String> colMdp = new TableColumn<>("Mot de passe");
+        colMdp.setCellValueFactory(new PropertyValueFactory<Client, String>("mdp"));
+        TableColumn<Client, String> colNumero = new TableColumn<>("Numéro");
+        colNumero.setCellValueFactory(new PropertyValueFactory<Client, String>("adrNum"));
+        TableColumn<Client, String> colVoie = new TableColumn<>("Voie");
+        colVoie.setCellValueFactory(new PropertyValueFactory<Client, String>("adrVoie"));
+        TableColumn<Client, Integer> colCP = new TableColumn<>("Code postal");
+        colCP.setCellValueFactory(new PropertyValueFactory<Client, Integer>("adrCodePostal"));
+        TableColumn<Client, String> colVille = new TableColumn<>("Ville");
+        colVille.setCellValueFactory(new PropertyValueFactory<Client, String>("adrVille"));
+        TableColumn<Client, String> colPays = new TableColumn<>("Pays");
+        colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
 
         this.tbl_Clients.getColumns().setAll(colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
-        this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener(this);
+        this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
+    }
+    public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
+        this.btn_SuppClient.setDisable(newValue == null);
+        this.btn_AffichModifClient.setDisable(newValue == null);
     }
 
     @FXML
@@ -240,6 +247,36 @@ public class Controller_Client implements Initializable {
             lbl_ErreurPays.setVisible(true);
             complet = false;
         }
+        //Quand on appuie sur le boutton Créer
+        if (complet) {
+            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+            IDaoClient DaoClient = DaoF.getDaoClient();
+
+            Client client = new Client();
+            client.setNom(input_Nom.getText());
+            client.setPrenom(input_Prenom.getText());
+            client.setMail(input_Mail.getText());
+            client.setMdp(input_Mdp.getText());
+            client.setAdrNum(input_No.getText());
+            client.setAdrVoie(input_Rue.getText());
+            client.setAdrCodePostal(input_Cp.getText());
+            client.setAdrVille(input_Ville.getText());
+            client.setAdrPays(input_Pays.getText());
+
+            lbl_Creerclient.setText(client.toStringController());
+
+            DaoClient.create(client);
+
+            input_Nom.clear();
+            input_Prenom.clear();
+            input_Mail.clear();
+            input_Mdp.clear();
+            input_No.clear();
+            input_Rue.clear();
+            input_Cp.clear();
+            input_Ville.clear();
+            input_Pays.clear();
+        }
     }
 
     @FXML
@@ -255,7 +292,6 @@ public class Controller_Client implements Initializable {
         lbl_ErreurModifCP.setVisible(false);
         lbl_ErreurModifVille.setVisible(false);
         lbl_ErreurModifPays.setVisible(false);
-        lbl_ErreurModifID.setVisible(false);
 
         //Liste de verification des Erreurs
         if (input_ModifNom.getText() == "") {
@@ -294,10 +330,6 @@ public class Controller_Client implements Initializable {
             lbl_ErreurModifPays.setVisible(true);
             complet = false;
         }
-        if (choice_ModifID.getValue() == null) {
-            lbl_ErreurModifID.setVisible(true);
-            complet = false;
-        }
 
     }
 
@@ -307,7 +339,8 @@ public class Controller_Client implements Initializable {
     }
 
     @FXML
-    void OnClick_VisuClient(ActionEvent event) {
-
+    void OnClick_AffichModifClient(ActionEvent event) {
+        pane_Modif.setVisible(true);
+        btn_ModifClient.setVisible(true);
     }
 }

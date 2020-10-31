@@ -180,11 +180,9 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             IDaoProduit DaoProd = DaoF.getDaoProduit();
 
             Produit produit = new Produit();
-            produit.setId(25);
             produit.setNom(input_nom.getText());
             produit.setDescription(input_Description.getText());
             produit.setTarif(Double.valueOf(input_Tarif.getText()));
-            produit.setVisuel("visuel.png");
             produit.setCategorie(Choice_Categ.getValue());
 
             lbl_CreerProduit.setText(produit.toStringController());
@@ -202,9 +200,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_AffichModifProduit(ActionEvent event) {
         pane_Modif.setVisible(true);
         btn_ModifProduit.setVisible(true);
-
-
-
     }
 
     @FXML
