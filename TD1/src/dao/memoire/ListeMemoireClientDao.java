@@ -82,4 +82,19 @@ public class ListeMemoireClientDao implements IDaoClient {
         }
         return objet.equals(supprime);
     }
+    
+    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        List<Client> filtreNomPrenom;
+        filtreNomPrenom = new ArrayList<Client>();
+        
+        for (Client client : donnees) {
+            String testNom = client.getNom();
+            String testPrenom = client.getPrenom();
+            
+            if (((filtreNom==testNom) && (filtrePrenom=="")) || ((filtreNom==testNom) && (filtrePrenom==testPrenom))) {
+                filtreNomPrenom.add(client);
+            }
+        }
+        return filtreNomPrenom;
+    }
 }

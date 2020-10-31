@@ -176,4 +176,45 @@ public class MySqlClientDao implements IDaoClient {
         }
         return false;
     }
+
+    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Client";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                String testNom = resultSet.getString("nom");
+                String testPrenom = resultSet.getString("prenom");
+
+                if (((filtreNom==testNom) && (filtrePrenom=="")) || ((filtreNom==testNom) && (filtrePrenom==testPrenom))) {
+                    int idClient = resultSet.getInt("id_client");
+                    String nom = resultSet.getString("nom");
+                    String prenom = resultSet.getString("prenom");
+                    String mail = resultSet.getString("identifiant");
+                    String mdp = resultSet.getString("mot_de_passe");
+
+                    String adrNum = resultSet.getString("adr_numero");
+                    String adrVoie = resultSet.getString("adr_voie");
+                    String adrCodePostal = resultSet.getString("adr_code_postal");
+                    String adrVille = resultSet.getString("adr_ville");
+                    String adrPays = resultSet.getString("adr_pays");
+
+                    System.out.format("%s, %s, %s\n", idClient, nom, prenom);
+
+                    Client client = new Client(idClient, nom, prenom, mail, mdp, adrNum, adrVoie, adrCodePostal, adrVille, adrPays);
+                    donnees.add(client);
+                }
+            }
+
+            statement.close();
+            return donnees;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
 }
