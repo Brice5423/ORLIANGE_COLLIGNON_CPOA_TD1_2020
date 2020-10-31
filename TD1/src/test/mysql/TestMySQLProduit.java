@@ -18,18 +18,17 @@ import java.sql.Statement;
 import java.util.List;
 
 public class TestMySQLProduit {
+    private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoProduit dao;
     private List<Produit> liste;
-    private Connection laConnexion;
 
     @Before
     public void setUp() {
+        laConnexion = ConnexionSQL.creeConnexion();
         daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoProduit();
         liste = dao.getAllProduits();
-
-        laConnexion = ConnexionSQL.creeConnexion();
     }
 
 

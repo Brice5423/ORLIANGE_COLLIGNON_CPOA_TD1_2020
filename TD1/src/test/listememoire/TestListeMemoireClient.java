@@ -34,12 +34,11 @@ public class TestListeMemoireClient {
         int size = dao.getAllClients().size();
 
         Client client = new Client();
-        client.setId(1000);
-        client.setNom("Test");
-        client.setPrenom("test");
-        client.setMail("test@test.com");
-        client.setMdp("test");
-        client.setAdresse("02", "rue test", "99666", "test", "test");
+        client.setNom("testCr");
+        client.setPrenom("testCr");
+        client.setMail("testCr@test.com");
+        client.setMdp("testCr");
+        client.setAdresse("02", "rue testCr", "99666", "testCr", "testCr");
 
         Assert.assertTrue(dao.create(client));
         assertEquals(size+1, dao.getAllClients().size());
@@ -53,28 +52,24 @@ public class TestListeMemoireClient {
     @Test
     public void testUpdate() {
         Client client = new Client();
-        client.setId(1500);
-        client.setNom("Test");
-        client.setPrenom("test");
-        client.setMail("test@test.com");
-        client.setMdp("test");
-        client.setAdresse("02", "rue test", "99666", "test", "test");
+        client.setNom("testUp");
+        client.setPrenom("testUp");
+        client.setMail("testUp@test.com");
+        client.setMdp("testUp");
+        client.setAdresse("02", "rue testUp", "99666", "testUp", "testUp");
 
         assertTrue(dao.create(client));
 
-        Client clientRead = dao.getById(1500);
+        Client clientRead = client;
         assertEquals(client, clientRead);
 
-        clientRead.setNom("testUp");
+        clientRead.setNom("testUpModif");
         assertTrue(dao.update(clientRead));
-
-        assertEquals(clientRead, dao.getById(1500));
     }
 
     @Test
     public void testDelete() {
         Client client = dao.getById(2);
-        dao.delete(client);
-        assertNull(dao.getById(2));
+        assertTrue(dao.delete(client));
     }
 }

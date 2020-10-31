@@ -18,18 +18,17 @@ import java.sql.Statement;
 import java.util.List;
 
 public class TestMySQLCategorie {
+    private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoCategorie dao;
     private List<Categorie> liste;
-    private Connection laConnexion;
 
     @Before
     public void setUp() {
+        laConnexion = ConnexionSQL.creeConnexion();
         daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoCategorie();
         liste = dao.getAllCategories();
-
-        laConnexion = ConnexionSQL.creeConnexion();
     }
 
 
@@ -69,7 +68,7 @@ public class TestMySQLCategorie {
         int id;
 
         Categorie categorie = new Categorie();
-        categorie.setTitre("testUp !");
+        categorie.setTitre("testUp");
         categorie.setVisuel("testUp.png");
 
         dao.create(categorie);

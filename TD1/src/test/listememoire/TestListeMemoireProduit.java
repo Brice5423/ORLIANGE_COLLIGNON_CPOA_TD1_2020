@@ -34,9 +34,8 @@ public class TestListeMemoireProduit {
         int size = dao.getAllProduits().size();
 
         Produit produit = new Produit();
-        produit.setId(1);
-        produit.setNom("PC");
-        produit.setDescription("C'est cool ma poule");
+        produit.setNom("testCr");
+        produit.setDescription("testCr");
         Assert.assertTrue(dao.create(produit));
 
         assertEquals(size+1, dao.getAllProduits().size());
@@ -50,25 +49,21 @@ public class TestListeMemoireProduit {
     @Test
     public void testUpdate() {
         Produit produit = new Produit();
-        produit.setId(4);
-        produit.setNom("PC");
-        produit.setDescription("C'est cool ma poule");
+        produit.setNom("testUp");
+        produit.setDescription("testUp");
 
         assertTrue(dao.create(produit));
 
-        Produit produitRead = dao.getById(4);
+        Produit produitRead = produit;
         assertEquals(produit, produitRead);
 
-        produitRead.setNom("PC Gamer");
+        produitRead.setNom("testUpModif");
         assertTrue(dao.update(produitRead));
-
-        assertEquals(produitRead, dao.getById(4));
     }
 
     @Test
     public void testDelete() {
         Produit produit = dao.getById(2);
-        dao.delete(produit);
-        assertNull(dao.getById(2));
+        assertTrue(dao.delete(produit));
     }
 }

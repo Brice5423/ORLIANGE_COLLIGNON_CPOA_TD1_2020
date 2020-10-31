@@ -35,9 +35,9 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        /*while (this.donnees.contains(objet)) {
+        while (this.donnees.contains(objet)) {
             objet.setId(objet.getId() + 1);
-        }*/
+        }
         return this.donnees.add(objet);
     }
 
@@ -45,9 +45,9 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     public Categorie getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
-            for (Categorie client : donnees) {
-                if (client.getId() == id) {
-                    return client;
+            for (Categorie categorie : donnees) {
+                if (categorie.getId() == id) {
+                    return categorie;
                 }
             }
         }

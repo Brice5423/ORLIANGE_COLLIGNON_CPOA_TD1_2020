@@ -25,18 +25,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestMySQLCommande {
+    private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoCommande dao;
     private List<Commande> liste;
-    private Connection laConnexion;
 
     @Before
     public void setUp() {
+        laConnexion = ConnexionSQL.creeConnexion();
         daoF = DaoFactory.getDAOFactory(EPersistance.MYSQL);
         dao = daoF.getDaoCommande();
         liste = dao.getAllCommande();
-
-        laConnexion = ConnexionSQL.creeConnexion();
     }
 
 

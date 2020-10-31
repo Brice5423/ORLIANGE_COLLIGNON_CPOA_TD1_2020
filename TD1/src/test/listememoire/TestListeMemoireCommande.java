@@ -51,7 +51,10 @@ public class TestListeMemoireCommande {
         produits.put(prodiot1, 1);
         produits.put(prodiot2, 5);
 
-        Commande commande = new Commande(1000, new Date(), client, produits);
+        Commande commande = new Commande();
+        commande.setDate(new Date());
+        commande.setClient(client);
+        commande.setProduits(produits);
         Assert.assertTrue(daoCommande.create(commande));
 
         assertEquals(size+1, daoCommande.getAllCommande().size());
@@ -73,10 +76,13 @@ public class TestListeMemoireCommande {
         produits.put(prodiot1, 1);
         produits.put(prodiot2, 5);
 
-        Commande commande = new Commande(1500, new Date(), client, produits);
+        Commande commande = new Commande();
+        commande.setDate(new Date());
+        commande.setClient(client);
+        commande.setProduits(produits);
         assertTrue(daoCommande.create(commande));
 
-        Commande commandeRead = daoCommande.getById(1500);
+        Commande commandeRead = commande;
         assertEquals(commande, commandeRead);
 
         Client clientRead = new Client();
@@ -84,14 +90,11 @@ public class TestListeMemoireCommande {
 
         commandeRead.setClient(clientRead);
         assertTrue(daoCommande.update(commandeRead));
-
-        assertEquals(commandeRead, daoCommande.getById(1500));
     }
 
     @Test
     public void testDelete() {
         Commande commande = daoCommande.getById(2);
-        daoCommande.delete(commande);
-        assertNull(daoCommande.getById(2));
+        assertTrue(daoCommande.delete(commande));
     }
 }
