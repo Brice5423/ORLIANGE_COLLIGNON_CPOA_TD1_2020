@@ -4,6 +4,7 @@ import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoClient;
+import dao.interfaces.IDaoProduit;
 import home.metier.Categorie;
 import home.metier.Client;
 import home.metier.Produit;
@@ -21,11 +22,14 @@ import javafx.scene.layout.VBox;
 import org.junit.experimental.categories.Categories;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller_Categorie implements Initializable, ChangeListener<Categorie> {
 
     DaoFactory DaoF;
+    private IDaoCategorie daoCateg;
+    private Categorie categorieTab;
 
     @FXML
     private VBox Vbox_Categ;
@@ -154,7 +158,16 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
     @FXML
     void OnClick_SuppCategorie(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Suppression du Produit");
+        alert.setHeaderText("Êtes-vous sûr de vouloir supprimer cette catégorie ?");
+        alert.setContentText("La catégorie sera perdue définitivement");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            daoCateg.delete(categorieTab);
+            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
+        }
     }
 
     @FXML

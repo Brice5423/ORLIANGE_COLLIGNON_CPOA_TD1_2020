@@ -279,7 +279,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_SuppProduit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Suppression du Produit");
-        alert.setHeaderText("Êtes-vous sûr de vouloir supprimer ce preoduit ?");
+        alert.setHeaderText("Êtes-vous sûr de vouloir supprimer ce produit ?");
         alert.setContentText("Le produit sera perdu définitivement");
 
         Optional<ButtonType> result = alert.showAndWait();

@@ -19,11 +19,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller_Client implements Initializable, ChangeListener<Client> {
 
     DaoFactory DaoF;
+    private IDaoClient daoClient;
+    private Client clientTab;
 
     @FXML
     private Button btn_AffichModifClient;
@@ -337,7 +340,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @FXML
     void OnClick_SuppClient(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Suppression du Produit");
+        alert.setHeaderText("Êtes-vous sûr de vouloir supprimer ce client ?");
+        alert.setContentText("Le client sera perdu définitivement");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            daoClient.delete(clientTab);
+            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+        }
     }
 
     @FXML
