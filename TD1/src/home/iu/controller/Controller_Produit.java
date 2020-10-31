@@ -7,6 +7,7 @@ import dao.interfaces.IDaoProduit;
 import home.metier.Categorie;
 import home.metier.Produit;
 
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -275,9 +277,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     void OnClick_SuppProduit(ActionEvent event) {
-        daoProd.delete(produitTab);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Suppression du Produit");
+        alert.setHeaderText("Êtes-vous sûr de vouloir supprimer ce preoduit ?");
+        alert.setContentText("Le produit sera perdu définitivement");
 
-        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            daoProd.delete(produitTab);
+            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+        }
     }
 
     public boolean isDouble(String string) {
