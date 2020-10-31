@@ -4,6 +4,7 @@ import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoProduit;
 import home.connexion.ConnexionSQL;
+import home.metier.Categorie;
 import home.metier.Produit;
 
 import static org.junit.Assert.*;
@@ -111,5 +112,28 @@ public class TestMySQLProduit {
 
         dao.delete(dao.getById(id));
         assertNull(dao.getById(id));
+    }
+
+
+    @Test
+    public void testFiltreCategorie() {
+        Categorie categorie = new Categorie();
+        categorie.setId(2);
+        assertNotNull(dao.getByCategorie(categorie));
+
+        assertEquals(dao.getByCategorie(categorie).size(), 2);
+    }
+
+    @Test
+    public void testFiltreNomProduit() {
+        assertNotNull(dao.getByNomProduit("Dall"));
+        assertNotNull(dao.getByNomProduit("dall"));
+    }
+
+    @Test
+    public void testFiltreTarif() {
+        assertNotNull(dao.getByTarif(36.));
+
+        assertEquals(dao.getByTarif(36.).size(), 2);
     }
 }

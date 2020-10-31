@@ -71,6 +71,49 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         return (ArrayList<Produit>) this.donnees;
     }
 
+    @Override
+    public List<Produit> getByCategorie(Categorie filtreCategorie) {
+        List<Produit> listeFiltre;
+        listeFiltre = new ArrayList<Produit>();
+
+        for (Produit produit : donnees) {
+            Categorie testCategorie = produit.getCategorie();
+            if (testCategorie.getId() == filtreCategorie.getId()) {
+                listeFiltre.add(produit);
+            }
+        }
+        return listeFiltre;
+    }
+
+    @Override
+    public List<Produit> getByNomProduit(String filtreNomProduit) {
+        List<Produit> listeFiltre;
+        listeFiltre = new ArrayList<Produit>();
+        String filtreNomProduitLow = filtreNomProduit.toLowerCase();
+
+        for (Produit produit : donnees) {
+            String testNom = produit.getNom().toLowerCase();
+            if (testNom == filtreNomProduitLow) {
+                listeFiltre.add(produit);
+            }
+        }
+        return listeFiltre;
+    }
+
+    @Override
+    public List<Produit> getByTarif(Double filtreTarif) {
+        List<Produit> listeFiltre;
+        listeFiltre = new ArrayList<Produit>();
+
+        for (Produit produit : donnees) {
+            Double testTarif = produit.getTarif();
+            if (testTarif <= filtreTarif) {
+                listeFiltre.add(produit);
+            }
+        }
+        return listeFiltre;
+    }
+
 
     @Override // Create :
     public boolean create(Produit objet) {

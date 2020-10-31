@@ -63,6 +63,52 @@ public class MySqlClientDao implements IDaoClient {
     }
 
     @Override
+    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        String filtreNomLow = filtreNom.toLowerCase();
+        String filtrePrenomLow = filtrePrenom.toLowerCase();
+
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Client";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                String testNom = resultSet.getString("nom").toLowerCase();
+                String testPrenom = resultSet.getString("prenom").toLowerCase();
+
+                if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
+                    int idClient = resultSet.getInt("id_client");
+                    String nom = resultSet.getString("nom");
+                    String prenom = resultSet.getString("prenom");
+                    String mail = resultSet.getString("identifiant");
+                    String mdp = resultSet.getString("mot_de_passe");
+
+                    String adrNum = resultSet.getString("adr_numero");
+                    String adrVoie = resultSet.getString("adr_voie");
+                    String adrCodePostal = resultSet.getString("adr_code_postal");
+                    String adrVille = resultSet.getString("adr_ville");
+                    String adrPays = resultSet.getString("adr_pays");
+
+                    System.out.format("%s, %s, %s\n", idClient, nom, prenom);
+
+                    Client client = new Client(idClient, nom, prenom, mail, mdp, adrNum, adrVoie, adrCodePostal, adrVille, adrPays);
+                    donnees.add(client);
+                }
+            }
+
+            statement.close();
+            return donnees;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
+
+
+    @Override
     public boolean create(Client objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -176,50 +222,5 @@ public class MySqlClientDao implements IDaoClient {
             System.out.println("Pb select " + sqle.getMessage());
         }
         return false;
-    }
-
-    @Override
-    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
-        String filtreNomLow = filtreNom.toLowerCase();
-        String filtrePrenomLow = filtrePrenom.toLowerCase();
-
-        try {
-            Connection laConnexion = ConnexionSQL.creeConnexion();
-
-            String request = "SELECT * FROM Client";
-            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
-            ResultSet resultSet = statement.executeQuery(request);
-
-            while (resultSet.next()) {
-                String testNom = resultSet.getString("nom").toLowerCase();
-                String testPrenom = resultSet.getString("prenom").toLowerCase();
-
-                if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
-                    int idClient = resultSet.getInt("id_client");
-                    String nom = resultSet.getString("nom");
-                    String prenom = resultSet.getString("prenom");
-                    String mail = resultSet.getString("identifiant");
-                    String mdp = resultSet.getString("mot_de_passe");
-
-                    String adrNum = resultSet.getString("adr_numero");
-                    String adrVoie = resultSet.getString("adr_voie");
-                    String adrCodePostal = resultSet.getString("adr_code_postal");
-                    String adrVille = resultSet.getString("adr_ville");
-                    String adrPays = resultSet.getString("adr_pays");
-
-                    System.out.format("%s, %s, %s\n", idClient, nom, prenom);
-
-                    Client client = new Client(idClient, nom, prenom, mail, mdp, adrNum, adrVoie, adrCodePostal, adrVille, adrPays);
-                    donnees.add(client);
-                }
-            }
-
-            statement.close();
-            return donnees;
-
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-        }
-        return null;
     }
 }

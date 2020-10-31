@@ -3,6 +3,7 @@ package test.listememoire;
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoProduit;
+import home.metier.Categorie;
 import home.metier.Produit;
 
 import static org.junit.Assert.*;
@@ -65,5 +66,28 @@ public class TestListeMemoireProduit {
     public void testDelete() {
         Produit produit = dao.getById(2);
         assertTrue(dao.delete(produit));
+    }
+
+
+    @Test
+    public void testFiltreCategorie() {
+        Categorie categorie = new Categorie(1, "Pull", "pull.png");
+
+        assertNotNull(dao.getByCategorie(categorie));
+
+        assertEquals(dao.getByCategorie(categorie).size(), 2);
+    }
+
+    @Test
+    public void testFiltreNomProduit() {
+        assertNotNull(dao.getByNomProduit("Kiki"));
+        assertNotNull(dao.getByNomProduit("kiki"));
+    }
+
+    @Test
+    public void testFiltreTarif() {
+        assertNotNull(dao.getByTarif(36.));
+
+        assertEquals(dao.getByTarif(36.).size(), 2);
     }
 }

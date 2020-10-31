@@ -30,6 +30,24 @@ public class ListeMemoireClientDao implements IDaoClient {
         return (ArrayList<Client>) this.donnees;
     }
 
+    @Override
+    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        List<Client> listeFiltre;
+        listeFiltre = new ArrayList<Client>();
+        String filtreNomLow = filtreNom.toLowerCase();
+        String filtrePrenomLow = filtrePrenom.toLowerCase();
+
+        for (Client client : donnees) {
+            String testNom = client.getNom().toLowerCase();
+            String testPrenom = client.getPrenom().toLowerCase();
+
+            if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
+                listeFiltre.add(client);
+            }
+        }
+        return listeFiltre;
+    }
+
 
     @Override
     public boolean create(Client objet) {
@@ -82,24 +100,5 @@ public class ListeMemoireClientDao implements IDaoClient {
             supprime = this.donnees.remove(idx);
         }
         return objet.equals(supprime);
-    }
-
-    @Override
-    public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
-        String filtreNomLow = filtreNom.toLowerCase();
-        String filtrePrenomLow = filtrePrenom.toLowerCase();
-
-        List<Client> filtreNomPrenom;
-        filtreNomPrenom = new ArrayList<Client>();
-
-        for (Client client : donnees) {
-            String testNom = client.getNom().toLowerCase();
-            String testPrenom = client.getPrenom().toLowerCase();
-            
-            if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
-                filtreNomPrenom.add(client);
-            }
-        }
-        return filtreNomPrenom;
     }
 }

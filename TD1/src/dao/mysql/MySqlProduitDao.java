@@ -1,6 +1,7 @@
 package dao.mysql;
 
 import home.connexion.ConnexionSQL;
+import home.metier.Categorie;
 import home.metier.Produit;
 
 import dao.interfaces.IDaoProduit;
@@ -54,6 +55,107 @@ public class MySqlProduitDao implements IDaoProduit  {
         }
         return null;
     }
+
+    @Override
+    public List<Produit> getByCategorie(Categorie filtreCategorie) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Produit";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                int idCateg = resultSet.getInt("id_categorie");
+                Categorie testCategorie = MySqlCategorieDao.getInstance().getById(idCateg);
+
+                if (testCategorie.getId() == filtreCategorie.getId()) {
+                    int idProd = resultSet.getInt("id_produit");
+                    String nom = resultSet.getString("nom");
+                    String description = resultSet.getString("description");
+                    double tarif = resultSet.getFloat("tarif");
+                    String visuel = resultSet.getString("visuel");
+
+                    Produit produit = new Produit(idProd, nom, description, tarif, visuel, testCategorie);
+                    donnees.add(produit);
+                }
+            }
+
+            statement.close();
+            return donnees;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Produit> getByNomProduit(String filtreNomProduit) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Produit";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                String nom = resultSet.getString("nom");
+
+                if (nom == filtreNomProduit) {
+                    int idProd = resultSet.getInt("id_produit");
+                    String description = resultSet.getString("description");
+                    double tarif = resultSet.getFloat("tarif");
+                    String visuel = resultSet.getString("visuel");
+                    int idCateg = resultSet.getInt("id_categorie");
+
+                    Produit produit = new Produit(idProd, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(idCateg));
+                    donnees.add(produit);
+                }
+            }
+
+            statement.close();
+            return donnees;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Produit> getByTarif(Double filtreTarif) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Produit";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                double tarif = resultSet.getFloat("tarif");
+
+                if (tarif <= filtreTarif) {
+                    int idProd = resultSet.getInt("id_produit");
+                    String nom = resultSet.getString("nom");
+                    String description = resultSet.getString("description");
+                    String visuel = resultSet.getString("visuel");
+                    int idCateg = resultSet.getInt("id_categorie");
+
+                    Produit produit = new Produit(idProd, nom, description, tarif, visuel, MySqlCategorieDao.getInstance().getById(idCateg));
+                    donnees.add(produit);
+                }
+            }
+
+            statement.close();
+            return donnees;
+
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
+
 
     @Override
     public boolean create(Produit objet) {
