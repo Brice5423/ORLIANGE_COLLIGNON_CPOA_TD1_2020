@@ -42,17 +42,13 @@ public class Controller_Accueil implements Initializable {
 
     @FXML
     void OnCick_Quitter(ActionEvent event) {
-        boolean click = true;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quitter la fenêtre");
+        alert.setHeaderText("Êtes-vous sûr de vouloir quitter l'application ?");
 
-        if (click) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Quitter la fenêtre");
-            alert.setHeaderText("Êtes-vous sûr de vouloir quitter l'application ?");
-
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                Platform.exit();
-            }
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Platform.exit();
         }
     }
 
