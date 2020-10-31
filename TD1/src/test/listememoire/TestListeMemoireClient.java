@@ -3,9 +3,12 @@ package test.listememoire;
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
+import dao.memoire.ListeMemoireClientDao;
 import home.metier.Client;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +74,14 @@ public class TestListeMemoireClient {
     public void testDelete() {
         Client client = dao.getById(2);
         assertTrue(dao.delete(client));
+    }
+
+    @Test
+    public void testFiltreNomPrenom() {
+        assertNotNull(dao.getByNomPrenom("ORLIANGE", ""));
+        assertNotNull(dao.getByNomPrenom("ORLIANGE", "Brice"));
+
+        assertNotNull(dao.getByNomPrenom("orliange", ""));
+        assertNotNull(dao.getByNomPrenom("orliange", "brice"));
     }
 }

@@ -3,6 +3,7 @@ package dao.mysql;
 import home.connexion.ConnexionSQL;
 import dao.interfaces.IDaoClient;
 import home.metier.Client;
+import org.junit.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -177,7 +178,11 @@ public class MySqlClientDao implements IDaoClient {
         return false;
     }
 
+    @Override
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        String filtreNomLow = filtreNom.toLowerCase();
+        String filtrePrenomLow = filtrePrenom.toLowerCase();
+
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
 
@@ -186,10 +191,10 @@ public class MySqlClientDao implements IDaoClient {
             ResultSet resultSet = statement.executeQuery(request);
 
             while (resultSet.next()) {
-                String testNom = resultSet.getString("nom");
-                String testPrenom = resultSet.getString("prenom");
+                String testNom = resultSet.getString("nom").toLowerCase();
+                String testPrenom = resultSet.getString("prenom").toLowerCase();
 
-                if (((filtreNom==testNom) && (filtrePrenom=="")) || ((filtreNom==testNom) && (filtrePrenom==testPrenom))) {
+                if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
                     int idClient = resultSet.getInt("id_client");
                     String nom = resultSet.getString("nom");
                     String prenom = resultSet.getString("prenom");

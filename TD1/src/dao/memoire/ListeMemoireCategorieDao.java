@@ -36,6 +36,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
             donnees = new ArrayList<>();
         }
 
+        objet.setId(1);
         for (Categorie categorie : donnees) {
             if (categorie.getId() == objet.getId()) {
                 objet.setId(objet.getId()+1);

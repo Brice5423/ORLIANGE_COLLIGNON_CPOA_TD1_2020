@@ -37,6 +37,7 @@ public class ListeMemoireClientDao implements IDaoClient {
             donnees = new ArrayList<>();
         }
 
+        objet.setId(1);
         for (Client client : donnees) {
             if (client.getId() == objet.getId()) {
                 objet.setId(objet.getId()+1);
@@ -82,16 +83,20 @@ public class ListeMemoireClientDao implements IDaoClient {
         }
         return objet.equals(supprime);
     }
-    
+
+    @Override
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
+        String filtreNomLow = filtreNom.toLowerCase();
+        String filtrePrenomLow = filtrePrenom.toLowerCase();
+
         List<Client> filtreNomPrenom;
         filtreNomPrenom = new ArrayList<Client>();
-        
+
         for (Client client : donnees) {
-            String testNom = client.getNom();
-            String testPrenom = client.getPrenom();
+            String testNom = client.getNom().toLowerCase();
+            String testPrenom = client.getPrenom().toLowerCase();
             
-            if (((filtreNom==testNom) && (filtrePrenom=="")) || ((filtreNom==testNom) && (filtrePrenom==testPrenom))) {
+            if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
                 filtreNomPrenom.add(client);
             }
         }

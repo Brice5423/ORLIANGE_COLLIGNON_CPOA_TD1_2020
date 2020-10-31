@@ -7,6 +7,8 @@ import home.connexion.ConnexionSQL;
 import home.metier.Client;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -117,5 +119,12 @@ public class TestMySQLClient {
 
         dao.delete(dao.getById(id));
         assertNull(dao.getById(id));
+    }
+
+    @Test
+    public void testFiltreNomPrenom() {
+        assertNotNull(dao.getByNomPrenom("ORLIANGE", ""));
+
+        assertNotNull(dao.getByNomPrenom("ORLIANGE", "Brice"));
     }
 }
