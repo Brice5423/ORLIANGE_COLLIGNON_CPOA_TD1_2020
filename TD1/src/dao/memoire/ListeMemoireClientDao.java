@@ -36,9 +36,13 @@ public class ListeMemoireClientDao implements IDaoClient {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        while (this.donnees.contains(objet)) {
-            objet.setId(objet.getId() + 1);
+
+        for (Client client : donnees) {
+            if (client.getId() == objet.getId()) {
+                objet.setId(objet.getId()+1);
+            }
         }
+
         return this.donnees.add(objet);
     }
 

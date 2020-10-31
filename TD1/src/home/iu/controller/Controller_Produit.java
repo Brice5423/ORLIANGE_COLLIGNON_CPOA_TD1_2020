@@ -23,8 +23,9 @@ import java.util.ResourceBundle;
 
 
 public class Controller_Produit implements Initializable, ChangeListener<Produit> {
-
-    DaoFactory DaoF;
+    private DaoFactory DaoF;
+    private IDaoProduit daoProd;
+    private Produit produitTab;
 
     @FXML
     private Pane pane_Modif;
@@ -69,6 +70,9 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private Label lbl_ErreurCateg;
 
     @FXML
+    private TextField input_ModifId;
+
+    @FXML
     private TextField input_ModifNom;
 
     @FXML
@@ -103,7 +107,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
 
     @FXML
-    private ChoiceBox<?> Choice_ModifCateg;
+    private ChoiceBox<Categorie> Choice_ModifCateg;
 
     @FXML
     private ChoiceBox<?> Choice_VisuCateg;
@@ -117,7 +121,10 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        daoProd = DaoF.getDaoProduit();
+
         this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
+        this.Choice_ModifCateg.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
 
         TableColumn<Produit, Integer> colIdentifiant = new TableColumn<>("ID");
         colIdentifiant.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id"));
@@ -140,6 +147,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
         this.btn_SuppProduit.setDisable(newValue == null);
         this.btn_AffichModif.setDisable(newValue == null);
+
+        produitTab = observable.getValue();
     }
 
     @FXML
@@ -176,22 +185,21 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         //Quand on appuie sur le boutton Créer
         if (complet) {
-            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
-            IDaoProduit DaoProd = DaoF.getDaoProduit();
-
             Produit produit = new Produit();
             produit.setNom(input_nom.getText());
             produit.setDescription(input_Description.getText());
             produit.setTarif(Double.valueOf(input_Tarif.getText()));
+            produit.setVisuel(input_Visuel.getText());
             produit.setCategorie(Choice_Categ.getValue());
 
             lbl_CreerProduit.setText(produit.toStringController());
 
-            DaoProd.create(produit);
+            daoProd.create(produit);
 
             input_nom.clear();
             input_Description.clear();
             input_Tarif.clear();
+            input_Visuel.clear();
             Choice_Categ.setValue(null);
 
             this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
@@ -202,6 +210,13 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_AffichModifProduit(ActionEvent event) {
         pane_Modif.setVisible(true);
         btn_ModifProduit.setVisible(true);
+
+        input_ModifId.setText(String.valueOf(produitTab.getId()));
+        input_ModifNom.setText(produitTab.getNom());
+        input_ModifDescription.setText(produitTab.getDescription());
+        input_ModifTarif.setText(String.valueOf(produitTab.getTarif()));
+        input_ModifVisuel.setText(produitTab.getVisuel());
+        Choice_ModifCateg.setValue(produitTab.getCategorie());
     }
 
     @FXML
@@ -236,11 +251,33 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             complet = false;
         }
 
+        if (complet) {
+            Produit produit = new Produit();
+            produit.setNom(input_nom.getText());
+            produit.setDescription(input_Description.getText());
+            produit.setTarif(Double.valueOf(input_Tarif.getText()));
+            produit.setVisuel(input_Visuel.getText());
+            produit.setCategorie(Choice_Categ.getValue());
+
+            lbl_CreerProduit.setText(produit.toStringController());
+
+            daoProd.update(produit);
+
+            input_ModifNom.clear();
+            input_ModifDescription.clear();
+            input_ModifVisuel.clear();
+            input_ModifTarif.clear();
+            Choice_ModifCateg.setValue(null);
+
+            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+        }
     }
 
     @FXML
     void OnClick_SuppProduit(ActionEvent event) {
+        daoProd.delete(produitTab);
 
+        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
     }
 
     public boolean isDouble(String string) {

@@ -80,8 +80,11 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        while (this.donnees.contains(objet)) {
-            objet.setId(objet.getId() + 1);
+
+        for (Commande commande : donnees) {
+            if (commande.getId() == objet.getId()) {
+                objet.setId(objet.getId()+1);
+            }
         }
         return this.donnees.add(objet);
     }

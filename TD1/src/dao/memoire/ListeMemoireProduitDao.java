@@ -77,9 +77,14 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         if (donnees == null) {
             donnees = new ArrayList<>();
         }
-        while (this.donnees.contains(objet)) {
-            objet.setId(objet.getId() + 1);
+
+        objet.setId(1);
+        for (Produit produit : donnees) {
+            if (produit.getId() == objet.getId()) {
+                objet.setId(objet.getId()+1);
+            }
         }
+
         return this.donnees.add(objet);
     }
 
