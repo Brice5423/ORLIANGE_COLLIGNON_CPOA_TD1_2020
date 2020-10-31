@@ -1,13 +1,41 @@
 package home.iu.controller;
 
+import dao.enumeration.EPersistance;
+import dao.factory.DaoFactory;
+import home.metier.Client;
+import home.metier.Produit;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Controller_Client {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller_Client implements Initializable {
+
+    DaoFactory DaoF;
+
+    @FXML
+    private Button btn_AffichModifClient;
+
+    @FXML
+    private Button btn_SuppClient;
+
+    @FXML
+    private TableView<Client> tbl_Clients;
+
+    @FXML
+    private Button btn_ModifClient;
+
+    @FXML
+    private Pane pane_Modif;
 
     @FXML
     private VBox Vbox_Client;
@@ -131,6 +159,35 @@ public class Controller_Client {
 
     @FXML
     private Label lbl_ErreurModifID;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+
+        TableColumn<Produit, Integer> colNom = new TableColumn<>("Nom");
+        colNom.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("nom"));
+        TableColumn<Produit, String> colPrenom = new TableColumn<>("Prénom");
+        colPrenom.setCellValueFactory(new PropertyValueFactory<Produit, String>("prenom"));
+        TableColumn<Produit, String> colMail = new TableColumn<>("Mail");
+        colMail.setCellValueFactory(new PropertyValueFactory<Produit, String>("mail"));
+        TableColumn<Produit, Double> colMdp = new TableColumn<>("Mot de passe");
+        colMdp.setCellValueFactory(new PropertyValueFactory<Produit, Double>("mdp"));
+        TableColumn<Produit, String> colNumero = new TableColumn<>("Numéro");
+        colNumero.setCellValueFactory(new PropertyValueFactory<Produit, String>("numero"));
+        TableColumn<Produit, Integer> colVoie = new TableColumn<>("Voie");
+        colVoie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("voie"));
+        TableColumn<Produit, Integer> colCP = new TableColumn<>("Code postal");
+        colCP.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("cp"));
+        TableColumn<Produit, Integer> colVille = new TableColumn<>("Ville");
+        colVille.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("ville"));
+        TableColumn<Produit, Integer> colPays = new TableColumn<>("Pays");
+        colPays.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("pays"));
+
+        this.tbl_Clients.getColumns().setAll(colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
+        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+
+        this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener(this);
+    }
 
     @FXML
     void OnClick_CreerClient(ActionEvent event) {

@@ -36,7 +36,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private Button btn_SuppProduit;
 
     @FXML
-    private Button btnAffichModif;
+    private Button btn_AffichModif;
 
     @FXML
     private ChoiceBox<Categorie> Choice_Categ;
@@ -101,8 +101,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     private Label lbl_ModifProduit;
 
-    @FXML
-    private TextField imput_ModifId;
 
     @FXML
     private ChoiceBox<?> Choice_ModifCateg;
@@ -141,7 +139,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
         this.btn_SuppProduit.setDisable(newValue == null);
-        this.btnAffichModif.setDisable(newValue == null);
+        this.btn_AffichModif.setDisable(newValue == null);
     }
 
     @FXML
