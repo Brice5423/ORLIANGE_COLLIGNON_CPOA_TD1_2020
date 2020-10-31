@@ -55,4 +55,8 @@ public class Categorie {
 	public String toString() {
 		return /*"id = " + this.id + ", titre = " +*/ this.titre /*+ ", visuel = " + this.visuel*/;
 	}
+	public String toStringController() {
+
+		return this.titre + ", " + this.visuel;
+	}
 }

@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -53,7 +52,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Pane layoutX="600.0" prefHeight="234.0" prefWidth="600.0">
+            <Pane fx:id="pane_ModifCategorie" layoutX="600.0" prefHeight="234.0" prefWidth="600.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="183.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="535.0" />
                   <GridPane layoutY="35.0" prefHeight="183.0" prefWidth="600.0">
@@ -87,12 +86,7 @@
                            </GridPane.margin>
                         </Label>
                         <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id : " />
-                        <ChoiceBox fx:id="choice_ModifID" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" />
-                        <Label fx:id="lbl_ErreurModifID" alignment="CENTER" prefHeight="17.0" prefWidth="113.0" text="L'Id n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
-                           <GridPane.margin>
-                              <Insets top="40.0" />
-                           </GridPane.margin>
-                        </Label>
+                        <TextField disable="true" maxWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                   <Label layoutX="224.0" layoutY="14.0" text="Modification d'une categorie" />
@@ -110,7 +104,7 @@
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnClick_ModifCategorie" prefHeight="25.0" prefWidth="65.0" text="Modifier" />
+                  <Button fx:id="btn_ModifCategorie" mnemonicParsing="false" onAction="#OnClick_ModifCategorie" prefHeight="25.0" prefWidth="65.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>
@@ -140,9 +134,9 @@
       <Pane prefHeight="290.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Button layoutX="93.0" layoutY="101.0" mnemonicParsing="false" onAction="#OnClick_VisuCategorie" text="Visualiser" />
-            <Button layoutX="90.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnClick_SuppCategorie" text="Supprimer" />
-            <TableView layoutX="318.0" layoutY="28.0" prefHeight="253.0" prefWidth="565.0" visible="false">
+            <Button fx:id="btn_AffichModifCategorie" disable="true" layoutX="95.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_AffichModifCategorie" text="Modifier" />
+            <Button fx:id="btn_SuppCategorie" disable="true" layoutX="90.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnClick_SuppCategorie" text="Supprimer" />
+            <TableView fx:id="tbl_Categories" layoutX="318.0" layoutY="28.0" prefHeight="253.0" prefWidth="565.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="ID" />
                 <TableColumn prefWidth="177.0" text="Titre" />

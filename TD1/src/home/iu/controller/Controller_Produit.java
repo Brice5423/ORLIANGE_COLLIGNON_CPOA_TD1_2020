@@ -193,6 +193,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             input_Description.clear();
             input_Tarif.clear();
             Choice_Categ.setValue(null);
+
+            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
         }
     }
 

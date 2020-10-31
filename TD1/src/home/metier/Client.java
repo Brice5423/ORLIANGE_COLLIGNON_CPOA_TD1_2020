@@ -122,7 +122,7 @@ public class Client {
 	}
 
 	public String toStringController() {
-		return this.nom + " " + this.prenom;
+		return this.nom + ", " + this.prenom ;
 	}
 }
 

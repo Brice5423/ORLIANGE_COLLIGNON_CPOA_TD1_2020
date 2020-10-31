@@ -197,7 +197,7 @@
                   <TableColumn maxWidth="80.0" minWidth="-Infinity" resizable="false" text="Id_Categorie" />
                </columns>
             </TableView>
-            <Button fx:id="btnAffichModif" disable="true" layoutX="47.0" layoutY="85.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
+            <Button fx:id="btn_AffichModif" disable="true" layoutX="47.0" layoutY="85.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
          </children>
       </Pane>
       <Pane prefHeight="25.0" prefWidth="1200.0">
