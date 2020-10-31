@@ -75,7 +75,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Pane layoutX="600.0" prefHeight="347.0" prefWidth="600.0">
+            <Pane fx:id="pane_Modif" layoutX="600.0" prefHeight="347.0" prefWidth="600.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="33.0" layoutY="40.0" stroke="BLACK" strokeType="OUTSIDE" width="535.0" />
                   <GridPane alignment="CENTER" layoutY="40.0" prefHeight="293.0" prefWidth="600.0">
@@ -127,12 +127,7 @@
                            </GridPane.margin>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                          Id :" textAlignment="CENTER" />
-                        <ChoiceBox fx:id="Choice_ModifId" prefHeight="25.0" prefWidth="110.0" GridPane.columnIndex="2" />
-                        <Label fx:id="lbl_ErreurModifId" alignment="CENTER" prefHeight="17.0" prefWidth="120.0" text="L'Id n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2">
-                           <GridPane.margin>
-                              <Insets top="43.0" />
-                           </GridPane.margin>
-                        </Label>
+                        <TextField fx:id="imput_ModifId" disable="true" maxWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="2" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -153,7 +148,7 @@
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnClick_ModifProduit" prefHeight="25.0" prefWidth="69.0" text="Modifier" />
+                  <Button fx:id="btn_ModifProduit" mnemonicParsing="false" onAction="#OnClick_ModifProduit" prefHeight="25.0" prefWidth="69.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>
@@ -175,17 +170,19 @@
       <Pane prefHeight="287.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Button layoutX="45.0" layoutY="97.0" mnemonicParsing="false" onAction="#OnClick_VisuProduit" text="Visualiser" />
-            <Button layoutX="42.0" layoutY="167.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
-            <TableView layoutX="154.0" layoutY="27.0" prefHeight="246.0" prefWidth="1018.0" visible="false">
+            <Button layoutX="50.0" layoutY="60.0" mnemonicParsing="false" onAction="#OnClick_RefreshProduit" text="Refresh" />
+            <Button fx:id="btn_SuppProduit" disable="true" layoutX="42.0" layoutY="220.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
+            <TableView fx:id="tbl_Produits" layoutX="154.0" layoutY="27.0" prefHeight="246.0" prefWidth="1000.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="204.0" text="Nom" />
-                  <TableColumn prefWidth="568.0" text="Description" />
-                  <TableColumn prefWidth="75.0" text="Tarif" />
-                  <TableColumn prefWidth="95.0" text="Id_Commande" />
+                  <TableColumn maxWidth="75.0" minWidth="-Infinity" prefWidth="75.0" resizable="false" text="ID" />
+                  <TableColumn maxWidth="150.0" minWidth="-Infinity" prefWidth="150.0" resizable="false" text="Nom" />
+                  <TableColumn maxWidth="420.0" minWidth="-Infinity" prefWidth="420.0" resizable="false" text="Description" />
+                  <TableColumn maxWidth="200.0" minWidth="-Infinity" prefWidth="200.0" resizable="false" text="Visuel" />
+                  <TableColumn maxWidth="75.0" minWidth="-Infinity" prefWidth="75.0" resizable="false" text="Tarif" />
+                  <TableColumn maxWidth="80.0" minWidth="-Infinity" resizable="false" text="Id_Categorie" />
                </columns>
             </TableView>
+            <Button fx:id="btnAffichModif" disable="true" layoutX="47.0" layoutY="138.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
          </children>
       </Pane>
       <Pane prefHeight="25.0" prefWidth="1200.0">

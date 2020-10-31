@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="CPOA" uuid="627f9326-767e-44d9-a243-dd92fd28bfee">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="collign97u_CPOA@devbdd.iutmetz.univ-lorraine.fr" uuid="aff0e634-b4c4-48f7-bfdd-513015a35e8d">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/collign97u_CPOA</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://devbdd.iutmetz.univ-lorraine.fr:3306/collign97u_CPOA</jdbc-url>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
