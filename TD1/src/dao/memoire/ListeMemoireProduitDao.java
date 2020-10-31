@@ -31,24 +31,36 @@ public class ListeMemoireProduitDao implements IDaoProduit {
             donnees = new ArrayList<>();
         }
 
-        Categorie categorie = new Categorie(1, "Matériel de PC", "");
+        Categorie categorie1 = new Categorie(1, "Matériel de PC", "pc.png");
+        Categorie categorie2 = new Categorie(2, "Pull", "pull.png");
 
         // Création de deux produits :
         Produit produit1 = new Produit();
         produit1.setId(1);
         produit1.setNom("Souris");
         produit1.setDescription("C'est une souris de PC");
-        produit1.setCategorie(categorie);
-        produit1.setTarif(15.0d);
+        produit1.setTarif(15.0);
+        produit1.setVisuel("produit1.png");
+        produit1.setCategorie(categorie1);
         donnees.add(produit1);
 
         Produit produit2 = new Produit();
         produit2.setId(2);
         produit2.setNom("Clavier");
         produit2.setDescription("C'est un clavier de PC");
-        produit2.setCategorie(categorie);
-        produit2.setTarif(20.0d);
+        produit2.setTarif(20.0);
+        produit2.setVisuel("produit2.png");
+        produit2.setCategorie(categorie1);
         donnees.add(produit2);
+
+        Produit produit3 = new Produit();
+        produit3.setId(3);
+        produit3.setNom("Kiki");
+        produit3.setDescription("I love kiki !!!");
+        produit3.setTarif(999.9);
+        produit3.setVisuel("produit3.png");
+        produit3.setCategorie(categorie2);
+        donnees.add(produit3);
 
         return donnees;
     }
