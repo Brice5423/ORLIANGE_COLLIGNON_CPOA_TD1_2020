@@ -6,4 +6,6 @@ import home.metier.Categorie;
 
 public interface IDaoCategorie extends IDao<Categorie> {
     List<Categorie> getAllCategories();
+
+    Categorie getByTitreCategorie(String titreCategorie);
 }

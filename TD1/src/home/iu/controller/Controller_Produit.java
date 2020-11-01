@@ -2,6 +2,7 @@ package home.iu.controller;
 
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
+import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoProduit;
 
 import home.metier.Categorie;
@@ -26,8 +27,9 @@ import java.util.ResourceBundle;
 
 
 public class Controller_Produit implements Initializable, ChangeListener<Produit> {
-    private DaoFactory DaoF;
+    private DaoFactory daoF;
     private IDaoProduit daoProd;
+    private IDaoCategorie daoCateg;
     private Produit produitTab;
 
     @FXML
@@ -112,29 +114,26 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private TableView<Produit> tbl_Produits;
 
     @FXML
-    private TextField imput_FiltreNom;
+    private ChoiceBox<Categorie> Choice_FiltreCateg;
 
     @FXML
-    private ChoiceBox<?> Choice_FiltreCateg;
+    private TextField input_FiltreNom;
+
+    @FXML
+    private TextField input_FiltreTarif;
 
     @FXML
     private Button btn_ValiderFiltre;
 
-    @FXML
-    private TextField imput_FiltreTarif;
-
-    @FXML
-    void OnClick_ValiderFiltre(ActionEvent event) {
-
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DaoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
-        daoProd = DaoF.getDaoProduit();
+        daoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
+        daoProd = daoF.getDaoProduit();
+        daoCateg = daoF.getDaoCategorie();
 
-        this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
-        this.Choice_ModifCateg.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));
+        this.Choice_Categ.setItems(FXCollections.observableArrayList(daoCateg.getAllCategories()));
+        this.Choice_ModifCateg.setItems(FXCollections.observableArrayList(daoCateg.getAllCategories()));
+        this.Choice_FiltreCateg.setItems(FXCollections.observableArrayList(daoCateg.getAllCategories()));
 
         TableColumn<Produit, Integer> colIdentifiant = new TableColumn<>("ID");
         colIdentifiant.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id"));
@@ -146,11 +145,11 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         colTarif.setCellValueFactory(new PropertyValueFactory<Produit, Double>("tarif"));
         TableColumn<Produit, String> colVisuel = new TableColumn<>("Visuel");
         colVisuel.setCellValueFactory(new PropertyValueFactory<Produit, String>("visuel"));
-        TableColumn<Produit, Integer> colIdCategorie = new TableColumn<>("Id_Catégorie");
+        TableColumn<Produit, Integer> colIdCategorie = new TableColumn<>("Titre_Catégorie");
         colIdCategorie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("categorie"));
         this.tbl_Produits.getColumns().setAll(colIdentifiant, colNom, colDescription, colTarif, colVisuel, colIdCategorie);
         tbl_Produits.getItems().clear();
-        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
 
         this.tbl_Produits.getSelectionModel().selectedItemProperty().addListener(this);
     }
@@ -215,7 +214,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             //this.tbl_Produits.getItems().addAll(produit);
             tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
         }
     }
 
@@ -285,7 +284,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             //this.tbl_Produits.refresh();
             tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
         }
     }
 
@@ -300,7 +299,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         if (result.get() == ButtonType.OK){
             daoProd.delete(produitTab);
             tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
         }
     }
 
@@ -316,6 +315,28 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     void OnClick_Refresh(ActionEvent event) {
         tbl_Produits.getItems().clear();
-        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+    }
+
+    @FXML
+    void OnClick_ValiderFiltre(ActionEvent event) {
+        if (Choice_FiltreCateg != null) {
+            tbl_Produits.getItems().clear();
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByCategorie(daoCateg.getByTitreCategorie(String.valueOf(Choice_FiltreCateg.getValue()))));
+            input_FiltreNom.clear();
+            input_FiltreTarif.clear();
+
+        } else if (input_FiltreNom.getText() != "") {
+            tbl_Produits.getItems().clear();input_FiltreTarif.clear();
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByNomProduit(input_FiltreNom.getText()));
+            Choice_FiltreCateg.setValue(null);
+            input_FiltreTarif.clear();
+
+        } else if (input_FiltreTarif.getText() != "") {
+            tbl_Produits.getItems().clear();
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+            Choice_FiltreCateg.setValue(null);
+            input_FiltreNom.clear();
+        }
     }
 }

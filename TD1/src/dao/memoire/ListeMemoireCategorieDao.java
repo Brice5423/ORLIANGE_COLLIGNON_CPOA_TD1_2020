@@ -19,14 +19,27 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
 
     private ListeMemoireCategorieDao() {
         this.donnees = new ArrayList<Categorie>();
-        this.donnees.add(new Categorie(1, "Pulls", "pulls.png"));
-        this.donnees.add(new Categorie(2, "Bonnets", "bonnets.png"));
+        this.donnees.add(new Categorie(1, "Matériel de PC", "pc.png"));
+        this.donnees.add(new Categorie(2, "Pull", "pull.png"));
     }
 
 
     @Override
     public ArrayList<Categorie> getAllCategories() {
         return (ArrayList<Categorie>) this.donnees;
+    }
+
+    @Override
+    public Categorie getByTitreCategorie(String titreCategorie) {
+        if (donnees != null && !donnees.isEmpty()) {
+            // Itérator sur la liste des produits :
+            for (Categorie categorie : donnees) {
+                if (categorie.getTitre() == titreCategorie) {
+                    return categorie;
+                }
+            }
+        }
+        return null;
     }
 
 

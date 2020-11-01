@@ -38,18 +38,19 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         Client client1 = new Client(1, "ORLIANGE", "Brice", "orl.bri@liste.com", "jetaime", "45", "rue", "54789", "cool", "happy");
         Client client2 = new Client(2, "COLLIGNON", "Nicolas", "col.nic@liste.com", "bisous", "36", "avenu", "57852", "nop", "hihi");
 
-        Categorie categorie1 = new Categorie(1, "Pull", "");
-        Categorie categorie2 = new Categorie(2, "vest", "");
+        Categorie categorie1 = new Categorie(1, "Matériel de PC", "pc.png");
+        Categorie categorie2 = new Categorie(2, "Pull", "pull.png");
 
-        Produit prodiot1 = new Produit(1, "Qiqi", "I love Qiqi", 9999.99, "", categorie1);
-        Produit prodiot2 = new Produit(2, "DBZ", "Cool", 100., "", categorie1);
-        Produit prodiot3 = new Produit(3, "Dall", "Joyeux Noel", 9.99, "", categorie2);
+        Produit produit1 = new Produit(1, "Souris", "C'est une souris de PC", 15.0, "produit1.png", categorie1);
+        Produit produit2 = new Produit(2, "Clavier", "C'est un clavier de PC", 20.0, "produit2.png", categorie1);
+        Produit produit3 = new Produit(3, "Kiki", "I love kiki !!!", 999.9, "produit3.png", categorie2);
 
         Map<Produit, Integer> produits1 = new HashMap<>();
-        produits1.put(prodiot1, 1);
+        produits1.put(produit1, 1);
+        produits1.put(produit2, 1);
         Map<Produit, Integer> produits2 = new HashMap<>();
-        produits2.put(prodiot2, 5);
-        produits2.put(prodiot3, 3);
+        produits2.put(produit2, 5);
+        produits2.put(produit3, 3);
 
         // Création de deux commandes :
         Commande commande1 = new Commande();

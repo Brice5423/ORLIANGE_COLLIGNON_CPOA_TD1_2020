@@ -54,6 +54,35 @@ public class MySqlCategorieDao implements IDaoCategorie {
     }
 
     @Override
+    public Categorie getByTitreCategorie(String titreCategorie) {
+        try {
+            Connection laConnexion = ConnexionSQL.creeConnexion();
+
+            String request = "SELECT * FROM Categorie";
+            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
+            ResultSet resultSet = statement.executeQuery(request);
+
+            while (resultSet.next()) {
+                String testTitreCategorie = resultSet.getString("titre");
+                if(testTitreCategorie == titreCategorie) {
+                    int idCategorie = resultSet.getInt("id_categorie");
+                    String visuel = resultSet.getString("visuel");
+
+                    System.out.format("%s, %s, %s\n", idCategorie, testTitreCategorie, visuel);
+
+                    Categorie categorie = new Categorie(idCategorie, testTitreCategorie, visuel);
+                    statement.close();
+                    return categorie;
+                }
+            }
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+        }
+        return null;
+    }
+
+
+    @Override
     public boolean create(Categorie objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
