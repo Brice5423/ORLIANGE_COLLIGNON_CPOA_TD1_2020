@@ -138,7 +138,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             imput_titre.clear();
             imput_visuel.clear();
 
-            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
+            this.tbl_Categories.getItems().addAll(categorie);
         }
     }
 
@@ -170,7 +170,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             imput_titre.clear();
             imput_visuel.clear();
 
-            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
+            this.tbl_Categories.refresh();
         }
 
     }

@@ -282,7 +282,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             input_Ville.clear();
             input_Pays.clear();
 
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+            this.tbl_Clients.getItems().addAll(client);
         }
     }
 
@@ -365,7 +365,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             input_Ville.clear();
             input_Pays.clear();
 
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+            this.tbl_Clients.refresh();
         }
 
     }
