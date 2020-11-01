@@ -34,17 +34,21 @@ public class ListeMemoireClientDao implements IDaoClient {
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
         List<Client> listeFiltre;
         listeFiltre = new ArrayList<Client>();
-        String filtreNomLow = filtreNom.toLowerCase();
+        String filtreNomLow = filtreNom.toUpperCase();
         String filtrePrenomLow = filtrePrenom.toLowerCase();
+        System.out.println("Filtre : Nom : " + filtreNomLow + " - Prenom : " + filtrePrenomLow);
 
         for (Client client : donnees) {
-            String testNom = client.getNom().toLowerCase();
+            String testNom = client.getNom().toUpperCase();
             String testPrenom = client.getPrenom().toLowerCase();
+            System.out.println("Test : Nom : " + testNom + " - Prenom : " + testPrenom);
 
-            if (((filtreNomLow == testNom) && (filtrePrenomLow == "")) || ((filtreNomLow == testNom) && (filtrePrenomLow == testPrenom))) {
+            if ((testNom == filtreNomLow) || (testPrenom == filtrePrenomLow)) {
                 listeFiltre.add(client);
+                System.out.println(client.toString());
             }
         }
+        System.out.println();
         return listeFiltre;
     }
 

@@ -161,10 +161,10 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     private TextField input_ModifId;
 
     @FXML
-    private TextField imput_FiltreNom;
+    private TextField input_FiltreNom;
 
     @FXML
-    private TextField imput_FiltrePrenom;
+    private TextField input_FiltrePrenom;
 
     @FXML
     private Button btn_ValiderFiltre;
@@ -260,6 +260,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             lbl_ErreurPays.setVisible(true);
             complet = false;
         }
+
         //Quand on appuie sur le boutton Créer
         if (complet) {
             DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
@@ -345,8 +346,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             lbl_ErreurModifPays.setVisible(true);
             complet = false;
         }
-        if (complet) {
 
+        if (complet) {
             clientTab.setNom(input_ModifNom.getText());
             clientTab.setPrenom(input_ModifPrenom.getText());
             clientTab.setMail(input_ModifMail.getText());
@@ -373,7 +374,6 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             this.tbl_Clients.refresh();
         }
-
     }
 
     @FXML
@@ -406,11 +406,11 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_ModifCp.setText(clientTab.getAdrCodePostal());
         input_ModifVille.setText(clientTab.getAdrVille());
         input_ModifPays.setText(clientTab.getAdrPays());
-
     }
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
-
+        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText().toUpperCase(), input_FiltrePrenom.getText()));
     }
 }

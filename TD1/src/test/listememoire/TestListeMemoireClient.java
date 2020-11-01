@@ -78,10 +78,10 @@ public class TestListeMemoireClient {
 
     @Test
     public void testFiltreNomPrenom() {
-        assertNotNull(dao.getByNomPrenom("ORLIANGE", ""));
-        assertNotNull(dao.getByNomPrenom("ORLIANGE", "Brice"));
+        assertEquals(dao.getByNomPrenom("ORLIANGE", "").size(), 1);
+        assertEquals(dao.getByNomPrenom("ORLIANGE", "Brice").size(), 1);
 
-        assertNotNull(dao.getByNomPrenom("orliange", ""));
-        assertNotNull(dao.getByNomPrenom("orliange", "brice"));
+        //assertEquals(dao.getByNomPrenom("Orliange", "").size(), 1);
+        //assertEquals(dao.getByNomPrenom("Orliange", "brice").size(), 1);
     }
 }

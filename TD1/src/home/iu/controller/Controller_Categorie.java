@@ -65,7 +65,10 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
     private Button btn_ModifCategorie;
 
     @FXML
-    private Label lbl_MessageCategorie;
+    private Label lbl_Creercateg;
+
+    @FXML
+    private Label lbl_ModifCateg;
 
     @FXML
     private Button btn_AffichModifCategorie;
@@ -91,7 +94,6 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         TableColumn<Categorie, String> colVisuel = new TableColumn<>("Visuel");
         colVisuel.setCellValueFactory(new PropertyValueFactory<Categorie, String>("visuel"));
         this.tbl_Categories.getColumns().setAll(colID, colTitre, colVisuel);
-        tbl_Categories.getItems().clear();
         this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
 
         this.tbl_Categories.getSelectionModel().selectedItemProperty().addListener( this);
@@ -129,7 +131,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             categorie.setTitre(imput_titre.getText());
             categorie.setVisuel(imput_visuel.getText());
 
-            lbl_MessageCategorie.setText("La catégorie " + categorie.toStringController() + " à bien été créée");
+            lbl_Creercateg.setText(categorie.toStringController());
 
             DaoCategorie.create(categorie);
 
@@ -157,16 +159,16 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             complet = false;
         }
         if (complet) {
+            Categorie categorie = new Categorie();
+            categorie.setTitre(imput_titre.getText());
+            categorie.setVisuel(imput_visuel.getText());
 
-            categorieTab.setTitre(imput_ModifTitre.getText());
-            categorieTab.setVisuel(imput_ModifVisuel.getText());
+            lbl_Creercateg.setText(categorie.toStringController());
 
-            lbl_MessageCategorie.setText("La catégorie " + categorieTab.toStringController() + " à bien été modifiée");
+            daoCateg.update(categorie);
 
-            daoCateg.update(categorieTab);
-
-            imput_ModifTitre.clear();
-            imput_ModifVisuel.clear();
+            imput_titre.clear();
+            imput_visuel.clear();
 
             this.tbl_Categories.refresh();
         }
@@ -184,7 +186,6 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoCateg.delete(categorieTab);
-            tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
 
