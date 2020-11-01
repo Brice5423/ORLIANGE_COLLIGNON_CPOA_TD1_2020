@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class Controller_Client implements Initializable, ChangeListener<Client> {
 
-    DaoFactory DaoF;
+    DaoFactory daoF;
     private IDaoClient daoClient;
     private Client clientTab;
 
@@ -171,8 +171,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DaoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
-        daoClient = DaoF.getDaoClient();
+        daoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
+        daoClient = daoF.getDaoClient();
 
         TableColumn<Client, Integer> colId = new TableColumn<>("Id");
         colId.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id"));
@@ -197,7 +197,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
 
         this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
-        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
     }
@@ -378,7 +378,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             //this.tbl_Clients.refresh();
             tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
         }
     }
 
@@ -393,7 +393,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         if (result.get() == ButtonType.OK){
             daoClient.delete(clientTab);
             tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
         }
     }
 
@@ -417,12 +417,21 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
         tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+    }
+
+    @FXML
+    void OnClick_FiltreNomPrenom(ActionEvent event) {
+        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
     }
 
     @FXML
     void OnClick_Refresh(ActionEvent event) {
         tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+
+        input_FiltreNom.clear();
+        input_FiltrePrenom.clear();
     }
 }

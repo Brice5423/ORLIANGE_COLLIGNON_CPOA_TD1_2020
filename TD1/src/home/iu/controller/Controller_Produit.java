@@ -316,13 +316,17 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_Refresh(ActionEvent event) {
         tbl_Produits.getItems().clear();
         this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+
+        Choice_FiltreCateg.setValue(null);
+        input_FiltreNom.clear();
+        input_FiltreTarif.clear();
     }
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
         if (Choice_FiltreCateg != null) {
             tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByCategorie(daoCateg.getByTitreCategorie(String.valueOf(Choice_FiltreCateg.getValue()))));
+            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByCategorie(Choice_FiltreCateg.getValue()));
             input_FiltreNom.clear();
             input_FiltreTarif.clear();
 
@@ -338,5 +342,21 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             Choice_FiltreCateg.setValue(null);
             input_FiltreNom.clear();
         }
+    }
+
+    @FXML
+    void OnClick_FiltreNom(ActionEvent event) {
+        tbl_Produits.getItems().clear();input_FiltreTarif.clear();
+        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByNomProduit(input_FiltreNom.getText()));
+        Choice_FiltreCateg.setValue(null);
+        input_FiltreTarif.clear();
+    }
+
+    @FXML
+    void OnClick_FiltreTarif(ActionEvent event) {
+        tbl_Produits.getItems().clear();
+        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+        Choice_FiltreCateg.setValue(null);
+        input_FiltreNom.clear();
     }
 }
