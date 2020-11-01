@@ -34,7 +34,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
     private Label lbl_ErreurTitre;
 
     @FXML
-    private TextField imput_visuel;
+    private TextField input_visuel;
     @FXML
     private Label lbl_ErreurVisuel;
 
@@ -109,7 +109,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             lbl_ErreurTitre.setVisible(true);
             complet = false;
         }
-        if (imput_visuel.getText() == "") {
+        if (input_visuel.getText() == "") {
             lbl_ErreurVisuel.setVisible(true);
             complet = false;
         }
@@ -121,14 +121,14 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             Categorie categorie = new Categorie();
             categorie.setTitre(input_titre.getText());
-            categorie.setVisuel(imput_visuel.getText());
+            categorie.setVisuel(input_visuel.getText());
 
             lbl_MessageCategorie.setText("La catégorie " + categorie.toStringController() + " à bien été créée");
 
             DaoCategorie.create(categorie);
 
             input_titre.clear();
-            imput_visuel.clear();
+            input_visuel.clear();
 
             //this.tbl_Categories.getItems().addAll(categorie);
             this.tbl_Categories.getItems().clear();
