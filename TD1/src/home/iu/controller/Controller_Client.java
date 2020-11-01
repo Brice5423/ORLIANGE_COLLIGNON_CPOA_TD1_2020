@@ -414,4 +414,10 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText().toUpperCase(), input_FiltrePrenom.getText()));
     }
+
+    @FXML
+    void OnClick_Refresh(ActionEvent event) {
+        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+    }
 }

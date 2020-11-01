@@ -85,4 +85,9 @@ public class Commande {
 	public String toString() {
 		return "id " + this.id + ", date : " + this.date + ", Client : " + client.getNom() + ", produit : " + this.produits;
 	}
+
+	public String toStringController() {
+
+		return this.client.getNom();
+	}
 }

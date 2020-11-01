@@ -308,4 +308,10 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             return false;
         }
     }
+
+    @FXML
+    void OnClick_Refresh(ActionEvent event) {
+        tbl_Produits.getItems().clear();
+        this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
+    }
 }
