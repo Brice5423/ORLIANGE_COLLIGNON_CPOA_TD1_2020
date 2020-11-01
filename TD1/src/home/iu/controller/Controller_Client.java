@@ -193,6 +193,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
+
     }
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
         this.btn_SuppClient.setDisable(newValue == null);
@@ -338,22 +339,20 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             complet = false;
         }
         if (complet) {
-            Client client = new Client();
 
-            client.setId(Integer.valueOf(input_ModifId.getText()));
-            client.setNom(input_ModifNom.getText());
-            client.setPrenom(input_ModifPrenom.getText());
-            client.setMail(input_ModifMail.getText());
-            client.setMdp(input_ModifMdp.getText());
-            client.setAdrNum(input_ModifNo.getText());
-            client.setAdrVoie(input_ModifRue.getText());
-            client.setAdrCodePostal(input_ModifCp.getText());
-            client.setAdrVille(input_ModifVille.getText());
-            client.setAdrPays(input_ModifPays.getText());
+            clientTab.setNom(input_ModifNom.getText());
+            clientTab.setPrenom(input_ModifPrenom.getText());
+            clientTab.setMail(input_ModifMail.getText());
+            clientTab.setMdp(input_ModifMdp.getText());
+            clientTab.setAdrNum(input_ModifNo.getText());
+            clientTab.setAdrVoie(input_ModifRue.getText());
+            clientTab.setAdrCodePostal(input_ModifCp.getText());
+            clientTab.setAdrVille(input_ModifVille.getText());
+            clientTab.setAdrPays(input_ModifPays.getText());
 
-            lbl_Creerclient.setText(client.toStringController());
+            lbl_Creerclient.setText(clientTab.toStringController());
 
-            daoClient.update(client);
+            daoClient.update(clientTab);
 
             input_Nom.clear();
             input_Prenom.clear();
@@ -380,7 +379,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoClient.delete(clientTab);
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+
         }
     }
 
