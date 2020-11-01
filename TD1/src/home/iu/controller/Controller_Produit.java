@@ -310,6 +310,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             tbl_Produits.getItems().clear();
             this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
 
+            lbl_MessageProduit.setText("");
             cacheModifProduit();
         }
     }
@@ -324,6 +325,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         input_FiltreNom.clear();
         input_FiltreTarif.clear();
 
+        lbl_MessageProduit.setText("");
         cacheModifProduit();
     }
 

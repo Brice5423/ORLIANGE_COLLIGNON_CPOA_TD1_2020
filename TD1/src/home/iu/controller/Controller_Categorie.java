@@ -207,6 +207,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             this.tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
 
+            lbl_MessageCategorie.setText("");
             cacheModifCategorie();
         }
     }

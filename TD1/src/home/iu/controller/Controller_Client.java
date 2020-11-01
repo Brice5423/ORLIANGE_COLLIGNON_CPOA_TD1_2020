@@ -401,6 +401,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             tbl_Clients.getItems().clear();
             this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
 
+            lbl_MessageClient.setText("");
             cacheModifClient();
         }
     }
@@ -414,6 +415,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_FiltreNom.clear();
         input_FiltrePrenom.clear();
 
+        lbl_MessageClient.setText("");
         cacheModifClient();
     }
 
