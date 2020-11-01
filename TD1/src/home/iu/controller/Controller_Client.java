@@ -1,173 +1,149 @@
 package home.iu.controller;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
-import dao.interfaces.IDaoProduit;
+
 import home.metier.Client;
-import home.metier.Produit;
-import javafx.beans.InvalidationListener;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Controller_Client implements Initializable, ChangeListener<Client> {
 
+public class Controller_Client implements Initializable, ChangeListener<Client> {
     DaoFactory daoF;
     private IDaoClient daoClient;
     private Client clientTab;
 
+
+    @FXML
+    private TextField input_Nom;
+    @FXML
+    private Label lbl_ErreurNom;
+
+    @FXML
+    private TextField input_Prenom;
+    @FXML
+    private Label lbl_ErreurPrenom;
+
+    @FXML
+    private TextField input_Mail;
+    @FXML
+    private Label lbl_ErreurMail;
+
+    @FXML
+    private TextField input_Mdp;
+    @FXML
+    private Label lbl_ErreurMdp;
+
+    @FXML
+    private TextField input_No;
+    @FXML
+    private Label lbl_ErreurNo;
+
+    @FXML
+    private TextField input_Rue;
+    @FXML
+    private Label lbl_ErreurRue;
+
+    @FXML
+    private TextField input_Cp;
+    @FXML
+    private Label lbl_ErreurCP;
+
+    @FXML
+    private TextField input_Ville;
+    @FXML
+    private Label lbl_ErreurVille;
+
+    @FXML
+    private TextField input_Pays;
+    @FXML
+    private Label lbl_ErreurPays;
+
+
+    @FXML
+    private Pane pane_Modif;
+    @FXML
+    private Button btn_ModifClient;
+
+    @FXML
+    private TextField input_ModifId;
+
+    @FXML
+    private TextField input_ModifNom;
+    @FXML
+    private Label lbl_ErreurModifNom;
+
+    @FXML
+    private TextField input_ModifPrenom;
+    @FXML
+    private Label lbl_ErreurModifPrenom;
+
+    @FXML
+    private TextField input_ModifMail;
+    @FXML
+    private Label lbl_ErreurModifMail;
+
+    @FXML
+    private TextField input_ModifMdp;
+    @FXML
+    private Label lbl_ErreurModifMdp;
+
+    @FXML
+    private TextField input_ModifNo;
+    @FXML
+    private Label lbl_ErreurModifNo;
+
+    @FXML
+    private TextField input_ModifRue;
+    @FXML
+    private Label lbl_ErreurModifRue;
+
+    @FXML
+    private TextField input_ModifCp;
+    @FXML
+    private Label lbl_ErreurModifCP;
+
+    @FXML
+    private TextField input_ModifVille;
+    @FXML
+    private Label lbl_ErreurModifVille;
+
+    @FXML
+    private TextField input_ModifPays;
+    @FXML
+    private Label lbl_ErreurModifPays;
+
+
+    @FXML
+    private Label lbl_MessageClient;
+
+
+    @FXML
+    private TextField input_FiltreNom;
+    @FXML
+    private TextField input_FiltrePrenom;
+
     @FXML
     private Button btn_AffichModifClient;
-
     @FXML
     private Button btn_SuppClient;
 
     @FXML
     private TableView<Client> tbl_Clients;
 
-    @FXML
-    private Button btn_ModifClient;
-
-    @FXML
-    private Pane pane_Modif;
-
-    @FXML
-    private VBox Vbox_Client;
-
-    @FXML
-    private TextField input_Nom;
-
-    @FXML
-    private Label lbl_ErreurNom;
-
-    @FXML
-    private TextField input_Prenom;
-
-    @FXML
-    private Label lbl_ErreurPrenom;
-
-    @FXML
-    private TextField input_Mail;
-
-    @FXML
-    private Label lbl_ErreurMail;
-
-    @FXML
-    private TextField input_Mdp;
-
-    @FXML
-    private Label lbl_ErreurMdp;
-
-    @FXML
-    private TextField input_No;
-
-    @FXML
-    private Label lbl_ErreurNo;
-
-    @FXML
-    private TextField input_Rue;
-
-    @FXML
-    private Label lbl_ErreurRue;
-
-    @FXML
-    private TextField input_Cp;
-
-    @FXML
-    private Label lbl_ErreurCP;
-
-    @FXML
-    private TextField input_Ville;
-
-    @FXML
-    private Label lbl_ErreurVille;
-
-    @FXML
-    private TextField input_Pays;
-
-    @FXML
-    private Label lbl_ErreurPays;
-
-    @FXML
-    private TextField input_ModifNom;
-
-    @FXML
-    private Label lbl_ErreurModifNom;
-
-    @FXML
-    private TextField input_ModifPrenom;
-
-    @FXML
-    private Label lbl_ErreurModifPrenom;
-
-    @FXML
-    private TextField input_ModifMail;
-
-    @FXML
-    private Label lbl_ErreurModifMail;
-
-    @FXML
-    private TextField input_ModifMdp;
-
-    @FXML
-    private Label lbl_ErreurModifMdp;
-
-    @FXML
-    private TextField input_ModifNo;
-
-    @FXML
-    private Label lbl_ErreurModifNo;
-
-    @FXML
-    private TextField input_ModifRue;
-
-    @FXML
-    private Label lbl_ErreurModifRue;
-
-    @FXML
-    private TextField input_ModifCp;
-
-    @FXML
-    private Label lbl_ErreurModifCP;
-
-    @FXML
-    private TextField input_ModifVille;
-
-    @FXML
-    private Label lbl_ErreurModifVille;
-
-    @FXML
-    private TextField input_ModifPays;
-
-    @FXML
-    private Label lbl_ErreurModifPays;
-
-    @FXML
-    private Label lbl_MessageClient;
-
-    @FXML
-    private TextField input_ModifId;
-
-    @FXML
-    private TextField input_FiltreNom;
-
-    @FXML
-    private TextField input_FiltrePrenom;
-
-    @FXML
-    private Button btn_ValiderFiltre;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -194,8 +170,6 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         colVille.setCellValueFactory(new PropertyValueFactory<Client, String>("adrVille"));
         TableColumn<Client, String> colPays = new TableColumn<>("Pays");
         colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
-
-
         this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
         this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
 
@@ -298,6 +272,24 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
     }
 
+
+    @FXML
+    void OnClick_AffichModifClient(ActionEvent event) {
+        pane_Modif.setVisible(true);
+        btn_ModifClient.setVisible(true);
+
+        input_ModifId.setText(String.valueOf(clientTab.getId()));
+        input_ModifNom.setText(clientTab.getNom());
+        input_ModifPrenom.setText(clientTab.getPrenom());
+        input_ModifMail.setText(String.valueOf(clientTab.getMail()));
+        input_ModifMdp.setText(clientTab.getMdp());
+        input_ModifNo.setText(clientTab.getAdrNum());
+        input_ModifRue.setText(String.valueOf(clientTab.getAdrVoie()));
+        input_ModifCp.setText(clientTab.getAdrCodePostal());
+        input_ModifVille.setText(clientTab.getAdrVille());
+        input_ModifPays.setText(clientTab.getAdrPays());
+    }
+
     @FXML
     void OnClick_ModifClient(ActionEvent event) {
         boolean complet = true;
@@ -382,6 +374,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
     }
 
+
     @FXML
     void OnClick_SuppClient(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -397,22 +390,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
     }
 
-    @FXML
-    void OnClick_AffichModifClient(ActionEvent event) {
-        pane_Modif.setVisible(true);
-        btn_ModifClient.setVisible(true);
 
-        input_ModifId.setText(String.valueOf(clientTab.getId()));
-        input_ModifNom.setText(clientTab.getNom());
-        input_ModifPrenom.setText(clientTab.getPrenom());
-        input_ModifMail.setText(String.valueOf(clientTab.getMail()));
-        input_ModifMdp.setText(clientTab.getMdp());
-        input_ModifNo.setText(clientTab.getAdrNum());
-        input_ModifRue.setText(String.valueOf(clientTab.getAdrVoie()));
-        input_ModifCp.setText(clientTab.getAdrCodePostal());
-        input_ModifVille.setText(clientTab.getAdrVille());
-        input_ModifPays.setText(clientTab.getAdrPays());
+    @FXML
+    void OnClick_Refresh(ActionEvent event) {
+        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+
+        input_FiltreNom.clear();
+        input_FiltrePrenom.clear();
     }
+
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
@@ -424,14 +411,5 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     void OnClick_FiltreNomPrenom(ActionEvent event) {
         tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
-    }
-
-    @FXML
-    void OnClick_Refresh(ActionEvent event) {
-        tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
-
-        input_FiltreNom.clear();
-        input_FiltrePrenom.clear();
     }
 }

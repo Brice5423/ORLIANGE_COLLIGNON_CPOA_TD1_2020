@@ -182,7 +182,7 @@
             <TextField fx:id="input_FiltreNom" layoutX="580.0" layoutY="24.0" onAction="#OnClick_FiltreNom" prefHeight="25.0" prefWidth="192.0" promptText="Ex : Mario qui fait la vaisselle" />
             <ChoiceBox fx:id="Choice_FiltreCateg" layoutX="373.0" layoutY="24.0" prefWidth="150.0" />
             <Label layoutX="188.0" layoutY="28.0" text="Filtrer par :" />
-            <Button fx:id="btn_ValiderFiltre" layoutX="1032.0" layoutY="24.0" mnemonicParsing="false" onAction="#OnClick_ValiderFiltre" text="Valider" />
+            <Button layoutX="1032.0" layoutY="24.0" mnemonicParsing="false" onAction="#OnClick_ValiderFiltre" text="Valider" />
             <Label layoutX="304.0" layoutY="28.0" text="Catégories" />
             <Label layoutX="543.0" layoutY="28.0" text="Nom" />
             <Label layoutX="799.0" layoutY="28.0" text="Tarif" />

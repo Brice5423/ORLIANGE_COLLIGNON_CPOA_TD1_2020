@@ -1,6 +1,6 @@
 package home.iu.controller;
 
-import dao.enumeration.EPersistance;
+
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoProduit;
@@ -8,8 +8,6 @@ import dao.interfaces.IDaoProduit;
 import home.metier.Categorie;
 import home.metier.Produit;
 
-import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,7 +19,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -32,98 +29,86 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private IDaoCategorie daoCateg;
     private Produit produitTab;
 
-    @FXML
-    private Pane pane_Modif;
-
-    @FXML
-    private Button btn_ModifProduit;
-
-    @FXML
-    private Button btn_SuppProduit;
-
-    @FXML
-    private Button btn_AffichModif;
-
-    @FXML
-    private ChoiceBox<Categorie> Choice_Categ;
 
     @FXML
     private TextField input_nom;
-
-    @FXML
-    private TextArea input_Description;
-
-    @FXML
-    private TextField input_Tarif;
-
-    @FXML
-    private TextField input_Visuel;
-
-    @FXML
-    private Label lbl_ErreurVisuel;
-
     @FXML
     private Label lbl_ErreurNom;
 
     @FXML
+    private TextArea input_Description;
+    @FXML
     private Label lbl_ErreurDescription;
 
+    @FXML
+    private TextField input_Visuel;
+    @FXML
+    private Label lbl_ErreurVisuel;
+
+    @FXML
+    private TextField input_Tarif;
     @FXML
     private Label lbl_ErreurTarif;
 
     @FXML
+    private ChoiceBox<Categorie> Choice_Categ;
+    @FXML
     private Label lbl_ErreurCateg;
+
+
+    @FXML
+    private Pane pane_Modif;
+    @FXML
+    private Button btn_ModifProduit;
 
     @FXML
     private TextField input_ModifId;
 
     @FXML
     private TextField input_ModifNom;
-
-    @FXML
-    private TextArea input_ModifDescription;
-
-    @FXML
-    private TextField input_ModifTarif;
-
-    @FXML
-    private TextField input_ModifVisuel;
-
-    @FXML
-    private Label lbl_ErreurModifVisuel;
-
     @FXML
     private Label lbl_ErreurModifNom;
 
     @FXML
+    private TextArea input_ModifDescription;
+    @FXML
     private Label lbl_ErreurModifDescription;
 
+    @FXML
+    private TextField input_ModifVisuel;
+    @FXML
+    private Label lbl_ErreurModifVisuel;
+
+    @FXML
+    private TextField input_ModifTarif;
     @FXML
     private Label lbl_ErreurModifTarif;
 
     @FXML
+    private ChoiceBox<Categorie> Choice_ModifCateg;
+    @FXML
     private Label lbl_ErreurModifCateg;
+
 
     @FXML
     private Label lbl_MessageProduit;
 
-    @FXML
-    private ChoiceBox<Categorie> Choice_ModifCateg;
-
-    @FXML
-    private TableView<Produit> tbl_Produits;
 
     @FXML
     private ChoiceBox<Categorie> Choice_FiltreCateg;
-
     @FXML
     private TextField input_FiltreNom;
-
     @FXML
     private TextField input_FiltreTarif;
 
     @FXML
-    private Button btn_ValiderFiltre;
+    private Button btn_AffichModif;
+    @FXML
+    private Button btn_SuppProduit;
+
+    @FXML
+    private TableView<Produit> tbl_Produits;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -148,7 +133,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         TableColumn<Produit, Integer> colIdCategorie = new TableColumn<>("Titre_Catégorie");
         colIdCategorie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("categorie"));
         this.tbl_Produits.getColumns().setAll(colIdentifiant, colNom, colDescription, colTarif, colVisuel, colIdCategorie);
-        tbl_Produits.getItems().clear();
         this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
 
         this.tbl_Produits.getSelectionModel().selectedItemProperty().addListener(this);
@@ -160,6 +144,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         produitTab = observable.getValue();
     }
+
+    public boolean isDouble(String string) {
+        try {
+            Double.parseDouble(string);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     @FXML
     void OnClick_CreerProduit(ActionEvent event) {
@@ -217,6 +211,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
         }
     }
+
 
     @FXML
     void OnClick_AffichModifProduit(ActionEvent event) {
@@ -288,6 +283,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
     }
 
+
     @FXML
     void OnClick_SuppProduit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -303,14 +299,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
     }
 
-    public boolean isDouble(String string) {
-        try {
-            Double.parseDouble(string);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 
     @FXML
     void OnClick_Refresh(ActionEvent event) {
@@ -321,6 +309,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         input_FiltreNom.clear();
         input_FiltreTarif.clear();
     }
+
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {

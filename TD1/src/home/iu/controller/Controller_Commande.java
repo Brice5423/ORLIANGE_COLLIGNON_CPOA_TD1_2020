@@ -75,7 +75,7 @@ public class Controller_Commande implements Initializable, ChangeListener<Comman
         TableColumn<Commande, String> colDate = new TableColumn<>("Date");
         colDate.setCellValueFactory(new PropertyValueFactory<Commande, String>("date"));
         TableColumn<Commande, String> colIdClient = new TableColumn<>("Id Client");
-        colIdClient.setCellValueFactory(new PropertyValueFactory<Commande, String>("id_cl"));
+        colIdClient.setCellValueFactory(new PropertyValueFactory<Commande, String>("client"));
         this.tbl_Commandes.getColumns().setAll(colID, colDate, colIdClient);
         this.tbl_Commandes.getItems().addAll(DaoF.getDaoCommande().getAllCommande());
 
