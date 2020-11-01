@@ -40,12 +40,12 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
 
     @FXML
-    private TextField input_ModifId;
-
-    @FXML
     private Pane pane_ModifCategorie;
     @FXML
     private Button btn_ModifCategorie;
+
+    @FXML
+    private TextField input_ModifId;
 
     @FXML
     private TextField input_ModifTitre;
@@ -96,10 +96,23 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         categorieTab = observable.getValue();
     }
 
+    public void cacheModifCategorie() {
+        if (pane_ModifCategorie.isVisible()) {
+            pane_ModifCategorie.setVisible(false);
+            btn_ModifCategorie.setVisible(false);
+
+            input_ModifId.clear();
+            input_ModifTitre.clear();
+            input_ModifVisuel.clear();
+        }
+    }
+
 
     @FXML
     void OnClick_CreerCategorie(ActionEvent event) {
         boolean complet = true;
+
+        cacheModifCategorie();
 
         lbl_ErreurTitre.setVisible(false);
         lbl_ErreurVisuel.setVisible(false);
@@ -172,13 +185,11 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             daoCateg.update(categorieTab);
 
-            input_ModifId.clear();
-            input_ModifTitre.clear();
-            input_ModifVisuel.clear();
-
             //this.tbl_Categories.refresh();
             this.tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+
+            cacheModifCategorie();
         }
     }
 
@@ -195,6 +206,8 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             daoCateg.delete(categorieTab);
             this.tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+
+            cacheModifCategorie();
         }
     }
 }

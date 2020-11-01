@@ -138,6 +138,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         this.tbl_Produits.getSelectionModel().selectedItemProperty().addListener(this);
     }
 
+
     public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
         this.btn_SuppProduit.setDisable(newValue == null);
         this.btn_AffichModif.setDisable(newValue == null);
@@ -154,10 +155,26 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
     }
 
+    public void cacheModifProduit() {
+        if (pane_Modif.isVisible()) {
+            pane_Modif.setVisible(false);
+            btn_ModifProduit.setVisible(false);
+
+            input_ModifId.clear();
+            input_ModifNom.clear();
+            input_ModifDescription.clear();
+            input_ModifVisuel.clear();
+            input_ModifTarif.clear();
+            Choice_ModifCateg.setValue(null);
+        }
+    }
+
 
     @FXML
     void OnClick_CreerProduit(ActionEvent event) {
         boolean complet = true;
+
+        cacheModifProduit();
 
         lbl_ErreurNom.setVisible(false);
         lbl_ErreurDescription.setVisible(false);
@@ -271,11 +288,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.update(produit);
 
-            input_ModifNom.clear();
-            input_ModifDescription.clear();
-            input_ModifVisuel.clear();
-            input_ModifTarif.clear();
-            Choice_ModifCateg.setValue(null);
+            cacheModifProduit();
 
             //this.tbl_Produits.refresh();
             tbl_Produits.getItems().clear();
@@ -296,6 +309,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             daoProd.delete(produitTab);
             tbl_Produits.getItems().clear();
             this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+
+            cacheModifProduit();
         }
     }
 
@@ -308,6 +323,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         Choice_FiltreCateg.setValue(null);
         input_FiltreNom.clear();
         input_FiltreTarif.clear();
+
+        cacheModifProduit();
     }
 
 

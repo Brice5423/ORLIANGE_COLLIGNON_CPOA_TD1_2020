@@ -176,6 +176,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
     }
 
+
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
         this.btn_SuppClient.setDisable(newValue == null);
         this.btn_AffichModifClient.setDisable(newValue == null);
@@ -183,10 +184,31 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         clientTab = observable.getValue();
     }
 
+    public void cacheModifClient() {
+        if (pane_Modif.isVisible()) {
+            pane_Modif.setVisible(false);
+            btn_ModifClient.setVisible(false);
+
+            input_ModifId.clear();
+            input_ModifNom.clear();
+            input_ModifPrenom.clear();
+            input_ModifMail.clear();
+            input_ModifMdp.clear();
+
+            input_ModifNo.clear();
+            input_ModifRue.clear();
+            input_ModifCp.clear();
+            input_ModifVille.clear();
+            input_ModifPays.clear();
+        }
+    }
+
 
     @FXML
     void OnClick_CreerClient(ActionEvent event) {
         boolean complet = true;
+
+        cacheModifClient();
 
         lbl_ErreurNom.setVisible(false);
         lbl_ErreurPrenom.setVisible(false);
@@ -357,20 +379,11 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             daoClient.update(clientTab);
 
-            input_ModifId.clear();
-            input_ModifNom.clear();
-            input_ModifPrenom.clear();
-            input_ModifMail.clear();
-            input_ModifMdp.clear();
-            input_ModifNo.clear();
-            input_ModifRue.clear();
-            input_ModifCp.clear();
-            input_ModifVille.clear();
-            input_ModifPays.clear();
-
             //this.tbl_Clients.refresh();
             tbl_Clients.getItems().clear();
             this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+
+            cacheModifClient();
         }
     }
 
@@ -387,6 +400,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             daoClient.delete(clientTab);
             tbl_Clients.getItems().clear();
             this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+
+            cacheModifClient();
         }
     }
 
@@ -398,6 +413,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
         input_FiltreNom.clear();
         input_FiltrePrenom.clear();
+
+        cacheModifClient();
     }
 
 
