@@ -155,13 +155,19 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     private Label lbl_ErreurModifPays;
 
     @FXML
-    private Label lbl_Creerclient;
-
-    @FXML
-    private Label lbl_ModifClient;
+    private Label lbl_MessageClient;
 
     @FXML
     private TextField input_ModifId;
+
+    @FXML
+    private TextField imput_FiltreNom;
+
+    @FXML
+    private TextField imput_FiltrePrenom;
+
+    @FXML
+    private Button btn_ValiderFiltre;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -190,6 +196,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
 
         this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
+        tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
@@ -269,7 +276,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             client.setAdrVille(input_Ville.getText());
             client.setAdrPays(input_Pays.getText());
 
-            lbl_Creerclient.setText(client.toStringController());
+            lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été créer");
 
             DaoClient.create(client);
 
@@ -350,7 +357,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             clientTab.setAdrVille(input_ModifVille.getText());
             clientTab.setAdrPays(input_ModifPays.getText());
 
-            lbl_Creerclient.setText(clientTab.toStringController());
+            lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifier");
 
             daoClient.update(clientTab);
 
@@ -379,7 +386,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoClient.delete(clientTab);
-
+            tbl_Clients.getItems().clear();
+            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
         }
     }
 
@@ -398,6 +406,11 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_ModifCp.setText(clientTab.getAdrCodePostal());
         input_ModifVille.setText(clientTab.getAdrVille());
         input_ModifPays.setText(clientTab.getAdrPays());
+
+    }
+
+    @FXML
+    void OnClick_ValiderFiltre(ActionEvent event) {
 
     }
 }

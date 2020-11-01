@@ -94,6 +94,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         TableColumn<Categorie, String> colVisuel = new TableColumn<>("Visuel");
         colVisuel.setCellValueFactory(new PropertyValueFactory<Categorie, String>("visuel"));
         this.tbl_Categories.getColumns().setAll(colID, colTitre, colVisuel);
+        tbl_Categories.getItems().clear();
         this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
 
         this.tbl_Categories.getSelectionModel().selectedItemProperty().addListener( this);
@@ -159,16 +160,16 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             complet = false;
         }
         if (complet) {
-            Categorie categorie = new Categorie();
-            categorie.setTitre(imput_titre.getText());
-            categorie.setVisuel(imput_visuel.getText());
 
-            lbl_Creercateg.setText(categorie.toStringController());
+            categorieTab.setTitre(imput_ModifTitre.getText());
+            categorieTab.setVisuel(imput_ModifVisuel.getText());
 
-            daoCateg.update(categorie);
+            lbl_ModifCateg.setText(categorieTab.toStringController());
 
-            imput_titre.clear();
-            imput_visuel.clear();
+            daoCateg.update(categorieTab);
+
+            imput_ModifTitre.clear();
+            imput_ModifVisuel.clear();
 
             this.tbl_Categories.refresh();
         }
@@ -186,6 +187,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoCateg.delete(categorieTab);
+            tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
 

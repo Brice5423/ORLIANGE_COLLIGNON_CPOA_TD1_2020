@@ -134,6 +134,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         TableColumn<Produit, Integer> colIdCategorie = new TableColumn<>("Id_Catégorie");
         colIdCategorie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("categorie"));
         this.tbl_Produits.getColumns().setAll(colIdentifiant, colNom, colDescription, colTarif, colVisuel, colIdCategorie);
+        tbl_Produits.getItems().clear();
         this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
 
         this.tbl_Produits.getSelectionModel().selectedItemProperty().addListener(this);
@@ -255,7 +256,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             produit.setVisuel(input_Visuel.getText());
             produit.setCategorie(Choice_Categ.getValue());
 
-            lbl_CreerProduit.setText(produit.toStringController());
+            lbl_ModifProduit.setText(produit.toStringController());
 
             daoProd.update(produit);
 
@@ -279,6 +280,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoProd.delete(produitTab);
+            tbl_Produits.getItems().clear();
             this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
         }
     }
