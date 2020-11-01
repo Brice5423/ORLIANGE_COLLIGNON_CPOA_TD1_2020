@@ -38,10 +38,8 @@ public class Controller_Commande {
     private ChoiceBox<?> Choice_ModifCom;
 
     @FXML
-    private Label lbl_Creercommande;
+    private Label lbl_Messagecommande;
 
-    @FXML
-    private Label lbl_ModifCommande;
 
     @FXML
     void OnClick_CreerCommande(ActionEvent event) {

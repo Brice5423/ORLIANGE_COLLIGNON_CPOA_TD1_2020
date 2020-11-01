@@ -65,10 +65,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
     private Button btn_ModifCategorie;
 
     @FXML
-    private Label lbl_Creercateg;
-
-    @FXML
-    private Label lbl_ModifCateg;
+    private Label lbl_MessageCategorie;
 
     @FXML
     private Button btn_AffichModifCategorie;
@@ -132,7 +129,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             categorie.setTitre(imput_titre.getText());
             categorie.setVisuel(imput_visuel.getText());
 
-            lbl_Creercateg.setText(categorie.toStringController());
+            lbl_MessageCategorie.setText("La catégorie " + categorie.toStringController() + " à bien été créée");
 
             DaoCategorie.create(categorie);
 
@@ -164,7 +161,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             categorieTab.setTitre(imput_ModifTitre.getText());
             categorieTab.setVisuel(imput_ModifVisuel.getText());
 
-            lbl_ModifCateg.setText(categorieTab.toStringController());
+            lbl_MessageCategorie.setText("La catégorie " + categorieTab.toStringController() + " à bien été modifiée");
 
             daoCateg.update(categorieTab);
 

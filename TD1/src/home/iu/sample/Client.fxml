@@ -45,14 +45,14 @@
                </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="123.0" text="Nom : " textAlignment="CENTER" />
-                  <TextField fx:id="input_Nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="input_Nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Ex : Dopla" GridPane.columnIndex="1" />
                   <Label fx:id="lbl_ErreurNom" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="174.0" text="Le nom n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" top="-10.0" />
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="84.0" text="Prénom : " textAlignment="CENTER" GridPane.columnIndex="2" />
-                  <TextField fx:id="input_Prenom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="173.0" GridPane.columnIndex="3" />
+                  <TextField fx:id="input_Prenom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="173.0" promptText="Ex : Mathias" GridPane.columnIndex="3" />
                   <Label fx:id="lbl_ErreurPrenom" prefHeight="41.0" prefWidth="198.0" text="Le prénom n'est pas rempli ou incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" top="-12.0" />
@@ -66,7 +66,7 @@
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="153.0" text="Mot de passe : " GridPane.rowIndex="4" />
-                  <TextField fx:id="input_Mdp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="input_Mdp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="178.0" promptText="Ex : Afe_daf456" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label fx:id="lbl_ErreurMdp" prefHeight="35.0" prefWidth="185.0" text="Le mot de passe n'est pas rempli ou est incorrect" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="5.0" top="-5.0" />
@@ -112,7 +112,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Pane fx:id="pane_Modif" layoutX="594.0" prefHeight="529.0" prefWidth="614.0">
+            <Pane fx:id="pane_Modif" layoutX="594.0" prefHeight="529.0" prefWidth="614.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="480.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
                   <GridPane alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="467.0" prefWidth="545.0">
@@ -209,8 +209,10 @@
                         <Insets />
                      </opaqueInsets>
                   </GridPane>
+                  <Label layoutX="239.0" layoutY="14.0" text="Modification d'un produit" />
                </children>
             </Pane>
+            <Label layoutX="249.0" layoutY="14.0" text="Création d'un produit" />
          </children>
       </Pane>
       <HBox prefHeight="90.0" prefWidth="1200.0">
@@ -227,7 +229,7 @@
             </Pane>
             <FlowPane prefHeight="25.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btn_ModifClient" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnClick_ModifClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" />
+                  <Button fx:id="btn_ModifClient" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnClick_ModifClient" prefHeight="25.0" prefWidth="62.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>

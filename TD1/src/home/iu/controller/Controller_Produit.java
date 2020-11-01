@@ -102,16 +102,30 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private Label lbl_ErreurModifCateg;
 
     @FXML
-    private Label lbl_CreerProduit;
-
-    @FXML
-    private Label lbl_ModifProduit;
+    private Label lbl_MessageProduit;
 
     @FXML
     private ChoiceBox<Categorie> Choice_ModifCateg;
 
     @FXML
     private TableView<Produit> tbl_Produits;
+
+    @FXML
+    private TextField imput_FiltreNom;
+
+    @FXML
+    private ChoiceBox<?> Choice_FiltreCateg;
+
+    @FXML
+    private Button btn_ValiderFiltre;
+
+    @FXML
+    private TextField imput_FiltreTarif;
+
+    @FXML
+    void OnClick_ValiderFiltre(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -188,7 +202,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             produit.setVisuel(input_Visuel.getText());
             produit.setCategorie(Choice_Categ.getValue());
 
-            lbl_CreerProduit.setText(produit.toStringController());
+            lbl_MessageProduit.setText("Le produit " + produit.toStringController() + " à bien été crée");
 
             daoProd.create(produit);
 
@@ -256,7 +270,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             produit.setVisuel(input_Visuel.getText());
             produit.setCategorie(Choice_Categ.getValue());
 
-            lbl_ModifProduit.setText(produit.toStringController());
+            lbl_MessageProduit.setText("Le produit " + produit.toStringController() + " à bien été modifié");
 
             daoProd.update(produit);
 

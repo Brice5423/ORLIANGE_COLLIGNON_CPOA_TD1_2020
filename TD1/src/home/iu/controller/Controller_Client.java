@@ -195,8 +195,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         TableColumn<Client, String> colPays = new TableColumn<>("Pays");
         colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
 
+
         this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
-        tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
@@ -276,7 +276,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             client.setAdrVille(input_Ville.getText());
             client.setAdrPays(input_Pays.getText());
 
-            lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été créer");
+            lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été crée");
 
             DaoClient.create(client);
 
@@ -357,7 +357,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             clientTab.setAdrVille(input_ModifVille.getText());
             clientTab.setAdrPays(input_ModifPays.getText());
 
-            lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifier");
+            lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifié");
 
             daoClient.update(clientTab);
 

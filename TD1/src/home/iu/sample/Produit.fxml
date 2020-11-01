@@ -42,9 +42,9 @@
                   <Label prefHeight="17.0" prefWidth="141.0" text="                              Tarif :" GridPane.rowIndex="3" />
                   <Label prefHeight="17.0" prefWidth="141.0" text="                    Catégorie :" GridPane.rowIndex="4" />
                   <ChoiceBox fx:id="Choice_Categ" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="input_nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" />
-                  <TextArea fx:id="input_Description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="input_Tarif" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="input_nom" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="250.0" promptText="Ex : Mario qui fait la vaisselle" GridPane.columnIndex="2" />
+                  <TextArea fx:id="input_Description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="353.0" promptText="Ex : Un produit de qualité" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="input_Tarif" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="25.0" prefWidth="75.0" promptText="Ex : 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Label text="euros à l'unité" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="80.0" />
@@ -70,7 +70,7 @@
                         <Insets top="40.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="input_Visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="319.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="input_Visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="319.0" promptText="Ex : visuel.png" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="141.0" text="                         Visuel :" textAlignment="CENTER" GridPane.rowIndex="2" />
                   <Label fx:id="lbl_ErreurVisuel" alignment="CENTER" prefHeight="17.0" prefWidth="144.0" text="Le visuel n'est pas rempli" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
@@ -154,40 +154,39 @@
             <Label layoutX="244.0" layoutY="14.0" text="Création d'un produit" />
          </children>
       </Pane>
-      <HBox prefHeight="38.0" prefWidth="1200.0">
+      <HBox prefHeight="107.0" prefWidth="1200.0">
          <children>
-            <FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="600.0">
+            <FlowPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnClick_CreerProduit" prefHeight="25.0" prefWidth="56.0" text="Créer" />
                </children>
             </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+            <Pane prefHeight="107.0" prefWidth="840.0">
+               <children>
+                  <Label fx:id="lbl_MessageProduit" alignment="CENTER" layoutX="29.0" layoutY="12.0" prefHeight="84.0" prefWidth="503.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
+            <FlowPane prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button fx:id="btn_ModifProduit" mnemonicParsing="false" onAction="#OnClick_ModifProduit" prefHeight="25.0" prefWidth="69.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_CreerProduit" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
-               </children>
-            </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_ModifProduit" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER" />
-               </children>
-            </FlowPane>
-         </children>
-      </HBox>
-      <Pane prefHeight="287.0" prefWidth="1200.0">
+      <Pane prefHeight="318.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Button fx:id="btn_SuppProduit" disable="true" layoutX="42.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
-            <TableView fx:id="tbl_Produits" layoutX="154.0" layoutY="27.0" prefHeight="246.0" prefWidth="1000.0" />
-            <Button fx:id="btn_AffichModif" disable="true" layoutX="47.0" layoutY="85.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
+            <Button fx:id="btn_SuppProduit" disable="true" layoutX="42.0" layoutY="218.0" mnemonicParsing="false" onAction="#OnClick_SuppProduit" text="Supprimer" />
+            <TableView fx:id="tbl_Produits" layoutX="154.0" layoutY="55.0" prefHeight="255.0" prefWidth="1000.0" />
+            <Button fx:id="btn_AffichModif" disable="true" layoutX="47.0" layoutY="128.0" mnemonicParsing="false" onAction="#OnClick_AffichModifProduit" text="Modifier" />
+            <TextField fx:id="imput_FiltreNom" layoutX="580.0" layoutY="24.0" />
+            <ChoiceBox fx:id="Choice_FiltreCateg" layoutX="373.0" layoutY="24.0" prefWidth="150.0" />
+            <Label layoutX="188.0" layoutY="28.0" text="Filtrer par :" />
+            <Button fx:id="btn_ValiderFiltre" disable="true" layoutX="1032.0" layoutY="24.0" mnemonicParsing="false" onAction="#OnClick_ValiderFiltre" text="Valider" />
+            <Label layoutX="304.0" layoutY="28.0" text="Catégories" />
+            <Label layoutX="543.0" layoutY="28.0" text="Nom" />
+            <Label layoutX="746.0" layoutY="28.0" text="Tarif" />
+            <TextField fx:id="imput_FiltreTarif" layoutX="784.0" layoutY="24.0" />
          </children>
       </Pane>
       <Pane prefHeight="25.0" prefWidth="1200.0">

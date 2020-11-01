@@ -92,43 +92,26 @@
             <Label layoutX="248.0" layoutY="14.0" text="Création d'une commande" />
          </children>
       </Pane>
-      <HBox prefHeight="30.0" prefWidth="1200.0">
+      <HBox prefHeight="85.0" prefWidth="1200.0">
          <children>
-            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+            <FlowPane alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnClick_CreerCommande" prefHeight="25.0" prefWidth="56.0" text="Créer" />
                </children>
             </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+            <Pane prefHeight="85.0" prefWidth="830.0">
+               <children>
+                  <Label fx:id="lbl_MessageCommande" alignment="CENTER" layoutX="20.0" layoutY="8.0" prefHeight="69.0" prefWidth="514.0" />
+               </children>
+            </Pane>
+            <FlowPane prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnClick_ModifCommande" prefHeight="25.0" prefWidth="63.0" text="Modifier" />
                </children>
             </FlowPane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_Creercommande" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-            </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_ModifCommande" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-            </FlowPane>
-         </children>
-      </HBox>
-      <Pane prefHeight="315.0" prefWidth="1200.0">
+      <Pane prefHeight="351.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="13.0" startX="-361.0" strokeType="OUTSIDE" />
             <Button layoutX="286.0" layoutY="92.0" mnemonicParsing="false" onAction="#OnClick_VisuCommande" text="Visualiser" />

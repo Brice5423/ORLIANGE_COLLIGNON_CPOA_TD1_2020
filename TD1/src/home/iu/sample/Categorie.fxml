@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -34,7 +33,7 @@
                </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Titre : " />
-                  <TextField fx:id="imput_titre" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" GridPane.columnIndex="2" />
+                  <TextField fx:id="imput_titre" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" promptText="Ex : Shorts" GridPane.columnIndex="2" />
                   <Label fx:id="lbl_ErreurTitre" prefHeight="17.0" prefWidth="338.0" text="La date n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2">
                      <opaqueInsets>
                         <Insets />
@@ -44,7 +43,7 @@
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Visuel : " textAlignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField fx:id="imput_visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="imput_visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="256.0" promptText="Ex : vetements.png" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label fx:id="lbl_ErreurVisuel" prefHeight="17.0" prefWidth="338.0" text="Le visuel n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" top="50.0" />
@@ -95,54 +94,31 @@
             <Label layoutX="230.0" layoutY="14.0" text="Création d'une categorie" />
          </children>
       </Pane>
-      <HBox prefHeight="30.0" prefWidth="1200.0">
+      <HBox prefHeight="86.0" prefWidth="1200.0">
          <children>
-            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+            <FlowPane alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnClick_CreerCategorie" prefHeight="25.0" prefWidth="56.0" text="Créer" />
                </children>
             </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+            <Pane prefHeight="30.0" prefWidth="547.0">
+               <children>
+                  <Label fx:id="lbl_MessageCategorie" alignment="CENTER" layoutX="13.0" layoutY="8.0" prefHeight="71.0" prefWidth="339.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
+            <FlowPane prefHeight="40.0" prefWidth="600.0">
                <children>
                   <Button fx:id="btn_ModifCategorie" mnemonicParsing="false" onAction="#OnClick_ModifCategorie" prefHeight="25.0" prefWidth="65.0" text="Modifier" visible="false" />
                </children>
             </FlowPane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_Creercateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-            </FlowPane>
-            <FlowPane alignment="CENTER" prefHeight="140.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lbl_ModifCateg" alignment="CENTER" prefHeight="94.0" prefWidth="503.0" textAlignment="CENTER">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-            </FlowPane>
-         </children>
-      </HBox>
-      <Pane prefHeight="290.0" prefWidth="1200.0">
+      <Pane prefHeight="334.0" prefWidth="1200.0">
          <children>
             <Line endX="781.0" layoutX="390.0" layoutY="14.0" startX="-361.0" strokeType="OUTSIDE" />
-            <Button fx:id="btn_AffichModifCategorie" disable="true" layoutX="95.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_AffichModifCategorie" text="Modifier" />
-            <Button fx:id="btn_SuppCategorie" disable="true" layoutX="90.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnClick_SuppCategorie" text="Supprimer" />
-            <TableView fx:id="tbl_Categories" layoutX="318.0" layoutY="28.0" prefHeight="253.0" prefWidth="565.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="177.0" text="Titre" />
-                  <TableColumn prefWidth="312.0" text="Visuel" />
-              </columns>
-            </TableView>
+            <Button fx:id="btn_AffichModifCategorie" disable="true" layoutX="95.0" layoutY="113.0" mnemonicParsing="false" onAction="#OnClick_AffichModifCategorie" text="Modifier" />
+            <Button fx:id="btn_SuppCategorie" disable="true" layoutX="90.0" layoutY="224.0" mnemonicParsing="false" onAction="#OnClick_SuppCategorie" text="Supprimer" />
+            <TableView fx:id="tbl_Categories" layoutX="318.0" layoutY="32.0" prefHeight="291.0" prefWidth="565.0" />
          </children>
       </Pane>
       <Pane prefHeight="20.0" prefWidth="1200.0">

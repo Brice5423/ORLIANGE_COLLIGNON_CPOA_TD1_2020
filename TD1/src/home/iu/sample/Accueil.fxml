@@ -21,11 +21,6 @@
               <MenuItem mnemonicParsing="false" onAction="#OnCick_Quitter" text="Fermer" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Aide">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#OnClick_Aide" text="A propos" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
       <Label alignment="CENTER" prefHeight="133.0" prefWidth="600.0" text="BIENVENUE SUR LA BOUTIQUE DE PULLS MOCHES">
