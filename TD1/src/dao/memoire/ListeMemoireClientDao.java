@@ -39,7 +39,7 @@ public class ListeMemoireClientDao implements IDaoClient {
         System.out.println("Filtre : Nom : " + filtreNomLow + " - Prenom : " + filtrePrenomLow);
 
         for (Client client : donnees) {
-            String testNom = client.getNom().toUpperCase();
+            String testNom = client.getNom();
             String testPrenom = client.getPrenom().toLowerCase();
             System.out.println("Test : Nom : " + testNom + " - Prenom : " + testPrenom);
 
