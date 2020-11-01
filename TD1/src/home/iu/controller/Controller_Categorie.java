@@ -135,7 +135,9 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             imput_titre.clear();
             imput_visuel.clear();
 
-            this.tbl_Categories.getItems().addAll(categorie);
+            //this.tbl_Categories.getItems().addAll(categorie);
+            this.tbl_Categories.getItems().clear();
+            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
     }
 
@@ -155,6 +157,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             lbl_ErreurModifVisuel.setVisible(true);
             complet = false;
         }
+
         if (complet) {
             categorieTab.setTitre(imput_ModifTitre.getText());
             categorieTab.setVisuel(imput_ModifVisuel.getText());
@@ -167,9 +170,10 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             imput_ModifTitre.clear();
             imput_ModifVisuel.clear();
 
-            this.tbl_Categories.refresh();
+            //this.tbl_Categories.refresh();
+            this.tbl_Categories.getItems().clear();
+            this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
-
     }
 
 
@@ -183,9 +187,9 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoCateg.delete(categorieTab);
+            this.tbl_Categories.getItems().clear();
             this.tbl_Categories.getItems().addAll(DaoF.getDaoCategorie().getAllCategories());
         }
-
     }
 
     @FXML

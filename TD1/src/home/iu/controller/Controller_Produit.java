@@ -213,7 +213,9 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             input_Visuel.clear();
             Choice_Categ.setValue(null);
 
-            this.tbl_Produits.getItems().addAll(produit);
+            //this.tbl_Produits.getItems().addAll(produit);
+            tbl_Produits.getItems().clear();
+            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
         }
     }
 
@@ -281,7 +283,9 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             input_ModifTarif.clear();
             Choice_ModifCateg.setValue(null);
 
-            this.tbl_Produits.refresh();
+            //this.tbl_Produits.refresh();
+            tbl_Produits.getItems().clear();
+            this.tbl_Produits.getItems().addAll(DaoF.getDaoProduit().getAllProduits());
         }
     }
 

@@ -79,9 +79,9 @@ public class TestListeMemoireClient {
     @Test
     public void testFiltreNomPrenom() {
         assertEquals(dao.getByNomPrenom("ORLIANGE", "").size(), 1);
-        assertEquals(dao.getByNomPrenom("ORLIANGE", "Brice").size(), 1);
+        assertEquals(dao.getByNomPrenom("ORLIANGE", "BRice").size(), 1);
 
-        //assertEquals(dao.getByNomPrenom("Orliange", "").size(), 1);
-        //assertEquals(dao.getByNomPrenom("Orliange", "brice").size(), 1);
+        assertEquals(dao.getByNomPrenom("ORLIANGE", "wdvdv").size(), 1);
+        assertEquals(dao.getByNomPrenom("ORLIANGE", "brice").size(), 1);
     }
 }

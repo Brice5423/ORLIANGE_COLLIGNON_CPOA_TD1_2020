@@ -200,14 +200,15 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
-
     }
+
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
         this.btn_SuppClient.setDisable(newValue == null);
         this.btn_AffichModifClient.setDisable(newValue == null);
 
         clientTab = observable.getValue();
     }
+
 
     @FXML
     void OnClick_CreerClient(ActionEvent event) {
@@ -291,7 +292,9 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             input_Ville.clear();
             input_Pays.clear();
 
-            this.tbl_Clients.getItems().addAll(client);
+            //this.tbl_Clients.getItems().addAll(client);
+            tbl_Clients.getItems().clear();
+            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
         }
     }
 
@@ -373,7 +376,9 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             input_ModifVille.clear();
             input_ModifPays.clear();
 
-            this.tbl_Clients.refresh();
+            //this.tbl_Clients.refresh();
+            tbl_Clients.getItems().clear();
+            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
         }
     }
 
@@ -412,7 +417,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
         tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText().toUpperCase(), input_FiltrePrenom.getText()));
+        this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
     }
 
     @FXML
