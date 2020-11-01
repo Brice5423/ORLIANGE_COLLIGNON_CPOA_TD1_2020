@@ -362,15 +362,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             daoClient.update(clientTab);
 
-            input_Nom.clear();
-            input_Prenom.clear();
-            input_Mail.clear();
-            input_Mdp.clear();
-            input_No.clear();
-            input_Rue.clear();
-            input_Cp.clear();
-            input_Ville.clear();
-            input_Pays.clear();
+            input_ModifId.clear();
+            input_ModifNom.clear();
+            input_ModifPrenom.clear();
+            input_ModifMail.clear();
+            input_ModifMdp.clear();
+            input_ModifNo.clear();
+            input_ModifRue.clear();
+            input_ModifCp.clear();
+            input_ModifVille.clear();
+            input_ModifPays.clear();
 
             this.tbl_Clients.refresh();
         }
