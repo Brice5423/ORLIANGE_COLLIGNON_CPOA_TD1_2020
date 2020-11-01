@@ -9,7 +9,7 @@ public enum EPersistance {
         this.code = code;
     }
 
-    public int getCode() {
+    /*public int getCode() {
         return code;
     }
 
@@ -19,5 +19,5 @@ public enum EPersistance {
             return MYSQL;
         }
         return LISTE_MEMOIRE;
-    }
+    }*/
 }

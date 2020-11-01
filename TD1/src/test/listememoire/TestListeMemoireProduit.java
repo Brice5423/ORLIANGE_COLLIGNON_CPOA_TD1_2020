@@ -1,8 +1,10 @@
 package test.listememoire;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoProduit;
+
 import home.metier.Categorie;
 import home.metier.Produit;
 
@@ -10,12 +12,15 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.List;
+
 
 public class TestListeMemoireProduit {
     private DaoFactory daoF;
     private IDaoProduit dao;
     private List<Produit> liste;
+
 
     @Before
     public void setUp() {
@@ -29,6 +34,7 @@ public class TestListeMemoireProduit {
     public void testAllProduits() {
         assertNotNull(liste);
     }
+
 
     @Test
     public void testCreate() {
@@ -74,7 +80,6 @@ public class TestListeMemoireProduit {
         Categorie categorie = new Categorie(1, "Pull", "pull.png");
 
         assertNotNull(dao.getByCategorie(categorie));
-
         assertEquals(dao.getByCategorie(categorie).size(), 2);
     }
 
@@ -87,7 +92,6 @@ public class TestListeMemoireProduit {
     @Test
     public void testFiltreTarif() {
         assertNotNull(dao.getByTarif(36.));
-
         assertEquals(dao.getByTarif(36.).size(), 2);
     }
 }

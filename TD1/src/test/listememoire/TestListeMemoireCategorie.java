@@ -1,20 +1,25 @@
 package test.listememoire;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCategorie;
+
 import home.metier.Categorie;
 
 import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.List;
+
 
 public class TestListeMemoireCategorie {
     private DaoFactory daoF;
     private IDaoCategorie dao;
     private List<Categorie> liste;
+
 
     @Before
     public void setUp() {
@@ -28,6 +33,7 @@ public class TestListeMemoireCategorie {
     public void testAllCategories() {
         assertNotNull(liste);
     }
+
 
     @Test
     public void testCreate() {

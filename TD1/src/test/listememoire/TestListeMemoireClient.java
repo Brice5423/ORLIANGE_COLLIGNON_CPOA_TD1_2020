@@ -1,23 +1,25 @@
 package test.listememoire;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
-import dao.memoire.ListeMemoireClientDao;
+
 import home.metier.Client;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.List;
+
 
 public class TestListeMemoireClient {
     private DaoFactory daoF;
     private IDaoClient dao;
     private List<Client> liste;
+
 
     @Before
     public void setUp() {
@@ -31,6 +33,7 @@ public class TestListeMemoireClient {
     public void testAllClients() {
         assertNotNull(liste);
     }
+
 
     @Test
     public void testCreate() {
@@ -75,6 +78,7 @@ public class TestListeMemoireClient {
         Client client = dao.getById(2);
         assertTrue(dao.delete(client));
     }
+
 
     @Test
     public void testFiltreNomPrenom() {

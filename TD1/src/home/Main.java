@@ -8,6 +8,7 @@
 
 package home;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,7 +18,13 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+
 public class Main extends Application {
+    public static void main(String[] args) {
+        // launch application project //
+        Application.launch(args);
+    }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -34,10 +41,5 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        // launch application project //
-        Application.launch(args);
     }
 }

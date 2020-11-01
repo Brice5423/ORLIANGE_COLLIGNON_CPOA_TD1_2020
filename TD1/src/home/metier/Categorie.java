@@ -1,10 +1,10 @@
 package home.metier;
 
+
 import java.util.List;
 
-/*
- * Pojo (Plain Old Java Object) correspondant à la classe métier 'Catégorie'.
- */
+
+// Pojo (Plain Old Java Object) correspondant à la classe métier 'Catégorie'.//
 public class Categorie {
 	private Integer id;
 	private String titre;
@@ -50,6 +50,7 @@ public class Categorie {
 	public void setProduits(List<Produit> produits) {
 		this.produits = produits;
 	}
+
 
 	@Override
 	public String toString() {

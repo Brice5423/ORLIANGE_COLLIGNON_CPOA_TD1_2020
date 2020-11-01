@@ -1,8 +1,10 @@
 package home.connexion;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 
 public class ConnexionSQL { // Etape 1: connexion //
     public static Connection creeConnexion() {

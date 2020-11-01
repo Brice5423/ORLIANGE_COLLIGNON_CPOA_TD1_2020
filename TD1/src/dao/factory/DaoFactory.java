@@ -1,10 +1,12 @@
 package dao.factory;
 
+
 import dao.enumeration.EPersistance;
 import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoCommande;
 import dao.interfaces.IDaoProduit;
 import dao.interfaces.IDaoClient;
+
 
 public abstract class DaoFactory {
     public abstract IDaoCategorie getDaoCategorie();

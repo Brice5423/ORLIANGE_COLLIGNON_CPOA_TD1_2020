@@ -1,5 +1,6 @@
 package dao.memoire;
 
+
 import dao.interfaces.IDaoCommande;
 
 import home.metier.Categorie;
@@ -7,13 +8,13 @@ import home.metier.Client;
 import home.metier.Commande;
 import home.metier.Produit;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 
 public class ListeMemoireCommandeDao implements IDaoCommande {
     private static IDaoCommande instance;
     private static List<Commande> donnees;
+
 
     public static IDaoCommande getInstance() {
         if (instance == null) {
@@ -53,18 +54,9 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         produits2.put(produit3, 3);
 
         // Création de deux commandes :
-        Commande commande1 = new Commande();
-        commande1.setId(1);
-        commande1.setDate(date);
-        commande1.setClient(client1);
-        commande1.setProduits(produits1);
+        Commande commande1 = new Commande(1, date, client1, produits1);
         donnees.add(commande1);
-
-        Commande commande2 = new Commande();
-        commande2.setId(2);
-        commande2.setDate(date);
-        commande2.setClient(client2);
-        commande2.setProduits(produits2);
+        Commande commande2 = new Commande(2, date, client2, produits2);
         donnees.add(commande2);
 
         return donnees;
@@ -75,6 +67,7 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
     public List<Commande> getAllCommande() {
         return (ArrayList<Commande>) this.donnees;
     }
+
 
     @Override
     public boolean create(Commande objet) {

@@ -1,14 +1,14 @@
 package test.mysql;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
+
 import home.connexion.ConnexionSQL;
 import home.metier.Client;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,11 +19,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+
 public class TestMySQLClient {
     private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoClient dao;
     private List<Client> liste;
+
 
     @Before
     public void setUp() {
@@ -38,6 +40,7 @@ public class TestMySQLClient {
     public void testAllClients() {
         assertNotNull(liste);
     }
+
 
     @Test
     public void testCreate() throws SQLException {
@@ -121,10 +124,10 @@ public class TestMySQLClient {
         assertNull(dao.getById(id));
     }
 
+
     @Test
     public void testFiltreNomPrenom() {
         assertNotNull(dao.getByNomPrenom("ORLIANGE", ""));
-
         assertNotNull(dao.getByNomPrenom("ORLIANGE", "Brice"));
     }
 }

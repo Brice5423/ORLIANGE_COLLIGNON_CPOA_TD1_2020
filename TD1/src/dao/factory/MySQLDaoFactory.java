@@ -1,5 +1,6 @@
 package dao.factory;
 
+
 import dao.interfaces.IDaoCategorie;
 import dao.interfaces.IDaoClient;
 import dao.interfaces.IDaoProduit;
@@ -8,6 +9,7 @@ import dao.mysql.MySqlCategorieDao;
 import dao.mysql.MySqlClientDao;
 import dao.mysql.MySqlProduitDao;
 import dao.mysql.MySqlCommandeDao;
+
 
 public class MySQLDaoFactory extends DaoFactory {
     @Override

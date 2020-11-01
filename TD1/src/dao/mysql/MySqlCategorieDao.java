@@ -1,5 +1,6 @@
 package dao.mysql;
 
+
 import home.connexion.ConnexionSQL;
 import dao.interfaces.IDaoCategorie;
 import home.metier.Categorie;
@@ -8,9 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MySqlCategorieDao implements IDaoCategorie {
     private static IDaoCategorie instance;
     private List<Categorie> donnees;
+
 
     public static IDaoCategorie getInstance() {
         if (instance == null) {
@@ -23,6 +26,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Categorie>();
     }
+
 
     @Override
     public List<Categorie> getAllCategories() {
@@ -47,34 +51,6 @@ public class MySqlCategorieDao implements IDaoCategorie {
             statement.close();
             return donnees;
 
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-        }
-        return null;
-    }
-
-    @Override
-    public Categorie getByTitreCategorie(String titreCategorie) {
-        try {
-            Connection laConnexion = ConnexionSQL.creeConnexion();
-
-            String request = "SELECT * FROM Categorie";
-            Statement statement = laConnexion.createStatement(); // quand on doir faire des appels reppéter
-            ResultSet resultSet = statement.executeQuery(request);
-
-            while (resultSet.next()) {
-                String testTitreCategorie = resultSet.getString("titre");
-                if(testTitreCategorie == titreCategorie) {
-                    int idCategorie = resultSet.getInt("id_categorie");
-                    String visuel = resultSet.getString("visuel");
-
-                    System.out.format("%s, %s, %s\n", idCategorie, testTitreCategorie, visuel);
-
-                    Categorie categorie = new Categorie(idCategorie, testTitreCategorie, visuel);
-                    statement.close();
-                    return categorie;
-                }
-            }
         } catch (SQLException sqle) {
             System.out.println("Pb select " + sqle.getMessage());
         }

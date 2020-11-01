@@ -1,15 +1,14 @@
 package home.metier;
 
-/*
- * Pojo (Plain Old Java Object) correspondant à la classe métier 'Produit'.
- */
+
+// Pojo (Plain Old Java Object) correspondant à la classe métier 'Produit'.//
 public class Produit {
 	private Integer id;
 	private String nom;
 	private String description;
 	private Double tarif;
-	private String visuel; // Lien vers le fichier image ...
-	private Categorie categorie; // Un produit est lié à une catégorie et une seule ..
+	private String visuel; // Lien vers le fichier image
+	private Categorie categorie;
 
 
 	public Produit(Integer id, String nom, String description, Double tarif, String visuel, Categorie categorie) {
@@ -62,10 +61,6 @@ public class Produit {
 	public Categorie getCategorie() {
 		return categorie;
 	}
-	/**
-	 * Ajouter une catégorie.
-	 * @param categorie : un objet de type Categorie.
-	 */
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
@@ -105,6 +100,7 @@ public class Produit {
 		}
 		Produit produit = (Produit) o;
 		boolean ret = (id == produit.id);
+
 		if (nom != null) {
 			ret = ret && nom.equals(produit.nom);
 		}
@@ -113,6 +109,7 @@ public class Produit {
 		}
 		return ret;
 	}
+
 
 	@Override
 	public String toString() {

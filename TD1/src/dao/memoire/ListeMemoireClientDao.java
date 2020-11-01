@@ -1,14 +1,17 @@
 package dao.memoire;
 
+
 import dao.interfaces.IDaoClient;
 import home.metier.Client;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ListeMemoireClientDao implements IDaoClient {
     private static IDaoClient instance;
     private static List<Client> donnees;
+
 
     public static IDaoClient getInstance() {
         if (instance == null) {
@@ -29,6 +32,7 @@ public class ListeMemoireClientDao implements IDaoClient {
     public List<Client> getAllClients() {
         return (ArrayList<Client>) this.donnees;
     }
+
 
     @Override
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {

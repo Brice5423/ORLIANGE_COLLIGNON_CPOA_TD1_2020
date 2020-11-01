@@ -1,8 +1,10 @@
 package test.mysql;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCategorie;
+
 import home.connexion.ConnexionSQL;
 import home.metier.Categorie;
 
@@ -17,11 +19,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+
 public class TestMySQLCategorie {
     private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoCategorie dao;
     private List<Categorie> liste;
+
 
     @Before
     public void setUp() {
@@ -36,6 +40,7 @@ public class TestMySQLCategorie {
     public void testAllCategories() {
         assertNotNull(liste);
     }
+
 
     @Test
     public void testCreate() throws SQLException {

@@ -1,7 +1,10 @@
 package home.metier;
 
+
 import java.util.List;
 
+
+// Pojo (Plain Old Java Object) correspondant à la classe métier 'Client'.//
 public class Client {
 	private int id;
 	private String nom;
@@ -115,6 +118,7 @@ public class Client {
 		this.adrVille = ville;
 		this.adrPays = pays;
 	}
+
 
 	@Override
 	public String toString() {

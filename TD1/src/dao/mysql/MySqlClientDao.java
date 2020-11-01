@@ -1,5 +1,6 @@
 package dao.mysql;
 
+
 import home.connexion.ConnexionSQL;
 import dao.interfaces.IDaoClient;
 import home.metier.Client;
@@ -9,9 +10,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MySqlClientDao implements IDaoClient {
     private static IDaoClient instance;
     private List<Client> donnees;
+
 
     public static IDaoClient getInstance() {
         if (instance == null) {
@@ -24,6 +27,7 @@ public class MySqlClientDao implements IDaoClient {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Client>();
     }
+
 
     @Override
     public List<Client> getAllClients() {
@@ -61,6 +65,7 @@ public class MySqlClientDao implements IDaoClient {
         }
         return null;
     }
+
 
     @Override
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {

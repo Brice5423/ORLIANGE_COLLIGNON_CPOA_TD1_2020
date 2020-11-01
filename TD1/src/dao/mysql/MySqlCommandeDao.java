@@ -1,5 +1,6 @@
 package dao.mysql;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
@@ -12,14 +13,14 @@ import home.metier.Commande;
 import home.metier.Produit;
 
 import java.sql.*;
-
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.Date;
+
 
 public class MySqlCommandeDao implements IDaoCommande {
     private static IDaoCommande instance;
     private List<Commande> donnees;
+
 
     public static IDaoCommande getInstance() {
         if (instance == null) {
@@ -96,6 +97,7 @@ public class MySqlCommandeDao implements IDaoCommande {
         }
         return null;
     }
+
 
     @Override // Problème avec id_commande
     public boolean create(Commande objet) {

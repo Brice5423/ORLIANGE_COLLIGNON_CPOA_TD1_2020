@@ -1,5 +1,6 @@
 package dao.mysql;
 
+
 import home.connexion.ConnexionSQL;
 import home.metier.Categorie;
 import home.metier.Produit;
@@ -10,9 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MySqlProduitDao implements IDaoProduit  {
     private static IDaoProduit instance;
     private List<Produit> donnees;
+
 
     public static IDaoProduit getInstance() {
         if (instance == null) {
@@ -25,6 +28,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         // Pour éviter instanciation directe :
         this.donnees = new ArrayList<Produit>();
     }
+
 
     @Override
     public List<Produit> getAllProduits() {
@@ -55,6 +59,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         }
         return null;
     }
+
 
     @Override
     public List<Produit> getByCategorie(Categorie filtreCategorie) {

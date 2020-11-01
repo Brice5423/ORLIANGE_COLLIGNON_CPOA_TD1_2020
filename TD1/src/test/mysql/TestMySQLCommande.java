@@ -1,5 +1,6 @@
 package test.mysql;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCommande;
@@ -24,11 +25,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class TestMySQLCommande {
     private Connection laConnexion;
     private DaoFactory daoF;
     private IDaoCommande dao;
     private List<Commande> liste;
+
 
     @Before
     public void setUp() {
@@ -43,6 +46,7 @@ public class TestMySQLCommande {
     public void testAllCommandes() {
         assertNotNull(liste);
     }
+
 
     @Test // Marche pas. La date fait de la merde ^^
     public void testCreate() throws SQLException {

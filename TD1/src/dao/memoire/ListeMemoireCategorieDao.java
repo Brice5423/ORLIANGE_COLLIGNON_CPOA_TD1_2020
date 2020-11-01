@@ -1,14 +1,17 @@
 package dao.memoire;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.interfaces.IDaoCategorie;
 import home.metier.Categorie;
 
+
 public class ListeMemoireCategorieDao implements IDaoCategorie {
     private static IDaoCategorie instance;
     private static List<Categorie> donnees;
+
 
     public static IDaoCategorie getInstance() {
         if (instance == null) {
@@ -27,19 +30,6 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     @Override
     public ArrayList<Categorie> getAllCategories() {
         return (ArrayList<Categorie>) this.donnees;
-    }
-
-    @Override
-    public Categorie getByTitreCategorie(String titreCategorie) {
-        if (donnees != null && !donnees.isEmpty()) {
-            // Itérator sur la liste des produits :
-            for (Categorie categorie : donnees) {
-                if (categorie.getTitre() == titreCategorie) {
-                    return categorie;
-                }
-            }
-        }
-        return null;
     }
 
 

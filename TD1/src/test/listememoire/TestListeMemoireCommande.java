@@ -1,5 +1,6 @@
 package test.listememoire;
 
+
 import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCommande;
@@ -15,15 +16,16 @@ import java.util.Date;
 import java.util.Map;
 
 import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class TestListeMemoireCommande {
     private DaoFactory daoF;
     private IDaoCommande daoCommande;
     private List<Commande> listCommande;
+
 
     @Before
     public void setUp() {
@@ -37,6 +39,7 @@ public class TestListeMemoireCommande {
     public void testAllCommandes() {
         assertNotNull(listCommande);
     }
+
 
     @Test
     public void testCreate() {

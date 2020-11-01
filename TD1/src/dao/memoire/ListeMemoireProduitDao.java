@@ -1,5 +1,6 @@
 package dao.memoire;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,11 @@ import dao.interfaces.IDaoProduit;
 import home.metier.Categorie;
 import home.metier.Produit;
 
+
 public class ListeMemoireProduitDao implements IDaoProduit {
     private static IDaoProduit instance;
     private static List<Produit> donnees;
+
 
     // Création instance Singleton :
     public static IDaoProduit getInstance() {
@@ -50,6 +53,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     public List<Produit> getAllProduits() {
         return (ArrayList<Produit>) this.donnees;
     }
+
 
     @Override
     public List<Produit> getByCategorie(Categorie filtreCategorie) {

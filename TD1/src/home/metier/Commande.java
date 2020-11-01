@@ -1,19 +1,16 @@
 package home.metier;
 
-import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * Réprésentation métier d'une 'commande'.
- * Une commande est réalisée à une date par un client.
- * Et contient plusieurs produits.
- */
+
+// Pojo (Plain Old Java Object) correspondant à la classe métier 'Commande'.//
 public class Commande {
 	private int id;
 	private Date date;
-	private Client client; // Une commande est réalisée par un client
+	private Client client;
 
 	// Ligne de commande : liste des produits.
 	// Une Commande contient '1 ou n' produits.
@@ -59,7 +56,7 @@ public class Commande {
 	}
 
 
-	/* @return le montant total du panier (ligne de commande). */
+	/** @return le montant total du panier (ligne de commande). */
 	public Double getMontantTotal() {
 		// Parcours de la table des produits ...ligne de commande. //
 		Double resultat = 0d;
@@ -72,7 +69,7 @@ public class Commande {
 		return resultat;
 	}
 
-	/* Méthode qui permet d'ajouter un produit à la ligne de commande. */
+	/** Méthode qui permet d'ajouter un produit à la ligne de commande. */
 	public void addProduit(Produit produit, Integer quantite) {
 		if (produits == null) {
 			produits = new HashMap<>();
@@ -87,7 +84,6 @@ public class Commande {
 	}
 
 	public String toStringController() {
-
 		return this.client.getNom();
 	}
 }

@@ -1,5 +1,6 @@
 package dao.interfaces;
 
+
 // Interface DAO de type CRUD //
 public interface IDao<T> {
     // Create :
