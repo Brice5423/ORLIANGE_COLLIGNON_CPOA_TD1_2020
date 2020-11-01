@@ -1,5 +1,7 @@
 package home.iu.controller;
 
+import dao.enumeration.EPersistance;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller_Accueil implements Initializable {
+    public static EPersistance typeEPersistance;
 
     @FXML
     private RadioButton radio_MYSQL;
@@ -28,15 +31,19 @@ public class Controller_Accueil implements Initializable {
         Button = new ToggleGroup();
         this.radio_MYSQL.setToggleGroup(Button);
         this.radio_LM.setToggleGroup(Button);
+
+        this.radio_MYSQL.setSelected(false);
+        this.radio_LM.setSelected(true);
+        typeEPersistance = EPersistance.LISTE_MEMOIRE;
     }
 
     @FXML
     void OnClick_ConfirmationRD(ActionEvent event) {
         if (Button.getSelectedToggle().equals(radio_MYSQL)) {
-            
+            typeEPersistance = EPersistance.MYSQL;
         }
         else {
-
+            typeEPersistance = EPersistance.LISTE_MEMOIRE;
         }
     }
 
@@ -124,7 +131,6 @@ public class Controller_Accueil implements Initializable {
             e.printStackTrace();
         }
     }
-
 }
 
 

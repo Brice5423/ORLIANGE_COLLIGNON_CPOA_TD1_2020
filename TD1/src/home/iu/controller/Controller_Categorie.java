@@ -84,7 +84,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        DaoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
         daoCateg = DaoF.getDaoCategorie();
 
         TableColumn<Categorie, Integer> colID = new TableColumn<>("ID");

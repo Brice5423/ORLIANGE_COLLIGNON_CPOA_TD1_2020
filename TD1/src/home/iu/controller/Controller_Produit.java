@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 
 
 public class Controller_Produit implements Initializable, ChangeListener<Produit> {
-
     private DaoFactory DaoF;
     private IDaoProduit daoProd;
     private Produit produitTab;
@@ -116,7 +115,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        DaoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
         daoProd = DaoF.getDaoProduit();
 
         this.Choice_Categ.setItems(FXCollections.observableArrayList(DaoF.getDaoCategorie().getAllCategories()));

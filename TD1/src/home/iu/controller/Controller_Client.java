@@ -165,7 +165,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+        DaoF = DaoFactory.getDAOFactory(Controller_Accueil.typeEPersistance);
         daoClient = DaoF.getDaoClient();
 
         TableColumn<Client, Integer> colId = new TableColumn<>("Id");
