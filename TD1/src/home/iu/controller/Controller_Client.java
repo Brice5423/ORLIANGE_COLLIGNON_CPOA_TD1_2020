@@ -390,15 +390,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
 
         if (complet) {
-            clientTabSelect.setNom(input_ModifNom.getText());
-            clientTabSelect.setPrenom(input_ModifPrenom.getText());
-            clientTabSelect.setMail(input_ModifMail.getText());
-            clientTabSelect.setMdp(input_ModifMdp.getText());
-            clientTabSelect.setAdrNum(input_ModifNo.getText());
-            clientTabSelect.setAdrVoie(input_ModifRue.getText());
-            clientTabSelect.setAdrCodePostal(input_ModifCp.getText());
-            clientTabSelect.setAdrVille(input_ModifVille.getText());
-            clientTabSelect.setAdrPays(input_ModifPays.getText());
+            Client client = new Client();
+            client.setNom(input_ModifNom.getText()); // clientTabSelect
+            client.setPrenom(input_ModifPrenom.getText());
+            client.setMail(input_ModifMail.getText());
+            client.setMdp(input_ModifMdp.getText());
+            client.setAdrNum(input_ModifNo.getText());
+            client.setAdrVoie(input_ModifRue.getText());
+            client.setAdrCodePostal(input_ModifCp.getText());
+            client.setAdrVille(input_ModifVille.getText());
+            client.setAdrPays(input_ModifPays.getText());
 
             lbl_MessageClient.setText("Le client " + clientTabSelect.toStringController() + " à bien été modifié");
 
