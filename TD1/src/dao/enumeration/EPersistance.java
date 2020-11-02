@@ -8,16 +8,4 @@ public enum EPersistance {
     EPersistance(int code) {
         this.code = code;
     }
-
-    /*public int getCode() {
-        return code;
-    }
-
-
-    EPersistance getTypeFromCode(int code) {
-        if (code == 0) {
-            return MYSQL;
-        }
-        return LISTE_MEMOIRE;
-    }*/
 }

@@ -35,7 +35,7 @@ public class MySqlCommandeDao implements IDaoCommande {
     }
 
 
-    @Override // Code beaucou trop  gros
+    @Override // Lire tout
     public List<Commande> getAllCommande() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -99,7 +99,7 @@ public class MySqlCommandeDao implements IDaoCommande {
     }
 
 
-    @Override // Problème avec id_commande
+    @Override // Cree
     public boolean create(Commande objet) {
         int idCommande = 0;
 
@@ -140,7 +140,7 @@ public class MySqlCommandeDao implements IDaoCommande {
         return false;
     }
 
-    @Override // Code beaucoup trop gros
+    @Override // Lire
     public Commande getById(int id) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -207,7 +207,7 @@ public class MySqlCommandeDao implements IDaoCommande {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Commande objet) {
         try {
             int idCommande = objet.getId();
@@ -243,7 +243,7 @@ public class MySqlCommandeDao implements IDaoCommande {
         return false;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Commande objet) {
         try {
             int idCommande = objet.getId();

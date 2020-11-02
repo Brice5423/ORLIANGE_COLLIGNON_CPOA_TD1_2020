@@ -1,9 +1,6 @@
 package home.metier;
 
 
-import java.util.List;
-
-
 // Pojo (Plain Old Java Object) correspondant à la classe métier 'Client'.//
 public class Client {
 	private int id;
@@ -17,9 +14,6 @@ public class Client {
 	private String adrCodePostal;
 	private String adrVille;
 	private String adrPays;
-
-	// Un client 'réalise' 0 ou plusieurs commandes ..
-	private List<Commande> commandes;
 
 
 	public Client(int id, String nom, String prenom, String mail, String mdp, String adrNum, String adrVoie, String adrCodePostal, String adrVille, String adrPays) {

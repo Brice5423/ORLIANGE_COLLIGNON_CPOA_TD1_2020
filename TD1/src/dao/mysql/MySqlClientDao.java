@@ -29,7 +29,7 @@ public class MySqlClientDao implements IDaoClient {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Client> getAllClients() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -67,7 +67,7 @@ public class MySqlClientDao implements IDaoClient {
     }
 
 
-    @Override
+    @Override // Filtre par Nom et/ou Prenom
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
         String filtreNomLow = filtreNom.toLowerCase();
         String filtrePrenomLow = filtrePrenom.toLowerCase();
@@ -113,7 +113,7 @@ public class MySqlClientDao implements IDaoClient {
     }
 
 
-    @Override
+    @Override // Cree
     public boolean create(Client objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -143,7 +143,7 @@ public class MySqlClientDao implements IDaoClient {
         return false;
     }
 
-    @Override
+    @Override // Lire
     public Client getById(int id) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -179,7 +179,7 @@ public class MySqlClientDao implements IDaoClient {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Client objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -210,7 +210,7 @@ public class MySqlClientDao implements IDaoClient {
         return false;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Client objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();

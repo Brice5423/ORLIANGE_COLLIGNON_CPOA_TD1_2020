@@ -28,26 +28,26 @@ public class ListeMemoireClientDao implements IDaoClient {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Client> getAllClients() {
         return (ArrayList<Client>) this.donnees;
     }
 
 
-    @Override
+    @Override // Filtre par Nom et/ou Prenom
     public List<Client> getByNomPrenom(String filtreNom, String filtrePrenom) {
         List<Client> listeFiltre;
         listeFiltre = new ArrayList<Client>();
-        String filtreNomLow = filtreNom.toUpperCase();
+        String filtreNomUp = filtreNom.toUpperCase();
         String filtrePrenomLow = filtrePrenom.toLowerCase();
-        System.out.println("Filtre : Nom : " + filtreNomLow + " - Prenom : " + filtrePrenomLow);
+        System.out.println("Filtre : Nom : " + filtreNomUp + " - Prenom : " + filtrePrenomLow);
 
         for (Client client : donnees) {
             String testNom = client.getNom();
             String testPrenom = client.getPrenom().toLowerCase();
             System.out.println("Test : Nom : " + testNom + " - Prenom : " + testPrenom);
 
-            if ((testNom == filtreNomLow) || (testPrenom == filtrePrenomLow)) {
+            if ((testNom == filtreNomUp) || (testPrenom == filtrePrenomLow)) {
                 listeFiltre.add(client);
                 System.out.println(client.toString());
             }
@@ -57,7 +57,7 @@ public class ListeMemoireClientDao implements IDaoClient {
     }
 
 
-    @Override
+    @Override // Cree
     public boolean create(Client objet) {
         if (donnees == null) {
             donnees = new ArrayList<>();
@@ -73,7 +73,7 @@ public class ListeMemoireClientDao implements IDaoClient {
         return this.donnees.add(objet);
     }
 
-    @Override
+    @Override // Lire
     public Client getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
@@ -86,7 +86,7 @@ public class ListeMemoireClientDao implements IDaoClient {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Client objet) {
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
@@ -97,7 +97,7 @@ public class ListeMemoireClientDao implements IDaoClient {
         return true;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Client objet) {
         Client supprime;
 

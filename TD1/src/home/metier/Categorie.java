@@ -1,17 +1,11 @@
 package home.metier;
 
 
-import java.util.List;
-
-
 // Pojo (Plain Old Java Object) correspondant à la classe métier 'Catégorie'.//
 public class Categorie {
 	private Integer id;
 	private String titre;
 	private String visuel;
-
-	// Une catégorie appartient à 0 ou plusieurs produits.
-	private List<Produit> produits;
 
 
 	public Categorie(int id, String titre, String visuel) {
@@ -42,13 +36,6 @@ public class Categorie {
 	}
 	public void setVisuel(String visuel) {
 		this.visuel = visuel;
-	}
-
-	public List<Produit> getProduits() {
-		return produits;
-	}
-	public void setProduits(List<Produit> produits) {
-		this.produits = produits;
 	}
 
 

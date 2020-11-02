@@ -63,13 +63,13 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Commande> getAllCommande() {
         return (ArrayList<Commande>) this.donnees;
     }
 
 
-    @Override
+    @Override // Cree
     public boolean create(Commande objet) {
         if (donnees == null) {
             donnees = new ArrayList<>();
@@ -83,7 +83,7 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         return this.donnees.add(objet);
     }
 
-    @Override
+    @Override // Lire
     public Commande getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des commandes :
@@ -96,7 +96,7 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Commande objet) {
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
@@ -107,7 +107,7 @@ public class ListeMemoireCommandeDao implements IDaoCommande {
         return true;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Commande objet) {
         int idx = this.donnees.indexOf(objet);
         Commande supprime;

@@ -49,13 +49,13 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Produit> getAllProduits() {
         return (ArrayList<Produit>) this.donnees;
     }
 
 
-    @Override
+    @Override // Filtre par Categorie
     public List<Produit> getByCategorie(Categorie filtreCategorie) {
         List<Produit> listeFiltre;
         listeFiltre = new ArrayList<Produit>();
@@ -69,22 +69,27 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         return listeFiltre;
     }
 
-    @Override
+    @Override // Filtre par Nom Produit
     public List<Produit> getByNomProduit(String filtreNomProduit) {
         List<Produit> listeFiltre;
         listeFiltre = new ArrayList<Produit>();
         String filtreNomProduitLow = filtreNomProduit.toLowerCase();
+        System.out.println("Filtre : " + filtreNomProduitLow);
 
         for (Produit produit : donnees) {
             String testNom = produit.getNom().toLowerCase();
+            System.out.println("Test : " + testNom);
+
             if (testNom == filtreNomProduitLow) {
                 listeFiltre.add(produit);
+                System.out.println(produit.toString());
             }
         }
+        System.out.println();
         return listeFiltre;
     }
 
-    @Override
+    @Override // Filtre par Tarif ( < filtreTarif )
     public List<Produit> getByTarif(Double filtreTarif) {
         List<Produit> listeFiltre;
         listeFiltre = new ArrayList<Produit>();
@@ -99,7 +104,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
     }
 
 
-    @Override // Create :
+    @Override // Cree :
     public boolean create(Produit objet) {
         if (donnees == null) {
             donnees = new ArrayList<>();
@@ -115,7 +120,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         return this.donnees.add(objet);
     }
 
-    @Override // Read :
+    @Override // Lire :
     public Produit getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
@@ -128,7 +133,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         return null;
     }
 
-    @Override // Update :
+    @Override // Modif :
     public boolean update(Produit objet) { // marche juste avec une id
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
@@ -139,7 +144,7 @@ public class ListeMemoireProduitDao implements IDaoProduit {
         return true;
     }
 
-    @Override // Delete :
+    @Override // Sup :
     public boolean delete(Produit objet) { // marche bien avec id et entiere
         Produit supprime;
 

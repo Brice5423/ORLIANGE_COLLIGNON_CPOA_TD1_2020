@@ -28,7 +28,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Categorie> getAllCategories() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -58,7 +58,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
     }
 
 
-    @Override
+    @Override // Cree
     public boolean create(Categorie objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -79,7 +79,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
         }
     }
 
-    @Override
+    @Override // Lire
     public Categorie getById(int id) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -107,7 +107,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Categorie objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -129,7 +129,7 @@ public class MySqlCategorieDao implements IDaoCategorie {
         }
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Categorie objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();

@@ -27,13 +27,13 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
     }
 
 
-    @Override
+    @Override // Lire tout
     public ArrayList<Categorie> getAllCategories() {
         return (ArrayList<Categorie>) this.donnees;
     }
 
 
-    @Override // Create :
+    @Override // Cree :
     public boolean create(Categorie objet) {
         if (donnees == null) {
             donnees = new ArrayList<>();
@@ -49,7 +49,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         return this.donnees.add(objet);
     }
 
-    @Override // Read :
+    @Override // Lire :
     public Categorie getById(int id) {
         if (donnees != null && !donnees.isEmpty()) {
             // Itérator sur la liste des produits :
@@ -62,7 +62,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         return null;
     }
 
-    @Override // Update :
+    @Override // Modif :
     public boolean update(Categorie objet) {
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
@@ -73,7 +73,7 @@ public class ListeMemoireCategorieDao implements IDaoCategorie {
         return true;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Categorie objet) {
         Categorie supprime;
 

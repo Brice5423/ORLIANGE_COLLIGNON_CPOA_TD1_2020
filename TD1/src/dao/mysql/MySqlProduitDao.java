@@ -30,7 +30,7 @@ public class MySqlProduitDao implements IDaoProduit  {
     }
 
 
-    @Override
+    @Override // Lire tout
     public List<Produit> getAllProduits() {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -61,7 +61,7 @@ public class MySqlProduitDao implements IDaoProduit  {
     }
 
 
-    @Override
+    @Override // Filtre par Categorie
     public List<Produit> getByCategorie(Categorie filtreCategorie) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -95,7 +95,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         return null;
     }
 
-    @Override
+    @Override // Filtre par Nom du Produit
     public List<Produit> getByNomProduit(String filtreNomProduit) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -128,7 +128,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         return null;
     }
 
-    @Override
+    @Override // Filtre par Tarif ( < filtreTarif )
     public List<Produit> getByTarif(Double filtreTarif) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -162,7 +162,7 @@ public class MySqlProduitDao implements IDaoProduit  {
     }
 
 
-    @Override
+    @Override // Cree
     public boolean create(Produit objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -185,7 +185,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         return false;
     }
 
-    @Override
+    @Override // Lire
     public Produit getById(int id) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -216,7 +216,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         return null;
     }
 
-    @Override
+    @Override // Modif
     public boolean update(Produit objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
@@ -240,7 +240,7 @@ public class MySqlProduitDao implements IDaoProduit  {
         return false;
     }
 
-    @Override
+    @Override // Sup
     public boolean delete(Produit objet) {
         try {
             Connection laConnexion = ConnexionSQL.creeConnexion();
