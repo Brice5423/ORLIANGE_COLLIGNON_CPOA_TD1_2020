@@ -1,7 +1,6 @@
 package home.iu.controller;
 
 
-import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoClient;
 
@@ -24,7 +23,7 @@ import java.util.ResourceBundle;
 public class Controller_Client implements Initializable, ChangeListener<Client> {
     DaoFactory daoF;
     private IDaoClient daoClient;
-    private Client clientTab;
+    private Client clientTabSelect;
 
 
     @FXML
@@ -187,7 +186,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         this.btn_SuppClient.setDisable(newValue == null);
         this.btn_AffichModifClient.setDisable(newValue == null);
 
-        clientTab = observable.getValue();
+        clientTabSelect = observable.getValue();
     }
 
     public void cacheCreeClient() {
@@ -334,16 +333,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         cacheErreurCreeClient();
         cacheErreurModifClient();
 
-        input_ModifId.setText(String.valueOf(clientTab.getId()));
-        input_ModifNom.setText(clientTab.getNom());
-        input_ModifPrenom.setText(clientTab.getPrenom());
-        input_ModifMail.setText(String.valueOf(clientTab.getMail()));
-        input_ModifMdp.setText(clientTab.getMdp());
-        input_ModifNo.setText(clientTab.getAdrNum());
-        input_ModifRue.setText(String.valueOf(clientTab.getAdrVoie()));
-        input_ModifCp.setText(clientTab.getAdrCodePostal());
-        input_ModifVille.setText(clientTab.getAdrVille());
-        input_ModifPays.setText(clientTab.getAdrPays());
+        input_ModifId.setText(String.valueOf(clientTabSelect.getId()));
+        input_ModifNom.setText(clientTabSelect.getNom());
+        input_ModifPrenom.setText(clientTabSelect.getPrenom());
+        input_ModifMail.setText(String.valueOf(clientTabSelect.getMail()));
+        input_ModifMdp.setText(clientTabSelect.getMdp());
+        input_ModifNo.setText(clientTabSelect.getAdrNum());
+        input_ModifRue.setText(String.valueOf(clientTabSelect.getAdrVoie()));
+        input_ModifCp.setText(clientTabSelect.getAdrCodePostal());
+        input_ModifVille.setText(clientTabSelect.getAdrVille());
+        input_ModifPays.setText(clientTabSelect.getAdrPays());
     }
 
     @FXML
@@ -391,19 +390,19 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
 
         if (complet) {
-            clientTab.setNom(input_ModifNom.getText());
-            clientTab.setPrenom(input_ModifPrenom.getText());
-            clientTab.setMail(input_ModifMail.getText());
-            clientTab.setMdp(input_ModifMdp.getText());
-            clientTab.setAdrNum(input_ModifNo.getText());
-            clientTab.setAdrVoie(input_ModifRue.getText());
-            clientTab.setAdrCodePostal(input_ModifCp.getText());
-            clientTab.setAdrVille(input_ModifVille.getText());
-            clientTab.setAdrPays(input_ModifPays.getText());
+            clientTabSelect.setNom(input_ModifNom.getText());
+            clientTabSelect.setPrenom(input_ModifPrenom.getText());
+            clientTabSelect.setMail(input_ModifMail.getText());
+            clientTabSelect.setMdp(input_ModifMdp.getText());
+            clientTabSelect.setAdrNum(input_ModifNo.getText());
+            clientTabSelect.setAdrVoie(input_ModifRue.getText());
+            clientTabSelect.setAdrCodePostal(input_ModifCp.getText());
+            clientTabSelect.setAdrVille(input_ModifVille.getText());
+            clientTabSelect.setAdrPays(input_ModifPays.getText());
 
-            lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifié");
+            lbl_MessageClient.setText("Le client " + clientTabSelect.toStringController() + " à bien été modifié");
 
-            daoClient.update(clientTab);
+            daoClient.update(clientTabSelect);
 
             refreshClient();
             cacheModifClient();
@@ -420,7 +419,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            daoClient.delete(clientTab);
+            daoClient.delete(clientTabSelect);
             refreshClient();
 
             lbl_MessageClient.setText("");

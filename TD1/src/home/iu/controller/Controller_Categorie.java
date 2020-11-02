@@ -1,7 +1,6 @@
 package home.iu.controller;
 
 
-import dao.enumeration.EPersistance;
 import dao.factory.DaoFactory;
 import dao.interfaces.IDaoCategorie;
 
@@ -15,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.Optional;
@@ -25,7 +23,7 @@ import java.util.ResourceBundle;
 public class Controller_Categorie implements Initializable, ChangeListener<Categorie> {
     DaoFactory daoF;
     private IDaoCategorie daoCateg;
-    private Categorie categorieTab;
+    private Categorie categorieTabSelect;
 
 
     @FXML
@@ -99,7 +97,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         this.btn_SuppCategorie.setDisable(newValue == null);
         this.btn_AffichModifCategorie.setDisable(newValue == null);
 
-        categorieTab = observable.getValue();
+        categorieTabSelect = observable.getValue();
     }
 
     public void cacheCreeCategorie() {
@@ -175,9 +173,9 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         cacheErreurCreeCategorie();
         cacheErreurModifCategorie();
 
-        input_ModifId.setText(String.valueOf(categorieTab.getId()));
-        input_ModifTitre.setText(categorieTab.getTitre());
-        input_ModifVisuel.setText(categorieTab.getVisuel());
+        input_ModifId.setText(String.valueOf(categorieTabSelect.getId()));
+        input_ModifTitre.setText(categorieTabSelect.getTitre());
+        input_ModifVisuel.setText(categorieTabSelect.getVisuel());
     }
 
     @FXML
@@ -197,12 +195,12 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         }
 
         if (complet) {
-            categorieTab.setTitre(input_ModifTitre.getText());
-            categorieTab.setVisuel(input_ModifVisuel.getText());
+            categorieTabSelect.setTitre(input_ModifTitre.getText());
+            categorieTabSelect.setVisuel(input_ModifVisuel.getText());
 
-            lbl_MessageCategorie.setText("La catégorie " + categorieTab.toStringController() + " à bien été modifiée");
+            lbl_MessageCategorie.setText("La catégorie " + categorieTabSelect.toStringController() + " à bien été modifiée");
 
-            daoCateg.update(categorieTab);
+            daoCateg.update(categorieTabSelect);
 
             refreshCateg();
             cacheModifCategorie();
@@ -219,7 +217,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            daoCateg.delete(categorieTab);
+            daoCateg.delete(categorieTabSelect);
             refreshCateg();
 
             lbl_MessageCategorie.setText("");

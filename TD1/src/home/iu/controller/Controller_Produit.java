@@ -27,7 +27,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     private DaoFactory daoF;
     private IDaoProduit daoProd;
     private IDaoCategorie daoCateg;
-    private Produit produitTab;
+    private Produit produitTabSelect;
 
 
     @FXML
@@ -148,7 +148,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         this.btn_SuppProduit.setDisable(newValue == null);
         this.btn_AffichModif.setDisable(newValue == null);
 
-        produitTab = observable.getValue();
+        produitTabSelect = observable.getValue();
     }
 
     public boolean isDouble(String string) {
@@ -263,12 +263,12 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         cacheErreurCreeProduit();
         cacheErreurModifProduit();
 
-        input_ModifId.setText(String.valueOf(produitTab.getId()));
-        input_ModifNom.setText(produitTab.getNom());
-        input_ModifDescription.setText(produitTab.getDescription());
-        input_ModifTarif.setText(String.valueOf(produitTab.getTarif()));
-        input_ModifVisuel.setText(produitTab.getVisuel());
-        Choice_ModifCateg.setValue(produitTab.getCategorie());
+        input_ModifId.setText(String.valueOf(produitTabSelect.getId()));
+        input_ModifNom.setText(produitTabSelect.getNom());
+        input_ModifDescription.setText(produitTabSelect.getDescription());
+        input_ModifTarif.setText(String.valueOf(produitTabSelect.getTarif()));
+        input_ModifVisuel.setText(produitTabSelect.getVisuel());
+        Choice_ModifCateg.setValue(produitTabSelect.getCategorie());
     }
 
     @FXML
@@ -300,16 +300,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
 
         if (complet) {
-            produitTab.setId(Integer.valueOf(input_ModifId.getText()));
-            produitTab.setNom(input_nom.getText());
-            produitTab.setDescription(input_Description.getText());
-            produitTab.setTarif(Double.valueOf(input_Tarif.getText()));
-            produitTab.setVisuel(input_Visuel.getText());
-            produitTab.setCategorie(Choice_Categ.getValue());
+            produitTabSelect.setId(Integer.valueOf(input_ModifId.getText()));
+            produitTabSelect.setNom(input_nom.getText());
+            produitTabSelect.setDescription(input_Description.getText());
+            produitTabSelect.setTarif(Double.valueOf(input_Tarif.getText()));
+            produitTabSelect.setVisuel(input_Visuel.getText());
+            produitTabSelect.setCategorie(Choice_Categ.getValue());
 
-            lbl_MessageProduit.setText("Le produit " + produitTab.toStringController() + " à bien été modifié");
+            lbl_MessageProduit.setText("Le produit " + produitTabSelect.toStringController() + " à bien été modifié");
 
-            daoProd.update(produitTab);
+            daoProd.update(produitTabSelect);
 
             refreshProduit();
             cacheModifProduit();
@@ -326,7 +326,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            daoProd.delete(produitTab);
+            daoProd.delete(produitTabSelect);
             refreshProduit();
 
             lbl_MessageProduit.setText("");
