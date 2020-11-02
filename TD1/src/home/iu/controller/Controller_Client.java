@@ -404,7 +404,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été modifié");
 
             daoClient.update(client);
-
+            clientTabSelect = client;
             tbl_Clients.refresh(); //refreshClient();
             cacheModifClient();
         }
