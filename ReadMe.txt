@@ -35,7 +35,7 @@ Ce qui marche dans l'application :
 			- Vérifications des Erreurs pour créer et modifier (sauf tarif).
 			- Message quand on créer / modifie un client.
 
-		- Commande :
+		- Commande : 
 
 		- Produit :
 			- Affichage de la page.
@@ -75,6 +75,8 @@ Ce qui marche dans l'application :
 			- Mise à jour (remplissage) de la table de données après création / suppression d'un produit.
 			- Message quand on créer un produit.
 			- Quand on refresh la page redevient comme au début.
+			- Filtre catégorie / tarif.
+			
 
 
 Ce qui ne marche pas dans l'application :
@@ -87,17 +89,24 @@ Ce qui ne marche pas dans l'application :
 		- Client :
 			- les valeurs de la table se cumulent.
 			- problème de modification dans MYSQL.
+			- Filtre nom / prénom.
 
 		- Commande :
-			- les valeurs de la table se cumulent.
+			- Affichage de la page (tout).
 
 		- Produit : 
 			- les valeurs de la table se cumulent.
 			- Problème de modification avec le tarif ce qui fait que l'on ne peut pas modifier, voir le message et que ça actualise la table de donnée.
+			- Filtre catégorie / tarif / nom.
 			
 	- Liste Mémoire :
 
-		- Commande :
+		- Commande : 
+			- tout sauf affichage page.
+		
+		- Client : 
+			- Filtre nom / prénom.
 
 		- Produit :
 			- Problème de modification avec le tarif ce qui fait que l'on ne peut pas modifier, voir le message et que ça actualise la table de donnée.
+			- Filtre nom.
