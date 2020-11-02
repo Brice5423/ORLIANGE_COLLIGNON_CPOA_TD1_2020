@@ -318,8 +318,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             daoClient.create(client);
 
-            this.tbl_Clients.getItems().addAll(client);
-            this.tbl_Clients.getSelectionModel().clearSelection();
+            tbl_Clients.getItems().addAll(client);
+            tbl_Clients.getSelectionModel().clearSelection();
             cacheCreeClient();
         }
     }

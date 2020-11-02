@@ -158,7 +158,8 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             daoCateg.create(categorie);
 
-            refreshCateg();
+            tbl_Categories.getItems().addAll(categorie);
+            tbl_Categories.getSelectionModel().clearSelection();
             cacheCreeCategorie();
         }
     }

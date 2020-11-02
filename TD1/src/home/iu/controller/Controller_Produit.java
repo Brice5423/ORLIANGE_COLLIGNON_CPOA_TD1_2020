@@ -248,7 +248,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.create(produit);
 
-            refreshProduit();
+            tbl_Produits.getItems().addAll(produit);
+            tbl_Produits.getSelectionModel().clearSelection();
             cacheCreeProduit();
         }
     }
