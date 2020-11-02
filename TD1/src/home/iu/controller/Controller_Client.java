@@ -178,7 +178,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     public void refreshClient() {
         tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+        this.tbl_Clients.getItems().addAll(daoClient.getAllClients());
         tbl_Clients.getSelectionModel().clearSelection();
     }
 

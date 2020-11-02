@@ -140,7 +140,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     public void refreshProduit() {
         tbl_Produits.getItems().clear();
-        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+        this.tbl_Produits.getItems().addAll(daoProd.getAllProduits());
         tbl_Produits.getSelectionModel().clearSelection();
     }
 

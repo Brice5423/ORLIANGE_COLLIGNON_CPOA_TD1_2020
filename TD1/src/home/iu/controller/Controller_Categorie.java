@@ -89,7 +89,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
     public void refreshCateg() {
         this.tbl_Categories.getItems().clear();
-        this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+        this.tbl_Categories.getItems().addAll(daoCateg.getAllCategories());
         this.tbl_Categories.getSelectionModel().clearSelection();
     }
 
