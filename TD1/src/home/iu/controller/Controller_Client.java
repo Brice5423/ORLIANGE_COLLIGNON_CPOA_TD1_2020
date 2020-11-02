@@ -185,8 +185,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     }
 
     public void cacheCreeClient() {
-        boolean remplie1 = (input_Nom.getText() != "") || (input_Prenom.getText() != "") || (input_Mail.getText() != "") || (input_Mdp.getText() != "");
-        boolean remplie2 = (input_No.getText() != "") || (input_Rue.getText() != "") || (input_Cp.getText() != "") || (input_Ville.getText() != "") || (input_Pays.getText() != "");
+        boolean remplie1 = ((input_Nom.getText() != "") || (input_Prenom.getText() != "") || (input_Mail.getText() != "") || (input_Mdp.getText() != ""));
+        boolean remplie2 = ((input_No.getText() != "") || (input_Rue.getText() != "") || (input_Cp.getText() != "") || (input_Ville.getText() != "") || (input_Pays.getText() != ""));
 
         if (remplie1 || remplie2) {
             input_Nom.clear();
@@ -199,6 +199,23 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             input_Cp.clear();
             input_Ville.clear();
             input_Pays.clear();
+        }
+    }
+
+    public void cacheErreurCreeClient() {
+        boolean erreurVisible1 = ((lbl_ErreurNom.isVisible()) || (lbl_ErreurPrenom.isVisible()) || (lbl_ErreurMail.isVisible()) || (lbl_ErreurMdp.isVisible()));
+        boolean erreurVisible2 = ((lbl_ErreurNo.isVisible()) || (lbl_ErreurRue.isVisible()) || (lbl_ErreurCP.isVisible()) || (lbl_ErreurVille.isVisible()) || (lbl_ErreurPays.isVisible()));
+
+        if (erreurVisible1 || erreurVisible2) {
+            lbl_ErreurNom.setVisible(false);
+            lbl_ErreurPrenom.setVisible(false);
+            lbl_ErreurMail.setVisible(false);
+            lbl_ErreurMdp.setVisible(false);
+            lbl_ErreurNo.setVisible(false);
+            lbl_ErreurRue.setVisible(false);
+            lbl_ErreurCP.setVisible(false);
+            lbl_ErreurVille.setVisible(false);
+            lbl_ErreurPays.setVisible(false);
         }
     }
 
@@ -221,22 +238,25 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         }
     }
 
+    public void cacheErreurModifClient() {
+        lbl_ErreurModifNom.setVisible(false);
+        lbl_ErreurModifPrenom.setVisible(false);
+        lbl_ErreurModifMail.setVisible(false);
+        lbl_ErreurModifMdp.setVisible(false);
+        lbl_ErreurModifNo.setVisible(false);
+        lbl_ErreurModifRue.setVisible(false);
+        lbl_ErreurModifCP.setVisible(false);
+        lbl_ErreurModifVille.setVisible(false);
+        lbl_ErreurModifPays.setVisible(false);
+    }
+
 
     @FXML
     void OnClick_CreerClient(ActionEvent event) {
         boolean complet = true;
 
+        cacheErreurCreeClient();
         cacheModifClient();
-
-        lbl_ErreurNom.setVisible(false);
-        lbl_ErreurPrenom.setVisible(false);
-        lbl_ErreurMail.setVisible(false);
-        lbl_ErreurMdp.setVisible(false);
-        lbl_ErreurNo.setVisible(false);
-        lbl_ErreurRue.setVisible(false);
-        lbl_ErreurCP.setVisible(false);
-        lbl_ErreurVille.setVisible(false);
-        lbl_ErreurPays.setVisible(false);
 
         //Liste de verification des Erreurs
         if (input_Nom.getText() == "") {
@@ -278,9 +298,6 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
         //Quand on appuie sur le boutton Créer
         if (complet) {
-            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
-            IDaoClient DaoClient = DaoF.getDaoClient();
-
             Client client = new Client();
             client.setNom(input_Nom.getText());
             client.setPrenom(input_Prenom.getText());
@@ -294,13 +311,13 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été crée");
 
-            DaoClient.create(client);
-
-            cacheCreeClient();
+            daoClient.create(client);
 
             //this.tbl_Clients.getItems().addAll(client);
             tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(DaoF.getDaoClient().getAllClients());
+            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+
+            cacheCreeClient();
         }
     }
 
@@ -309,6 +326,10 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     void OnClick_AffichModifClient(ActionEvent event) {
         pane_Modif.setVisible(true);
         btn_ModifClient.setVisible(true);
+
+        cacheCreeClient();
+        cacheErreurCreeClient();
+        cacheErreurModifClient();
 
         input_ModifId.setText(String.valueOf(clientTab.getId()));
         input_ModifNom.setText(clientTab.getNom());
@@ -320,23 +341,13 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_ModifCp.setText(clientTab.getAdrCodePostal());
         input_ModifVille.setText(clientTab.getAdrVille());
         input_ModifPays.setText(clientTab.getAdrPays());
-
-        cacheCreeClient();
     }
 
     @FXML
     void OnClick_ModifClient(ActionEvent event) {
         boolean complet = true;
 
-        lbl_ErreurModifNom.setVisible(false);
-        lbl_ErreurModifPrenom.setVisible(false);
-        lbl_ErreurModifMail.setVisible(false);
-        lbl_ErreurModifMdp.setVisible(false);
-        lbl_ErreurModifNo.setVisible(false);
-        lbl_ErreurModifRue.setVisible(false);
-        lbl_ErreurModifCP.setVisible(false);
-        lbl_ErreurModifVille.setVisible(false);
-        lbl_ErreurModifPays.setVisible(false);
+        cacheErreurModifClient();
 
         //Liste de verification des Erreurs
         if (input_ModifNom.getText() == "") {
@@ -415,6 +426,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             lbl_MessageClient.setText("");
             cacheCreeClient();
+            cacheErreurCreeClient();
             cacheModifClient();
         }
     }
@@ -430,6 +442,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
         lbl_MessageClient.setText("");
         cacheCreeClient();
+        cacheErreurCreeClient();
         cacheModifClient();
     }
 

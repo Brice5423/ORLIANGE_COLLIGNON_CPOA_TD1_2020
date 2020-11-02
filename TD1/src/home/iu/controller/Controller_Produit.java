@@ -156,7 +156,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     }
 
     public void cacheCreeProduit() {
-        boolean remplie = (input_nom.getText() != "") || (input_Description.getText() != "") || (input_Visuel.getText() != "") || (input_Tarif.getText() != "") || (Choice_Categ.getValue() != null);
+        boolean remplie = ((input_nom.getText() != "") || (input_Description.getText() != "") || (input_Visuel.getText() != "") || (input_Tarif.getText() != "") || (Choice_Categ.getValue() != null));
 
         if (remplie) {
             input_nom.clear();
@@ -164,6 +164,18 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             input_Visuel.clear();
             input_Tarif.clear();
             Choice_Categ.setValue(null);
+        }
+    }
+
+    public void cacheErreurCreeProduit() {
+        boolean erreurVisible = ((lbl_ErreurNom.isVisible()) || (lbl_ErreurDescription.isVisible()) || (lbl_ErreurVisuel.isVisible()) || (lbl_ErreurTarif.isVisible()) || (lbl_ErreurCateg.isVisible()));
+
+        if (erreurVisible) {
+            lbl_ErreurNom.setVisible(false);
+            lbl_ErreurDescription.setVisible(false);
+            lbl_ErreurVisuel.setVisible(false);
+            lbl_ErreurTarif.setVisible(false);
+            lbl_ErreurCateg.setVisible(false);
         }
     }
 
@@ -181,18 +193,21 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
     }
 
+    public void cacheErreurModifProduit() {
+        lbl_ErreurModifNom.setVisible(false);
+        lbl_ErreurModifDescription.setVisible(false);
+        lbl_ErreurModifVisuel.setVisible(false);
+        lbl_ErreurModifTarif.setVisible(false);
+        lbl_ErreurModifCateg.setVisible(false);
+    }
 
-    @FXML
+
+    @FXML // Quand on appuie sur le boutton Créer
     void OnClick_CreerProduit(ActionEvent event) {
         boolean complet = true;
 
+        cacheErreurCreeProduit();
         cacheModifProduit();
-
-        lbl_ErreurNom.setVisible(false);
-        lbl_ErreurDescription.setVisible(false);
-        lbl_ErreurVisuel.setVisible(false);
-        lbl_ErreurTarif.setVisible(false);
-        lbl_ErreurCateg.setVisible(false);
 
         //Liste de verification des Erreurs
         if (input_nom.getText() == "") {
@@ -216,7 +231,6 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             complet = false;
         }
 
-        //Quand on appuie sur le boutton Créer
         if (complet) {
             Produit produit = new Produit();
             produit.setNom(input_nom.getText());
@@ -243,25 +257,23 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         pane_Modif.setVisible(true);
         btn_ModifProduit.setVisible(true);
 
+        cacheCreeProduit();
+        cacheErreurCreeProduit();
+        cacheErreurModifProduit();
+
         input_ModifId.setText(String.valueOf(produitTab.getId()));
         input_ModifNom.setText(produitTab.getNom());
         input_ModifDescription.setText(produitTab.getDescription());
         input_ModifTarif.setText(String.valueOf(produitTab.getTarif()));
         input_ModifVisuel.setText(produitTab.getVisuel());
         Choice_ModifCateg.setValue(produitTab.getCategorie());
-
-        cacheCreeProduit();
     }
 
     @FXML
     void OnClick_ModifProduit(ActionEvent event) {
         boolean complet = true;
 
-        lbl_ErreurModifNom.setVisible(false);
-        lbl_ErreurModifDescription.setVisible(false);
-        lbl_ErreurModifVisuel.setVisible(false);
-        lbl_ErreurModifTarif.setVisible(false);
-        lbl_ErreurModifCateg.setVisible(false);
+        cacheErreurModifProduit();
 
         //Liste de verification des Erreurs
         if (input_ModifNom.getText() == "") {
@@ -298,11 +310,11 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.update(produit);
 
-            cacheModifProduit();
-
             //this.tbl_Produits.refresh();
             tbl_Produits.getItems().clear();
             this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+
+            cacheModifProduit();
         }
     }
 
@@ -322,6 +334,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             lbl_MessageProduit.setText("");
             cacheCreeProduit();
+            cacheErreurCreeProduit();
             cacheModifProduit();
         }
     }
@@ -338,6 +351,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
         lbl_MessageProduit.setText("");
         cacheCreeProduit();
+        cacheErreurCreeProduit();
         cacheModifProduit();
     }
 
