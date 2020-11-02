@@ -39,16 +39,49 @@ public class Controller_Commande implements Initializable, ChangeListener<Comman
     private TextField imput_Date;
 
     @FXML
-    private Label lbl_ErreurModifDate;
+    private ChoiceBox<?> choice_NomProduit;
+
+    @FXML
+    private TableView<?> tbl_Produit;
+
+    @FXML
+    private Label lbl_ErreurProduit;
+
+    @FXML
+    private Label lbl_ErreurQte;
+
+    @FXML
+    private ChoiceBox<?> choice_Qte;
 
     @FXML
     private Label lbl_ErreurModifID;
 
     @FXML
-    private ChoiceBox<?> Choice_ModifCl;
+    private TextField imput_ModifDate;
 
     @FXML
-    private TextField imput_ModifDate;
+    private ChoiceBox<?> choice_NomModifProduit;
+
+    @FXML
+    private TableView<?> tbl_ModifProduit;
+
+    @FXML
+    private TextField imput_ModifId;
+
+    @FXML
+    private ChoiceBox<?> choice_ModifCl;
+
+    @FXML
+    private ChoiceBox<?> choice_ModifQte;
+
+    @FXML
+    private Label lbl_ErreurModifDate;
+
+    @FXML
+    private Label lbl_ErreurModifProduit;
+
+    @FXML
+    private Label lbl_ErreurModifQte;
 
     @FXML
     private Label lbl_MessageCommande;
@@ -58,9 +91,6 @@ public class Controller_Commande implements Initializable, ChangeListener<Comman
 
     @FXML
     private Button btn_SuppCommande;
-
-    @FXML
-    private TextField imput_ModifID;
 
     @FXML
     private TableView<Commande> tbl_Commandes;
@@ -139,15 +169,15 @@ public class Controller_Commande implements Initializable, ChangeListener<Comman
         }
         if (complet) {
             commandeTab.setDate(new Date());
-            commandeTab.setId((int) Choice_ModifCl.getValue());
+            commandeTab.setId((int) choice_ModifCl.getValue());
 
             lbl_MessageCommande.setText("La commande " + commandeTab.toStringController() + " à bien été modifiée");
 
             daoCommande.update(commandeTab);
 
-            imput_ModifID.clear();
+            imput_ModifId.clear();
             imput_ModifDate.clear();
-            Choice_ModifCl.setValue(null);
+            choice_ModifCl.setValue(null);
 
             this.tbl_Commandes.refresh();
         }

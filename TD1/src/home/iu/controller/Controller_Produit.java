@@ -354,7 +354,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
-        if (Choice_FiltreCateg != null) {
+        if (Choice_FiltreCateg.getValue() != null) {
             tbl_Produits.getItems().clear();
             tbl_Produits.getItems().addAll(daoProd.getByCategorie(Choice_FiltreCateg.getValue()));
             tbl_Produits.getSelectionModel().clearSelection();

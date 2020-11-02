@@ -21,12 +21,12 @@
       <Pane prefHeight="439.0" prefWidth="1200.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="392.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="OUTSIDE" width="535.0" />
-            <GridPane layoutX="34.0" layoutY="35.0" prefHeight="392.0" prefWidth="535.0">
+            <GridPane layoutX="33.0" layoutY="35.0" prefHeight="392.0" prefWidth="535.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="104.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0" prefWidth="250.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="51.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0" prefWidth="262.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="53.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="116.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="93.0" minHeight="4.0" prefHeight="28.0" vgrow="SOMETIMES" />
@@ -38,7 +38,7 @@
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Date Commande : " />
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id Client : " textAlignment="CENTER" GridPane.rowIndex="1" />
                   <TextField fx:id="imput_idCl" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl_ErreurID" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="lbl_ErreurID" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" top="40.0" />
                      </GridPane.margin>
@@ -49,49 +49,80 @@
                         <Insets top="-40.0" />
                      </GridPane.margin>
                   </Line>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="103.0" text="Produit : " GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="48.0" text="Qté : " GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <ChoiceBox fx:id="choice_NomProduit" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TableView fx:id="tbl_Produit" maxHeight="-Infinity" prefHeight="194.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl_ErreurProduit" alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="40.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbl_ErreurQte" alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="Qte pas remplie" textFill="RED" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="40.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ChoiceBox fx:id="choice_Qte" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Pane layoutX="600.0" maxWidth="-Infinity" prefHeight="439.0" prefWidth="600.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="392.0" layoutX="33.0" layoutY="35.0" stroke="BLACK" strokeType="OUTSIDE" width="535.0" />
+                  <Label layoutX="237.0" layoutY="14.0" text="Modification d'une commande" />
                   <GridPane layoutX="33.0" layoutY="35.0" prefHeight="392.0" prefWidth="535.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="131.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="0.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="313.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="104.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0" prefWidth="262.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="53.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="116.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="4.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="271.0" minHeight="10.0" prefHeight="195.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Date Commande : " GridPane.rowIndex="1" />
-                        <Label fx:id="lbl_ErreurModifDate" prefHeight="17.0" prefWidth="338.0" text="La date n'est pas remplie" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets left="5.0" top="50.0" />
-                           </GridPane.margin>
-                        </Label>
                         <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id Client : " textAlignment="CENTER" GridPane.rowIndex="2" />
-                        <Label fx:id="lbl_ErreurModifID" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <Label fx:id="lbl_ErreurModifID" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
-                              <Insets left="5.0" top="50.0" />
+                              <Insets left="5.0" top="40.0" />
                            </GridPane.margin>
                         </Label>
-                        <ChoiceBox fx:id="Choice_ModifCl" prefHeight="25.0" prefWidth="86.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="imput_ModifDate" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField fx:id="imput_ModifID" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" />
-                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id :" textAlignment="CENTER" />
+                        <TextField fx:id="imput_ModifDate" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Line endX="203.0" startX="-113.5" strokeType="OUTSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets top="-40.0" />
+                           </GridPane.margin>
+                        </Line>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="103.0" text="Produit : " GridPane.rowIndex="3" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="48.0" text="Qté : " GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="choice_NomModifProduit" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TableView fx:id="tbl_ModifProduit" maxHeight="-Infinity" prefHeight="164.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="149.0" text="Id : " />
+                        <TextField fx:id="imput_ModifId" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="1" />
+                        <ChoiceBox fx:id="choice_ModifCl" prefHeight="25.0" prefWidth="93.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ChoiceBox fx:id="choice_ModifQte" prefHeight="25.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="lbl_ErreurModifDate" alignment="CENTER" prefHeight="17.0" prefWidth="235.0" text="La date n'est pas remplie ou est incorrecte" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifProduit" alignment="CENTER" prefHeight="17.0" prefWidth="338.0" text="L'Id du client n'est pas rempli ou est incorrect" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_ErreurModifQte" alignment="CENTER" prefHeight="17.0" prefWidth="99.0" text="Qte pas remplie" textFill="RED" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets top="40.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
-                  <Label layoutX="237.0" layoutY="14.0" text="Modification d'une commande" />
                </children>
             </Pane>
             <Label layoutX="248.0" layoutY="14.0" text="Création d'une commande" />
