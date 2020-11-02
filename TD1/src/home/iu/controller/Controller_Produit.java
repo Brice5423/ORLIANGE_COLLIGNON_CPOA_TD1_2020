@@ -133,11 +133,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         TableColumn<Produit, Integer> colIdCategorie = new TableColumn<>("Titre_Catégorie");
         colIdCategorie.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("categorie"));
         this.tbl_Produits.getColumns().setAll(colIdentifiant, colNom, colDescription, colTarif, colVisuel, colIdCategorie);
-        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+        refreshProduit();
 
         this.tbl_Produits.getSelectionModel().selectedItemProperty().addListener(this);
     }
 
+    public void refreshProduit() {
+        tbl_Produits.getItems().clear();
+        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+        tbl_Produits.getSelectionModel().clearSelection();
+    }
 
     public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
         this.btn_SuppProduit.setDisable(newValue == null);
@@ -243,11 +248,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.create(produit);
 
+            refreshProduit();
             cacheCreeProduit();
-
-            //this.tbl_Produits.getItems().addAll(produit);
-            tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
         }
     }
 
@@ -310,10 +312,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.update(produit);
 
-            //this.tbl_Produits.refresh();
-            tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
-
+            refreshProduit();
             cacheModifProduit();
         }
     }
@@ -329,8 +328,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoProd.delete(produitTab);
-            tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+            refreshProduit();
 
             lbl_MessageProduit.setText("");
             cacheCreeProduit();
@@ -342,8 +340,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     void OnClick_Refresh(ActionEvent event) {
-        tbl_Produits.getItems().clear();
-        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
+        refreshProduit();
 
         Choice_FiltreCateg.setValue(null);
         input_FiltreNom.clear();
@@ -359,20 +356,17 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
         if (Choice_FiltreCateg != null) {
-            tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByCategorie(Choice_FiltreCateg.getValue()));
+            refreshProduit();
             input_FiltreNom.clear();
             input_FiltreTarif.clear();
 
         } else if (input_FiltreNom.getText() != "") {
-            tbl_Produits.getItems().clear();input_FiltreTarif.clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByNomProduit(input_FiltreNom.getText()));
+            refreshProduit();
             Choice_FiltreCateg.setValue(null);
             input_FiltreTarif.clear();
 
         } else if (input_FiltreTarif.getText() != "") {
-            tbl_Produits.getItems().clear();
-            this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+            refreshProduit();
             Choice_FiltreCateg.setValue(null);
             input_FiltreNom.clear();
         }
@@ -380,16 +374,14 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     void OnClick_FiltreNom(ActionEvent event) {
-        tbl_Produits.getItems().clear();input_FiltreTarif.clear();
-        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByNomProduit(input_FiltreNom.getText()));
+        refreshProduit();
         Choice_FiltreCateg.setValue(null);
         input_FiltreTarif.clear();
     }
 
     @FXML
     void OnClick_FiltreTarif(ActionEvent event) {
-        tbl_Produits.getItems().clear();
-        this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+        refreshProduit();
         Choice_FiltreCateg.setValue(null);
         input_FiltreNom.clear();
     }
