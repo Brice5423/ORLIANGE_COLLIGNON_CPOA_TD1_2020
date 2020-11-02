@@ -404,7 +404,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             daoClient.update(clientTabSelect);
 
-            refreshClient();
+            tbl_Clients.refresh(); //refreshClient();
             cacheModifClient();
         }
     }

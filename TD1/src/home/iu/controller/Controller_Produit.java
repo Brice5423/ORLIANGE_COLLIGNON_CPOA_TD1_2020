@@ -311,7 +311,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.update(produitTabSelect);
 
-            refreshProduit();
+            tbl_Produits.refresh(); //refreshProduit();
             cacheModifProduit();
         }
     }

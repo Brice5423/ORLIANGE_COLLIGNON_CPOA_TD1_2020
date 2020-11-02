@@ -202,7 +202,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             daoCateg.update(categorieTabSelect);
 
-            refreshCateg();
+            tbl_Categories.refresh(); //refreshCateg();
             cacheModifCategorie();
         }
     }
