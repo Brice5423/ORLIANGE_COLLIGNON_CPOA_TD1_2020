@@ -96,6 +96,13 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         categorieTab = observable.getValue();
     }
 
+    public void cacheCreeCategorie() {
+        if ((input_titre.getText() != "") || (input_visuel.getText() != "")) {
+            input_titre.clear();
+            input_visuel.clear();
+        }
+    }
+
     public void cacheModifCategorie() {
         if (pane_ModifCategorie.isVisible()) {
             pane_ModifCategorie.setVisible(false);
@@ -140,8 +147,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             DaoCategorie.create(categorie);
 
-            input_titre.clear();
-            input_visuel.clear();
+            cacheCreeCategorie();
 
             //this.tbl_Categories.getItems().addAll(categorie);
             this.tbl_Categories.getItems().clear();
@@ -158,6 +164,8 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         input_ModifId.setText(String.valueOf(categorieTab.getId()));
         input_ModifTitre.setText(categorieTab.getTitre());
         input_ModifVisuel.setText(categorieTab.getVisuel());
+
+        cacheCreeCategorie();
     }
 
     @FXML
@@ -208,6 +216,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
             this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
 
             lbl_MessageCategorie.setText("");
+            cacheCreeCategorie();
             cacheModifCategorie();
         }
     }

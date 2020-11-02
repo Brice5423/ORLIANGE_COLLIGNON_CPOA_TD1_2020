@@ -184,6 +184,24 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         clientTab = observable.getValue();
     }
 
+    public void cacheCreeClient() {
+        boolean remplie1 = (input_Nom.getText() != "") || (input_Prenom.getText() != "") || (input_Mail.getText() != "") || (input_Mdp.getText() != "");
+        boolean remplie2 = (input_No.getText() != "") || (input_Rue.getText() != "") || (input_Cp.getText() != "") || (input_Ville.getText() != "") || (input_Pays.getText() != "");
+
+        if (remplie1 || remplie2) {
+            input_Nom.clear();
+            input_Prenom.clear();
+            input_Mail.clear();
+            input_Mdp.clear();
+
+            input_No.clear();
+            input_Rue.clear();
+            input_Cp.clear();
+            input_Ville.clear();
+            input_Pays.clear();
+        }
+    }
+
     public void cacheModifClient() {
         if (pane_Modif.isVisible()) {
             pane_Modif.setVisible(false);
@@ -278,15 +296,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             DaoClient.create(client);
 
-            input_Nom.clear();
-            input_Prenom.clear();
-            input_Mail.clear();
-            input_Mdp.clear();
-            input_No.clear();
-            input_Rue.clear();
-            input_Cp.clear();
-            input_Ville.clear();
-            input_Pays.clear();
+            cacheCreeClient();
 
             //this.tbl_Clients.getItems().addAll(client);
             tbl_Clients.getItems().clear();
@@ -310,6 +320,8 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_ModifCp.setText(clientTab.getAdrCodePostal());
         input_ModifVille.setText(clientTab.getAdrVille());
         input_ModifPays.setText(clientTab.getAdrPays());
+
+        cacheCreeClient();
     }
 
     @FXML
@@ -402,6 +414,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
 
             lbl_MessageClient.setText("");
+            cacheCreeClient();
             cacheModifClient();
         }
     }
@@ -416,6 +429,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         input_FiltrePrenom.clear();
 
         lbl_MessageClient.setText("");
+        cacheCreeClient();
         cacheModifClient();
     }
 

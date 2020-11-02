@@ -155,6 +155,18 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
     }
 
+    public void cacheCreeProduit() {
+        boolean remplie = (input_nom.getText() != "") || (input_Description.getText() != "") || (input_Visuel.getText() != "") || (input_Tarif.getText() != "") || (Choice_Categ.getValue() != null);
+
+        if (remplie) {
+            input_nom.clear();
+            input_Description.clear();
+            input_Visuel.clear();
+            input_Tarif.clear();
+            Choice_Categ.setValue(null);
+        }
+    }
+
     public void cacheModifProduit() {
         if (pane_Modif.isVisible()) {
             pane_Modif.setVisible(false);
@@ -217,11 +229,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
             daoProd.create(produit);
 
-            input_nom.clear();
-            input_Description.clear();
-            input_Tarif.clear();
-            input_Visuel.clear();
-            Choice_Categ.setValue(null);
+            cacheCreeProduit();
 
             //this.tbl_Produits.getItems().addAll(produit);
             tbl_Produits.getItems().clear();
@@ -241,6 +249,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         input_ModifTarif.setText(String.valueOf(produitTab.getTarif()));
         input_ModifVisuel.setText(produitTab.getVisuel());
         Choice_ModifCateg.setValue(produitTab.getCategorie());
+
+        cacheCreeProduit();
     }
 
     @FXML
@@ -311,6 +321,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             this.tbl_Produits.getItems().addAll(daoF.getDaoProduit().getAllProduits());
 
             lbl_MessageProduit.setText("");
+            cacheCreeProduit();
             cacheModifProduit();
         }
     }
@@ -326,6 +337,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         input_FiltreTarif.clear();
 
         lbl_MessageProduit.setText("");
+        cacheCreeProduit();
         cacheModifProduit();
     }
 
