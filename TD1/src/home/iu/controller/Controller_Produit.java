@@ -300,17 +300,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         }
 
         if (complet) {
-            Produit produit = new Produit();
-            produit.setId(Integer.valueOf(input_ModifId.getText()));
-            produit.setNom(input_nom.getText());
-            produit.setDescription(input_Description.getText());
-            produit.setTarif(Double.valueOf(input_Tarif.getText()));
-            produit.setVisuel(input_Visuel.getText());
-            produit.setCategorie(Choice_Categ.getValue());
+            produitTab.setId(Integer.valueOf(input_ModifId.getText()));
+            produitTab.setNom(input_nom.getText());
+            produitTab.setDescription(input_Description.getText());
+            produitTab.setTarif(Double.valueOf(input_Tarif.getText()));
+            produitTab.setVisuel(input_Visuel.getText());
+            produitTab.setCategorie(Choice_Categ.getValue());
 
-            lbl_MessageProduit.setText("Le produit " + produit.toStringController() + " à bien été modifié");
+            lbl_MessageProduit.setText("Le produit " + produitTab.toStringController() + " à bien été modifié");
 
-            daoProd.update(produit);
+            daoProd.update(produitTab);
 
             refreshProduit();
             cacheModifProduit();
