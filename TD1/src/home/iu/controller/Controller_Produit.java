@@ -139,9 +139,9 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     }
 
     public void refreshProduit() {
-        tbl_Produits.getItems().clear();
+        this.tbl_Produits.getItems().clear();
         this.tbl_Produits.getItems().addAll(daoProd.getAllProduits());
-        tbl_Produits.getSelectionModel().clearSelection();
+        this.tbl_Produits.getSelectionModel().clearSelection();
     }
 
     public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
@@ -355,17 +355,20 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
         if (Choice_FiltreCateg != null) {
-            refreshProduit();
+            tbl_Produits.getItems().clear();
+            tbl_Produits.getItems().addAll(daoProd.getByCategorie(Choice_FiltreCateg.getValue()));
             input_FiltreNom.clear();
             input_FiltreTarif.clear();
 
         } else if (input_FiltreNom.getText() != "") {
-            refreshProduit();
+            tbl_Produits.getItems().clear();
+            tbl_Produits.getItems().addAll(daoProd.getByNomProduit(input_FiltreNom.getText()));
             Choice_FiltreCateg.setValue(null);
             input_FiltreTarif.clear();
 
         } else if (input_FiltreTarif.getText() != "") {
-            refreshProduit();
+            tbl_Produits.getItems().clear();
+            tbl_Produits.getItems().addAll(daoProd.getByTarif(Double.valueOf(input_FiltreTarif.getText())));
             Choice_FiltreCateg.setValue(null);
             input_FiltreNom.clear();
         }
@@ -373,14 +376,16 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     @FXML
     void OnClick_FiltreNom(ActionEvent event) {
-        refreshProduit();
+        tbl_Produits.getItems().clear();
+        tbl_Produits.getItems().addAll(daoProd.getByNomProduit(input_FiltreNom.getText()));
         Choice_FiltreCateg.setValue(null);
         input_FiltreTarif.clear();
     }
 
     @FXML
     void OnClick_FiltreTarif(ActionEvent event) {
-        refreshProduit();
+        tbl_Produits.getItems().clear();
+        tbl_Produits.getItems().addAll(daoProd.getByTarif(Double.valueOf(input_FiltreTarif.getText())));
         Choice_FiltreCateg.setValue(null);
         input_FiltreNom.clear();
     }

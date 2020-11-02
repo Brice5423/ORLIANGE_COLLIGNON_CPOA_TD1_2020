@@ -177,9 +177,9 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
 
     public void refreshClient() {
-        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(daoClient.getAllClients());
-        tbl_Clients.getSelectionModel().clearSelection();
+        this.tbl_Clients.getSelectionModel().clearSelection();
     }
 
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
@@ -446,11 +446,13 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
-        refreshClient();
+        tbl_Clients.getItems().clear();
+        tbl_Clients.getItems().addAll(daoClient.getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
     }
 
     @FXML
     void OnClick_FiltreNomPrenom(ActionEvent event) {
-        refreshClient();
+        tbl_Clients.getItems().clear();
+        tbl_Clients.getItems().addAll(daoClient.getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
     }
 }
