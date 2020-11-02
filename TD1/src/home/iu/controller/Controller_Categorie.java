@@ -83,11 +83,16 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         TableColumn<Categorie, String> colVisuel = new TableColumn<>("Visuel");
         colVisuel.setCellValueFactory(new PropertyValueFactory<Categorie, String>("visuel"));
         this.tbl_Categories.getColumns().setAll(colID, colTitre, colVisuel);
-        this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+        refreshCateg();
 
         this.tbl_Categories.getSelectionModel().selectedItemProperty().addListener( this);
     }
 
+    public void refreshCateg() {
+        tbl_Categories.getItems().clear();
+        this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+        tbl_Categories.getSelectionModel().clearSelection();
+    }
 
     public void changed(ObservableValue<? extends Categorie> observable, Categorie oldValue, Categorie newValue) {
         this.btn_SuppCategorie.setDisable(newValue == null);
@@ -103,13 +108,6 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         }
     }
 
-    public void cacheErreurCreeCategorie() {
-        if ((lbl_ErreurTitre.isVisible()) || (lbl_ErreurVisuel.isVisible())) {
-            lbl_ErreurTitre.setVisible(false);
-            lbl_ErreurVisuel.setVisible(false);
-        }
-    }
-
     public void cacheModifCategorie() {
         if (pane_ModifCategorie.isVisible()) {
             pane_ModifCategorie.setVisible(false);
@@ -121,18 +119,15 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         }
     }
 
-    public void cacheErreurModifCategorie() {
-        lbl_ErreurModifTitre.setVisible(false);
-        lbl_ErreurModifVisuel.setVisible(false);
-    }
-
 
     @FXML
     void OnClick_CreerCategorie(ActionEvent event) {
         boolean complet = true;
 
-        cacheErreurCreeCategorie();
         cacheModifCategorie();
+
+        lbl_ErreurTitre.setVisible(false);
+        lbl_ErreurVisuel.setVisible(false);
 
         //Liste de verification des Erreurs
         if (input_titre.getText() == "") {
@@ -146,19 +141,19 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
         //Quand on appuie sur le boutton Créer
         if (complet) {
+            DaoFactory DaoF = DaoFactory.getDAOFactory(EPersistance.LISTE_MEMOIRE);
+            IDaoCategorie DaoCategorie = DaoF.getDaoCategorie();
+
             Categorie categorie = new Categorie();
             categorie.setTitre(input_titre.getText());
             categorie.setVisuel(input_visuel.getText());
 
             lbl_MessageCategorie.setText("La catégorie " + categorie.toStringController() + " à bien été créée");
 
-            daoCateg.create(categorie);
+            DaoCategorie.create(categorie);
 
+            refreshCateg();
             cacheCreeCategorie();
-
-            //this.tbl_Categories.getItems().addAll(categorie);
-            this.tbl_Categories.getItems().clear();
-            this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
         }
     }
 
@@ -168,20 +163,19 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         pane_ModifCategorie.setVisible(true);
         btn_ModifCategorie.setVisible(true);
 
-        cacheCreeCategorie();
-        cacheErreurCreeCategorie();
-        cacheErreurModifCategorie();
-
         input_ModifId.setText(String.valueOf(categorieTab.getId()));
         input_ModifTitre.setText(categorieTab.getTitre());
         input_ModifVisuel.setText(categorieTab.getVisuel());
+
+        cacheCreeCategorie();
     }
 
     @FXML
     void OnClick_ModifCategorie (ActionEvent event){
         boolean complet = true;
 
-        cacheErreurModifCategorie();
+        lbl_ErreurModifTitre.setVisible(false);
+        lbl_ErreurModifVisuel.setVisible(false);
 
         //Liste de verification des Erreurs
         if (input_ModifTitre.getText() == "") {
@@ -201,10 +195,7 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
 
             daoCateg.update(categorieTab);
 
-            //this.tbl_Categories.refresh();
-            this.tbl_Categories.getItems().clear();
-            this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
-
+            refreshCateg();
             cacheModifCategorie();
         }
     }
@@ -220,12 +211,10 @@ public class Controller_Categorie implements Initializable, ChangeListener<Categ
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoCateg.delete(categorieTab);
-            this.tbl_Categories.getItems().clear();
-            this.tbl_Categories.getItems().addAll(daoF.getDaoCategorie().getAllCategories());
+            refreshCateg();
 
             lbl_MessageCategorie.setText("");
             cacheCreeCategorie();
-            cacheErreurCreeCategorie();
             cacheModifCategorie();
         }
     }

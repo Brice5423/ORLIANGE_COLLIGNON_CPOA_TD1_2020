@@ -171,11 +171,16 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         TableColumn<Client, String> colPays = new TableColumn<>("Pays");
         colPays.setCellValueFactory(new PropertyValueFactory<Client, String>("adrPays"));
         this.tbl_Clients.getColumns().setAll(colId, colNom, colPrenom, colMail, colMdp, colNumero, colVoie, colCP, colVille, colPays);
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+        refreshClient();
 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
     }
 
+    public void refreshClient() {
+        tbl_Clients.getItems().clear();
+        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+        tbl_Clients.getSelectionModel().clearSelection();
+    }
 
     public void changed(ObservableValue<? extends Client> observable, Client oldValue, Client newValue) {
         this.btn_SuppClient.setDisable(newValue == null);
@@ -313,10 +318,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             daoClient.create(client);
 
-            //this.tbl_Clients.getItems().addAll(client);
-            tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
-
+            refreshClient();
             cacheCreeClient();
         }
     }
@@ -400,11 +402,11 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
             lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifié");
 
-            daoClient.update(clientTab);
+            refreshClient();
 
             //this.tbl_Clients.refresh();
-            tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+            /*tbl_Clients.getItems().clear();
+            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());*/
 
             cacheModifClient();
         }
@@ -421,8 +423,9 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoClient.delete(clientTab);
-            tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+            /*tbl_Clients.getItems().clear();
+            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());*/
+            refreshClient();
 
             lbl_MessageClient.setText("");
             cacheCreeClient();
@@ -434,8 +437,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @FXML
     void OnClick_Refresh(ActionEvent event) {
-        tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
+        refreshClient();
 
         input_FiltreNom.clear();
         input_FiltrePrenom.clear();
@@ -449,13 +451,11 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
 
     @FXML
     void OnClick_ValiderFiltre(ActionEvent event) {
-        tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+        refreshClient();
     }
 
     @FXML
     void OnClick_FiltreNomPrenom(ActionEvent event) {
-        tbl_Clients.getItems().clear();
-        this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+        refreshClient();
     }
 }
