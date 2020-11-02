@@ -401,9 +401,9 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             client.setAdrVille(input_ModifVille.getText());
             client.setAdrPays(input_ModifPays.getText());
 
-            lbl_MessageClient.setText("Le client " + clientTabSelect.toStringController() + " à bien été modifié");
+            lbl_MessageClient.setText("Le client " + client.toStringController() + " à bien été modifié");
 
-            daoClient.update(clientTabSelect);
+            daoClient.update(client);
 
             tbl_Clients.refresh(); //refreshClient();
             cacheModifClient();
