@@ -448,11 +448,13 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
     void OnClick_ValiderFiltre(ActionEvent event) {
         tbl_Clients.getItems().clear();
         tbl_Clients.getItems().addAll(daoClient.getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+        tbl_Clients.getSelectionModel().clearSelection();
     }
 
     @FXML
     void OnClick_FiltreNomPrenom(ActionEvent event) {
         tbl_Clients.getItems().clear();
         tbl_Clients.getItems().addAll(daoClient.getByNomPrenom(input_FiltreNom.getText(), input_FiltrePrenom.getText()));
+        tbl_Clients.getSelectionModel().clearSelection();
     }
 }

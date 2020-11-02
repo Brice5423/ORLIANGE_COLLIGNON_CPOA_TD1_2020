@@ -153,7 +153,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
 
     public boolean isDouble(String string) {
         try {
-            Double.parseDouble(string);
+            Double.parseDouble(string); // parseDouble / valueOf
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -303,7 +303,7 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
             produitTabSelect.setId(Integer.valueOf(input_ModifId.getText()));
             produitTabSelect.setNom(input_nom.getText());
             produitTabSelect.setDescription(input_Description.getText());
-            produitTabSelect.setTarif(Double.valueOf(input_Tarif.getText()));
+            produitTabSelect.setTarif(Double.parseDouble(input_Tarif.getText())); // parseDouble / valueOf
             produitTabSelect.setVisuel(input_Visuel.getText());
             produitTabSelect.setCategorie(Choice_Categ.getValue());
 
@@ -357,18 +357,24 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
         if (Choice_FiltreCateg != null) {
             tbl_Produits.getItems().clear();
             tbl_Produits.getItems().addAll(daoProd.getByCategorie(Choice_FiltreCateg.getValue()));
+            tbl_Produits.getSelectionModel().clearSelection();
+
             input_FiltreNom.clear();
             input_FiltreTarif.clear();
 
         } else if (input_FiltreNom.getText() != "") {
             tbl_Produits.getItems().clear();
             tbl_Produits.getItems().addAll(daoProd.getByNomProduit(input_FiltreNom.getText()));
+            tbl_Produits.getSelectionModel().clearSelection();
+
             Choice_FiltreCateg.setValue(null);
             input_FiltreTarif.clear();
 
         } else if (input_FiltreTarif.getText() != "") {
             tbl_Produits.getItems().clear();
             tbl_Produits.getItems().addAll(daoProd.getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+            tbl_Produits.getSelectionModel().clearSelection();
+
             Choice_FiltreCateg.setValue(null);
             input_FiltreNom.clear();
         }
@@ -378,6 +384,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_FiltreNom(ActionEvent event) {
         tbl_Produits.getItems().clear();
         tbl_Produits.getItems().addAll(daoProd.getByNomProduit(input_FiltreNom.getText()));
+        tbl_Produits.getSelectionModel().clearSelection();
+
         Choice_FiltreCateg.setValue(null);
         input_FiltreTarif.clear();
     }
@@ -386,6 +394,8 @@ public class Controller_Produit implements Initializable, ChangeListener<Produit
     void OnClick_FiltreTarif(ActionEvent event) {
         tbl_Produits.getItems().clear();
         tbl_Produits.getItems().addAll(daoProd.getByTarif(Double.valueOf(input_FiltreTarif.getText())));
+        tbl_Produits.getSelectionModel().clearSelection();
+
         Choice_FiltreCateg.setValue(null);
         input_FiltreNom.clear();
     }
