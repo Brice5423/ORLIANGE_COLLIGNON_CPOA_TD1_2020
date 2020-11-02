@@ -176,6 +176,7 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         this.tbl_Clients.getSelectionModel().selectedItemProperty().addListener( this);
     }
 
+
     public void refreshClient() {
         tbl_Clients.getItems().clear();
         this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());
@@ -403,11 +404,6 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
             lbl_MessageClient.setText("Le client " + clientTab.toStringController() + " à bien été modifié");
 
             refreshClient();
-
-            //this.tbl_Clients.refresh();
-            /*tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());*/
-
             cacheModifClient();
         }
     }
@@ -423,8 +419,6 @@ public class Controller_Client implements Initializable, ChangeListener<Client> 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             daoClient.delete(clientTab);
-            /*tbl_Clients.getItems().clear();
-            this.tbl_Clients.getItems().addAll(daoF.getDaoClient().getAllClients());*/
             refreshClient();
 
             lbl_MessageClient.setText("");
