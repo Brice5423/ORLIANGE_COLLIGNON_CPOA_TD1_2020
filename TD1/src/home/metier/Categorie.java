@@ -44,7 +44,6 @@ public class Categorie {
 		return /*"id = " + this.id + ", titre = " +*/ this.titre /*+ ", visuel = " + this.visuel*/;
 	}
 	public String toStringController() {
-
 		return this.titre + ", " + this.visuel;
 	}
 }
